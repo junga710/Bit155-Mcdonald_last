@@ -81,8 +81,11 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="stat-widget-one">
-							<div class="stat-icon dib" style="margin-left:13px; margin-top:7px;">
-								<img style="margin-left:10px;" width="50px;" height="50px;" src="${pageContext.request.contextPath}/admincss/images/won.svg" alt=""> &nbsp;
+							<div class="stat-icon dib"
+								style="margin-left: 13px; margin-top: 7px;">
+								<img style="margin-left: 10px;" width="50px;" height="50px;"
+									src="${pageContext.request.contextPath}/admincss/images/won.png"
+									alt=""> &nbsp;
 								<!-- <i class="ti-money text-success border-success"></i> -->
 							</div>
 							<div class="stat-content dib">
@@ -99,7 +102,9 @@
 					<div class="card-body">
 						<div class="stat-widget-one">
 							<div class="stat-icon dib">
-								<i class="ti-money text-info border-info"></i>
+								<img style="margin-top: 9px; margin-left: 15px;" width="50px;" height="50px;"
+									src="${pageContext.request.contextPath}/admincss/images/won.png"
+									alt=""> &nbsp;
 							</div>
 							<div class="stat-content dib">
 								<div class="stat-text">일 매출 평균</div>
@@ -162,11 +167,11 @@
 						<div class="mx-auto d-flex">
 							<img class="rounded-circle mx-auto d-block"
 								src="${pageContext.request.contextPath}/admincss/images/kim.jpg"
-								alt="Card image cap" style="height: 80px;">
+								alt="Card image cap" style="height: 50px;">
 							<div class="mx-auto d-block">
-								<h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+								<h5 class="text-sm-center mt-2 mb-1">김우철</h5>
 								<div class="location text-sm-center">
-									<i class="fa fa-map-marker"></i> California, United States
+									<i class="fa fa-map-marker"></i> 선릉점 점장, 070-7017-4081
 								</div>
 							</div>
 						</div>
@@ -177,11 +182,11 @@
 						<div class="mx-auto d-flex">
 							<img class="rounded-circle mx-auto d-block"
 								src="${pageContext.request.contextPath}/admincss/images/lee.jpg"
-								alt="Card image cap" style="height: 80px;">
+								alt="Card image cap" style="height: 50px;">
 							<div class="mx-auto d-block">
-								<h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+								<h5 class="text-sm-center mt-2 mb-1">이정아</h5>
 								<div class="location text-sm-center">
-									<i class="fa fa-map-marker"></i> California, United States
+									<i class="fa fa-map-marker"></i> 강남삼성DT점 점장, 070-7209-0677
 								</div>
 							</div>
 						</div>
@@ -192,11 +197,11 @@
 						<div class="mx-auto d-flex">
 							<img class="rounded-circle mx-auto d-block"
 								src="${pageContext.request.contextPath}/admincss/images/admin.jpg"
-								alt="Card image cap" style="height: 80px;">
+								alt="Card image cap" style="height: 50px;">
 							<div class="mx-auto d-block">
-								<h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+								<h5 class="text-sm-center mt-2 mb-1">장민봉</h5>
 								<div class="location text-sm-center">
-									<i class="fa fa-map-marker"></i> California, United States
+									<i class="fa fa-map-marker"></i> 강남구청점 점장, 070-7017-4547
 								</div>
 							</div>
 						</div>
@@ -207,11 +212,11 @@
 						<div class="mx-auto d-flex">
 							<img class="rounded-circle mx-auto d-block"
 								src="${pageContext.request.contextPath}/admincss/images/jeon.jpg"
-								alt="Card image cap" style="height: 80px;">
+								alt="Card image cap" style="height: 50px;">
 							<div class="mx-auto d-block">
-								<h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+								<h5 class="text-sm-center mt-2 mb-1">이연규</h5>
 								<div class="location text-sm-center">
-									<i class="fa fa-map-marker"></i> California, United States
+									<i class="fa fa-map-marker"></i> 코엑스점 점장, 070-7209-0565
 								</div>
 							</div>
 						</div>
@@ -222,11 +227,11 @@
 						<div class="mx-auto d-flex">
 							<img class="rounded-circle mx-auto d-block"
 								src="${pageContext.request.contextPath}/admincss/images/gu.jpg"
-								alt="Card image cap" style="height: 80px;">
+								alt="Card image cap" style="height: 50px;">
 							<div class="mx-auto d-block">
-								<h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
+								<h5 class="text-sm-center mt-2 mb-1">구슬기</h5>
 								<div class="location text-sm-center">
-									<i class="fa fa-map-marker"></i> California, United States
+									<i class="fa fa-map-marker"></i> 삼성역점 점장, 070-7017-6471
 								</div>
 							</div>
 						</div>
@@ -235,25 +240,38 @@
 			</div>
 
 			<!-- 각 메뉴 Best / Worst -->
-			<div class="col-xl-3 col-lg-6" style="margin-top: 70px;">
-				<aside class="profile-nav alt" style="margin-bottom: 70px;">
+			<div class="col-xl-3 col-lg-6">
+				<aside class="profile-nav alt" style="margin-bottom: 10px;">
 					<section class="card">
 						<div class="card-header user-header alt bg-light">각 메뉴 Best
 							상품</div>
 
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-envelope-o"></i> Mail Inbox <span
-									class="badge badge-primary pull-right">10</span></a></li>
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-tasks"></i> Recent Activity <span
-									class="badge badge-danger pull-right">15</span></a></li>
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-bell-o"></i> Notification <span
-									class="badge badge-success pull-right">11</span></a></li>
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-comments-o"></i> Message <span
-									class="badge badge-warning pull-right r-activity">03</span></a></li>
+						
+							<li class="list-group-item">
+								<span id="burgerBest"></span>
+								<span class="badge badge-primary pull-right">버거</span>
+							</li>
+							<li class="list-group-item">
+								<span id="macMorningBest"></span>
+								<span class="badge badge-danger pull-right">맥모닝</span> 
+							</li>
+							<li class="list-group-item">
+								<span id="sideBest"></span> 
+								<span class="badge badge-success pull-right">사이드</span>
+							</li>
+							<li class="list-group-item">
+								<span id="desertBest"></span>
+								<span class="badge badge-info pull-right r-activity">디저트</span>
+							</li>
+							<li class="list-group-item">
+								<span id="macCaffeeBest"></span>
+								<span class="badge badge-secondary pull-right r-activity">맥커피</span>
+							</li>
+							<li class="list-group-item"">
+								<span id="beverageBest"></span>
+								<span class="badge badge-light pull-right r-activity">음료</span>
+							</li>
 
 						</ul>
 
@@ -268,18 +286,30 @@
 
 
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-envelope-o"></i> Mail Inbox <span
-									class="badge badge-primary pull-right">10</span></a></li>
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-tasks"></i> Recent Activity <span
-									class="badge badge-danger pull-right">15</span></a></li>
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-bell-o"></i> Notification <span
-									class="badge badge-success pull-right">11</span></a></li>
-							<li class="list-group-item"><a href="#"> <i
-									class="fa fa-comments-o"></i> Message <span
-									class="badge badge-warning pull-right r-activity">03</span></a></li>
+							<li class="list-group-item">
+								<span id="burgerWorst"></span>
+								<span class="badge badge-primary pull-right">버거</span>
+							</li>
+							<li class="list-group-item">
+								<span id="macMorningWorst"></span>
+								<span class="badge badge-danger pull-right">맥모닝</span> 
+							</li>
+							<li class="list-group-item">
+								<span id="sideWorst"></span> 
+								<span class="badge badge-success pull-right">사이드</span>
+							</li>
+							<li class="list-group-item">
+								<span id="desertWorst"></span>
+								<span class="badge badge-info pull-right r-activity">디저트</span>
+							</li>
+							<li class="list-group-item">
+								<span id="macCaffeeWorst"></span>
+								<span class="badge badge-secondary pull-right r-activity">맥커피</span>
+							</li>
+							<li class="list-group-item"">
+								<span id="beverageWorst"></span>
+								<span class="badge badge-light pull-right r-activity">음료</span>
+							</li>
 
 						</ul>
 
@@ -317,13 +347,13 @@
 					2 : 코엑스
 					3: 선릉 
 					4 : 강남삼성DT
-					*/
-					console.log("name : " + data[0].s_name); 
-					console.log("count0 : " + data[0].order_count); 	
-					console.log("count1 : " + data[1].order_count); 	
-					console.log("count2 : " + data[2].order_count); 	
-					console.log("count3 : " + data[3].order_count); 	
-					console.log("count4 : " + data[4].order_count); 	
+					 */
+					console.log("name : " + data[0].s_name);
+					console.log("count0 : " + data[0].order_count);
+					console.log("count1 : " + data[1].order_count);
+					console.log("count2 : " + data[2].order_count);
+					console.log("count3 : " + data[3].order_count);
+					console.log("count4 : " + data[4].order_count);
 					/* Math.random() * 90000 */
 					var barChartData = {
 						labels : [ "5월 26일" ],
@@ -379,11 +409,11 @@
 									categoryPercentage : 0.9,
 								} ],
 								yAxes : [ {
-									ticks: {
-								        min: 0,
-								        max: 10,
-								        stepSize: 2
-								      },
+									ticks : {
+										min : 0,
+										max : 10,
+										stepSize : 2
+									},
 								} ],
 							}
 
@@ -449,7 +479,35 @@
 					$('#chart3').text(data[0].merberTopOrder);
 					$('#chart4').text(data[0].memberTotal);
 
-					//여기거 진입
+				},
+				error : function(request, status, error) {
+					console.log("code:" + request.status + "\n" + "error:"
+							+ error);
+
+				}
+			})
+
+			//메뉴별 best 상품(4개)
+			$.ajax({
+				url : "MainBest.ajax",
+				type : 'POST',
+				cache : false,
+				dataType : 'json',
+				success : function(data) {
+
+					console.log("burgerBest " + data[0].burgerBest);
+					console.log("macMorningBest " + data[0].macMorningBest);
+					console.log("sideBest " + data[0].sideBest);
+					console.log("desertBest " + data[0].desertBest);
+					console.log("macCaffeeBest " + data[0].macCaffeeBest);
+					console.log("beverageBest " + data[0].beverageBest);
+					
+					$('#burgerBest').text(data[0].burgerBest);
+					$('#macMorningBest').text(data[0].macMorningBest);
+					$('#sideBest').text(data[0].sideBest);
+					$('#desertBest').text(data[0].desertBest);
+					$('#macCaffeeBest').text(data[0].macCaffeeBest);
+					$('#beverageBest').text(data[0].beverageBest);
 
 				},
 				error : function(request, status, error) {
@@ -458,6 +516,36 @@
 
 				}
 			})
+
+			//메뉴별 worst 상품(4개)
+			$.ajax({
+				url : "MainWorst.ajax",
+				type : 'POST',
+				cache : false,
+				dataType : 'json',
+				success : function(data) {
+					console.log("burgerWorst " + data[0].burgerWorst);
+					console.log("macMorningWorst " + data[0].macMorningWorst);
+					console.log("sideWorst " + data[0].sideWorst);
+					console.log("desertWorst " + data[0].desertWorst);
+					console.log("macCaffeeWorst " + data[0].macCaffeeWorst);
+					console.log("beverageWorst " + data[0].beverageWorst);
+					
+					$('#burgerWorst').text(data[0].burgerWorst);
+					$('#macMorningWorst').text(data[0].macMorningWorst);
+					$('#sideWorst').text(data[0].sideWorst);
+					$('#desertWorst').text(data[0].desertWorst);
+					$('#macCaffeeWorst').text(data[0].macCaffeeWorst);
+					$('#beverageWorst').text(data[0].beverageWorst);
+
+				},
+				error : function(request, status, error) {
+					console.log("code:" + request.status + "\n" + "error:"
+							+ error);
+
+				}
+			})
+
 		});
 	</script>
 

@@ -23,7 +23,6 @@ public class UserBoardController extends HttpServlet {
        
     public UserBoardController() {
         super();
-        
     }
     
     private void doProcess(HttpServletRequest request, HttpServletResponse response)
