@@ -39,12 +39,10 @@ public class UserBoardController extends HttpServlet {
 			System.out.println("여긴오냐232323");
 			action  = new NoticeListService();
 			forward = action.execute(request, response);
-			
 		} else if (url_Command.equals("/BoardNoticeDetail.b")) { // 공지사항 상세 뿌려주는 로직
 			System.out.println("상세페이지 점두점두");
 			action  = new NoticeDetailService();
 			forward = action.execute(request, response);
-			
 		}
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
