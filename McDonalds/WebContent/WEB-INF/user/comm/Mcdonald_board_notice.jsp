@@ -47,8 +47,8 @@
                                         <th class="text-center" style="width: 30%;">날짜</th>
                                     </tr>
                                 <tbody>
-                                 <c:set var="list" value="${requestScope.blist}"/>
-                                   <c:forEach var="boardNotice" items="${blist}">         
+                                 <c:set var="list" value="${requestScope.bList}"/>
+                                   <c:forEach var="boardNotice" items="${bList}">         
                                     <tr onmouseover="this.style.backgroundColor='#cecece'"
                                         onmouseout="this.style.backgroundColor='white'">
                                         <td align="center">${boardNotice.n_code}</td>

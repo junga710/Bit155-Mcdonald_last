@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
-import kr.or.mc.user.service.mypage.JoinFormEdit;
 import kr.or.mc.user.service.mypage.LoginService;
 import kr.or.mc.user.service.mypage.LogoutService;
 import kr.or.mc.user.service.mypage.RegisterService;
@@ -64,7 +63,7 @@ public class UserMyPageController extends HttpServlet {
 		      
 		      }else if(url_Command.equals("/Mcdonald_joinform_editOk.ump")) { //회원정보수정 로직
 		    	  System.out.println("회원정보 수정로직");
-		    	  action = new JoinFormEdit();
+					/* action = new JoinFormEdit(); */
 			      forward = action.execute(request, response);
 		     
 		      }

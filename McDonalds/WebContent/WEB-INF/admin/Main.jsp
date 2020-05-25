@@ -83,7 +83,7 @@
 						<div class="stat-widget-one">
 							<div class="stat-icon dib"
 								style="margin-left: 13px; margin-top: 7px;">
-								<img style="margin-left: 10px;" width="50px;" height="50px;"
+								<img style="margin-left: 10px;" width="60px;" height="60px;"
 									src="${pageContext.request.contextPath}/admincss/images/won.png"
 									alt=""> &nbsp;
 								<!-- <i class="ti-money text-success border-success"></i> -->
@@ -102,7 +102,7 @@
 					<div class="card-body">
 						<div class="stat-widget-one">
 							<div class="stat-icon dib">
-								<img style="margin-top: 9px; margin-left: 15px;" width="50px;" height="50px;"
+								<img style="margin-top: 9px; margin-left: 15px;" width="60px;" height="60px;"
 									src="${pageContext.request.contextPath}/admincss/images/won.png"
 									alt=""> &nbsp;
 							</div>
@@ -120,9 +120,13 @@
 					<div class="card-body">
 						<div class="stat-widget-one">
 							<div class="stat-icon dib">
-								<i class="ti-hand-point-up text-warning border-warning"></i>
+								<!-- <i class="ti-hand-point-up text-warning border-warning"></i> -->
+								<img style=" margin-left: 15px;" width="80px;" height="70px;"
+									src="${pageContext.request.contextPath}/admincss/images/cart.svg"
+									alt=""> &nbsp;
 							</div>
 							<div class="stat-content dib">
+							
 								<div class="stat-text">최다주문 회원</div>
 								<div id="chart3" class="stat-digit"></div>
 							</div>
@@ -136,7 +140,10 @@
 					<div class="card-body">
 						<div class="stat-widget-one">
 							<div class="stat-icon dib">
-								<i class="ti-user text-primary border-primary"></i>
+						<!-- 		<i class="ti-user text-primary border-primary"></i> -->
+						<img style=" margin-left: 15px;" width="70px;" height="70px;"
+									src="${pageContext.request.contextPath}/admincss/images/member.svg"
+									alt=""> &nbsp;
 							</div>
 							<div class="stat-content dib">
 								<div class="stat-text">총 회원</div>
