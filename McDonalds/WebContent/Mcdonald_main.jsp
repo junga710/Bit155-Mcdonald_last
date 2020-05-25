@@ -41,7 +41,8 @@
                </button>
                <div class="dropdown-content">
                   <a href="BoardNotice.b">공지사항</a>
-                  <a href="#">리뷰게시판</a>
+                  <a href="BoardReview.b">리뷰게시판</a>
+                  <a href="BoardFree.b">자유게시판</a>
                </div>
             </div>
             <div class="dropdown p-2">
