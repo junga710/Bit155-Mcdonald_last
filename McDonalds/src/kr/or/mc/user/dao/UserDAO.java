@@ -181,19 +181,20 @@ public class UserDAO {
 			System.out.println("상세보기 탔나?");
 			try {
 				conn = ds.getConnection();
-				String sql = "select n_title, to_char(n_write_date, 'YYYY-MM-DD') as n_write_date, n_read_num, n_content, from board_notice where n_code = ?";
+				String sql = "select * from board_notice where n_code = ? ";
+				// n_code, n_title, to_char(n_write_date, 'YYYY-MM-DD') as n_write_date, n_read_num, n_content, from board_notice where n_code = ?
 				pstmt = conn.prepareStatement(sql);
 
 				pstmt.setInt(1, n_code);
 
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-					BoardNoticeDTO boardNoticeDto = new BoardNoticeDTO();
-					boardNoticeDto.setN_code(rs.getInt("n_code"));
-					boardNoticeDto.setN_title(rs.getString("n_title"));
-					boardNoticeDto.setN_write_date(rs.getString("n_write_date"));
-					boardNoticeDto.setN_read_num(rs.getInt("n_read_num"));
-					boardNoticeDto.setN_content(rs.getString("n_content"));
+					boardNoticeDTO.setN_code(rs.getInt("n_code"));
+					boardNoticeDTO.setN_title(rs.getString("n_title"));
+					boardNoticeDTO.setN_write_date(rs.getString("n_write_date"));
+					boardNoticeDTO.setN_read_num(rs.getInt("n_read_num"));
+					boardNoticeDTO.setN_content(rs.getString("n_content"));
+					System.out.println("상세보기 데이터 가져왔는지 보기:" + boardNoticeDTO);
 				}
 
 			} catch (Exception e) {

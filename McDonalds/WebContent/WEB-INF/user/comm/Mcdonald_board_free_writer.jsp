@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
 	rel="stylesheet">
 
 
-<title>리뷰게시판 글쓰기</title>
+<title>자유게시판 글쓰기</title>
 
 <style>
 #star_grade a {
@@ -32,44 +33,27 @@
 
 <body>
 
+	
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 
 
-	<div class="board_notice_detail">
-		<h1 class="titDep1" style="padding-top: 3%; color: white;">
-			<strong>리뷰게시판</strong>
-		</h1>
-		<ul style="padding-left: 10%; margin-top: 5%;">
-			<li id="topli"><a href="../Mcdonald_main.html"
-				style="color: white;">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html"
-				style="color: white;">menu</a></li>
+	<div class="review_detail">
+		<h1 class="titDep1" style="color: white;">자유게시판 글쓰기</h1>
+		<ul style="margin-left: 100px;">
+			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
+			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
 		</ul>
 	</div>
+
+
+
 
 
 	<div class="container">
 
 		<form>
-			<div class="form-row">
-				<div class="form-group col-md-6">
-					<label for="inputPassword4">지점별</label> <select
-						class="custom-select">
-						<option selected>지점 고르기</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-					</select>
-				</div>
-				<div class="form-group col-md-6">
-					<label for="inputPassword4">별점</label>
-					<p id="star_grade">
-						<a href="#">★</a> <a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
-						<a href="#">★</a>
-					</p>
-				</div>
-			</div>
+
 			<div class="input-group mb-3">
 				<div class="custom-file">
 					<input type="file" class="custom-file-input" id="inputGroupFile02">
@@ -98,10 +82,23 @@
 	<!--footer include -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
+
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
+
+	<script>
+		// Add the following code if you want the name of the file appear on select
+		$(".custom-file-input").on(
+				"change",
+				function() {
+					var fileName = $(this).val().split("\\").pop();
+					$(this).siblings(".custom-file-label").addClass("selected")
+							.html(fileName);
+				});
+	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 	<script>
@@ -128,16 +125,7 @@
 			document.documentElement.scrollTop = 0;
 		}
 	</script>
-	<script>
-		// Add the following code if you want the name of the file appear on select
-		$(".custom-file-input").on(
-				"change",
-				function() {
-					var fileName = $(this).val().split("\\").pop();
-					$(this).siblings(".custom-file-label").addClass("selected")
-							.html(fileName);
-				});
-	</script>
+
 	<script>
 		$('#star_grade a').click(function() {
 			$(this).parent().children("a").removeClass("on"); /* 별점의 on 클래스 전부 제거 */
