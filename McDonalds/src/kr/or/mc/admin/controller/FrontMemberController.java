@@ -37,7 +37,6 @@ public class FrontMemberController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		System.out.println("여긴오냐??????..");
 		
 		if (url_Command.equals("/Main.m")) { // admin 페이지 이동
 			forward = new ActionForward();

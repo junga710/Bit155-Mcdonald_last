@@ -1,8 +1,6 @@
 package kr.or.mc.user.controller;
 
-
 import java.io.IOException;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +20,7 @@ import kr.or.mc.user.service.board.NoticeListService;
 public class UserBoardController extends HttpServlet {
        
     public UserBoardController() {
-        super(); 
-        
+        super();
     }
     
     private void doProcess(HttpServletRequest request, HttpServletResponse response)

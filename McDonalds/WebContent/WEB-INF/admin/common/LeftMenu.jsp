@@ -10,8 +10,8 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fa fa-bars"></i>
 			</button>
-			<a class="navbar-brand" href="./"><img src="${pageContext.request.contextPath}/admincss/images/logo.png"
-				alt="Logo"></a> <a class="navbar-brand hidden" href="./"><img
+			<a class="navbar-brand" href="./"><img width="50px;" height="50px;" src="${pageContext.request.contextPath}/admincss/images/mclogo.png"
+				alt="Logo"></a> <a class="navbar-brand hidden" href="#"><img
 				src="${pageContext.request.contextPath}/admincss/images/logo2.png" alt="Logo"></a>
 		</div>
 
@@ -27,8 +27,8 @@
 						class="menu-icon fa fa-amazon"></i>상품관리</a></li>
 				<li class="menu-item"><a href="Order.o"><i
 						class="menu-icon fa fa-shopping-cart"></i>주문관리</a></li>
-				<li class="menu-item"><a href="Schedule.s"><i
-						class="menu-icon fa fa-calendar"></i>일정관리</a></li>
+				<!-- <li class="menu-item"><a href="Schedule.s"><i
+						class="menu-icon fa fa-calendar"></i>일정관리</a></li> -->
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
