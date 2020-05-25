@@ -37,7 +37,7 @@
 
 			<article class="card-body" style="width:500px; margin-top:100px ;margin-bottom:100px">
 				 <h3 class="text-center ">Login</h3>
-				<form action="login.b" method="post" name="loginForm"
+				<form action="login.ump" method="post" name="loginForm"
 					id="loginForm">
 					<div class="form-group">
 						<label>Your id</label> <input type="text" name="id" id="id" class="form-control"
@@ -55,7 +55,7 @@
 					</div>
 				</form>
 					<div class="form-group " style="text-align: right" >
-							<label> <a href="Mcdonald_joinform.jsp" class="text-warning">회원가입하러 가기</a>
+							<label> <a href="Mcdonald_joinform.ump" class="text-warning">회원가입하러 가기</a>
 							</label>
 					</div>
 					<!-- form-group// -->

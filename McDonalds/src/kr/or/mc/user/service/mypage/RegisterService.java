@@ -2,6 +2,7 @@ package kr.or.mc.user.service.mypage;
 
 import java.io.IOException;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +10,7 @@ import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.common.dto.MemberDTO;
 import kr.or.mc.user.dao.UserDAO;
-import kr.or.mc.user.service.RegisterService;
+//import kr.or.mc.user.service.RegisterService;
 public class RegisterService implements Action {
 
    @Override

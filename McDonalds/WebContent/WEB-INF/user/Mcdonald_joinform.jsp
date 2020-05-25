@@ -35,7 +35,7 @@
 
 			<article class="card-body" style="width:500px">
 				 <h3 class="text-center ">회원가입</h3>
-				<form action="joinformOk.b" method="post" name="joinform" id="joinform">
+				<form action="joinformOk.ump" method="post" name="joinform" id="joinform">
 					<div class="form-group">
 					<label>아이디</label>
 					<div class="row">
