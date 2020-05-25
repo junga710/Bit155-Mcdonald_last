@@ -30,17 +30,18 @@
 
 
 
+
 		<div class="container" style="width:500px">
 
 			<article class="card-body" style="width:500px">
-				 <h3 class="text-center ">회원가입</h3>
-				<form action="joinformOk.ump" method="post" name="joinform" id="joinform">
+				 <h3 class="text-center ">회원정보수정</h3>
+				<form action="Mcdonald_joinform_editOk.ump" method="post" name="joinform" id="joinform">
 					<div class="form-group">
 					<label>아이디</label>
 					<div class="row">
 						<div class="col-9">
 						<input class="form-control"
-							placeholder="Id"type="text" name="id" id="id">
+							type="text" name="id" id="id" value="${memberDTO.m_id}" readonly>
 						</div>
 						<!-- <div class="col-3" >
 						<button type="submit" class="btn btn-warning p-1" >중복확인</button>
@@ -49,51 +50,51 @@
 					</div>
 
 					<div class="form-group">
-						 <label>비밀번호</label> <input class="form-control" placeholder="****"
+						 <label>비밀번호</label> <input class="form-control" value="${memberDTO.password}"
 							type="password" name="pwd" id="pwd">
 					</div>
 	
 					<div class="form-group">
-						 <label>비밀번호 확인</label> <input class="form-control" placeholder="****"
+						 <label>비밀번호 확인</label> <input class="form-control" value="${memberDTO.password}"
 							type="password">
 					</div>
 				
 					<div class="form-group">
-						<label>이름</label> <input class="form-control"
-							placeholder="홍길동" type="text" name="mname" id="mname">
+						<label>이름</label> <input class="form-control" value="${memberDTO.name}"
+							 type="text" name="mname" id="mname">
 					</div>
 					
 					<div class="form-group">
-						<label>이메일</label> <input class="form-control"
-							placeholder="123@gmail.com" type="text" name="email" id="email">
+						<label>이메일</label> <input class="form-control" value="${memberDTO.email}"
+							 type="text" name="email" id="email">
 					</div>
 					
 					
 					<!--  우편번호 -->
 					
-					<input type="text" id="sample6_postcode" name="sample6_postcode" placeholder="우편번호"class="form-control">
+					<input type="text" id="sample6_postcode" name="sample6_postcode" value="${memberDTO.post_code}" class="form-control">
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
-					<input type="text" id="sample6_address" name="sample6_address" placeholder="주소" class="form-control"><br>
-					<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" placeholder="상세주소" class="form-control">
-					<input type="text" id="sample6_extraAddress"  name="sample6_extraAddress" placeholder="참고항목" class="form-control">
+					<input type="text" id="sample6_address" name="sample6_address" value="${memberDTO.address}" class="form-control"><br>
+					<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" value="${memberDTO.address_detail}" class="form-control">
+					<!-- <input type="text" id="sample6_extraAddress"  name="sample6_extraAddress" class="form-control" > -->
 					
 
 					<!--  우편번호 끝 -->
 					
 					<div class="form-group">
 						<label>핸드폰 번호(- 제외)</label> <input class="form-control"
-							placeholder="01012345678" type="text" name="pnum" id="pnum">
+							value="${memberDTO.phone}" type="text" name="pnum" id="pnum">
 					</div>
 					<div class="form-group">
 						
-							<input type="submit" class="btn btn-warning btn-block" value="회원가입">
+							<input type="submit" class="btn btn-warning btn-block" value="정보수정하기">
 					</div>
 					<!-- form-group// -->
 				</form>
-					<div class="form-group " style="text-align: right" >
+					<!-- <div class="form-group " style="text-align: right" >
 							<label> <a class="text-warning">이미 아이디가 있으신가요? <a href="Mcdonald_login.ump" class="text-primary">로그인</a></a>
 							</label>
-					</div>
+					</div> -->
 			</article>
 
 
@@ -171,7 +172,8 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    //document.getElementById("sample6_extraAddress").value = extraAddr;
+                    //document.getElementById("sample6_extraAddress").value = '';
                 
                 } else {
                     document.getElementById("sample6_extraAddress").value = '';

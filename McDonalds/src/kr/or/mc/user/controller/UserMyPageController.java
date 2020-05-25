@@ -3,6 +3,7 @@ package kr.or.mc.user.controller;
 import java.io.IOException;
 
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
-import kr.or.mc.user.service.mypage.JoinFormEdit;
+import kr.or.mc.user.service.mypage.JoinFormEditPageService;
+import kr.or.mc.user.service.mypage.JoinFormEditService;
 import kr.or.mc.user.service.mypage.LoginService;
 import kr.or.mc.user.service.mypage.LogoutService;
 import kr.or.mc.user.service.mypage.RegisterService;
@@ -58,13 +60,14 @@ public class UserMyPageController extends HttpServlet {
 		    	  forward = new ActionForward();
 		    	  forward.setPath("/WEB-INF/user/Mcdonald_login.jsp");
 		     
-		      }else if(url_Command.contentEquals("/Mcdonald_joinform_edit.ump")){ //회원정보수정화면 이동
-		    	  forward = new ActionForward();
-		    	  forward.setPath("/WEB-INF/user/mypage/Mcdonald_joinform_edit.jsp");
+		      }else if(url_Command.contentEquals("/Mcdonald_joinform_edit.ump")){ //회원정보수정화면 에 정보 넣어주고 이동
+		    	  System.out.println("나지금 졸고있니");
+		    	  action = new JoinFormEditPageService();
+			      forward = action.execute(request, response);
 		      
 		      }else if(url_Command.equals("/Mcdonald_joinform_editOk.ump")) { //회원정보수정 로직
 		    	  System.out.println("회원정보 수정로직");
-		    	  action = new JoinFormEdit();
+		    	  action = new JoinFormEditService();
 			      forward = action.execute(request, response);
 		     
 		      }
