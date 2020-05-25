@@ -189,12 +189,11 @@ public class UserDAO {
 
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-					BoardNoticeDTO boardNoticeDto = new BoardNoticeDTO();
-					boardNoticeDto.setN_code(rs.getInt("n_code"));
-					boardNoticeDto.setN_title(rs.getString("n_title"));
-					boardNoticeDto.setN_write_date(rs.getString("n_write_date"));
-					boardNoticeDto.setN_read_num(rs.getInt("n_read_num"));
-					boardNoticeDto.setN_content(rs.getString("n_content"));
+					boardNoticeDTO.setN_code(rs.getInt("n_code"));
+					boardNoticeDTO.setN_title(rs.getString("n_title"));
+					boardNoticeDTO.setN_write_date(rs.getString("n_write_date"));
+					boardNoticeDTO.setN_read_num(rs.getInt("n_read_num"));
+					boardNoticeDTO.setN_content(rs.getString("n_content"));
 					System.out.println("상세보기 데이터 가져왔는지 보기:" + boardNoticeDTO);
 				}
 
