@@ -14,10 +14,11 @@
     
 <jsp:include page="../common/head.jsp"></jsp:include>
 
+<!-- dataTable start -->
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/usercss/assets/dataTable/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/usercss/assets/dataTable/css/responsive.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/usercss/assets/dataTable/css/main.css">
-
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/usercss/assets/dataTable/css/responsive.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/usercss/assets/dataTable/css/main.css">
+<!-- dataTable end  -->
 </head>
 
 
@@ -52,7 +53,7 @@
                                         onmouseout="this.style.backgroundColor='white'">
                                         <td align="center">${boardNotice.n_code}</td>
                                         <td align="center">
-                                           <a href="NoticeDetail.b?n_code=${boardNotice.n_code}">${boardNotice.n_title}</a></td>
+                                           <a href="BoardNoticeDetail.b?n_code=${boardNotice.n_code}">${boardNotice.n_title}</a></td>
                                        <td align="center">${boardNotice.n_write_date}</td>
                                     </tr>
                                     </c:forEach>
@@ -203,7 +204,7 @@
     <script src="${pageContext.request.contextPath}/usercss/assets/dataTable/js/dataTables.buttons.min.js"></script>
     <script src="${pageContext.request.contextPath}/usercss/assets/dataTable/js/buttons.html5.min.js"></script>
     <script src="${pageContext.request.contextPath}/usercss/assets/dataTable/js/notice.js"></script>
-
+<!-- dataTaBle end -->
   
 </body>
 
