@@ -14,7 +14,7 @@ public class NoticeDetailService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
+		System.out.println("상세페이지 서블릿 타나요");
 		String n_codestr = request.getParameter("n_code");
 		int n_code = Integer.parseInt(n_codestr.trim());
 		

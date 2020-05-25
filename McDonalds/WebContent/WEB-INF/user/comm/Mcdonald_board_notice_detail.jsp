@@ -60,8 +60,16 @@
     <br>
 
     <div style="position: relative; left:75%;">
+       <c:choose>   
+               <c:when test="${userid == 'admin'}">
         <button type="submit" class="btn btn-danger mr-3 btn-sm">수정</button>
         <button type="submit" class="btn btn-warning btn-sm">삭제</button>
+                   </c:when>
+                   <c:otherwise>
+        
+                   </c:otherwise>
+               </c:choose>
+
     </div>
 <!--     <hr style= "width: 70%; height:1px;  background-color: black;">
     <button type="button" class="btn" id= "prev" ><strong>이전</strong></button>
