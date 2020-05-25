@@ -29,7 +29,6 @@
                       return false;
                   }
               )*/
-          
               var table = $('#myTable').DataTable({
                   /*ajax: {
                       'url':'MOCK_DATA.json', 
@@ -75,7 +74,8 @@
                           "previous": "이전"
                       }
                   },
-                  "lengthMenu": [ 3, 5, 10, 15]
+                  "pageLength": 10,
+                  "lengthMenu": [[3, 5, 10, -1], [3, 5, 10, "All"]],
                 });
           
               /* Column별 검색기능 추가 */
