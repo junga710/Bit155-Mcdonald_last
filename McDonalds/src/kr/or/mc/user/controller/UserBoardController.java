@@ -41,7 +41,7 @@ public class UserBoardController extends HttpServlet {
 			forward = action.execute(request, response);
 			
 		} else if (url_Command.equals("/BoardNoticeDetail.b")) { // 리뷰게시판 목록 뿌려주는 로직
-			action  = new NoticeDetailService();
+			/* action = new NoticeDetailService(); */
 			forward = action.execute(request, response);
 			
 		}

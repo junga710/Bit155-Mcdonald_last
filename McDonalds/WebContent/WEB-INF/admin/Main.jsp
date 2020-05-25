@@ -214,7 +214,7 @@
 								src="${pageContext.request.contextPath}/admincss/images/jeon.jpg"
 								alt="Card image cap" style="height: 50px;">
 							<div class="mx-auto d-block">
-								<h5 class="text-sm-center mt-2 mb-1">이연규</h5>
+								<h5 class="text-sm-center mt-2 mb-1">전연규</h5>
 								<div class="location text-sm-center">
 									<i class="fa fa-map-marker"></i> 코엑스점 점장, 070-7209-0565
 								</div>
