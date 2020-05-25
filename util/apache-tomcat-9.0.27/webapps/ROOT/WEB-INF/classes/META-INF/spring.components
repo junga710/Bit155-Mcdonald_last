@@ -1,0 +1,5 @@
+#
+#Mon Jan 27 23:42:56 KST 2020
+com.fastcampus.web.config.spring.MvcConfig=org.springframework.stereotype.Component
+com.fastcampus.web.config.spring.AppConfig=org.springframework.stereotype.Component
+com.fastcampus.web.controller.MemberController=org.springframework.stereotype.Component

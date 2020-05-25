@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-init-method="init" default-destroy-method="destroy"
+        xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="daoFactory" class="com.fastcampus.cli.DaoFactory"/>-->
+
+    <bean id="ConnectionFactory" class="com.fastcampus.cli.ConnectionFactory" init-method="init" >
+        <constructor-arg name="driverClass" value="org.h2.Driver"/>
+        <constructor-arg name="url" value="jdbc:h2:mem:tcp://localhost/~/test"/>
+        <constructor-arg name="user" value="sa"/>
+        <constructor-arg name="password" value="jdbc:h2:mem:tcp://localhost/~/test"/>
+    </bean>
+
+    <bean id="connection" class="java.sql.Connection"
+          factory-bean="ConnectionFactory"
+          factory-method="createConnection" />
+
+    <bean id="dao2" class="com.fastcampus.cli.Dao2">
+        <constructor-arg ref="connection" />
+    </bean>
+
+
+<!--    <bean id="dao" name="dao1" class="java.sql.Connection.fastcampus.cli.Dao"-->
+<!--          factory-bean="daoFactory"-->
+<!--          factory-method="createDao"/>-->
+
+<!--    <bean id="a" class="com.fastcampus.cli.di.A">-->
+<!--        <property name="b" ref="b" />-->
+<!--    </bean>-->
+<!--    <bean id="b" class="com.fastcampus.cli.di.B">-->
+<!--        <constructor-arg value="true"></constructor-arg>-->
+<!--    </bean>-->
+</beans>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--font-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+
+    <!--Jquery, Popper.js, Bootstrap Js-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
+    <title>자유게시판 상세보기</title>
+</head>
+<jsp:include page="../user/header.jsp"></jsp:include>
+
+<body>
+    <div class="board_notice_detail">
+        <h1 class="titDep1" style="padding-top: 3%; color:white;"><strong>자유게시판</strong></h1>
+        <ul style="padding-left: 10%; margin-top: 5%;">
+            <li id="topli"><a href="../Mcdonald_main.html" style="color: white;">Home</a></li>
+            <li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html" style="color: white;">menu</a></li>
+        </ul>
+    </div>
+    <!-- //visualArea -->
+    <div class="container" style="padding-top:2%; padding-right: 2%;">
+        <div class="row">
+            <div class="col"></div>
+            <h5><strong>제목</strong></h5>
+            <div class="col-7"></div>
+            <p class style="color:gray;"><strong>오늘날짜&nbsp;&nbsp;|
+                    &nbsp;&nbsp;조회수&nbsp;&nbsp;&nbsp;</strong></p>
+        </div>
+    </div>
+    <hr style=" width: 70%; height:3px; margin-top: 0; background-color: black;">
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    여
+    <br>
+    기
+    <br>
+    에
+    <br>
+    내
+    <br>
+    용이 들어갑니다
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-9"></div>
+            <a href=""><img src="../vendors/images/svg/heart-regular.svg"></a>
+            <div class="col"><strong>좋아요</strong></div>
+            <a href=""><img src="../vendors/images/svg/comment-dots-regular.svg"></a>
+            <div class="col"><strong>댓글</strong></div>
+        </div>       
+     
+            
+               <div class="container">
+            <div class="row mt-3">
+                <div class="col-10"></div>
+                <div class="col">
+                    <button type="button" class="btn btn-info" id="freebtnMC"
+                        style="position: absolute; right:20%"><strong>답글</strong></button></div>
+                <div class="col">
+                    <!--수정, 삭제는 본인만 볼수 있음 -->
+                    <button type="button" class="btn btn-warning" id="freebtnMC"
+                        style="position: absolute; right:20%"></strong>수정</strong></button></div>
+                <div class="col">
+                    <button type="button" class="btn btn-danger" id="freebtnMC"
+                        style="position: absolute; right:20%"></strong>삭제</strong></button></div>
+            </div>
+    </div>
+</div>
+            <div class="container">
+            <div class="row mb-4">
+
+            </div>
+        </div>
+        <div class="container">
+        <h3><strong>댓글</strong></h3>
+        <form action=".do">
+            <div class="row"></div>
+            <form>
+                <div class="form-group">
+                    <label for="comment"></label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <div class="row mt-2">
+                    <div class="col-11"></div>
+                    <div class="col">
+                    <a href="#" class="btn btn-info" role="button">등록</a>
+                </div></div>
+                </div>
+            </form>
+        </div>
+
+        <div class="container">         
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>댓글나올자리</td>
+                  <td>수정 취소</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+
+
+    <!-- 
+                            <article class="bbsCon">
+                                <div align="" style="" wfd-id="39">
+                                    <div align="" style="" wfd-id="40">
+                                        <div align="" style="" wfd-id="41">
+                                            <p><img src="/upload/editor/20200227151443c34e6d0a-f3c3-4794-8336-681581d69c78.png"
+                                                    title="%EC%88%98%EC%A0%95%EB%90%A8_%EC%BD%94%EB%A1%9C%EB%82%98%ED%8C%9D%EC%97%850226.png"
+                                                    width="50%"><br style="clear:both;">&nbsp;</p>
+                                        </div>
+                                        <p><br></p>
+                                    </div>
+                                    <p><br></p>
+                                </div>
+                                <p><br></p>
+                            </article> -->
+
+    <!-- //contArea -->
+    <form id="searchForm" method="post" wfd-id="31">
+        <input type="hidden" name="seq" id="seq" wfd-id="69">
+        <input type="hidden" name="rnum" id="rnum" wfd-id="68">
+    </form>
+
+    <script>
+
+    </script>
+
+
+</body>
+
+</html>

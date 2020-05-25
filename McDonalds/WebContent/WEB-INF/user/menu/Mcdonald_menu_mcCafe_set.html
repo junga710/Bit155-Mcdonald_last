@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--css-->
+
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!--font -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--font-->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+
+    <!--Jquery, Popper.js, Bootstrap Js-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <title>해피밀</title>
+</head>
+
+<style>
+    /* card-inner2:hover,
+#card-inner2:focus {
+        border-color: #ffbc0d;
+        border-radius: 10px;
+        border-style: solid;
+
+    } */
+</style>
+
+
+<body>
+    <div class="mcCafe">
+        <h1 class="titDep1"><strong>맥카페 & 음료</strong></h1>
+        <p class="subCopy">언제나 즐겁게, 맥카페와 다양한 음료를 부담없이 즐기세요!</p>
+        <ul style="padding-left: 10%; padding-top:3%">
+            <li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
+            <li id="topli"><a href="../menu/Mcdonald_menu_mcCafe.html">Menu</a></li>
+        </ul>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-5"></div>
+        <div class="col-1">
+            <div id="productli"><a href="../menu/Mcdonald_menu_mcCafe.html" role="button" style="color:#808080;">맥카페</a>
+            </div>
+            <!-- 선택 된 태그에 aria-selected="true" 추가 -->
+        </div>
+        <div class="col-2" id="productli"><a href="../menu/Mcdonald_menu_mcCafe_set.html" role="button"
+                style="color:#808080;">음료</a></div>
+    </div>
+    
+
+    <div class="mcMenu" wfd-id="34">
+        <ul class="menuList" id="menuList" wfd-id="36">
+            <li class="count" id="count">17 Products</li>
+        </ul>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card-deck">
+                    <div class="card-body" style="width:380px">
+                        <img class="card-img-top" src="../vendors/images/drink/drinkset/mcds1.png" alt="">
+                        <div class="card-body" id="card-inner">
+                            <strong class="ko">바닐라 쉐이크 Medium</strong>
+                            <h5 class="card-title">Vanilla Shake Medium</h5>
+                            <br>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+
+                    <div class="card-body" style="width:380px">
+                        <img class="card-img-top" src="../vendors/images/drink/drinkset/mcds2.png" alt="">
+                        <div class="card-body" id="card-inner">
+                            <div class="name" wfd-id="53">
+                                <strong class="ko">딸기 쉐이크 Medium</strong>
+                                <h5 class="card-title">Strawberry Shake Medium</h5>
+                                <br>
+                                <a href="#" class="stretched-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="width:380px">
+                        <img class="card-img-top" src="../vendors/images/drink/drinkset/mcds3.png" alt="">
+                        <div class="card-body" id="card-inner">
+                            <div class="name" wfd-id="53">
+                                <strong class="ko">초코 쉐이크 Medium</strong>
+                                <h5 class="card-title">Chocolate Shake Medium</h5>
+                                <br>
+                                <a href="#" class="stretched-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card-deck">
+                    <div class="card-body" style="width:380px">
+                        <img class="card-img-top" src="../vendors/images/drink/drinkset/mcds4.png" alt="2">
+                        <div class="card-body" id="card-inner">
+                            <h5 class="card-title"><strong class="tit">코카-콜라</strong>
+                            </h5>
+                            <strong>Coca-Cola</strong>
+                            <br>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card-body text-reft" style="width:380px">
+                        <img class="card-img-top" src="../vendors/images/drink/drinkset/mcds5.png"
+                            alt="취향저격 쿠폰부터 쏠쏠한 정보까지! 맥도날드앱 출시!">
+                        <div class="card-body" id="card-inner">
+                            <h5 class="card-title"><strong class="tit">코카-콜라 제로</strong>
+                            </h5>
+                            <strong>Coca-Cola Zero</strong>
+                            <br>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="card-body text-reft" style="width:380px">
+                        <img class="card-img-top" src="../vendors/images/drink/drinkset/mcds6.png"
+                            alt="취향저격 쿠폰부터 쏠쏠한 정보까지! 맥도날드앱 출시!">
+                        <div class="card-body" id="card-inner">
+                            <h5 class="card-title"><strong class="tit">스프라이트</strong></h5>
+                            <strong>Sprite</strong>
+                            <br>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+</body>
+
+
+
+<script>
+
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      mybutton.style.display = "block";
+   } else {
+      mybutton.style.display = "none";
+   }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
+}
+</script>
+</html>
