@@ -7,54 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/common.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
 
 
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
-	rel="stylesheet">
-
-<!--Jquery, Popper.js, Bootstrap Js-->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script>
-
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-	crossorigin="anonymous"></script>
-
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-	crossorigin="anonymous"></script>
-
-
-
-
-<title>회원정보 수정</title>
-
+<title>회원가입</title>
 
 </head>
 
 <body>
 
 	<!-- header include-->
-<jsp:include page="../common/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 	<section id="container">
-
 	
- <div class="joinform">
+<div class="joinform">
         <h1 class="titDep1" style="padding-top: 5%; color:white"><strong>회원정보수정</strong></h1>
         <ul   style="padding-left: 10%; margin-top: 1%;">
             <li id="topli"><a href="../Mcdonald_main.html" style="color: white;">Home</a></li>
@@ -67,44 +32,110 @@
 
 		<div class="container" style="width:500px">
 
-
 			<article class="card-body" style="width:500px">
-				 <h3 class="text-center ">회원정보수정</h3>
-				<form>
+				 <h3 class="text-center ">회원가입</h3>
+				<form action="joinformOk.ump" method="post" name="joinform" id="joinform">
 					<div class="form-group">
 					<label>아이디</label>
+					<div class="row">
+						<div class="col-9">
+						<input class="form-control"
+							placeholder="Id"type="text" name="id" id="id">
+						</div>
+						<!-- <div class="col-3" >
+						<button type="submit" class="btn btn-warning p-1" >중복확인</button>
+						</div> -->
+						</div>
+					</div>
+
+					<div class="form-group">
+						 <label>비밀번호</label> <input class="form-control" placeholder="****"
+							type="password" name="pwd" id="pwd">
+					</div>
+	
+					<div class="form-group">
+						 <label>비밀번호 확인</label> <input class="form-control" placeholder="****"
+							type="password">
+					</div>
+				
+					<div class="form-group">
+						<label>이름</label> <input class="form-control"
+							placeholder="홍길동" type="text" name="mname" id="mname">
+					</div>
 					
-						<input name="" class="form-control"
-							placeholder="Id" type="text" readonly>
-						
-					</div>
-					<!-- form-group// -->
 					<div class="form-group">
-						 <label>비밀번호</label> <input class="form-control" placeholder="******"
-							type="password">
+						<label>이메일</label> <input class="form-control"
+							placeholder="123@gmail.com" type="text" name="email" id="email">
 					</div>
-					<div class="form-group">
-						 <label>비밀번호 확인</label> <input class="form-control" placeholder="******"
-							type="password">
-					</div>
-					<div class="form-group">
-						<label>이름</label> <input name="" class="form-control"
-							placeholder="홍길동" type="text">
-					</div>
-					<div class="form-group">
-						<label>이메일</label> <input name="" class="form-control"
-							placeholder="123@gmail.com" type="email">
-					</div>
+					
 					
 					<!--  우편번호 -->
 					
-										
-<input type="text" id="sample6_postcode" placeholder="우편번호"class="form-control">
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
-<input type="text" id="sample6_address" placeholder="주소" class="form-control"><br>
-<input type="text" id="sample6_detailAddress" placeholder="상세주소" class="form-control">
-<input type="text" id="sample6_extraAddress" placeholder="참고항목" class="form-control">
+					<input type="text" id="sample6_postcode" name="sample6_postcode" placeholder="우편번호"class="form-control">
+					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
+					<input type="text" id="sample6_address" name="sample6_address" placeholder="주소" class="form-control"><br>
+					<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" placeholder="상세주소" class="form-control">
+					<input type="text" id="sample6_extraAddress"  name="sample6_extraAddress" placeholder="참고항목" class="form-control">
+					
 
+					<!--  우편번호 끝 -->
+					
+					<div class="form-group">
+						<label>핸드폰 번호(- 제외)</label> <input class="form-control"
+							placeholder="01012345678" type="text" name="pnum" id="pnum">
+					</div>
+					<div class="form-group">
+						
+							<input type="submit" class="btn btn-warning btn-block" value="회원가입">
+					</div>
+					<!-- form-group// -->
+				</form>
+					<div class="form-group " style="text-align: right" >
+							<label> <a class="text-warning">이미 아이디가 있으신가요? <a href="Mcdonald_login.ump" class="text-primary">로그인</a></a>
+							</label>
+					</div>
+			</article>
+
+
+
+
+
+		</div>
+	</section>
+
+
+	<!--footer include -->
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+
+
+<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
+
+
+	<script>
+		//Get the button
+		var mybutton = document.getElementById("myBtn");
+
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function() {
+			scrollFunction()
+		};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20
+					|| document.documentElement.scrollTop > 20) {
+				mybutton.style.display = "block";
+			} else {
+				mybutton.style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+	</script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
@@ -155,59 +186,6 @@
         }).open();
     }
 </script>
-					<!--  우편번호 끝 -->
-					
-					<div class="form-group">
-						<label>핸드폰 번호(- 제외)</label> <input name="" class="form-control"
-							placeholder="01012345678" type="text">
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-warning btn-block">
-							수정완료</button>
-					</div>
-					
-					<!-- form-group// -->
-				</form>
-			</article>
-
-
-
-
-
-		</div>
-	</section>
-
-
-	<!--footer include -->
-	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-	<jsp:include page="/user/footer.jsp"></jsp:include>
-
-
-	<script>
-		//Get the button
-		var mybutton = document.getElementById("myBtn");
-
-		// When the user scrolls down 20px from the top of the document, show the button
-		window.onscroll = function() {
-			scrollFunction()
-		};
-
-		function scrollFunction() {
-			if (document.body.scrollTop > 20
-					|| document.documentElement.scrollTop > 20) {
-				mybutton.style.display = "block";
-			} else {
-				mybutton.style.display = "none";
-			}
-		}
-
-		// When the user clicks on the button, scroll to the top of the document
-		function topFunction() {
-			document.body.scrollTop = 0;
-			document.documentElement.scrollTop = 0;
-		}
-	</script>
-
 
 </body>
 

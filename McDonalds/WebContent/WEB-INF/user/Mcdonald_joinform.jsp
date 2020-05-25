@@ -35,13 +35,13 @@
 
 			<article class="card-body" style="width:500px">
 				 <h3 class="text-center ">회원가입</h3>
-				<form action="joinformOk.ump" method="post" name="joinform" id="joinform">
+				<form action="Mcdonald_joinform_editOk.ump" method="post" name="joinform" id="joinform">
 					<div class="form-group">
 					<label>아이디</label>
 					<div class="row">
 						<div class="col-9">
 						<input class="form-control"
-							placeholder="Id"type="text" name="id" id="id">
+							placeholder="Id"type="text" name="id" id="id" readonly>
 						</div>
 						<!-- <div class="col-3" >
 						<button type="submit" class="btn btn-warning p-1" >중복확인</button>
@@ -50,7 +50,7 @@
 					</div>
 
 					<div class="form-group">
-						 <label>비밀번호</label> <input class="form-control" placeholder="****"
+						 <label>새로운 비밀번호</label> <input class="form-control" placeholder="****"
 							type="password" name="pwd" id="pwd">
 					</div>
 	
@@ -87,14 +87,11 @@
 					</div>
 					<div class="form-group">
 						
-							<input type="submit" class="btn btn-warning btn-block" value="회원가입">
+							<input type="submit" class="btn btn-warning btn-block" value="정보수정">
 					</div>
 					<!-- form-group// -->
 				</form>
-					<div class="form-group " style="text-align: right" >
-							<label> <a class="text-warning">이미 아이디가 있으신가요? <a href="Mcdonald_login.jsp" class="text-primary">로그인</a></a>
-							</label>
-					</div>
+					
 			</article>
 
 
