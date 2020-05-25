@@ -15,7 +15,6 @@
 </head>
 
 
-
 <body>
     <div class="board_notice_detail">
         <h1 class="titDep1" style="padding-top: 3%; color:white;"><strong>공지사항</strong></h1>
@@ -32,33 +31,14 @@
             <div class="col"></div>
             <h5><strong>${board.n_title}</strong></h5>
             <div class="col-7"></div>
-            <p class style="color:gray;"><strong>${board.n_write_date}&nbsp;&nbsp;|
+            <p style="color:black;"><strong>${board.n_write_date}&nbsp;&nbsp;|
                     &nbsp;&nbsp;${board.n_read_num}&nbsp;&nbsp;&nbsp;</strong></p>
         </div>
     </div>
         <hr style=" width: 70%; height:3px; margin-top: 0; background-color: black;">
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    여
-    <br>
-    기
-    <br>
-    에 
-    <br>
-    내
-    <br>
-    용이 들어갑니다
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+        ${board.n_code}
+		${board.n_content}
+   		
     <div style="position: relative; left:75%;">
        <c:choose>   
                <c:when test="${userid == 'admin'}">

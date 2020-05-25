@@ -24,7 +24,7 @@ public class NoticeDetailService implements Action {
 		request.setAttribute("boardNoticeDTO", boardNoticeDTO);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("/WEB-INF/user/comm/board_notice_detail.jsp");
+		forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice_detail.jsp");
 	
 
 	return forward;
