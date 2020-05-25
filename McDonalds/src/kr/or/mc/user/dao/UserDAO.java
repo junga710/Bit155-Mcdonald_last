@@ -177,6 +177,7 @@ public class UserDAO {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
+			System.out.println("상세보기 탔나?");
 			try {
 				conn = ds.getConnection();
 				String sql = "select n_title, to_char(n_write_date, 'YYYY-MM-DD') as n_write_date, n_read_num, n_content, from board_notice where n_code = ?";

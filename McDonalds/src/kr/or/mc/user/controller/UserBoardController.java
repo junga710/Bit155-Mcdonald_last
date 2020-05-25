@@ -15,7 +15,7 @@ import kr.or.mc.admin.service.member.MemberListService;
 import kr.or.mc.admin.service.member.MemberUpdateService;
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
-
+import kr.or.mc.user.service.board.NoticeDetailService;
 import kr.or.mc.user.service.board.NoticeListService;
 
 @WebServlet("*.b")
@@ -43,7 +43,8 @@ public class UserBoardController extends HttpServlet {
 			action  = new NoticeListService();
 			forward = action.execute(request, response);
 			
-		} else if (url_Command.equals("/BoardNoticeDetail.b")) { // 리뷰게시판 목록 뿌려주는 로직
+		} else if (url_Command.equals("/BoardNoticeDetail.b")) { // 공지사항 상세 뿌려주는 로직
+			System.out.println("상세페이지 점두점두");
 			action  = new NoticeDetailService();
 			forward = action.execute(request, response);
 			
