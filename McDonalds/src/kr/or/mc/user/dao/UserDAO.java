@@ -151,6 +151,7 @@ public class UserDAO {
 		
 		         if (rs.next()) {
 		            if (rs.getString("password").equals(userPw)) {
+		            	
 		               System.out.println("1 반환");
 		               return 1;
 		            } else {
@@ -210,4 +211,82 @@ public class UserDAO {
 			}
 			return boardNoticeDTO;
 		}
-}
+	   
+	   //회원정보 수정 
+	   public int MemEdit(MemberDTO memberdto) {
+		      Connection conn = null;// 추가
+		      try {
+		         conn = ds.getConnection();
+
+		         System.out.println(memberdto.toString()+"투스트링1");
+		         String sql = "update member set password = ?, name =?, email = ?, post_code = ?, address = ?, phone = ? WHERE m_id = ?";
+		         pstmt = conn.prepareStatement(sql);
+		        
+		         pstmt.setString(1, memberdto.getPassword());
+		         pstmt.setString(2, memberdto.getName());
+		         pstmt.setString(3, memberdto.getEmail());
+		         pstmt.setString(4, memberdto.getPost_code());
+		         pstmt.setString(5, memberdto.getAddress());
+		         pstmt.setString(6, memberdto.getPhone());
+		         pstmt.setString(7, memberdto.getM_id());
+		         
+		        
+		         
+		         System.out.println(memberdto.toString()+"투스트링2");
+		         result = pstmt.executeUpdate();
+
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		         System.out.println("Insert : " + e.getMessage());
+		         System.out.println("오류나는거야 왜..오류나는 거양..");
+		      } finally {
+		         DB_Close.close(pstmt);
+		         try {
+		            DB_Close.close(conn); // 반환하기
+		         } catch (Exception e2) {
+		            e2.printStackTrace();
+		         }
+		      }
+		      return result;
+		   }
+	   
+	   //목록 뿌려주기위한...
+	public MemberDTO MemDetail(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberDTO memberDTO = new MemberDTO();
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from member where m_id = ?";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				memberDTO.setM_id(rs.getString("m_id"));
+				memberDTO.setPassword(rs.getString("password"));
+				memberDTO.setName(rs.getString("name"));
+				memberDTO.setEmail(rs.getString("email"));
+				memberDTO.setPost_code(rs.getString("post_code"));
+				String[] temp = rs.getString("address").split("/");
+				memberDTO.setAddress(temp[0]);
+				memberDTO.setAddress_detail(temp[1]);
+				memberDTO.setPhone(rs.getString("phone"));
+			}
+
+		} catch (Exception e) {
+			System.out.println("오류 :" + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(rs);
+				DB_Close.close(conn); // 반환
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return memberDTO;
+	}
+	}

@@ -35,13 +35,13 @@
 
 			<article class="card-body" style="width:500px">
 				 <h3 class="text-center ">회원가입</h3>
-				<form action="Mcdonald_joinform_editOk.ump" method="post" name="joinform" id="joinform">
+				<form action="joinformOk.ump" method="post" name="joinform" id="joinform">
 					<div class="form-group">
 					<label>아이디</label>
 					<div class="row">
 						<div class="col-9">
 						<input class="form-control"
-							placeholder="Id"type="text" name="id" id="id" readonly>
+							placeholder="Id"type="text" name="id" id="id">
 						</div>
 						<!-- <div class="col-3" >
 						<button type="submit" class="btn btn-warning p-1" >중복확인</button>
@@ -76,7 +76,7 @@
 					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="form-control"><br>
 					<input type="text" id="sample6_address" name="sample6_address" placeholder="주소" class="form-control"><br>
 					<input type="text" id="sample6_detailAddress" name="sample6_detailAddress" placeholder="상세주소" class="form-control">
-					<input type="text" id="sample6_extraAddress"  name="sample6_extraAddress" placeholder="참고항목" class="form-control">
+					<!-- <input type="text" id="sample6_extraAddress"  name="sample6_extraAddress" placeholder="참고항목" class="form-control"> -->
 					
 
 					<!--  우편번호 끝 -->
@@ -87,7 +87,7 @@
 					</div>
 					<div class="form-group">
 						
-							<input type="submit" class="btn btn-warning btn-block" value="정보수정">
+							<input type="submit" class="btn btn-warning btn-block" value="회원가입">
 					</div>
 					<!-- form-group// -->
 				</form>
@@ -169,7 +169,7 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    //document.getElementById("sample6_extraAddress").value = extraAddr;
                 
                 } else {
                     document.getElementById("sample6_extraAddress").value = '';

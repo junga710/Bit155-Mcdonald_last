@@ -26,7 +26,7 @@ public class LoginService implements Action {
 		if(loginResult > 0){
 			msg = "성공";
 			url = "Mcdonald_main.jsp";
-			
+			boarddao.MemDetail(id);
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 		}else {
