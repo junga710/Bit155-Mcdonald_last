@@ -13,11 +13,12 @@ import javax.naming.NamingException;
 
 import kr.or.mc.common.dto.BoardNoticeDTO;
 import kr.or.mc.common.dto.MemberDTO;
+import kr.or.mc.common.dto.OrderDetailDTO;
 import kr.or.mc.common.utils.DB_Close;
 
 public class UserDAO {
 	
-	public static UserDAO boardDAO;
+	public static UserDAO userDao;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private int result;
@@ -34,10 +35,10 @@ public class UserDAO {
     }
 	//싱글톤
 	public static synchronized UserDAO getInstance() {
-		if (boardDAO == null) {
-			boardDAO = new UserDAO();
+		if (userDao == null) {
+			userDao = new UserDAO();
 		}
-		return boardDAO;
+		return userDao;
 	}
 	
 	//공지게시판 목록 뿌리기
@@ -168,4 +169,43 @@ public class UserDAO {
 		      }
 		      return -1;
 		   }
+	   
+	   
+	   //공지사항 상세보기
+	   public BoardNoticeDTO BoardNoticeDetail(int n_code) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
+			System.out.println("상세보기 탔나?");
+			try {
+				conn = ds.getConnection();
+				String sql = "select n_title, to_char(n_write_date, 'YYYY-MM-DD') as n_write_date, n_read_num, n_content, from board_notice where n_code = ?";
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, n_code);
+
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					BoardNoticeDTO boardNoticeDto = new BoardNoticeDTO();
+					boardNoticeDto.setN_code(rs.getInt("n_code"));
+					boardNoticeDto.setN_title(rs.getString("n_title"));
+					boardNoticeDto.setN_write_date(rs.getString("n_write_date"));
+					boardNoticeDto.setN_read_num(rs.getInt("n_read_num"));
+					boardNoticeDto.setN_content(rs.getString("n_content"));
+				}
+
+			} catch (Exception e) {
+				System.out.println(" boardNoticeDto : " + e.getMessage());
+			} finally {
+				try {
+					DB_Close.close(pstmt);
+					DB_Close.close(rs);
+					DB_Close.close(conn); // 반환
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return boardNoticeDTO;
+		}
 }

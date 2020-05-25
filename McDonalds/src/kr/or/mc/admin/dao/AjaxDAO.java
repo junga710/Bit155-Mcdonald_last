@@ -174,8 +174,7 @@ public class AjaxDAO {
 		}
 		return result;
 	}
-	
-	
+
 	// 매장별 주문 건수
 	public List<ChartDTO> MainChart() {
 		Connection conn = null;
@@ -185,9 +184,7 @@ public class AjaxDAO {
 		List<ChartDTO> list = null;
 		try {
 			conn = ds.getConnection();
-			String sql = "select s_name, count(*) as order_count\r\n" + 
-					"from orders\r\n" + 
-					"group by s_name\r\n" + "";
+			String sql = "select s_name, count(*) as order_count\r\n" + "from orders\r\n" + "group by s_name\r\n" + "";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			list = new ArrayList<ChartDTO>();
@@ -212,7 +209,71 @@ public class AjaxDAO {
 
 		return list;
 	}
+
+	//  메뉴별 Best
+	public String MenuBest(String product_category) {
+		String sql = "select product_name\r\n" + 
+				"from(select product_name, count(*) as kwc\r\n" + 
+				"from (select *\r\n" + 
+				"from order_detail join orders on order_detail.order_code = orders.order_code\r\n" + 
+				"                  join product on order_detail.product_code = product.product_code)\r\n" + 
+				"                  where product_category = ?\r\n" + 
+				"                  group by product_name\r\n" + 
+				"                  order by kwc desc)\r\n" + 
+				"where ROWNUM = 1" + "";
+		Connection conn = null;
+		String result = "";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, product_category);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getString(1);
+			}
+			conn.close();
+		} catch (SQLException e) {
+			System.err.println(e);
+			System.err.println("BurgerBest SQLException error");
+		} finally {
+			DB_Close.close(pstmt);
+			DB_Close.close(rs);
+		}
+		return result;
+	}
 	
+	
+	// 메뉴별 Worst
+		public String MenuWorst(String product_category) {
+			String sql = "select product_name\r\n" + 
+					"from(select product_name, count(*) as kwc\r\n" + 
+					"from (select *\r\n" + 
+					"from order_detail join orders on order_detail.order_code = orders.order_code\r\n" + 
+					"                  join product on order_detail.product_code = product.product_code)\r\n" + 
+					"                  where product_category = ?\r\n" + 
+					"                  group by product_name\r\n" + 
+					"                  order by kwc asc)\r\n" +  
+					"where ROWNUM = 1\r\n" + ""; 
+			Connection conn = null;
+			String result = "";
+			try {
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, product_category);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					result = rs.getString(1);
+				}
+				conn.close();
+			} catch (SQLException e) {
+				System.err.println(e);
+				System.err.println("BurgerWorst SQLException error");
+			} finally {
+				DB_Close.close(pstmt);
+				DB_Close.close(rs);
+			}
+			return result;
+		}
 	
 	
 
