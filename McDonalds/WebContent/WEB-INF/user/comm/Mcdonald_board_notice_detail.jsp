@@ -36,9 +36,8 @@
         </div>
     </div>
         <hr style=" width: 70%; height:3px; margin-top: 0; background-color: black;">
-        ${board.n_code}
-		${board.n_content}
-   		
+		<div>${board.n_content}
+   		</div>
     <div style="position: relative; left:75%;">
        <c:choose>   
                <c:when test="${userid == 'admin'}">
