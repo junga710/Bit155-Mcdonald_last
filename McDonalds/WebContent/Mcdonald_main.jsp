@@ -68,13 +68,14 @@
          
          <!-- <div class="p-2"><a href="Mcdonald_joinform.jsp" id="topbtnright" class="btn btn-danger" role="button" style="float: right;">JOIN</a></div> -->
          <div class="p-2"><a href="logout.ump" id="topbtnright" class="btn btn-warning" role="button" style="float: right;">LOGOUT</a></div>
-         <!-- <div class="p-2"><a href="#" id="topbtnright" class="btn btn-info" role="button" style="float: right;">WEATHER API</a></div> -->
+         <div class="p-2"><a href="#" id="topbtnright" class="btn btn-info" role="button" style="float: right;">order</a></div> 
          <div class="p-2">${id}님 반갑습니다 ^^*</div>
          
          </c:when>
          <c:otherwise>
          <div class="p-2"><a href="Mcdonald_joinform.ump" id="topbtnright" class="btn btn-danger" role="button" style="float: right;">JOIN</a></div>
          <div class="p-2"><a href="Mcdonald_login.ump" id="topbtnright" class="btn btn-warning" role="button" style="float: right;">LOGIN</a></div>
+         <div class="p-2"><a href="#" id="topbtnright" class="btn btn-info" role="button" style="float: right;">order</a></div> 
          </c:otherwise>
          </c:choose>
          <div class="row">
