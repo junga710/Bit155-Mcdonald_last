@@ -29,11 +29,10 @@
                </button>
                <!-- 현재페이지 메뉴에 current 클래스 추가 -->
                <div class="dropdown-content">
-                  <a href="#">버거</a>
-                  <a href="#">맥모닝</a>
-                  <a href="#">해피밀</a>
-                  <a href="#">사이드 &amp; 디저트</a>
-                  <a href="#">맥카페 &amp; 음료</a>
+                  <a href="MenuBurger.um">버거</a>
+                  <a href="MenuMacMorning.um">맥모닝</a>
+                  <a href="MenuSideDesert.um">사이드 &amp; 디저트</a>
+                  <a href="MenuMacBeverage.um">맥카페 &amp; 음료</a>
                </div>
             </div>
             <div class="dropdown">
@@ -51,14 +50,12 @@
                <div class="dropdown-content">
                       <c:choose>
                <c:when test="${id == 'admin'}">
-                  <a href="Mcdonald_joinform_edit.ump">계정 설정</a>
-                  <a href="#">주문 조회</a>
-                  <a href="#">문의하기</a>
+                  
                   <a href="#">관리자 페이지</a>
                    </c:when>
                    <c:otherwise>
                    <a href="Mcdonald_joinform_edit.ump">계정 설정</a>
-                  <a href="#">주문 조회</a>
+                  <a href="OrderHistory.uo">주문 조회</a>
                   <a href="#">문의하기</a>
                    </c:otherwise>
                </c:choose>
@@ -71,13 +68,14 @@
          
          <!-- <div class="p-2"><a href="Mcdonald_joinform.jsp" id="topbtnright" class="btn btn-danger" role="button" style="float: right;">JOIN</a></div> -->
          <div class="p-2"><a href="logout.ump" id="topbtnright" class="btn btn-warning" role="button" style="float: right;">LOGOUT</a></div>
-         <!-- <div class="p-2"><a href="#" id="topbtnright" class="btn btn-info" role="button" style="float: right;">WEATHER API</a></div> -->
+         <div class="p-2"><a href="Order1.uo" id="topbtnright" class="btn btn-info" role="button" style="float: right;">ORDER</a></div> 
          <div class="p-2">${id}님 반갑습니다 ^^*</div>
          
          </c:when>
          <c:otherwise>
          <div class="p-2"><a href="Mcdonald_joinform.ump" id="topbtnright" class="btn btn-danger" role="button" style="float: right;">JOIN</a></div>
          <div class="p-2"><a href="Mcdonald_login.ump" id="topbtnright" class="btn btn-warning" role="button" style="float: right;">LOGIN</a></div>
+        <!--  <div class="p-2"><a href="#" id="topbtnright" class="btn btn-info" role="button" style="float: right;">order</a></div>  -->
          </c:otherwise>
          </c:choose>
          <div class="row">

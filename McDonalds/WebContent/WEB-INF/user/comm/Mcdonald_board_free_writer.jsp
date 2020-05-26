@@ -12,10 +12,7 @@
 
 
 <!-- summer note-->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
-	rel="stylesheet">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css">
 
 <title>자유게시판 글쓰기</title>
 
@@ -52,7 +49,8 @@
 
 	<div class="container">
 
-		<form>
+		<form name="form" id="form" role="form" method="post"
+					action="BoardFreeRegister.b" enctype="multipart/form-data">
 
 			<div class="input-group mb-3">
 				<div class="custom-file">
@@ -61,6 +59,7 @@
 						aria-describedby="inputGroupFileAddon02">Choose file</label>
 				</div>
 			</div>
+			
 			<div class="input-group ">
 				<input type="text" class="form-control mb-4" placeholder="글제목"
 					aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -69,7 +68,6 @@
 			</div>
 
 			<div id="summernote"></div>
-
 
 			<div style="position: relative; left: 400px; margin: 50px 50px">
 				<button type="submit" class="btn btn-danger mr-3 btn-lg">글등록</button>
@@ -85,6 +83,9 @@
 
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
+<script src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.js"></script>
+<script src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/lang/summernote-ko-KR.js"></script>
+
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
@@ -99,8 +100,7 @@
 							.html(fileName);
 				});
 	</script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+	
 	<script>
 		//Get the button
 		var mybutton = document.getElementById("myBtn");

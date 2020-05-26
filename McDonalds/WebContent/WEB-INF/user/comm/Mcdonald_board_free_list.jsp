@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,8 +68,8 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6" style="border-right-color: rgb(243, 242, 242);">
-				<!-- ??건의 데이터 가 있다고 동적으로 넣기 -->
+			<!-- <div class="col-md-6" style="border-right-color: rgb(243, 242, 242);">
+				??건의 데이터 가 있다고 동적으로 넣기
 				총 건의 게시글이 있습니다.
 			</div>
 			<div class="col-md-6"
@@ -82,12 +82,52 @@
 				</select> <input type="text" placeholder="검색어를 입력하세요"> <img
 					src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKePPh8P7YzgL6x0nXcz0JDeLRIlwjdtjw3hpJihg8hAwrcujT&usqp=CAU"
 					width="30px" height="30px">
+			</div> -->
+			<div class="col-sm-12 col-md-6 ">
+				<div class="form-group d-flex align-items-center">
+					<div class="col-sm-2" style="padding-left: 0">
+						<form name="list">
+							<select name="ps" class="form-control" onchange="submit()">
+								<c:set var="pagesize" value="${requestScope.pagesize}" />
+								<c:forEach var="i" begin="5" end="20" step="5">
+									<c:choose>
+										<c:when test="${pagesize == i}">
+											<option value="${i}" selected>${i}</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${i}">${i}</option>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</select>
+						</form>
+					</div>
+					<label for="" style="margin-bottom: 0">개씩 보기</label>
+				</div>
+			</div>
+
+			<div class="col-sm-12 col-md-6"
+				style="border-left-color: rgb(241, 241, 241); text-align: end;">
+				<div class="d-flex justify-content-end">
+					<div class="col-sm-3">
+						<select id="searchOption" class="form-control">
+							<option selected>지점고르기</option>
+							<option>옵션1</option>
+							<option>옵션2</option>
+							<option>옵션3</option>
+						</select>
+					</div>
+					<input style="width: 200px;" class="form-control" type="text"
+						placeholder="검색어를 입력하세요"> <img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKePPh8P7YzgL6x0nXcz0JDeLRIlwjdtjw3hpJihg8hAwrcujT&usqp=CAU"
+						width="30px" height="30px">
+				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-12" style="height: 800px;">
-				<table class="table table-hover">
+			<div class="col-md-12"->
+				<table class="table table-hover text-center">
 					<thead>
 						<tr class="boardfreelist" style="text-align: center;">
 							<th>글번호</th>
@@ -98,32 +138,52 @@
 							<th>좋아요</th>
 						</tr>
 					</thead>
-					<!-- <tbody>
-                     <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                      </tr> -->
-					<!-- <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                      </tr>
-                      <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                      </tr> -->
-					<!-- </tbody>  -->
+					<tbody>
+
+						<c:set var="list" value="${requestScope.list}"></c:set>
+						<c:forEach var="board" items="${list}">
+							<tr>
+								<td>${board.f_code}</td>
+								<td align="left"><c:forEach var="i" begin="1"
+										end="${board.f_depth}" step="1">
+								&nbsp;&nbsp;&nbsp;
+							</c:forEach> <c:if test="${board.f_depth > 0}">
+										<!-- depth가 0보다 크다는것은 원본글이 아니다 -->
+										<img
+											src="${pageContext.request.contextPath}/usercss/vendors/images/re.gif">
+									</c:if> <a
+									href="HieEmpDetail.do?idx=${board.f_code}&cp=${cpage}&ps=${pagesize}">
+										<c:choose>
+											<c:when
+												test="${board.f_title != null && fn:length(board.f_title) > 10}">
+										${fn:substring(board.f_title, 0,10)}... 
+														</c:when>
+											<c:otherwise>
+										${board.f_title}
+									</c:otherwise>
+										</c:choose>
+								</a></td>
+								<td>${board.f_writer}</td>
+								<td>${board.f_date}</td>
+								<td>${board.f_readnum}</td>
+								<td>${board.f_like}</td>
+								<%-- <td align="center"><a href="HieEmpEdit.do?idx=${board.idx}"
+									type="button" class="btn btn-sm btn-primary">수정</a> <a
+									href="HieEmpDelete.do?idx=${board.f_idx}" type="button"
+									class="btn btn-sm btn-warning">삭제</a></td> --%>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 
 			</div>
 		</div>
 
+
 		<div class="row" style="border-color: #eee;">
 			<div class="col-md-4"></div>
 			<div class="col-md-5" style="text-align: center;">
-				<nav aria-label="Page navigation example">
+				<!-- <nav aria-label="Page navigation example">
 					<ul class="pagination">
 						<li class="page-item"><a class="page-link" href="#"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -137,24 +197,19 @@
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-				</nav>
-
+				</nav> -->
 			</div>
 			<div class="col-md-3">
-				<button type="button" class="btn btn-warning"
+				<a href="BoardNoticeRegisterPage.b" type="button" class="btn btn-warning"
 					style="width: 100%; height: 60px">
 					<p style="padding: 0px; height: 100%; margin-top: 10px;">글쓰기</p>
-				</button>
+				</a>
 
 			</div>
 		</div>
 
 
 	</div>
-	<br>
-	<br>
-	<br>
-
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 </body>

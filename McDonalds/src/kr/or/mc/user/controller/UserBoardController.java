@@ -57,6 +57,7 @@ public class UserBoardController extends HttpServlet {
 		} else if (url_Command.equals("/BoardNoticeRegisterPage.b")) { // 공지사항 등록 페이지로 가는거
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice_writer.jsp");
+
 		} else if (url_Command.equals("/BoardNoticeRegister.b")) { // 공지사항 등록
 			System.out.println("공지사항 등록이 안되네");
 			action = new NoticeRegisterService();
@@ -86,6 +87,7 @@ public class UserBoardController extends HttpServlet {
 			action = new ReviewRegisterService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardFree.b")) { // 자유게시판 목록 뿌려주는 로직
+			System.out.println("하이!!");
 			action = new FreeListService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardFreeDetail.b")) { // 자유게시판 상세 뿌려주는 로직

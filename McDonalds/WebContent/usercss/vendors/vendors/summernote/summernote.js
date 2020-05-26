@@ -2126,6 +2126,7 @@ function isCustomStyleTag(node) {
   blank: blankHTML,
 
   /** @property {String} emptyPara */
+
   emptyPara: '',
   makePredByNodeName: makePredByNodeName,
   isEditable: isEditable,
