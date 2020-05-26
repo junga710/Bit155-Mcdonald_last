@@ -1,40 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
-<!--부트스트랩 css-->
-<link rel="stylesheet" href="../assets/css/common.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
-<!--font-->
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
-	rel="stylesheet">
-
-<!--Jquery, Popper.js, Bootstrap Js-->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script>
-
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-	crossorigin="anonymous"></script>
-
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
@@ -42,14 +15,20 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <title>메뉴 디테일</title>
 
 </head>
 
 <body>
-
+	<!-- header include-->
+	<jsp:include page="../common/header.jsp"></jsp:include>
 
 	<div class="hamburgermenu">
 		<h1 class="titDep1">
@@ -101,7 +80,7 @@
 								</thead>
 								<tbody>
 									<tr class="_nutritionList">
-										<th scope="row">함량</th>
+										<td scope="row">함량</td>
 									</tr>
 								</tbody>
 							</table>
@@ -113,11 +92,8 @@
 
 				<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 			</div>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br>
 		</div>
-	</div>
 	</div>
 	<!-- //contArea -->
 	<!-- <form id="searchForm" method="post" wfd-id="31">
@@ -130,6 +106,14 @@
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 </body>
+
+<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+
+<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
+
+<script
+	src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
+
 <script>
 	function getUrlParams() {
 		var params = {};
@@ -145,41 +129,50 @@
 		var params = getUrlParams();
 		ppanelClick();
 
-		loadProductDetailAjax(params.productCode);
+		loadProductDetailAjax(params.product_code);
 
 	});
 
-	function loadProductDetailAjax(productCode) {
-		$
-				.ajax({
-					type : "get",
-					url : "/McDonalds/product/detail",
-					data : {
-						productCode : productCode
-					},
-					success : function(response) {
-						console.log(response);
-						$('._detailImage').attr('src', response.productImage);
-						var $nutritionList = $('._nutritionList');
-						$nutritionList
-								.append(`<td>${response.nutritionWeight || '-'}g</td>`);
-						$nutritionList
-								.append(`<td>${response.nutritionCalorie || '-'}kcal</td>`);
-						$nutritionList
-								.append(`<td>${response.nutritionSugar || '-'}g</td>`);
-						$nutritionList
-								.append(`<td>${response.nutritionProtein || '-'}g</td>`);
-						$nutritionList
-								.append(`<td>${response.nutritionFat || '-'}g</td>`);
-						$nutritionList
-								.append(`<td>${response.nutritionNatrium || '-'}mg</td>`);
-						$nutritionList
-								.append(`<td>${response.nutritionCaffeine || '-'}</td>`);
+	function loadProductDetailAjax(product_code) {
+		$.ajax({
+			type : "get",
+			url : "UserMenuDetail.ua",
+			data : {
+				product_code : product_code
+			},
+			success : function(response) {
 
-						// '<td>' + response.nutritionWeight + 'g </td>' 이렇게 방식도있음
+				console.log(response[0].nutritionDto.weight);
 
-					},
-				});
+				$('._detailImage').attr(
+						'src',
+						"${pageContext.request.contextPath}/usercss/vendors/images/DB_detail_images/"
+								+ response[0].productDto.product_image);
+				var $nutritionList = $('._nutritionList');
+				$nutritionList.append('<td>' + response[0].nutritionDto.weight
+						+ 'g</td>');
+				$nutritionList.append('<td>' + response[0].nutritionDto.calorie
+						+ 'kcal</td>');
+				$nutritionList.append('<td>' + response[0].nutritionDto.sugar
+						+ 'g</td>');
+				$nutritionList.append('<td>' + response[0].nutritionDto.protein
+						+ 'g</td>');
+				$nutritionList.append('<td>' + response[0].nutritionDto.fat
+						+ 'mg</td>');
+				$nutritionList.append('<td>' + response[0].nutritionDto.natrium
+						+ 'mg</td>');
+				$nutritionList.append('<td>'
+						+ response[0].nutritionDto.caffeine + 'mg</td>');
+
+				// '<td>' + response.nutritionWeight + 'g </td>' 이렇게 방식도있음
+
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+
+		});
 
 	}
 

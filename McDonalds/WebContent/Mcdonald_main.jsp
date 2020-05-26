@@ -29,11 +29,10 @@
                </button>
                <!-- 현재페이지 메뉴에 current 클래스 추가 -->
                <div class="dropdown-content">
-                  <a href="#">버거</a>
-                  <a href="#">맥모닝</a>
-                  <a href="#">해피밀</a>
-                  <a href="#">사이드 &amp; 디저트</a>
-                  <a href="#">맥카페 &amp; 음료</a>
+                  <a href="MenuBurger.um">버거</a>
+                  <a href="MenuMacMorning.um">맥모닝</a>
+                  <a href="MenuSideDesert.um">사이드 &amp; 디저트</a>
+                  <a href="MenuMacBeverage.um">맥카페 &amp; 음료</a>
                </div>
             </div>
             <div class="dropdown">
