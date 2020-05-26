@@ -78,6 +78,7 @@
         <!--  <div class="p-2"><a href="#" id="topbtnright" class="btn btn-info" role="button" style="float: right;">order</a></div>  -->
          </c:otherwise>
          </c:choose>
+         
          <div class="row">
             <div class="col-md-6" style="padding-right: 0px;text-align-last: right;">
                <img class="imo"

@@ -323,9 +323,10 @@ public class AdminDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, order_code);
-
+			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
+				
 				OrderDetailDTO orderDetailDto = new OrderDetailDTO();
 				orderDetailDto.setProduct_image(rs.getString("product_image"));
 				orderDetailDto.setProduct_name(rs.getString("product_name"));

@@ -48,7 +48,7 @@
 <body>
 
 	<!-- header include-->
-<jsp:include page="../common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 	<section id="container">
 
 		
@@ -218,8 +218,9 @@
 
 	<!--footer include -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-	<jsp:include page="/user/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
+<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
 
 	<script>

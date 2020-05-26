@@ -48,6 +48,7 @@
   <p></p>
 
 
+
   <div class="container show-grid">
     <div class="row">
       <div class="col-md-12">나의 주문 내역</div>
@@ -57,23 +58,23 @@
       <div class="col-md-12">
 
         <div id="accordion" >
-          <h3>결제 일자 : 2020/05/22</h3>
+          <h3>결제 일자 : ${ordersDTO.payment_date}</h3>
           <div class="row" style="padding:0px;">
             <div class="col-md-3" style="background-color: inherit">
-              주문 번호 :<br>
-              <p style="font-size: 17px; color:#406E96"> AQLWKNQL201</p> 
+              주문 번호 : <br>
+              <p style="font-size: 17px; color:#406E96"> ${ordersDTO.order_code}</p> 
             </div>
             <div class="col-md-5">
               <div class="row">
                 <div class="col-md-2">
-                  1
-                  <br> (글번호) 
+                  지점명 : ${ordersDTO.s_name}
+                  <br>  
                 </div>
                 <div class="col-md-3" style="padding:0px;">
                   <img src="../vendors/images/burger/burgerdetail/orderimg/ddd2.png" alt="" style="width:100%">
                 </div>
                 <div class="col-md-7" >
-                  단품 - 빅맥
+                  아직 불러와야함
                   <ul>
                     <li>단품 - 빅맥</li>
                     <li>코카-콜라 - 미디엄</li>
@@ -86,14 +87,14 @@
               </div>
             </div>
             <div class="col-md-4" style="background-color: inherit">
-              배달 주소 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 경기도 하남시 덕풍1동
+              배달 주소 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${ordersDTO.address} ${ordersDTO.address_detail}
                <p></p>
               <div class="row">
                 <div class="col-md-6" style="background-color: inherit">
                 총 주문합계 : 
                 </div>
                 <div class="col-md-6" style="background-color: inherit">
-                  <p style="color:green">₩ 17,300</p>
+                  <p style="color:green">₩ ${ordersDTO.payment_price}</p>
                 </div>
               </div>
               <hr>
