@@ -16,6 +16,7 @@
 
 
 <body>
+<jsp:include page="../common/header.jsp"></jsp:include>
     <div class="board_notice_detail">
         <h1 class="titDep1" style="padding-top: 3%; color:white;"><strong>공지사항</strong></h1>
         <ul style="padding-left: 10%;
@@ -40,14 +41,17 @@
    		</div>
     <div style="position: relative; left:75%;">
        <c:choose>   
-               <c:when test="${userid == 'admin'}">
-        <button type="submit" class="btn btn-danger mr-3 btn-sm">수정</button>
-        <button type="submit" class="btn btn-warning btn-sm">삭제</button>
+               <c:when test="${id == 'admin'}">
+
+         <a href="BoardNoticeUpdatePage.b?n_code=${board.n_code}" class="btn btn-danger mr-3 btn-sm" role="button">수정</a>
+          <a href="BoardNoticeDelete.b?n_code=${board.n_code}" class="btn btn-warning btn-sm" role="button">삭제</a>
                    </c:when>
                    <c:otherwise>
-        
+
                    </c:otherwise>
                </c:choose>
+				
+
 
     </div>
 <!--     <hr style= "width: 70%; height:1px;  background-color: black;">
@@ -56,6 +60,8 @@
 
 <jsp:include page="../common/footer.jsp"></jsp:include>
 <jsp:include page="../common/script.jsp"></jsp:include>
+	<script
+		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 </body>
 
 </html>

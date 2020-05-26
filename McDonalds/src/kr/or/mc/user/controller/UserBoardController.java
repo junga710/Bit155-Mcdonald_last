@@ -49,23 +49,25 @@ public class UserBoardController extends HttpServlet {
 		System.out.println(" url_Command : " + url_Command);
 
 		if (url_Command.equals("/BoardNotice.b")) { // 공지사항 목록 뿌려주는 로직
-			System.out.println("여긴오냐232323");
 			action = new NoticeListService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardNoticeDetail.b")) { // 공지사항 상세 뿌려주는 로직
-			System.out.println("상세페이지 점두점두");
 			action = new NoticeDetailService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardNoticeRegisterPage.b")) { // 공지사항 등록 페이지로 가는거
 			forward = new ActionForward();
-			forward.setPath("/WEB-INF/user/comm/Mcdonald_board_free_writer.jsp");
+			forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice_writer.jsp");
+
 		} else if (url_Command.equals("/BoardNoticeRegister.b")) { // 공지사항 등록
+			System.out.println("공지사항 등록이 안되네");
 			action = new NoticeRegisterService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardNoticeUpdatePage.b")) { // 공지사항 수정 페이지로 가는거
+			System.out.println("수정페이지 컨트롤러 여기 타나");
 			action = new NoticeUpdatePageService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardNoticeUpdate.b")) { // 공지사항 수정 
+			System.out.println("수정입력 페이지 여기 타나요");
 			action = new NoticeUpdateService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardNoticeDelete.b")) { // 공지사항 삭제
@@ -80,6 +82,7 @@ public class UserBoardController extends HttpServlet {
 		} else if (url_Command.equals("/BoardReviewRegisterPage.b")) { // 리뷰게시판 등록페이지 이동
 			forward = new ActionForward();
 			forward.setPath("");
+		
 		} else if (url_Command.equals("/BoardReviewRegister.b")) { // 리뷰게시판 등록
 			action = new ReviewRegisterService();
 			forward = action.execute(request, response);

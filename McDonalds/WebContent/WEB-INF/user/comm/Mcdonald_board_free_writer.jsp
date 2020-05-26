@@ -20,9 +20,10 @@
 <title>자유게시판</title>
 </head>
 
-<!-- header include-->
-<jsp:include page="../common/header.jsp"></jsp:include>
+<body>
 
+	<!-- header include-->
+	<jsp:include page="../common/header.jsp"></jsp:include>
 <body>
 	<div class="board_notice_detail">
 		<h1 class="titDep1" style="padding-top: 3%; color: white;">
@@ -43,8 +44,8 @@
 
 
 
-		<form name="form" id="form" role="form" method="post" action="BoardFreeRegister.b"
-			enctype="multipart/form-data">
+		<form name="form" id="form" role="form" method="post"
+			action="BoardFreeRegister.b" enctype="multipart/form-data">
 			<div class="row mb-4">
 				<div class="col-8">
 					<input type="file" class="custom-file-input" id="customFile"
@@ -67,7 +68,8 @@
 
 			<div class="row mb-4">
 				<div class="input-group ">
-					<input type="text" name="title" id="title" class="form-control mb-4" placeholder="글제목"
+					<input type="text" name="title" id="title"
+						class="form-control mb-4" placeholder="글제목"
 						aria-label="Recipient's username" aria-describedby="button-addon2">
 					<div class="input-group-append"></div>
 				</div>
@@ -76,12 +78,11 @@
 			<textarea name="summernote" id="summernote" name="editordata"></textarea>
 
 			<div class="row mb-4 d-flex justify-content-center">
-				<div
-					style=" margin-left: 100px; margin: 50px 50px">
+				<div style="margin-left: 100px; margin: 50px 50px">
 					<button type="submit" class="btn btn-danger mr-3 btn-lg">글등록</button>
 				</div>
 			</div>
-			
+
 		</form>
 
 

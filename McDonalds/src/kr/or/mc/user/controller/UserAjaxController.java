@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
+import kr.or.mc.user.service.ajax.OrderPageBurgerService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
 import kr.or.mc.user.service.board.FreeDeleteService;
 import kr.or.mc.user.service.board.FreeDetailService;
@@ -49,16 +50,11 @@ public class UserAjaxController extends HttpServlet {
 		System.out.println(" url_Command : " + url_Command);
 
 		if (url_Command.equals("/UserMenuDetail.ua")) { // 공지사항 목록 뿌려주는 로직
-			System.out.println("아임 옵티머스 프라임");
 			action = new UserMenuDetailService();
 			forward = action.execute(request, response);
-		} else if (url_Command.equals("/BoardNoticeDetail.b")) { // 공지사항 상세 뿌려주는 로직
-			System.out.println("상세페이지 점두점두");
-			action = new NoticeDetailService();
+		} else if (url_Command.equals("/OrderPageBurger.ua")) { // 공지사항 목록 뿌려주는 로직
+			action = new OrderPageBurgerService();
 			forward = action.execute(request, response);
-		} else if (url_Command.equals("/BoardNoticeRegisterPage.b")) { // 공지사항 등록 페이지로 가는거
-			forward = new ActionForward();
-			forward.setPath("");
 		} 
 
 		if (forward != null) {

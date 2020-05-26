@@ -53,6 +53,15 @@
 						<div class="wrap">
 							<table id="myTable" class="table text-center"
 								style="width: 100%;">
+								<c:choose>
+									<c:when test="${id != 'admin'}">
+					&nbsp;
+				   </c:when>
+									<c:otherwise>
+										<a href="BoardNoticeRegisterPage.b"
+											class="btn btn-warning">글 등록하기</a>
+									</c:otherwise>
+								</c:choose>
 								<thead>
 									<tr class="text-center">
 										<th style="width: 10%;">번호</th>
@@ -75,6 +84,7 @@
 								</tbody>
 
 							</table>
+
 						</div>
 					</div>
 				</div>
