@@ -287,35 +287,34 @@ public class UserDAO {
 		}
 		return memberDTO;
 	}
-	
-	//자유게시판 목록 뿌리기
+
+//자유게시판 목록 뿌리기
 	public List<BoardFreeDTO> FreeList(int cpage, int pagesize) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<BoardFreeDTO> list = null;
-		
+
 		try {
-			conn = ds.getConnection();	
-			
-			String sql = "select * from \r\n" + 
-					"(select rownum rn , f_code , f_title , f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date , f_readnum , f_like, f_file_upload,\r\n" + 
-					"f_refer , f_depth , f_step\r\n" + 
-					"from ( SELECT * FROM board_free ORDER BY f_refer DESC , f_step ASC)\r\n" + 
-					"where rownum <= ?)\r\n" + 
-					"where rn >= ?\r\n" + "";
-			
+			conn = ds.getConnection();
+
+			String sql = "select * from \r\n"
+					+ "(select rownum rn , f_code , f_title , f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date , f_readnum , f_like, f_file_upload,\r\n"
+					+ "f_refer , f_depth , f_step\r\n"
+					+ "from ( SELECT * FROM board_free ORDER BY f_refer DESC , f_step ASC)\r\n"
+					+ "where rownum <= ?)\r\n" + "where rn >= ?\r\n" + "";
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			int start = cpage * pagesize - (pagesize - 1); // 1*5 -(5-1) = 1
 			int end = cpage * pagesize; // 1 * 5 = 5
-			
+
 			pstmt.setInt(1, end);
 			pstmt.setInt(2, start);
-			
+
 			rs = pstmt.executeQuery();
 			list = new ArrayList<BoardFreeDTO>();
-			
+
 			while (rs.next()) {
 				BoardFreeDTO BoardFree = new BoardFreeDTO();
 				BoardFree.setF_code(rs.getInt("f_code"));
@@ -324,7 +323,7 @@ public class UserDAO {
 				BoardFree.setF_date(rs.getString("f_date"));
 				BoardFree.setF_readnum(rs.getInt("f_readnum"));
 				BoardFree.setF_like(rs.getInt("f_like"));
-				
+
 				BoardFree.setF_refer(rs.getInt("f_refer"));
 				BoardFree.setF_depth(rs.getInt("f_depth"));
 				BoardFree.setF_step(rs.getInt("f_step"));
@@ -344,8 +343,8 @@ public class UserDAO {
 		}
 		return list;
 	}
-	
-	//자유게시판 전체 게시글 개수
+
+//자유게시판 전체 게시글 개수
 	public int totalBoardCount() {
 		Connection conn = null;
 		PreparedStatement pstmt = null; //
@@ -365,12 +364,49 @@ public class UserDAO {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close(); // 
+				conn.close(); //
 			} catch (Exception e2) {
 				System.out.println(e2.getMessage());
 			}
 		}
 		return totalcount;
 	}
-	
+
+	// 아이디 중복 체크
+	public int checkId(String id) {
+		System.out.println("여기오나?");
+		System.out.println(id);
+
+		Connection conn = null;
+		try {
+			conn = ds.getConnection();
+
+			System.out.println("아이디 : " + id);
+			String sql = "select m_id from member where m_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			System.out.println("여기까지 오긴하냐고!!!");
+
+			if (rs.next()) {
+				if (rs.getString("m_id").equals(id)) {
+
+					System.out.println("아이디 있어");
+					return 1;
+				} else {
+					System.out.println("아이디 없어");
+					return 0;
+				}
+			}
+			conn.close(); //
+		} catch (Exception e) {
+			System.err.println(e);
+			System.err.println("idcheck SQLException error");
+		} finally {
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+
+		}
+		return -1;
+	}
 }

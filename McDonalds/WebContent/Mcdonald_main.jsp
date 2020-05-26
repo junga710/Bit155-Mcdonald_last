@@ -51,9 +51,7 @@
                <div class="dropdown-content">
                       <c:choose>
                <c:when test="${id == 'admin'}">
-                  <a href="Mcdonald_joinform_edit.ump">계정 설정</a>
-                  <a href="#">주문 조회</a>
-                  <a href="#">문의하기</a>
+                  
                   <a href="#">관리자 페이지</a>
                    </c:when>
                    <c:otherwise>
