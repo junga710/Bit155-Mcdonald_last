@@ -21,15 +21,15 @@ public class JoinFormEditService implements Action {
 		UserDAO userdao = new UserDAO();
 
 		memberdto.setM_id(request.getParameter("id"));
-	      memberdto.setPassword(request.getParameter("pwd"));
-	      memberdto.setName(request.getParameter("mname"));
-	      memberdto.setEmail(request.getParameter("email"));
-	      memberdto.setPost_code(request.getParameter("sample6_postcode"));
-	      String address = request.getParameter("sample6_address"); 
-	      String address_detail = request.getParameter("sample6_detailAddress"); 
-	      String addressSum = address + "/" + address_detail; 
-	      memberdto.setAddress(addressSum);
-	      memberdto.setPhone(request.getParameter("pnum"));
+		memberdto.setPassword(request.getParameter("pwd"));
+		memberdto.setName(request.getParameter("mname"));
+		memberdto.setEmail(request.getParameter("email"));
+		memberdto.setPost_code(request.getParameter("sample6_postcode"));
+		String address = request.getParameter("sample6_address");
+		String address_detail = request.getParameter("sample6_detailAddress");
+		String addressSum = address + "/" + address_detail;
+		memberdto.setAddress(addressSum);
+		memberdto.setPhone(request.getParameter("pnum"));
 
 		int result = 0;
 		try {
@@ -40,9 +40,9 @@ public class JoinFormEditService implements Action {
 		}
 
 		System.out.println("result : " + result);
-		forward.setPath("/Mcdonald_main.jsp");  //성공하면 어디갈건지 정해. 
+		forward.setPath("/Mcdonald_main.jsp"); // 성공하면 어디갈건지 정해.
 
-	      return forward;
-	   }
+		return forward;
+	}
 
 }

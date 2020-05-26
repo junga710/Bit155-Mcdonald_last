@@ -8,108 +8,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 
 <!-- summer note-->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css">
 
-<title>자유게시판 글쓰기</title>
 
-<style>
-#star_grade a {
-	text-decoration: none;
-	color: gray;
-}
-
-#star_grade a.on {
-	color: red;
-}
-</style>
+<title>자유게시판</title>
 </head>
 
+<!-- header include-->
+<jsp:include page="../common/header.jsp"></jsp:include>
+
 <body>
-
-	
-	<!-- header include-->
-	<jsp:include page="../common/header.jsp"></jsp:include>
-
-
-	<div class="review_detail">
-		<h1 class="titDep1" style="color: white;">자유게시판 글쓰기</h1>
-		<ul style="margin-left: 100px;">
-			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
+	<div class="board_notice_detail">
+		<h1 class="titDep1" style="padding-top: 3%; color: white;">
+			<strong>자유게시판 글쓰기</strong>
+		</h1>
+		<ul style="padding-left: 10%; margin-top: 5%;">
+			<li id="topli"><a href="../Mcdonald_main.html"
+				style="color: white;">Home</a></li>
+			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html"
+				style="color: white;">menu</a></li>
 		</ul>
 	</div>
+	<!-- //visualArea -->
+
+
+	<div class="container" style="padding-top: 2%; padding-right: 2%;">
 
 
 
 
+		<form name="form" id="form" role="form" method="post" action="BoardFreeRegister.b"
+			enctype="multipart/form-data">
+			<div class="row mb-4">
+				<div class="col-8">
+					<input type="file" class="custom-file-input" id="customFile"
+						name="customFile"> <label class="custom-file-label"
+						for="customFile">파일을 선택해주세요.</label>
+				</div>
 
-	<div class="container">
+				<div class="col-4 d-flex align-items-center ">
+					<div class="mr-auto">
+						<a style="margin-right: 10px;" href="#"><img
+							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/heart-regular.svg"></a>
+						<strong>좋아요</strong>
+					</div>
+					<div class="ml-auto">
+						<strong>오늘날짜&nbsp;&nbsp;|
+							&nbsp;&nbsp;조회수&nbsp;&nbsp;&nbsp;</strong>
+					</div>
+				</div>
+			</div>
 
-		<form name="form" id="form" role="form" method="post"
-					action="BoardFreeRegister.b" enctype="multipart/form-data">
+			<div class="row mb-4">
+				<div class="input-group ">
+					<input type="text" name="title" id="title" class="form-control mb-4" placeholder="글제목"
+						aria-label="Recipient's username" aria-describedby="button-addon2">
+					<div class="input-group-append"></div>
+				</div>
+			</div>
 
-			<div class="input-group mb-3">
-				<div class="custom-file">
-					<input type="file" class="custom-file-input" id="inputGroupFile02">
-					<label class="custom-file-label" for="inputGroupFile02"
-						aria-describedby="inputGroupFileAddon02">Choose file</label>
+			<textarea name="summernote" id="summernote" name="editordata"></textarea>
+
+			<div class="row mb-4 d-flex justify-content-center">
+				<div
+					style=" margin-left: 100px; margin: 50px 50px">
+					<button type="submit" class="btn btn-danger mr-3 btn-lg">글등록</button>
 				</div>
 			</div>
 			
-			<div class="input-group ">
-				<input type="text" class="form-control mb-4" placeholder="글제목"
-					aria-label="Recipient's username" aria-describedby="button-addon2">
-				<div class="input-group-append"></div>
-
-			</div>
-
-			<div id="summernote"></div>
-
-			<div style="position: relative; left: 400px; margin: 50px 50px">
-				<button type="submit" class="btn btn-danger mr-3 btn-lg">글등록</button>
-			</div>
 		</form>
+
+
+
+		<!-- <div class="row mt-3">
+			<div class="col-9"></div>
+			<div class="col">
+				<button type="button" class="btn btn-info" id="freebtnMC">
+					<strong>답글</strong>
+				</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-warning" id="freebtnMC">
+					</strong>수정</strong>
+				</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-danger" id="freebtnMC">
+					</strong>삭제</strong>
+				</button>
+			</div>
+		</div> -->
+
+
+
+
+		<!-- 	<div class="form-group">
+			<div class="row mt-2">
+				<div class="col-8"></div>
+				<div class="col-1" style="margin-right: 0;">
+					<a href="" type="button" class="btn btn-info" id="freebtnMC"
+						style="position: absolute; right: 20%"> <strong>등록</strong>
+					</a>
+				</div>
+				<div class="col-1">
+					<a href="" type="button" class="btn btn-info" id="freebtnMC"
+						style="position: absolute; right: 20%"> <strong>답글</strong>
+					</a>
+				</div>
+				<div class="col-1">
+					<a href="" type="button" class="btn btn-warning" id="freebtnMC"
+						style="position: absolute; right: 20%"> </strong>수정</strong>
+					</a>
+				</div>
+				<div class="col-1">
+					<a href="" type="button" class="btn btn-danger" id="freebtnMC"
+						style="position: absolute; right: 20%"> </strong>삭제</strong>
+					</a>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- <div>
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<td>John</td>
+						<td>Doe</td>
+						<td>댓글나올자리</td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+
+		<!-- //contArea -->
+		<!-- 	<form id="searchForm" method="post" wfd-id="31">
+		<input type="hidden" name="seq" id="seq" wfd-id="69"> <input
+			type="hidden" name="rnum" id="rnum" wfd-id="68">
+	</form> -->
+
 	</div>
-
-
-
-	<!--footer include -->
+	<!-- //container  -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-<script src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.js"></script>
-<script src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/lang/summernote-ko-KR.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/lang/summernote-ko-KR.js"></script>
 
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
-
 	<script>
-		// Add the following code if you want the name of the file appear on select
-		$(".custom-file-input").on(
-				"change",
-				function() {
-					var fileName = $(this).val().split("\\").pop();
-					$(this).siblings(".custom-file-label").addClass("selected")
-							.html(fileName);
-				});
+		$(function() {
+			// Add the following code if you want the name of the file appear on select
+			$(".custom-file-input").on(
+					"change",
+					function() {
+						var fileName = $(this).val().split("\\").pop();
+						$(this).siblings(".custom-file-label").addClass(
+								"selected").html(fileName);
+					});
+
+		});
 	</script>
-	
+
 	<script>
 		//Get the button
 		var mybutton = document.getElementById("myBtn");
-
 		// When the user scrolls down 20px from the top of the document, show the button
 		window.onscroll = function() {
 			scrollFunction()
 		};
-
 		function scrollFunction() {
 			if (document.body.scrollTop > 20
 					|| document.documentElement.scrollTop > 20) {
@@ -118,7 +196,6 @@
 				mybutton.style.display = "none";
 			}
 		}
-
 		// When the user clicks on the button, scroll to the top of the document
 		function topFunction() {
 			document.body.scrollTop = 0;
@@ -127,19 +204,44 @@
 	</script>
 
 	<script>
-		$('#star_grade a').click(function() {
-			$(this).parent().children("a").removeClass("on"); /* 별점의 on 클래스 전부 제거 */
-			$(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-			return false;
-		});
+		$(document).ready(function() {
 
-		$('#summernote').summernote({
-			placeholder : 'Hello Bootstrap 4',
-			tabsize : 2,
-			height : 200
+			$('#summernote').summernote({
+				height : 300, // 에디터 높이
+				minHeight : null, // 최소 높이
+				maxHeight : null, // 최대 높이
+				focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+				lang : "ko-KR", // 한글 설정
+				placeholder : '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
+			});
 		});
 	</script>
+
+
 </body>
 
-</html>
 
+<!-- <div class="row mt-3">
+			<div class="col-10"></div>
+			<div class="col">
+				<button type="button" class="btn btn-info" id="freebtnMC"
+					style="position: absolute; right: 20%">
+					<strong>답글</strong>
+				</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-warning" id="freebtnMC"
+					style="position: absolute; right: 20%">
+					</strong>수정</strong>
+				</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-danger" id="freebtnMC"
+					style="position: absolute; right: 20%">
+					</strong>삭제</strong>
+				</button>
+			</div>
+		</div> -->
+
+
+</html>
