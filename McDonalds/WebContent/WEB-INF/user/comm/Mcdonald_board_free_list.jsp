@@ -152,7 +152,7 @@
 										<img
 											src="${pageContext.request.contextPath}/usercss/vendors/images/re.gif">
 									</c:if> <a
-									href="HieEmpDetail.do?idx=${board.f_code}&cp=${cpage}&ps=${pagesize}">
+									href="BoardFreeDetail.b?f_code=${board.f_code}&cp=${cpage}&ps=${pagesize}">
 										<c:choose>
 											<c:when
 												test="${board.f_title != null && fn:length(board.f_title) > 10}">
@@ -167,10 +167,6 @@
 								<td>${board.f_date}</td>
 								<td>${board.f_readnum}</td>
 								<td>${board.f_like}</td>
-								<%-- <td align="center"><a href="HieEmpEdit.do?idx=${board.idx}"
-									type="button" class="btn btn-sm btn-primary">수정</a> <a
-									href="HieEmpDelete.do?idx=${board.f_idx}" type="button"
-									class="btn btn-sm btn-warning">삭제</a></td> --%>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -200,8 +196,8 @@
 				</nav> -->
 			</div>
 			<div class="col-md-3">
-				<a href="BoardNoticeRegisterPage.b" type="button" class="btn btn-warning"
-					style="width: 100%; height: 60px">
+				<a href="BoardNoticeRegisterPage.b" type="button"
+					class="btn btn-warning" style="width: 100%; height: 60px">
 					<p style="padding: 0px; height: 100%; margin-top: 10px;">글쓰기</p>
 				</a>
 

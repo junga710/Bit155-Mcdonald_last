@@ -6,24 +6,31 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.mc.admin.dao.AdminDAO;
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.common.dto.BoardNoticeDTO;
+import kr.or.mc.common.dto.NutritionDTO;
+import kr.or.mc.common.dto.ProductDTO;
 import kr.or.mc.user.dao.UserDAO;
 
 public class NoticeUpdatePageService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		UserDAO boarddao = new UserDAO();
-		System.out.println("DAO는 옵니까");
-		List<BoardNoticeDTO> blist = boarddao.NoticeList();
-		request.setAttribute("blist", blist);
-		System.out.println("항아ㅗ아오 " + blist); 
+	
+		int n_code = Integer.parseInt(request.getParameter("n_code"));
+		
+		UserDAO userDAO = new UserDAO();
+		BoardNoticeDTO boardNoticeDTO = userDAO.BoardNoticeDetail(n_code);
+		
+		System.out.println("이게 출력이 되는지 궁금서블릿" + boardNoticeDTO);
+		
+		request.setAttribute("boardNoticeDTO", boardNoticeDTO);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice.jsp");
-		System.out.println("셋패스");
+		forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice_update.jsp");
+		
 		return forward;
 	}
 }

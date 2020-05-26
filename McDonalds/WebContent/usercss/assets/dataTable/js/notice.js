@@ -13,7 +13,7 @@
 		 // pagingType: scrolling */
 
          $(document).ready(function () {
-
+        	
             /*  $.fn.dataTable.ext.search.push(
                   function(settings, data, dataIndex){
                       var min = Date.parse($('#fromDate').val());
@@ -76,6 +76,7 @@
                   },
                   "pageLength": 10,
                   "lengthMenu": [[3, 5, 10, -1], [3, 5, 10, "All"]],
+
                 });
           
               /* Column별 검색기능 추가 */
@@ -88,7 +89,7 @@
               
               
               $('.dataTables_filter input').unbind().bind('keyup', function () {
-                  var colIndex = document.querySelector('#select').selectedIndex;
+//                  var colIndex = document.querySelector('#select').selectedIndex;
                   table.column(colIndex+1).search(this.value).draw();
               });
           

@@ -7,22 +7,43 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
+import kr.or.mc.common.dto.BoardFreeDTO;
+import kr.or.mc.user.dao.UserDAO;
 
 public class FreeDetailService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		//철이꺼
-		/*
-		 * UserDAO boarddao = new UserDAO(); System.out.println("DAO는 옵니까");
-		 * List<BoardNoticeDTO> blist = boarddao.NoticeList();
-		 * request.setAttribute("blist", blist); System.out.println("항아ㅗ아오 " + blist);
-		 * 
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice.jsp");
-		 * System.out.println("셋패스"); return forward;
-		 */
+		ActionForward forward = new ActionForward();
+		UserDAO dao = new UserDAO();
+		BoardFreeDTO boardFreeDto = new BoardFreeDTO();
+
+		int f_code = Integer.parseInt(request.getParameter("f_code").trim());
+		String cpage = request.getParameter("cp");
+		String pagesize = request.getParameter("ps");
+
+		if (cpage == null || cpage.trim().equals("")) {
+			// default 값 설정
+			cpage = "1"; // 1번째 페이지를 보겠다.
+		}
+
+		if (pagesize == null || pagesize.trim().equals("")) {
+			// default 값 설정
+			pagesize = "5"; // 5개씩 묶음을 잡겠다
+		}
+
+		dao.getReadNum(f_code);
+		boardFreeDto = dao.FreeDetail(f_code);
+
+		/* List<Reply> replyList = dao.replylist(idx); */
+
+		request.setAttribute("boardFreeDto", boardFreeDto);
+		request.setAttribute("f_code", f_code);
+		/* request.setAttribute("replyList", replyList); */
+
+		forward.setPath("/WEB-INF/user/comm/Mcdonald_board_free_detail.jsp");
+
+		return forward;
+
 	}
 }
-
