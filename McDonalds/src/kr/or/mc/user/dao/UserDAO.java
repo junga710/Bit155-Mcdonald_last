@@ -288,4 +288,42 @@ public class UserDAO {
 		}
 		return memberDTO;
 	}
-	}
+	
+	//아이디 중복 체크 
+	public int checkId(String id) {
+		 System.out.println("여기오나?");
+	      System.out.println(id);
+	      
+	      Connection conn = null;
+	      try {
+	         conn = ds.getConnection();
+	        
+	         System.out.println("아이디 : " + id);
+	         String sql = "select m_id from member where m_id = ?";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         rs = pstmt.executeQuery();
+	         System.out.println("여기까지 오긴하냐고!!!");
+	
+	         if (rs.next()) {
+	            if (rs.getString("m_id").equals(id)) {
+	            	
+	               System.out.println("아이디 있어");
+	               return 1;
+	            } else {
+	               System.out.println("아이디 없어");
+	               return 0;
+	            }
+	         }
+	         conn.close(); // 
+	      } catch (Exception e) {
+	         System.err.println(e);
+	         System.err.println("idcheck SQLException error");
+	      } finally {
+	         DB_Close.close(rs);
+	         DB_Close.close(pstmt);
+
+	      }
+	      return -1;
+	   }
+}
