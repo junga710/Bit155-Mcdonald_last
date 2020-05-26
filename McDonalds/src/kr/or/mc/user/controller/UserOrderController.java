@@ -37,9 +37,9 @@ public class UserOrderController extends HttpServlet {
 		if (url_Command.equals("/OrderHistory.uo")) { // 메뉴 - 주문조회 페이지로 이동
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/user/order/Mcdonald_orderhistory.jsp");
-		} else if (url_Command.equals("")) { // 
-
-		
+		} else if (url_Command.equals("/Order1.uo")) { // 메뉴 - 주문 첫페이지로 이동
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/user/order/Mcdonald_order1.jsp");
 		} 
 		
 		

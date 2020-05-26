@@ -173,45 +173,7 @@ public class UserDAO {
 		return -1;
 	}
 
-	// 공지사항 상세보기
-	public BoardNoticeDTO BoardNoticeDetail(int n_code) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
-		System.out.println("상세보기 탔나?");
-		try {
-			conn = ds.getConnection();
-			String sql = "select * from board_notice where n_code = ? ";
-			// n_code, n_title, to_char(n_write_date, 'YYYY-MM-DD') as n_write_date,
-			// n_read_num, n_content, from board_notice where n_code = ?
-			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, n_code);
-
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				boardNoticeDTO.setN_code(rs.getInt("n_code"));
-				boardNoticeDTO.setN_title(rs.getString("n_title"));
-				boardNoticeDTO.setN_write_date(rs.getString("n_write_date"));
-				boardNoticeDTO.setN_read_num(rs.getInt("n_read_num"));
-				boardNoticeDTO.setN_content(rs.getString("n_content"));
-				System.out.println("상세보기 데이터 가져왔는지 보기:" + boardNoticeDTO);
-			}
-
-		} catch (Exception e) {
-			System.out.println(" boardNoticeDto : " + e.getMessage());
-		} finally {
-			try {
-				DB_Close.close(pstmt);
-				DB_Close.close(rs);
-				DB_Close.close(conn); // 반환
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return -1;
-	}
 
 	// 공지사항 상세보기
 	public BoardNoticeDTO BoardNoticeDetail(int n_code) {
