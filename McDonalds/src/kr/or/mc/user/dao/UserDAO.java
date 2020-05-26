@@ -11,6 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import kr.or.mc.common.dto.BoardFreeDTO;
 import kr.or.mc.common.dto.BoardNoticeDTO;
 import kr.or.mc.common.dto.MemberDTO;
 import kr.or.mc.common.dto.NutritionDTO;
@@ -153,7 +154,6 @@ public class UserDAO {
 
 			if (rs.next()) {
 				if (rs.getString("password").equals(userPw)) {
-
 					System.out.println("1 반환");
 					return 1;
 				} else {
@@ -169,6 +169,46 @@ public class UserDAO {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
 
+		}
+		return -1;
+	}
+
+	// 공지사항 상세보기
+	public BoardNoticeDTO BoardNoticeDetail(int n_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
+		System.out.println("상세보기 탔나?");
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from board_notice where n_code = ? ";
+			// n_code, n_title, to_char(n_write_date, 'YYYY-MM-DD') as n_write_date,
+			// n_read_num, n_content, from board_notice where n_code = ?
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, n_code);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				boardNoticeDTO.setN_code(rs.getInt("n_code"));
+				boardNoticeDTO.setN_title(rs.getString("n_title"));
+				boardNoticeDTO.setN_write_date(rs.getString("n_write_date"));
+				boardNoticeDTO.setN_read_num(rs.getInt("n_read_num"));
+				boardNoticeDTO.setN_content(rs.getString("n_content"));
+				System.out.println("상세보기 데이터 가져왔는지 보기:" + boardNoticeDTO);
+			}
+
+		} catch (Exception e) {
+			System.out.println(" boardNoticeDto : " + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(rs);
+				DB_Close.close(conn); // 반환
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		return -1;
 	}
@@ -368,4 +408,126 @@ public class UserDAO {
 			return nutritionDto;
 		}
 	
+
+//자유게시판 목록 뿌리기
+	public List<BoardFreeDTO> FreeList(int cpage, int pagesize) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardFreeDTO> list = null;
+
+		try {
+			conn = ds.getConnection();
+
+			String sql = "select * from \r\n"
+					+ "(select rownum rn , f_code , f_title , f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date , f_readnum , f_like, f_file_upload,\r\n"
+					+ "f_refer , f_depth , f_step\r\n"
+					+ "from ( SELECT * FROM board_free ORDER BY f_refer DESC , f_step ASC)\r\n"
+					+ "where rownum <= ?)\r\n" + "where rn >= ?\r\n" + "";
+
+			pstmt = conn.prepareStatement(sql);
+
+			int start = cpage * pagesize - (pagesize - 1); // 1*5 -(5-1) = 1
+			int end = cpage * pagesize; // 1 * 5 = 5
+
+			pstmt.setInt(1, end);
+			pstmt.setInt(2, start);
+
+			rs = pstmt.executeQuery();
+			list = new ArrayList<BoardFreeDTO>();
+
+			while (rs.next()) {
+				BoardFreeDTO BoardFree = new BoardFreeDTO();
+				BoardFree.setF_code(rs.getInt("f_code"));
+				BoardFree.setF_title(rs.getString("f_title"));
+				BoardFree.setF_writer(rs.getString("f_writer"));
+				BoardFree.setF_date(rs.getString("f_date"));
+				BoardFree.setF_readnum(rs.getInt("f_readnum"));
+				BoardFree.setF_like(rs.getInt("f_like"));
+
+				BoardFree.setF_refer(rs.getInt("f_refer"));
+				BoardFree.setF_depth(rs.getInt("f_depth"));
+				BoardFree.setF_step(rs.getInt("f_step"));
+				list.add(BoardFree);
+			}
+
+		} catch (Exception e) {
+			System.out.println("FreeList 오류 " + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+//자유게시판 전체 게시글 개수
+	public int totalBoardCount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null; //
+		ResultSet rs = null;
+		int totalcount = 0;
+		try {
+			conn = ds.getConnection();
+			String sql = "select count(*) cnt from board_free"; //
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				totalcount = rs.getInt("cnt"); //
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close(); //
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return totalcount;
+	}
+
+	// 아이디 중복 체크
+	public int checkId(String id) {
+		System.out.println("여기오나?");
+		System.out.println(id);
+
+		Connection conn = null;
+		try {
+			conn = ds.getConnection();
+
+			System.out.println("아이디 : " + id);
+			String sql = "select m_id from member where m_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			System.out.println("여기까지 오긴하냐고!!!");
+
+			if (rs.next()) {
+				if (rs.getString("m_id").equals(id)) {
+
+					System.out.println("아이디 있어");
+					return 1;
+				} else {
+					System.out.println("아이디 없어");
+					return 0;
+				}
+			}
+			conn.close(); //
+		} catch (Exception e) {
+			System.err.println(e);
+			System.err.println("idcheck SQLException error");
+		} finally {
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+
+		}
+		return -1;
+	}
 }
