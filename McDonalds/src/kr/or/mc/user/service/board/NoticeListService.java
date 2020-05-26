@@ -18,7 +18,7 @@ public class NoticeListService implements Action {
 		System.out.println("DAO는 옵니까");
 		List<BoardNoticeDTO> blist = boarddao.NoticeList();
 		request.setAttribute("blist", blist);
-		System.out.println("항아ㅗ아오 " + blist); 
+		System.out.println("blist 확인 " + blist); 
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice.jsp");

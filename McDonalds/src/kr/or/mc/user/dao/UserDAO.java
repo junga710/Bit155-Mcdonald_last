@@ -249,7 +249,7 @@ public class UserDAO {
 		      return result;
 		   }
 	   
-	   //목록 뿌려주기위한...
+	   //회원정보 수정 목록 뿌려주기위한...
 	public MemberDTO MemDetail(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -288,4 +288,98 @@ public class UserDAO {
 		}
 		return memberDTO;
 	}
+	//공지사항 작성하기
+	public int BoardNoticeWriter(BoardNoticeDTO noticedto) {
+		Connection conn = null;// 추가
+
+		try {
+			conn = ds.getConnection();
+
+			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(board_notice_sq.nextval,?,?,'admin',sysdate,0)";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, noticedto.getN_title());
+			pstmt.setString(2, noticedto.getN_content());
+			/*
+			 * pstmt.setString(3, noticedto.getN_writer()); pstmt.setString(4,
+			 * noticedto.getN_write_date()); pstmt.setInt(5, noticedto.getN_read_num());
+			 */
+
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Insert : " + e.getMessage());
+		} finally {
+			DB_Close.close(pstmt);
+			try {
+				DB_Close.close(conn); // 반환하기
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	//공지사항 삭제
+	
+	public int ProductDelete(int n_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			conn = ds.getConnection();
+			String sql = "delete from board_notice where n_code = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, n_code);
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("ProductDelete 오류 :" + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	//공지사항 수정
+	public int NoticeUpdate(BoardNoticeDTO noticedto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			System.out.println("아아아아아noticedto:" + noticedto);
+			String sql = "update board_notice set n_title = ?, n_content =? where n_code = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, noticedto.getN_title());
+			pstmt.setString(2, noticedto.getN_content());
+			pstmt.setInt(3, noticedto.getN_code());
+			
+			System.out.println("noticedto.getN_title()" + noticedto.getN_title());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Update : " + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(conn); // 반환하기
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
+	
 	}
