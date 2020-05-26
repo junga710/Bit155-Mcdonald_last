@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 <title>로그인 페이지</title>
 
 </head>
@@ -16,67 +16,71 @@
 <body>
 
 	<!-- header include-->
-	<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
-	<section id="container">
+	<jsp:include page="./common/header.jsp"></jsp:include>
 
-	
- <div class="login">
-        <h1 class="titDep1" style="padding-top: 5%;"><strong>로그인</strong></h1>
-        <ul   style="padding-left: 10%;
-        margin-top: 1%;">
-            <li id="topli"><a href="Macdonald_main.html" style="color: white;">Home</a></li>
-            <li id="topli2"><a href="#"style="color: white;" >Menu</a></li>
-           
-        </ul>
-    </div>
+	<!-- 	<section id="container"> -->
 
 
+	<div class="login">
+		<h1 class="titDep1" style="padding-top: 5%;">
+			<strong>로그인</strong>
+		</h1>
+		<ul style="padding-left: 10%; margin-top: 1%;">
+			<li id="topli"><a href="Macdonald_main.html"
+				style="color: white;">Home</a></li>
+			<li id="topli2"><a href="#" style="color: white;">Menu</a></li>
 
-		<div class="container" style="width:500px">
-
-
-			<article class="card-body" style="width:500px; margin-top:100px ;margin-bottom:100px">
-				 <h3 class="text-center ">Login</h3>
-				<form action="login.b" method="post" name="loginForm"
-					id="loginForm">
-					<div class="form-group">
-						<label>Your id</label> <input type="text" name="id" id="id" class="form-control"
-							placeholder="Id" type="email">
-					</div>
-					<!-- form-group// -->
-					<div class="form-group">
-						 <label>Your
-							password</label> <input type="password" name="pwd" id="pwd"class="form-control" placeholder="******">
-					</div>
-					<!-- form-group// -->
-					<!-- form-group// -->
-					<div class="form-group">
-						<input type="submit" value="로그인" class="btn btn-warning"> 
-					</div>
-				</form>
-					<div class="form-group " style="text-align: right" >
-							<label> <a href="Mcdonald_joinform.jsp" class="text-warning">회원가입하러 가기</a>
-							</label>
-					</div>
-					<!-- form-group// -->
-			</article>
+		</ul>
+	</div>
 
 
 
+	<div class="container" style="width: 500px">
 
 
-		</div>
+		<article class="card-body"
+			style="width: 500px; margin-top: 100px; margin-bottom: 100px">
+			<h3 class="text-center ">Login</h3>
+			<form action="login.ump" method="post" name="loginForm"
+				id="loginForm">
+				<div class="form-group">
+					<label>Your id</label> <input type="text" name="id" id="id"
+						class="form-control" placeholder="Id" type="email">
+				</div>
+				<!-- form-group// -->
+				<div class="form-group">
+					<label>Your password</label> <input type="password" name="pwd"
+						id="pwd" class="form-control" placeholder="******">
+				</div>
+				<!-- form-group// -->
+				<!-- form-group// -->
+				<div class="form-group">
+					<input type="submit" value="로그인" class="btn btn-warning">
+				</div>
+			</form>
+			<div class="form-group " style="text-align: right">
+				<label> <a href="Mcdonald_joinform.ump" class="text-warning">회원가입하러
+						가기</a>
+				</label>
+			</div>
+			<!-- form-group// -->
+		</article>
+
+
+
+
+
+	</div>
 	</section>
 
 
 	<!--footer include -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-
-
-
+	<script
+		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 	<script>
 		//Get the button
 		var mybutton = document.getElementById("myBtn");

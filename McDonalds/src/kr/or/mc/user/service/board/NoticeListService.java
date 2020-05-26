@@ -17,7 +17,7 @@ public class NoticeListService implements Action {
 		UserDAO boarddao = new UserDAO();
 		System.out.println("DAO는 옵니까");
 		List<BoardNoticeDTO> blist = boarddao.NoticeList();
-		request.setAttribute("bList", blist);
+		request.setAttribute("blist", blist);
 		System.out.println("항아ㅗ아오 " + blist); 
 		
 		ActionForward forward = new ActionForward();
