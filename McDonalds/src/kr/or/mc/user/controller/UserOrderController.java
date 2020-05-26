@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.user.service.menu.MenuDetailService;
+import kr.or.mc.user.service.mypage.JoinFormEditPageService;
+import kr.or.mc.user.service.mypage.RegisterService;
+import kr.or.mc.user.service.order.OrderHistoryPageService;
 
 
  @WebServlet("*.uo")
@@ -35,13 +38,14 @@ public class UserOrderController extends HttpServlet {
 		System.out.println(" url_Command : " + url_Command);
 
 		if (url_Command.equals("/OrderHistory.uo")) { // 메뉴 - 주문조회 페이지로 이동
-			forward = new ActionForward();
-			forward.setPath("/WEB-INF/user/order/Mcdonald_orderhistory.jsp");
+			System.out.println("나지금 졸고있니");
+			action = new OrderHistoryPageService();
+			forward = action.execute(request, response);
+		
 		} else if (url_Command.equals("")) { // 
-
+			
 		
 		} 
-		
 		
 		
 

@@ -1,6 +1,7 @@
 package kr.or.mc.user.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import kr.or.mc.common.dto.BoardNoticeDTO;
 import kr.or.mc.common.dto.MemberDTO;
 import kr.or.mc.common.dto.NutritionDTO;
 import kr.or.mc.common.dto.OrderDetailDTO;
+import kr.or.mc.common.dto.OrdersDTO;
 import kr.or.mc.common.dto.ProductDTO;
 import kr.or.mc.common.utils.DB_Close;
 
@@ -173,45 +175,6 @@ public class UserDAO {
 		return -1;
 	}
 
-	// 공지사항 상세보기
-	public BoardNoticeDTO BoardNoticeDetail(int n_code) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
-		System.out.println("상세보기 탔나?");
-		try {
-			conn = ds.getConnection();
-			String sql = "select * from board_notice where n_code = ? ";
-			// n_code, n_title, to_char(n_write_date, 'YYYY-MM-DD') as n_write_date,
-			// n_read_num, n_content, from board_notice where n_code = ?
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, n_code);
-
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				boardNoticeDTO.setN_code(rs.getInt("n_code"));
-				boardNoticeDTO.setN_title(rs.getString("n_title"));
-				boardNoticeDTO.setN_write_date(rs.getString("n_write_date"));
-				boardNoticeDTO.setN_read_num(rs.getInt("n_read_num"));
-				boardNoticeDTO.setN_content(rs.getString("n_content"));
-				System.out.println("상세보기 데이터 가져왔는지 보기:" + boardNoticeDTO);
-			}
-
-		} catch (Exception e) {
-			System.out.println(" boardNoticeDto : " + e.getMessage());
-		} finally {
-			try {
-				DB_Close.close(pstmt);
-				DB_Close.close(rs);
-				DB_Close.close(conn); // 반환
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return -1;
-	}
 
 	// 공지사항 상세보기
 	public BoardNoticeDTO BoardNoticeDetail(int n_code) {
@@ -530,4 +493,98 @@ public class UserDAO {
 		}
 		return -1;
 	}
+
+	
+	//orderHistroy  에서 주문조회하기위한 함수
+	public List<OrdersDTO> OrderHistoryView(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<OrdersDTO> list = new ArrayList<OrdersDTO>();
+		try {
+			conn = ds.getConnection();
+			String sql = "select o.order_code, o.o_id, o.s_name, o.payment_method, o.payment_price, to_char(payment_date, 'YYYY-MM-DD HH24:MM:SS') as payment_date, m.address\r\n"
+					+ "from orders o join member m on o.o_id = m.m_id\r\n"
+					+ "where m.m_id = ?                \r\n" + "";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1,id);
+
+			
+			//set  할수있게 dto 를 만들어봅시다. 
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				
+				OrdersDTO ordersDTO = new OrdersDTO();
+				
+				ordersDTO.setOrder_code(rs.getInt("order_code"));
+				ordersDTO.setO_id(rs.getString("o_id"));
+				ordersDTO.setS_name(rs.getString("s_name"));
+
+				ordersDTO.setPayment_method(rs.getString("payment_method"));
+				ordersDTO.setPayment_price(rs.getInt("payment_price"));
+				ordersDTO.setPayment_date(rs.getString("payment_date"));
+				String[] temp = rs.getString("address").split("/");
+				ordersDTO.setAddress(temp[0]);
+				ordersDTO.setAddress_detail(temp[1]);
+				
+				list.add(ordersDTO);
+				
+			}
+
+		} catch (Exception e) {
+			System.out.println("오류 :" + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(rs);
+				DB_Close.close(conn); // 반환
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			return list;
+		}
+	}
+	
+	// 주문관리 - 상세보기(주문 상세 + 상품)
+		public List<OrderDetailDTO> OrderDetailProductView(int order_code) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
+			try {
+				conn = ds.getConnection();
+				String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
+						+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
+						+ "where order_code = ?\r\n" + "";
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, order_code);
+				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					
+					OrderDetailDTO orderDetailDto = new OrderDetailDTO();
+					orderDetailDto.setProduct_image(rs.getString("product_image"));
+					orderDetailDto.setProduct_name(rs.getString("product_name"));
+					orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
+
+					list.add(orderDetailDto);
+				}
+
+			} catch (Exception e) {
+				System.out.println(" OrderDetailProduct : " + e.getMessage());
+			} finally {
+				try {
+					DB_Close.close(pstmt);
+					DB_Close.close(rs);
+					DB_Close.close(conn); // 반환
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return list;
+		}
+
 }
