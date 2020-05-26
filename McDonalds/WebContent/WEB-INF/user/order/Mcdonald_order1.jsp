@@ -438,22 +438,23 @@
 
 	});
 	/////////////////////
-	//
+	
+	//주문 페이지 처음왔을때 버거&세트만
 	function loadOrderPageListAjax(productKind, productCategory) {
 		console.log(productKind + "   /  " + productCategory);
 		$.ajax({
 			type : "get",
-			url : "/McDonalds/product/list",
-
-			data : {
-
-				productKind : decodeURIComponent(productKind),
-				productCategory : decodeURIComponent(productCategory)
-			},
+			url : "OrderPageBurger.ua",
 			success : function(response) {
-				console.log(response);
-
+				console.log("response : " + response);
+				console.log(response[0].product_kind);
+				
 			},
+			
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
 		});
 
 	}
