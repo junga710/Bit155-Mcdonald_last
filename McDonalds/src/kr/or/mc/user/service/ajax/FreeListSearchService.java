@@ -30,11 +30,11 @@ public class FreeListSearchService implements Action {
 	System.out.println("keyword" + keyword);
 	
 	if( fwriter != null && ftitle  == null) {
-		list = userDao.SearchFtitle(ftitle); 
+		list = userDao.SearchFwriter(ftitle); 
 	}else {
-		list = userDao.SearchFwriter(fwriter);
+		list = userDao.SearchFtitle(fwriter);
 	}
-	
+
 	/* JSONObject jsonObject = JSONObject.fromObject(productDto); */
 	
 	JSONArray jsonArr = JSONArray.fromObject(list); 

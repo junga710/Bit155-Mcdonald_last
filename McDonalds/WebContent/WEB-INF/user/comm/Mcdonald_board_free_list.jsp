@@ -175,12 +175,12 @@
   <table id="order-listing" class="table text-center">
 
          <tr class="text-center">
-         	<th style="width: 30px;">사진</th>
-            <th class="text-center" style="width: 50px;">사원번호</th>
-            <th style="width: 30px;">이름</th>
-            <th style="width: 30px;">직급</th>
-            <th style="width: 30px;">부서번호</th>
-            <th style="width: 50px;">MGR</th>
+         	<th style="width: 30px;">글번호</th>
+            <th class="text-center" style="width: 50px;">제목</th>
+            <th style="width: 30px;">작성자</th>
+            <th style="width: 30px;">작성일</th>
+            <th style="width: 30px;">조회수</th>
+            <th style="width: 50px;">좋아요</th>
          </tr>
          <tbody id="tbody">
          </tbody>
@@ -270,7 +270,7 @@
 	}
 	
 	//비동기 검색기능
-	  (function($) {
+	 (function($) {
       "use strict";
       
       var keyword = $("#selectBox option:selected").val();
@@ -349,7 +349,7 @@
 
                      });
                }
-            });
+            }
 
 	
 	
@@ -358,8 +358,8 @@
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </html>
