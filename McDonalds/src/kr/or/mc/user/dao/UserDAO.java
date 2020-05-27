@@ -880,19 +880,7 @@ public class UserDAO {
 					list.add(orderDetailDto);
 				}
 
-			pstmt.setInt(1, order_code);
-
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-
-				OrderDetailDTO orderDetailDto = new OrderDetailDTO();
-				orderDetailDto.setProduct_image(rs.getString("product_image"));
-				orderDetailDto.setProduct_name(rs.getString("product_name"));
-				orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
-
-				list.add(orderDetailDto);
-			}
-
+			
 		} catch (Exception e) {
 			System.out.println(" OrderDetailProduct : " + e.getMessage());
 		} finally {
