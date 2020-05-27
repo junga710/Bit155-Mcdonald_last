@@ -110,17 +110,14 @@
 				style="border-left-color: rgb(241, 241, 241); text-align: end;">
 				<div class="d-flex justify-content-end">
 					<div class="col-sm-3">
-						<select id="searchOption" class="form-control">
-							<option selected>지점고르기</option>
-							<option>옵션1</option>
-							<option>옵션2</option>
-							<option>옵션3</option>
+						<select id="selectBox" class="form-control">
+						<!-- 	<option selected>조건선택</option> -->
+							<option value="제목">제목</option>
+							<option value="작성자">작성자</option>
 						</select>
 					</div>
 					<input style="width: 200px;" class="form-control" type="text"
-						placeholder="검색어를 입력하세요"> <img
-						src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKePPh8P7YzgL6x0nXcz0JDeLRIlwjdtjw3hpJihg8hAwrcujT&usqp=CAU"
-						width="30px" height="30px">
+						placeholder="검색어를 입력하세요">
 				</div>
 			</div>
 		</div>
@@ -174,6 +171,22 @@
 
 			</div>
 		</div>
+
+  <table id="order-listing" class="table text-center">
+
+         <tr class="text-center">
+         	<th style="width: 30px;">사진</th>
+            <th class="text-center" style="width: 50px;">사원번호</th>
+            <th style="width: 30px;">이름</th>
+            <th style="width: 30px;">직급</th>
+            <th style="width: 30px;">부서번호</th>
+            <th style="width: 50px;">MGR</th>
+         </tr>
+         <tbody id="tbody">
+         </tbody>
+      </table>
+
+
 
 
 		<div class="row" style="border-color: #eee;">
@@ -255,6 +268,91 @@
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
+	
+	//비동기 검색기능
+	  (function($) {
+      "use strict";
+      
+      var keyword = $("#selectBox option:selected").val();
+      $('#selectBox').change(function() {
+         keyword = $("#selectBox option:selected").val();
+      })
+
+      $("#search").keyup(
+            function() {
+               if (keyword == "제목") {
+                  $.ajax({
+                     url : "search.ua",
+                     type : 'POST',
+                     dataType : "json",
+                     data : {
+                        ftitle : $("#search").val()
+                     },
+                     success : function(data) {
+                    	
+                        $('#tbody').empty();
+                        if($("#search").val() != ""){
+                           
+                        $.each(data, function(key, value) {
+                        
+                        /* 	<td id="e" align="center"><img
+							src="upload/${list2.filename}"
+							style="width: 30px; heigfht: 30px;"></td> */
+      
+							
+                           let startable = $("#tbody");
+                              startable += "<tr>";
+                                 startable += "<td>" + value.f_title + "</td>";
+                                 startable += "<td>" + value.f_content + "</td>";
+                                 startable += "<td>" + value.f_writer + "</td>";
+                                 startable += "<td>" + value.f_date + "</td>";
+                                 startable += "<td>" + value.f_readnum + "</td>";
+                                 startable += "<td>" + value.f_like + "</td>";
+                              startable += "</tr>";
+
+                           startable += "</table>";
+                            $('#tbody').append(startable);
+                        });
+                     }
+                        }
+
+                     });
+               } else {
+                  $.ajax({
+                     url : "search.ua",
+                     type : 'POST',
+                     dataType : "json",
+                     data : {
+                        fwriter : $("#search").val()
+                     },
+                     success : function(data) {
+                        $('#tbody').empty();
+                        if($("#search").val() != ""){
+                        
+                        $.each(data, function(key, value) {
+                           let startable = "#tbody";
+                              startable += "<tr>";
+                              startable += "<td>" + value.f_title + "</td>";
+                              startable += "<td>" + value.f_content + "</td>";
+                              startable += "<td>" + value.f_writer + "</td>";
+                              startable += "<td>" + value.f_date + "</td>";
+                              startable += "<td>" + value.f_readnum + "</td>";
+                              startable += "<td>" + value.f_like + "</td>";
+                           startable += "</tr>";
+
+                           startable += $("#tbody");
+                           $('#tbody').append(startable); 
+
+                        });
+                     }
+                        }
+
+                     });
+               }
+            });
+
+	
+	
 </script>
 <!-- JS -->
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

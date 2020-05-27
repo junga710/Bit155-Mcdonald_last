@@ -1155,4 +1155,86 @@ public class UserDAO {
 		return list;
 	}
 
+	//자유게시판 글 제목으로 찾기
+	public List<BoardFreeDTO> SearchFtitle(String ftitle) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_title like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("나오나요 타이틀!! " + ftitle);
+			pstmt.setString(1, "%" + ftitle + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardFreeDTO BoardFreeDto = new BoardFreeDTO();
+				BoardFreeDto.setF_code(rs.getInt(1));
+				BoardFreeDto.setF_title(rs.getString(2));
+				BoardFreeDto.setF_writer(rs.getString(3));
+				BoardFreeDto.setF_date(rs.getString(4));
+				BoardFreeDto.setF_readnum(rs.getInt(5));
+				BoardFreeDto.setF_like(rs.getInt(6));
+				list.add(BoardFreeDto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+
+	}
+	
+	//자유게시판 글쓴이로 찾기
+	public List<BoardFreeDTO> SearchFwriter(String fwriter) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_writer like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + fwriter + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardFreeDTO BoardFreeDto = new BoardFreeDTO();
+				BoardFreeDto.setF_code(rs.getInt(1));
+				BoardFreeDto.setF_title(rs.getString(2));
+				BoardFreeDto.setF_writer(rs.getString(3));
+				BoardFreeDto.setF_date(rs.getString(4));
+				BoardFreeDto.setF_readnum(rs.getInt(5));
+				BoardFreeDto.setF_like(rs.getInt(6));
+				list.add(BoardFreeDto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+
+	}
 }
