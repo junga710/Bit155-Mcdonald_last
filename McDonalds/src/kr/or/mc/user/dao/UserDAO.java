@@ -13,6 +13,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import kr.or.mc.common.dto.BasketDTO;
 import kr.or.mc.common.dto.BoardFreeDTO;
 import kr.or.mc.common.dto.BoardNoticeDTO;
 import kr.or.mc.common.dto.MemberDTO;
@@ -20,6 +21,7 @@ import kr.or.mc.common.dto.NutritionDTO;
 import kr.or.mc.common.dto.OrderDetailDTO;
 import kr.or.mc.common.dto.OrdersDTO;
 import kr.or.mc.common.dto.ProductDTO;
+import kr.or.mc.common.dto.StoreDTO;
 import kr.or.mc.common.utils.DB_Close;
 
 public class UserDAO {
@@ -895,45 +897,85 @@ public class UserDAO {
 		return list;
 	}
 
-	// 주문 페이지 리스트 띄우기(버거 & 세트)
-	public List<ProductDTO> getProductList(String product_category) {
-		// 리넡할 객체 선언
-		List<ProductDTO> productList = new ArrayList<ProductDTO>();
-		Connection conn = null;
+	// 주문 페이지 리스트 띄우기(버거 & 세트) : 우철이가 한게 잘 되면 지우기
+	/*
+	 * public List<ProductDTO> getProductList(String product_category) { // 리넡할 객체
+	 * 선언 List<ProductDTO> productList = new ArrayList<ProductDTO>(); Connection
+	 * conn = null;
+	 * 
+	 * try { conn = ds.getConnection(); String sql =
+	 * "select product_code, product_name, product_price, product_kind, product_image  from product where product_category = ?"
+	 * ; pstmt = conn.prepareStatement(sql); pstmt.setString(1, product_category);
+	 * rs = pstmt.executeQuery();
+	 * 
+	 * System.out.println(product_category);
+	 * 
+	 * while (rs.next()) { ProductDTO productDto = new ProductDTO();
+	 * productDto.setProduct_code(rs.getInt("product_code"));
+	 * productDto.setProduct_name(rs.getString("product_name"));
+	 * productDto.setProduct_price(rs.getInt("product_price"));
+	 * productDto.setProduct_kind(rs.getString("product_kind"));
+	 * productDto.setProduct_image(rs.getString("product_image"));
+	 * 
+	 * productList.add(productDto);
+	 * 
+	 * }
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); productList = null; } finally {
+	 * // 자원 반납 DB_Close.close(rs); DB_Close.close(pstmt); DB_Close.close(conn);
+	 * 
+	 * } return productList; }
+	 */
+	
+	// 주문 페이지 리스트 띄우기(버거 & 세트) : 우철이가 만지는거
+		public List<ProductDTO> getProductList(String product_category) {
+			// 리넡할 객체 선언
+			List<ProductDTO> productList = new ArrayList<ProductDTO>();
+			Connection conn = null;
 
-		try {
-			conn = ds.getConnection();
-			String sql = "select product_code, product_name, product_price, product_kind, product_image  from product where product_category = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, product_category);
-			rs = pstmt.executeQuery();
+			try {
+				conn = ds.getConnection();
+				String sql = "\r\n" + 
+						"select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n" + 
+						"from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n" + 
+						"where product_category = ?" + "";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, product_category);
+				rs = pstmt.executeQuery();
 
-			System.out.println(product_category);
+				System.out.println(product_category);
 
-			while (rs.next()) {
-				ProductDTO productDto = new ProductDTO();
-				productDto.setProduct_code(rs.getInt("product_code"));
-				productDto.setProduct_name(rs.getString("product_name"));
-				productDto.setProduct_price(rs.getInt("product_price"));
-				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_image(rs.getString("product_image"));
+				while (rs.next()) {
+					ProductDTO productDto = new ProductDTO();
+					productDto.setProduct_code(rs.getInt("product_code"));
+					productDto.setProduct_name(rs.getString("product_name"));
+					productDto.setProduct_price(rs.getInt("product_price"));
+					productDto.setProduct_kind(rs.getString("product_kind"));
+					productDto.setProduct_stock(rs.getInt("product_stock"));
+					productDto.setProduct_category(rs.getString("product_category"));
+					productDto.setProduct_image(rs.getString("product_image"));
+					productDto.setNutrition_code(rs.getInt("calorie"));
+					// 칼로리 담을 dto 다시만들기 싫어서 임시로 Nutrition_code에 담음
 
-				productList.add(productDto);
+					productList.add(productDto);
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				productList = null;
+			} finally {
+				// 자원 반납
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+				DB_Close.close(conn);
 
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			productList = null;
-		} finally {
-			// 자원 반납
-			DB_Close.close(rs);
-			DB_Close.close(pstmt);
-			DB_Close.close(conn);
-
+			return productList;
 		}
-		return productList;
-	}
+	
+	
+	
 	//공지게시판 조회수
 	public boolean getNoticeReadNum(int n_code) throws Exception {
 		Connection conn = null;
@@ -963,4 +1005,87 @@ public class UserDAO {
 		}return result;
 		
 	}
+	
+	//매장정보 가져오기
+	public List<StoreDTO> getSelectShop(String s_name) {
+		// 리턴할 객체 선언
+		List<StoreDTO> InfoShop = new ArrayList<StoreDTO>();
+		Connection conn = null;
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select s_name, a_id, s_address, s_phone_number, s_business_hour from store where s_name = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, s_name);
+			rs = pstmt.executeQuery();
+
+			System.out.println(s_name);
+
+			while (rs.next()) {
+				StoreDTO StoreDto = new StoreDTO();
+				StoreDto.setS_name(rs.getNString("s_name"));
+				StoreDto.setA_id(rs.getString("a_id"));
+				StoreDto.setS_address(rs.getString("s_address"));
+				StoreDto.setS_phone_number(rs.getString("s_phone_number"));
+				StoreDto.setS_business_hour(rs.getString("s_business_hour"));
+
+				InfoShop.add(StoreDto);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			InfoShop = null;
+		} finally {
+			// 자원 반납
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+			DB_Close.close(conn);
+
+		}
+		return InfoShop;
+	}
+	
+	// 장바구니 출력
+			public List<BasketDTO> OrderCartList (int basket_code) {
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<BasketDTO> list = new ArrayList<BasketDTO>();
+				try {
+					conn = ds.getConnection();
+					String sql = "select * from basket where basket_code = ?";
+					pstmt = conn.prepareStatement(sql);
+
+					pstmt.setInt(1, basket_code);
+					
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						BasketDTO basketDto = new BasketDTO();
+						basketDto.setBasket_code(rs.getInt("basket_code"));
+						basketDto.setB_id(rs.getString("b_id"));
+						basketDto.setProduct_code(rs.getInt("product_code"));
+						basketDto.setS_name(rs.getString("s_name"));
+						basketDto.setAmount(rs.getInt("amount"));
+						basketDto.setTotal_product_price(rs.getInt("total_product_price"));
+						list.add(basketDto);
+					}
+
+			} catch (Exception e) {
+				System.out.println("OrderCartList: " + e.getMessage());
+			} finally {
+				try {
+					DB_Close.close(pstmt);
+					DB_Close.close(rs);
+					DB_Close.close(conn); // 반환
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return list;
+		}
+
+	
+	
+	
 }

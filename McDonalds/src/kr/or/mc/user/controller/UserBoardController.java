@@ -107,6 +107,9 @@ public class UserBoardController extends HttpServlet {
 		} else if (url_Command.equals("/BoardFreeDelete.b")) { // 자유게시판 삭제
 			action = new FreeDeleteService();
 			forward = action.execute(request, response);
+		}  else if (url_Command.equals("/BoardFreeReRegisterPage.b")) { // 자유게시판 답변 페이지 이동
+			action = new FreeReRegisterPage();
+			forward = action.execute(request, response);
 		}
 
 		if (forward != null) {

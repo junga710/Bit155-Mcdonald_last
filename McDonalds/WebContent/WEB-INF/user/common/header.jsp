@@ -56,7 +56,7 @@
 					<a href="logout.ump" id="topbtnright" class="btn btn-warning"
 						role="button" style="float: right;">LOGOUT</a>	</div>
 			
-				 <div class="p-2"><a href="Order1.uo" id="topbtnright" class="btn btn-info" role="button" style="float: right;">ORDER</a></div> 
+				 <div class="p-2"><a href="SelectShop.ua" id="topbtnright" class="btn btn-info" role="button" style="float: right;">ORDER</a></div> 
 				<!-- <div class="p-2"><a href="#" id="topbtnright" class="btn btn-info" role="button" style="float: right;">WEATHER API</a></div> -->
 				<div class="p-2">${id}님반갑습니다^^*</div>
 

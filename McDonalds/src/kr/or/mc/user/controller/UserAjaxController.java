@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.user.service.ajax.OrderPageBurgerService;
+import kr.or.mc.user.service.ajax.SelectShopService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
 import kr.or.mc.user.service.board.FreeDeleteService;
 import kr.or.mc.user.service.board.FreeDetailService;
@@ -29,16 +30,15 @@ import kr.or.mc.user.service.board.ReviewDetailService;
 import kr.or.mc.user.service.board.ReviewListService;
 import kr.or.mc.user.service.board.ReviewRegisterService;
 
-
 @WebServlet("*.ua")
 public class UserAjaxController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public UserAjaxController() {
-        super();
-    }
 
-	
-    private void doProcess(HttpServletRequest request, HttpServletResponse response)
+	public UserAjaxController() {
+		super();
+	}
+
+	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String requestURI = request.getRequestURI();
@@ -52,17 +52,27 @@ public class UserAjaxController extends HttpServlet {
 		if (url_Command.equals("/UserMenuDetail.ua")) { // 공지사항 목록 뿌려주는 로직
 			action = new UserMenuDetailService();
 			forward = action.execute(request, response);
+
 		} else if (url_Command.equals("/OrderPageBurger.ua")) { // 공지사항 목록 뿌려주는 로직
 			action = new OrderPageBurgerService();
 			forward = action.execute(request, response);
-		} 
 
-		if (forward != null) {
-			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
-			dis.forward(request, response);
+		} else if (url_Command.contentEquals("/SelectShop.ua")) { // 지도 화면 보여주는 로직
+			System.out.println("지도화면 타나");
+			forward = new ActionForward();
+			System.out.println("액션포워드 아래 지도");
+			forward.setPath("/WEB-INF/user/order/Mcdonald_selectStore.jsp");
+		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
+			action = new SelectShopService();
+			forward = action.execute(request, response);
+		}
+		
+			if (forward != null) {
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+				dis.forward(request, response);
+			}
 		}
 
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

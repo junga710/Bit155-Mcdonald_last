@@ -7,7 +7,6 @@ public class BasketDTO {
 	private String s_name;
 	private int amount;
 	private int total_product_price;
-	private String store_name;
 	
 	public int getBasket_code() {
 		return basket_code;
@@ -45,17 +44,12 @@ public class BasketDTO {
 	public void setTotal_product_price(int total_product_price) {
 		this.total_product_price = total_product_price;
 	}
-	public String getStore_name() {
-		return store_name;
-	}
-	public void setStore_name(String store_name) {
-		this.store_name = store_name;
-	}
+	
 	@Override
 	public String toString() {
 		return "BasketDTO [basket_code=" + basket_code + ", b_id=" + b_id + ", product_code=" + product_code
 				+ ", s_name=" + s_name + ", amount=" + amount + ", total_product_price=" + total_product_price
-				+ ", store_name=" + store_name + "]";
+				+ "]";
 	}
 	
 	

@@ -40,8 +40,10 @@
 
 		<form name="form" id="form" role="form" method="post"
 			action="BoardFreeRegister.b" enctype="multipart/form-data">
-			<div class="row mb-4">
-				<div class="col-8"></div>
+			<div class="row mb-3">
+				<div class="col-8">
+					<strong>${boardFreeDto.f_title}</strong>
+				</div>
 
 				<div class="col-4 d-flex align-items-center ">
 					<div class="mr-auto"></div>
@@ -51,27 +53,28 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="mb-3" style="border-bottom: 3px solid #292929; margin-bottom:10px;">
+			</div>
 
 
-			<div class="input-group mb-4">
+			<%-- <div class="input-group mb-4">
 				
 				
-				<input type="text" name="title" id="title" class="form-control mb-4"
+				<input type="hidden" name="title" id="title" class="form-control mb-4"
 					placeholder="글제목" aria-label="Recipient's username"
 					aria-describedby="button-addon2" value="${boardFreeDto.f_title}"
 					readonly>
 				<div class="input-group-append"></div>
-			</div>
+				
+			</div> --%>
 
 
-
-			<div class="input-group mb-4">
-				<textarea name="content" class="form-control" rows="5" readonly>
+			<div class="mb-4">
+				<div name="content" readonly>
             			${boardFreeDto.f_content}
-            		</textarea>
+            	</div>
 			</div>
-
-
 
 
 			<%-- <div class="input-group">
@@ -95,7 +98,7 @@
 							style="margin-right: 5px;"
 							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/comment-dots-regular.svg">
 						</a> <strong style="margin-right: 10px;">댓글&nbsp;?</strong> <a
-							href="#" class="btn btn-primary" style="margin: 0 5px;">답글</a> <a
+							href="BoardFreeReRegisterPage.b?f_code=	${boardFreeDto.f_code}&f_title=${boardFreeDto.f_title}" class="btn btn-primary" style="margin: 0 5px;">답글</a> <a
 							href="BoardFreeUpdatePage.b?f_code=${f_code}"
 							class="btn btn-warning" style="margin: 0 5px;">수정</a> <a
 							href="BoardFreeDelete.b?f_code=${f_code}" class="btn btn-danger"
