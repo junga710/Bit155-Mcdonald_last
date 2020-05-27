@@ -301,7 +301,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(16,?,?,'admin',sysdate,0)";
+			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(board_notice_sq.nextval,?,?,'admin',sysdate,0)";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, noticedto.getN_title());
@@ -521,7 +521,7 @@ public class UserDAO {
 		return result;
 	}
 
-	//자유게시판 전체 게시글 개수
+	// 자유게시판 전체 게시글 개수
 	public int totalBoardCount() {
 		Connection conn = null;
 		PreparedStatement pstmt = null; //
@@ -558,22 +558,21 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_like,f_file_upload,f_refer)"
-					+ "values(?,?,?,?,sysdate,0,0,?,?)";
+					+ "values(board_free_sq.nextval,?,?,?,sysdate,0,0,?,?)";
 			// refer까지.. step, depth는 XX
 
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, boardFreeDto.getF_code());
-			pstmt.setString(2, boardFreeDto.getF_title());
-			pstmt.setString(3, boardFreeDto.getF_content());
-			pstmt.setString(4, boardFreeDto.getF_writer());
-			pstmt.setString(5, boardFreeDto.getF_file_upload());
+			pstmt.setString(1, boardFreeDto.getF_title());
+			pstmt.setString(2, boardFreeDto.getF_content());
+			pstmt.setString(3, boardFreeDto.getF_writer());
+			pstmt.setString(4, boardFreeDto.getF_file_upload());
 
 			// refer
 			int refermax = getMaxRefer();
 			int refer = refermax + 1;
 
-			pstmt.setInt(6, refer);
+			pstmt.setInt(5, refer);
 
 			row = pstmt.executeUpdate();
 
@@ -706,8 +705,8 @@ public class UserDAO {
 		}
 		return result;
 	}
-	
-	//자유게시판 - 수정
+
+	// 자유게시판 - 수정
 	public int FreeUpdate(BoardFreeDTO boardFreeDto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -716,15 +715,15 @@ public class UserDAO {
 			conn = ds.getConnection();
 
 			String sql = "update board_free set f_title  = ?, f_content =?, f_writer = ?, f_file_upload = ? WHERE f_code = ?";
-			
+
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, boardFreeDto.getF_title());
 			pstmt.setString(2, boardFreeDto.getF_content());
 			pstmt.setString(3, boardFreeDto.getF_writer());
 			pstmt.setString(4, boardFreeDto.getF_file_upload());
-			pstmt.setInt(5, boardFreeDto.getF_code());			
-			
+			pstmt.setInt(5, boardFreeDto.getF_code());
+
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -739,7 +738,7 @@ public class UserDAO {
 			}
 		}
 		return result;
-		
+
 	}
 
 	// 자유게시판 - 삭제
@@ -765,6 +764,79 @@ public class UserDAO {
 			}
 		}
 		return row;
+	}
+
+	// 자유게시판 답변
+	public int FreeReRegister(BoardFreeDTO boardFreeDto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			conn = ds.getConnection();
+
+			int f_code = boardFreeDto.getF_code();
+
+			String f_title = boardFreeDto.getF_title();
+			String f_content = boardFreeDto.getF_content();
+			String f_writer = boardFreeDto.getF_writer();
+			String f_file_upload = boardFreeDto.getF_file_upload();
+			int filesize = 0;
+
+			String refer_depth_step_sal = "select f_refer , f_depth , f_step from board_free where f_code=?";
+
+			String step_update_sql = "update board_free set f_step= f_step+1 where f_step  > ? and f_refer =? ";
+
+			String rewrite_sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_like,f_file_upload,f_refer,f_depth,f_step)"
+					+ " values(board_free_sq.nextval,?,?,?,sysdate,0,0,?,?,?,?)";
+
+			pstmt = conn.prepareStatement(refer_depth_step_sal);
+			pstmt.setInt(1, f_code);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				int f_refer = rs.getInt("f_refer");
+				int f_step = rs.getInt("f_step");
+				int f_depth = rs.getInt("f_depth");
+
+				pstmt = conn.prepareStatement(step_update_sql);
+				pstmt.setInt(1, f_step);
+				pstmt.setInt(2, f_refer);
+				pstmt.executeUpdate();
+
+				// filename,filesize,refer,depth,step
+				pstmt = conn.prepareStatement(rewrite_sql); //
+				pstmt.setString(1, f_title);
+				pstmt.setString(2, f_content);
+				pstmt.setString(3, f_writer);
+				pstmt.setString(4, f_file_upload);
+
+				pstmt.setInt(5, f_refer);
+				pstmt.setInt(6, f_depth + 1);
+				pstmt.setInt(7, f_step + 1);
+
+				int row = pstmt.executeUpdate();
+				if (row > 0) {
+					result = row;
+				} else {
+					result = -1;
+				}
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();//
+			} catch (Exception e) {
+
+			}
+		}
+
+		return result;
 	}
 
 	// 아이디 중복 체크
@@ -857,32 +929,31 @@ public class UserDAO {
 	}
 
 	// 주문관리 - 상세보기(주문 상세 + 상품)
-		public List<OrderDetailDTO> OrderDetailProductView(int order_code) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
-			try {
-				conn = ds.getConnection();
-				String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
-						+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
-						+ "where order_code = ?\r\n" + "";
-				pstmt = conn.prepareStatement(sql);
+	public List<OrderDetailDTO> OrderDetailProductView(int order_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
+		try {
+			conn = ds.getConnection();
+			String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
+					+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
+					+ "where order_code = ?\r\n" + "";
+			pstmt = conn.prepareStatement(sql);
 
-				pstmt.setInt(1, order_code);
-				
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					OrderDetailDTO orderDetailDto = new OrderDetailDTO();
-					orderDetailDto.setOrder_code(order_code);
-					orderDetailDto.setProduct_image(rs.getString("product_image"));
-					orderDetailDto.setProduct_name(rs.getString("product_name"));
-					orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
+			pstmt.setInt(1, order_code);
 
-					list.add(orderDetailDto);
-				}
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				OrderDetailDTO orderDetailDto = new OrderDetailDTO();
+				orderDetailDto.setOrder_code(order_code);
+				orderDetailDto.setProduct_image(rs.getString("product_image"));
+				orderDetailDto.setProduct_name(rs.getString("product_name"));
+				orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
 
-			
+				list.add(orderDetailDto);
+			}
+
 		} catch (Exception e) {
 			System.out.println(" OrderDetailProduct : " + e.getMessage());
 		} finally {
@@ -926,53 +997,52 @@ public class UserDAO {
 	 * 
 	 * } return productList; }
 	 */
-	
+
 	// 주문 페이지 리스트 띄우기(버거 & 세트) : 우철이가 만지는거
-		public List<ProductDTO> getProductList(String product_category) {
-			// 리넡할 객체 선언
-			List<ProductDTO> productList = new ArrayList<ProductDTO>();
-			Connection conn = null;
+	public List<ProductDTO> getProductList(String product_category) {
+		// 리넡할 객체 선언
+		List<ProductDTO> productList = new ArrayList<ProductDTO>();
+		Connection conn = null;
 
-			try {
-				conn = ds.getConnection();
-				String sql = "\r\n" + 
-						"select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n" + 
-						"from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n" + 
-						"where product_category = ?" + "";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, product_category);
-				rs = pstmt.executeQuery();
+		try {
+			conn = ds.getConnection();
+			String sql = "\r\n"
+					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n"
+					+ "from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n"
+					+ "where product_category = ?" + "";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, product_category);
+			rs = pstmt.executeQuery();
 
-				System.out.println(product_category);
+			System.out.println(product_category);
 
-				while (rs.next()) {
-					ProductDTO productDto = new ProductDTO();
-					productDto.setProduct_code(rs.getInt("product_code"));
-					productDto.setProduct_name(rs.getString("product_name"));
-					productDto.setProduct_price(rs.getInt("product_price"));
-					productDto.setProduct_kind(rs.getString("product_kind"));
-					productDto.setProduct_stock(rs.getInt("product_stock"));
-					productDto.setProduct_category(rs.getString("product_category"));
-					productDto.setProduct_image(rs.getString("product_image"));
-					productDto.setNutrition_code(rs.getInt("calorie"));
-					// 칼로리 담을 dto 다시만들기 싫어서 임시로 Nutrition_code에 담음
+			while (rs.next()) {
+				ProductDTO productDto = new ProductDTO();
+				productDto.setProduct_code(rs.getInt("product_code"));
+				productDto.setProduct_name(rs.getString("product_name"));
+				productDto.setProduct_price(rs.getInt("product_price"));
+				productDto.setProduct_kind(rs.getString("product_kind"));
+				productDto.setProduct_stock(rs.getInt("product_stock"));
+				productDto.setProduct_category(rs.getString("product_category"));
+				productDto.setProduct_image(rs.getString("product_image"));
+				productDto.setNutrition_code(rs.getInt("calorie"));
+				// 칼로리 담을 dto 다시만들기 싫어서 임시로 Nutrition_code에 담음
 
-					productList.add(productDto);
-
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
-				productList = null;
-			} finally {
-				// 자원 반납
-				DB_Close.close(rs);
-				DB_Close.close(pstmt);
-				DB_Close.close(conn);
+				productList.add(productDto);
 
 			}
-			return productList;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			productList = null;
+		} finally {
+			// 자원 반납
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+			DB_Close.close(conn);
+
 		}
+<<<<<<< HEAD
 		
 		public List<ProductDTO> selectProductByName(String product_name) {
 			// 리넡할 객체 선언
@@ -1032,7 +1102,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "update board_notice set n_read_num = n_read_num+1 where n_code=?";
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, n_code);
 			int row = pstmt.executeUpdate();
@@ -1049,12 +1119,13 @@ public class UserDAO {
 			} catch (Exception e) {
 
 			}
-			
-		}return result;
-		
+
+		}
+		return result;
+
 	}
-	
-	//매장정보 가져오기
+
+	// 매장정보 가져오기
 	public List<StoreDTO> getSelectShop(String s_name) {
 		// 리턴할 객체 선언
 		List<StoreDTO> InfoShop = new ArrayList<StoreDTO>();
@@ -1093,47 +1164,126 @@ public class UserDAO {
 		}
 		return InfoShop;
 	}
-	
+
 	// 장바구니 출력
-			public List<BasketDTO> OrderCartList (int basket_code) {
-				Connection conn = null;
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				List<BasketDTO> list = new ArrayList<BasketDTO>();
-				try {
-					conn = ds.getConnection();
-					String sql = "select * from basket where basket_code = ?";
-					pstmt = conn.prepareStatement(sql);
+	public List<BasketDTO> OrderCartList(int basket_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BasketDTO> list = new ArrayList<BasketDTO>();
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from basket where basket_code = ?";
+			pstmt = conn.prepareStatement(sql);
 
-					pstmt.setInt(1, basket_code);
-					
-					rs = pstmt.executeQuery();
-					while (rs.next()) {
-						BasketDTO basketDto = new BasketDTO();
-						basketDto.setBasket_code(rs.getInt("basket_code"));
-						basketDto.setB_id(rs.getString("b_id"));
-						basketDto.setProduct_code(rs.getInt("product_code"));
-						basketDto.setS_name(rs.getString("s_name"));
-						basketDto.setAmount(rs.getInt("amount"));
-						basketDto.setTotal_product_price(rs.getInt("total_product_price"));
-						list.add(basketDto);
-					}
+			pstmt.setInt(1, basket_code);
 
-			} catch (Exception e) {
-				System.out.println("OrderCartList: " + e.getMessage());
-			} finally {
-				try {
-					DB_Close.close(pstmt);
-					DB_Close.close(rs);
-					DB_Close.close(conn); // 반환
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BasketDTO basketDto = new BasketDTO();
+				basketDto.setBasket_code(rs.getInt("basket_code"));
+				basketDto.setB_id(rs.getString("b_id"));
+				basketDto.setProduct_code(rs.getInt("product_code"));
+				basketDto.setS_name(rs.getString("s_name"));
+				basketDto.setAmount(rs.getInt("amount"));
+				basketDto.setTotal_product_price(rs.getInt("total_product_price"));
+				list.add(basketDto);
 			}
-			return list;
-		}
 
+		} catch (Exception e) {
+			System.out.println("OrderCartList: " + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(rs);
+				DB_Close.close(conn); // 반환
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	//자유게시판 글 제목으로 찾기
+	public List<BoardFreeDTO> SearchFtitle(String ftitle) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_title like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("나오나요 타이틀!! " + ftitle);
+			pstmt.setString(1, "%" + ftitle + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardFreeDTO BoardFreeDto = new BoardFreeDTO();
+				BoardFreeDto.setF_code(rs.getInt(1));
+				BoardFreeDto.setF_title(rs.getString(2));
+				BoardFreeDto.setF_writer(rs.getString(3));
+				BoardFreeDto.setF_date(rs.getString(4));
+				BoardFreeDto.setF_readnum(rs.getInt(5));
+				BoardFreeDto.setF_like(rs.getInt(6));
+				list.add(BoardFreeDto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+
+	}
 	
-	
-	
+	//자유게시판 글쓴이로 찾기
+	public List<BoardFreeDTO> SearchFwriter(String fwriter) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_writer like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + fwriter + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardFreeDTO BoardFreeDto = new BoardFreeDTO();
+				BoardFreeDto.setF_code(rs.getInt(1));
+				BoardFreeDto.setF_title(rs.getString(2));
+				BoardFreeDto.setF_writer(rs.getString(3));
+				BoardFreeDto.setF_date(rs.getString(4));
+				BoardFreeDto.setF_readnum(rs.getInt(5));
+				BoardFreeDto.setF_like(rs.getInt(6));
+				list.add(BoardFreeDto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+
+	}
 }
