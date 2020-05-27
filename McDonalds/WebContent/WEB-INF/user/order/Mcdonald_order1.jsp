@@ -23,247 +23,241 @@
 }
 </style>
 <body>
-   <!-- header include-->
-   <jsp:include page="../common/header.jsp"></jsp:include>
+	<!-- header include-->
+	<jsp:include page="../common/header.jsp"></jsp:include>
 
-   <div class="hamburgermenu">
-      <h1 class="titDep1">
-         <strong>주문하기</strong>
-      </h1>
-      <ul style="padding-left: 10%; margin-top: 5%;">
-         <li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-         <li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
-      </ul>
-   </div>
+	<div class="hamburgermenu">
+		<h1 class="titDep1">
+			<strong>주문하기</strong>
+		</h1>
+		<ul style="padding-left: 10%; margin-top: 5%;">
+			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
+			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
+		</ul>
+	</div>
 
-   <div class="container show-grid">
-      <div class="row">
-         <div class="col-md-2">공간</div>
-         <div class="col-md-10">메뉴 || 버거 & 세트</div>
-      </div>
-      <div class="row">
-         <div class="col-md-2">
-            <div class="btn-group-vertical" style="width: 99%">
-               <button type="button" class="btn btn-warning"
-                  style="border-bottom: 1px solid darkblue;">일반메뉴</button>
-               <button id="burgerButton" type="button" class="btn btn-warning"
-                  style="border-top: 1px solid darkblue;" value="버거">버거 &
-                  세트</button>
-                  
-               <button id="MacMorningButton" type="button" class="btn btn-warning"
-                  value="맥모닝">맥모닝</button>
-               <button id="SideButton" type="button" class="btn btn-warning" value="사이드">사이드
-                  </button>
-               <button id="DesertButton" type="button" class="btn btn-warning" value="디저트">디저트
-                  </button>
-               <button id="MacCafeButton" type="button" class="btn btn-warning" value="맥카페"
-                  style="border-bottom: 1px solid darkblue;">맥카페</button>
-               <button id="BeverageButton" type="button" class="btn btn-warning" value="음료"
-                  style="border-bottom: 1px solid darkblue;">음료</button>
-               <button type="button" class="btn btn-warning"
-                  style="border-top: 1px solid darkblue;">
-                  <br>
-               </button>
+	<div class="container show-grid">
+		<div class="row">
+			<div class="col-md-2">공간</div>
+			<div class="col-md-10">메뉴 || 버거 & 세트</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				<div class="btn-group-vertical" style="width: 99%">
+					<button type="button" class="btn btn-warning"
+						style="border-bottom: 1px solid darkblue;">일반메뉴</button>
+					<button type="button" class="btn btn-warning"
+						style="border-top: 1px solid darkblue;">버거 & 세트</button>
+					<button type="button" class="btn btn-warning">맥모닝</button>
+					<button type="button" class="btn btn-warning">사이드 & 디저트</button>
+					<button type="button" class="btn btn-warning"
+						style="border-bottom: 1px solid darkblue;">맥카페 & 음료</button>
+					<button type="button" class="btn btn-warning"
+						style="border-top: 1px solid darkblue;">
+						<br>
+					</button>
 
-               <br>
-               <div style="width: 100%; margin-left: 8px; padding-right: 10px;">
-                  <!-- 전체보기 라디오버튼 -->
-                  <div class="custom-control custom-radio">
-                     <input type="radio" class="custom-control-input"
-                        id="defaultGroupExample1" name="groupOfDefaultRadios" checked>
-                     <label class="custom-control-label" for="defaultGroupExample1">전체보기</label>
-                  </div>
+					<br>
+					<div style="width: 100%; margin-left: 8px; padding-right: 10px;">
+						<!-- 전체보기 라디오버튼 -->
+						<div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input"
+								id="defaultGroupExample1" name="groupOfDefaultRadios" checked>
+							<label class="custom-control-label" for="defaultGroupExample1">전체보기</label>
+						</div>
 
-                  <hr>
-                  <!--  -->
-                  <div class="custom-control custom-radio">
-                     <input type="radio" class="custom-control-input"
-                        id="defaultGroupExample2" name="groupOfDefaultRadios"> <label
-                        class="custom-control-label" for="defaultGroupExample2">낮은
-                        가격순</label>
-                  </div>
+						<hr>
+						<!--  -->
+						<div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input"
+								id="defaultGroupExample2" name="groupOfDefaultRadios"> <label
+								class="custom-control-label" for="defaultGroupExample2">낮은
+								가격순</label>
+						</div>
 
-                  <div class="custom-control custom-radio">
-                     <input type="radio" class="custom-control-input"
-                        id="defaultGroupExample3" name="groupOfDefaultRadios"> <label
-                        class="custom-control-label" for="defaultGroupExample3">높은
-                        가격순</label>
-                  </div>
+						<div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input"
+								id="defaultGroupExample3" name="groupOfDefaultRadios"> <label
+								class="custom-control-label" for="defaultGroupExample3">높은
+								가격순</label>
+						</div>
 
-                  <hr>
-                  <div class="custom-control custom-radio">
-                     <input type="radio" class="custom-control-input"
-                        id="defaultGroupExample4" name="groupOfDefaultRadios"> <label
-                        class="custom-control-label" for="defaultGroupExample4">낮은
-                        칼로리순</label>
-                  </div>
+						<hr>
+						<div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input"
+								id="defaultGroupExample4" name="groupOfDefaultRadios"> <label
+								class="custom-control-label" for="defaultGroupExample4">낮은
+								칼로리순</label>
+						</div>
 
-                  <div class="custom-control custom-radio">
-                     <input type="radio" class="custom-control-input"
-                        id="defaultGroupExample5" name="groupOfDefaultRadios"> <label
-                        class="custom-control-label" for="defaultGroupExample5">높은
-                        칼로리순</label>
-                  </div>
-               </div>
+						<div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input"
+								id="defaultGroupExample5" name="groupOfDefaultRadios"> <label
+								class="custom-control-label" for="defaultGroupExample5">높은
+								칼로리순</label>
+						</div>
+					</div>
 
-            </div>
-         </div>
+				</div>
+			</div>
+
+			<div class="col-md-7 _menuList">
 
 
-         <!-- 동적추가완료 -->
-         <div id="_menuList" class="col-md-7">
-         
-         
-         
-         </div>
+	
+			</div>
 
 
-         <div class="col-md-3" style="background-color: whitesmoke;">
-            <div class="row" style="place-content: center;">내 주문 정보</div>
-            <hr>
-            <div class="row">
-               &nbsp; &nbsp;배달 주소 : 경기도 하남시 덕풍동
-               <!-- 여기에 주소를 받아야댐 -->
-            </div>
-            <hr>
-            <div class="row">
-               <div class="col-md-6" style="padding-left: 0px;">
-                  &nbsp; &nbsp;총 주문합계 :
-                  <!-- 여기에 총 가격 받아야댐 -->
-               </div>
-               <div class="col-md-6">
-                  <p style="color: green">₩ 17,300</p>
-               </div>
-            </div>
-            <p></p>
-            <div class="row" style="justify-content: center;">
-               <a href="Mcdonald_order2.html" class="btn btn-danger"
-                  style="width: 85%; background-color: #D1402D; height: 40px;">결제
-                  진행하기</a>
+				<div class="col-md-3" style="background-color: whitesmoke;">
+					<div class="row" style="place-content: center;">내 주문 정보</div>
+					<hr>
+					<div class="row">
+						&nbsp; &nbsp;배달 주소 : 경기도 하남시 덕풍동
+						<!-- 여기에 주소를 받아야댐 -->
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-md-6" style="padding-left: 0px;">
+							&nbsp; &nbsp;총 주문합계 :
+							<!-- 여기에 총 가격 받아야댐 -->
+						</div>
+						<div class="col-md-6">
+							<p style="color: green">₩ 17,300</p>
+						</div>
+					</div>
+					<p></p>
+					<div class="row" style="justify-content: center;">
+						<a href="Mcdonald_order2.html" class="btn btn-danger"
+							style="width: 85%; background-color: #D1402D; height: 40px;">결제
+							진행하기</a>
 
-               <!-- 버튼으로 넘어가야대는거 넣어야댐 -->
-            </div>
-            <hr>
-            <div class="row">
-               &nbsp; &nbsp; 주문 세부사항 <br> ----------------------------------
-               <br> &nbsp; &nbsp; 동적으로 추가해야댐
-               <!-- 동적으로 추가해야댐 대애애앰~~~~!!! -->
-            </div>
-         </div>
-      </div>
-   </div>
-
-
-   <!-- 모달 버튼 누르면 해당 컨텐츠 나오게 해야댐 (6개 필요) -->
-   <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-
-         <!-- Modal content-->
-         <div class="modal-content">
-
-            <div class="card-deck">
-               <div class="card-body" style="width: 380px">
-                  <img class="card-img-top _productImage" src="" alt=""
-                     style="background-color: #ffffffab;">
-                  <div class="card-body" id="card-inner"
-                     style="background-color: #f6f6f6;">
-                     <strong class="_productName">허니sssss</strong>
-                     <div class="row">
-                        <div class="col-6"
-                           style="padding: 5px; border: aliceblue; align-self: center;">
-                           <div class="input-group">
-                              <span class="input-group-btn">
-                                 <button type="button" class="btn btn-danger btn-number"
-                                    data-type="minus" data-field="quant[2]"
-                                    style="height: 45px;">
-                                    <p style="margin: 0">-</p>
-                                 </button>
-                              </span> <input type="text" name="quant[2]"
-                                 class="form-control input-number" value="10" min="1"
-                                 max="100" style="height: auto"> <span
-                                 class="input-group-btn">
-                                 <button type="button" class="btn btn-success btn-number"
-                                    data-type="plus" data-field="quant[2]" style="height: 45px;">
-                                    <p style="margin: 0">+</p>
-                                 </button>
-                              </span>
-                           </div>
-
-                        </div>
-                        <div class="col-6"
-                           style="border: aliceblue; align-self: center;">
-                           <div class="row">
-                              <div class="col-6">
-                                 <img class="card-img-top _productImage" src="" alt="">
-                              </div>
-                              <div class="col-6" style="place-self: center; margin: 0">
-
-                                 <p style="margin: 0" class="_productKind">단품sss</p>
-                                 <div class="_productPrice2"></div>
-                                 <!-- 여기에 가격 동적으로 추가 -->
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-6"
-                           style="padding: 5px; border: aliceblue; align-self: center;">
+						<!-- 버튼으로 넘어가야대는거 넣어야댐 -->
+					</div>
+					<hr>
+					<div class="row">
+						&nbsp; &nbsp; 주문 세부사항 <br> ----------------------------------
+						<br> &nbsp; &nbsp; 동적으로 추가해야댐
+						<!-- 동적으로 추가해야댐 대애애앰~~~~!!! -->
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-                           <div class="input-group">
-                              <span class="input-group-btn">
-                                 <button type="button" class="btn btn-danger btn-number"
-                                    data-type="minus" data-field="quant[2]"
-                                    style="height: 45px;">
-                                    <p style="margin: 0">-</p>
-                                 </button>
-                              </span> <input type="text" name="quant[2]"
-                                 class="form-control input-number" value="10" min="1"
-                                 max="100" style="height: auto"> <span
-                                 class="input-group-btn">
-                                 <button type="button" class="btn btn-success btn-number"
-                                    data-type="plus" data-field="quant[2]" style="height: 45px;">
-                                    <p style="margin: 0">+</p>
-                                 </button>
-                              </span>
-                           </div>
+		<!-- 모달 버튼 누르면 해당 컨텐츠 나오게 해야댐 (6개 필요) -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+
+					<div class="card-deck">
+						<div class="card-body" style="width: 380px">
+							<img class="card-img-top _productImage"
+								src=""
+								alt="" style="background-color: #ffffffab;">
+							<div class="card-body" id="card-inner"
+								style="background-color: #f6f6f6;">
+								<strong class="_productName">허니sssss</strong>
+								<div class="row">
+									<div class="col-6"
+										style="padding: 5px; border: aliceblue; align-self: center;">
+										<div class="input-group">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-danger btn-number"
+													data-type="minus" data-field="quant[2]"
+													style="height: 45px;">
+													<p style="margin: 0">-</p>
+												</button>
+											</span> <input type="text" name="quant[2]"
+												class="form-control input-number" value="10" min="1"
+												max="100" style="height: auto"> <span
+												class="input-group-btn">
+												<button type="button" class="btn btn-success btn-number"
+													data-type="plus" data-field="quant[2]"
+													style="height: 45px;">
+													<p style="margin: 0">+</p>
+												</button>
+											</span>
+										</div>
+
+									</div>
+									<div class="col-6"
+										style="border: aliceblue; align-self: center;">
+										<div class="row">
+											<div class="col-6">
+												<img class="card-img-top _productImage"
+													src=""
+													alt="">
+											</div>
+											<div class="col-6" style="place-self: center; margin: 0">
+
+												<p style="margin: 0" class="_productKind">단품sss</p>
+													<div class="_productPrice2"></div>
+												<!-- 여기에 가격 동적으로 추가 -->
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-6"
+										style="padding: 5px; border: aliceblue; align-self: center;">
+
+
+										<div class="input-group">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-danger btn-number"
+													data-type="minus" data-field="quant[2]"
+													style="height: 45px;">
+													<p style="margin: 0">-</p>
+												</button>
+											</span> <input type="text" name="quant[2]"
+												class="form-control input-number" value="10" min="1"
+												max="100" style="height: auto"> <span
+												class="input-group-btn">
+												<button type="button" class="btn btn-success btn-number"
+													data-type="plus" data-field="quant[2]"
+													style="height: 45px;">
+													<p style="margin: 0">+</p>
+												</button>
+											</span>
+										</div>
 
 
 
-                        </div>
-                        <div class="col-6"
-                           style="border: aliceblue; align-self: center;">
-                           <div class="row">
-                              <div class="col-6">
-                                 <img class="card-img-top _productImage2" src="" alt="">
-                              </div>
-                              <div class="col-6" style="place-self: center;">
-                                 <p style="margin: 0" class="_productKind2">세트ssss</p>
-                                 <div class="_productPrice3"></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="modal-footer" style="justify-content: left;">
+									</div>
+									<div class="col-6"
+										style="border: aliceblue; align-self: center;">
+										<div class="row">
+											<div class="col-6">
+												<img class="card-img-top _productImage2"
+													src=""
+													alt="">
+											</div>
+											<div class="col-6" style="place-self: center;">
+												<p style="margin: 0" class="_productKind2">세트ssss</p>
+												<div class="_productPrice3"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style="justify-content: left;">
 
-               <button type="button" class="btn btn-warning"
-                  style="background-color: rgba(255, 217, 0, 0.87); border: 2px solid rgb(255, 0, 0); height: 40px;">추가하기</button>
-               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-         </div>
-      </div>
-   </div>
-   
-   
-   
-   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+						<button type="button" class="btn btn-warning"
+							style="background-color: rgba(255, 217, 0, 0.87); border: 2px solid rgb(255, 0, 0); height: 40px;">추가하기</button>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 </body>
 
 <!--css-->

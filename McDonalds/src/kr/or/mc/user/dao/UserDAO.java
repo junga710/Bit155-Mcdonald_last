@@ -13,6 +13,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import kr.or.mc.common.dto.BasketDTO;
 import kr.or.mc.common.dto.BoardFreeDTO;
 import kr.or.mc.common.dto.BoardNoticeDTO;
 import kr.or.mc.common.dto.MemberDTO;
@@ -20,6 +21,7 @@ import kr.or.mc.common.dto.NutritionDTO;
 import kr.or.mc.common.dto.OrderDetailDTO;
 import kr.or.mc.common.dto.OrdersDTO;
 import kr.or.mc.common.dto.ProductDTO;
+import kr.or.mc.common.dto.StoreDTO;
 import kr.or.mc.common.utils.DB_Close;
 
 public class UserDAO {
@@ -1015,4 +1017,87 @@ public class UserDAO {
 		}return result;
 		
 	}
+	
+	//매장정보 가져오기
+	public List<StoreDTO> getSelectShop(String s_name) {
+		// 리턴할 객체 선언
+		List<StoreDTO> InfoShop = new ArrayList<StoreDTO>();
+		Connection conn = null;
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select s_name, a_id, s_address, s_phone_number, s_business_hour from store where s_name = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, s_name);
+			rs = pstmt.executeQuery();
+
+			System.out.println(s_name);
+
+			while (rs.next()) {
+				StoreDTO StoreDto = new StoreDTO();
+				StoreDto.setS_name(rs.getNString("s_name"));
+				StoreDto.setA_id(rs.getString("a_id"));
+				StoreDto.setS_address(rs.getString("s_address"));
+				StoreDto.setS_phone_number(rs.getString("s_phone_number"));
+				StoreDto.setS_business_hour(rs.getString("s_business_hour"));
+
+				InfoShop.add(StoreDto);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			InfoShop = null;
+		} finally {
+			// 자원 반납
+			DB_Close.close(rs);
+			DB_Close.close(pstmt);
+			DB_Close.close(conn);
+
+		}
+		return InfoShop;
+	}
+	
+	// 장바구니 출력
+			public List<BasketDTO> OrderCartList (int basket_code) {
+				Connection conn = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				List<BasketDTO> list = new ArrayList<BasketDTO>();
+				try {
+					conn = ds.getConnection();
+					String sql = "select * from basket where basket_code = ?";
+					pstmt = conn.prepareStatement(sql);
+
+					pstmt.setInt(1, basket_code);
+					
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						BasketDTO basketDto = new BasketDTO();
+						basketDto.setBasket_code(rs.getInt("basket_code"));
+						basketDto.setB_id(rs.getString("b_id"));
+						basketDto.setProduct_code(rs.getInt("product_code"));
+						basketDto.setS_name(rs.getString("s_name"));
+						basketDto.setAmount(rs.getInt("amount"));
+						basketDto.setTotal_product_price(rs.getInt("total_product_price"));
+						list.add(basketDto);
+					}
+
+			} catch (Exception e) {
+				System.out.println("OrderCartList: " + e.getMessage());
+			} finally {
+				try {
+					DB_Close.close(pstmt);
+					DB_Close.close(rs);
+					DB_Close.close(conn); // 반환
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return list;
+		}
+
+	
+	
+	
 }
