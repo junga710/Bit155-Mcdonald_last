@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.user.service.ajax.OrderPageBurgerService;
+import kr.or.mc.user.service.ajax.SelectBurgerModalService;
 import kr.or.mc.user.service.ajax.SelectShopService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
 import kr.or.mc.user.service.board.FreeDeleteService;
@@ -64,6 +65,9 @@ public class UserAjaxController extends HttpServlet {
 			forward.setPath("/WEB-INF/user/order/Mcdonald_selectStore.jsp");
 		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
 			action = new SelectShopService();
+			forward = action.execute(request, response);
+		} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
+			action = new SelectBurgerModalService();
 			forward = action.execute(request, response);
 		}
 		
