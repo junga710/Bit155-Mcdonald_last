@@ -31,10 +31,10 @@
 
 <body>
 
-	
+
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
- 
+
 
 	<div class="review_detail">
 		<h1 class="titDep1" style="color: white;">공지게시판 글 수정하기</h1>
@@ -46,26 +46,30 @@
 
 
 
+<div class="container" style="border-bottom: 1px solid; width:20%;">
+	<h2 style="text-align: center; align: center;  padding-top: 3%">공지게시판 글 수정</h2>
+	</div>
 
-	<h2 style="text-align: center;">공지게시판 글 수정</h2>
 	<br>
 	<br>
 	<br>
 	<div class="container">
 		<form method="post" name="BoardNoticeRegister"
-			id="BoardNoticeRegister" action="BoardNoticeUpdate.b?n_code=${boardNoticeDTO.n_code} ">
+			id="BoardNoticeRegister"
+			action="BoardNoticeUpdate.b?n_code=${boardNoticeDTO.n_code} ">
 			<div class="input-group">
 				<input type="text" name="n_title" class="form-control"
 					value="${boardNoticeDTO.n_title}">
 			</div>
-			
 			<br>
 			<textarea id="summernote" name="n_content">${boardNoticeDTO.n_content}</textarea>
-			
-			<div style="position: relative; left: 360px; margin: 50px 50px">
+			<div style="position: relative; padding-top: 2%;">
 				<input id="subBtn" type="submit" class="btn btn-warning btn-lg"
-					value="글 수정하기" onclick="goWrite(this.form)" />
+					value="수정하기" onclick="goWrite(this.form)"
+					style="position: absolute; right: 50%; border-radius: 70px;" />
 			</div>
+			<br> <br> <br> <br>
+
 		</form>
 	</div>
 
@@ -79,8 +83,10 @@
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
-<script src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.js"></script>
-<script src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/lang/summernote-ko-KR.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/lang/summernote-ko-KR.js"></script>
 
 	<script>
 		//Get the button
@@ -124,8 +130,8 @@ function goWrite(frm) {
 	frm.submit();
 }
 </script>
-	
-	
+
+
 	<script>
 	$(document).ready(function(){
 		$('#summernote').summernote({

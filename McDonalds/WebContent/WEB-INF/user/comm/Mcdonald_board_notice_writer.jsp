@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css">
 
 
-<title>자유게시판 글쓰기</title>
+<title>공지게시판</title>
 
 <style>
 #star_grade a {
@@ -50,9 +50,9 @@ padding-left:0px;
 	</div>
 
 
-
-
-	<h2 style="text-align: center;">공지게시판 글 작성</h2>
+<div class="container" style="border-bottom: 1px solid; width:20%;">
+<h2 style="text-align: center;">공지게시판 글 작성</h2>
+	</div>
 	<br>
 	<br>
 	<br>
@@ -66,10 +66,14 @@ padding-left:0px;
 			
 			<br>
 			<textarea id="summernote" name="n_content"></textarea>
-			<div style="position: relative; ">
+			<div style="position: relative; padding-top: 2%;">
 				<input id="subBtn" type="submit" class="btn btn-warning btn-lg"
-					value="글 등록" onclick="goWrite(this.form)" />
+					value="글 등록" onclick="goWrite(this.form)" 
+					style="position: absolute; right: 50%; border-radius: 70px;"/>
 			</div>
+			<br>
+			<br>
+			<br>
 		</form>
 	</div>
 
@@ -139,7 +143,11 @@ function goWrite(frm) {
 			minHeight:null,
 			maxHeight:null,
 		});
-	
+		$("p").each(function(){
+		    if (!$(this).text().trim().length) {
+		        $(this).remove();
+		    }
+		});
 	
 		
 	});

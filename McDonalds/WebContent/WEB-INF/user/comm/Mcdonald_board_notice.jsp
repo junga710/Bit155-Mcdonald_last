@@ -67,6 +67,8 @@
 										<th style="width: 10%;">번호</th>
 										<th style="width: 50%;">제목</th>
 										<th style="width: 30%;">날짜</th>
+										<th style="width: 30%;">조회수</th>
+										
 									</tr>
 								</thead>
 
@@ -79,6 +81,7 @@
 											<td align="center"><a
 												href="BoardNoticeDetail.b?n_code=${boardNotice.n_code}">${boardNotice.n_title}</a></td>
 											<td align="center">${boardNotice.n_write_date}</td>
+											<td align="center">${boardNotice.n_read_num}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
