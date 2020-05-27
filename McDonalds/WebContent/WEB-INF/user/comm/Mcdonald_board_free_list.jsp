@@ -179,21 +179,34 @@
 		<div class="row" style="border-color: #eee;">
 			<div class="col-md-4"></div>
 			<div class="col-md-5" style="text-align: center;">
-				<!-- <nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
-						</a></li>
-					</ul>
-				</nav> -->
+				  <ul class="pagination" style="margin: 0 auto">
+				  
+            <!-- justify-content-end -->
+            <c:if test="${cpage>1 }">
+               <li class="page-item"><a
+                  href="BoardFree.b?cp=${cpage-1}&ps=${pagesize}" class="page-link">
+                     <i class="fas fa-arrow-left"></i>
+               </a></li>
+            </c:if>
+            <c:forEach var="i" begin="1" end="${pagecount}" step="1">
+               <c:choose>
+                  <c:when test="${cpage == i }">
+                     <li class="page-item"><a href="" class="page-link" style="color:red">${i}</a></li>
+                  </c:when>
+                  <c:otherwise>
+                     <li class="page-item"><a
+                        href="BoardFree.b?cp=${i}&ps=${pagesize}" class="page-link">${i}</a></li>
+                  </c:otherwise>
+               </c:choose>
+            </c:forEach>
+            <c:if test="${cpage < pagecount}">
+               <li class="page-item"><a
+                  href="BoardFree.b?cp=${cpage+1}&ps=${pagesize}" class="page-link">
+                     <i class="fas fa-arrow-right"></i>
+               </a></li>
+            </c:if>
+         </ul>
+         
 			</div>
 			<div class="col-md-3">
 				<a href="BoardFreeRegisterPage.b" type="button"
@@ -249,5 +262,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 </html>
