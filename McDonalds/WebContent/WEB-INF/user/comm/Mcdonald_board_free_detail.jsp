@@ -90,7 +90,7 @@
 				<div class="card-body main">
 
 					<div class="d-flex justify-content-end">
-						첨부파일 : <a href="#" class="mr-auto">&nbsp;${boardFreeDto.f_file_upload}</a>
+						첨부파일 : <a href="BoardFreeFileDownload.b?f_file_upload=${boardFreeDto.f_file_upload}" class="mr-auto">&nbsp;${boardFreeDto.f_file_upload}</a>
 						<a href="#" style="margin-right: 5px;"> <img
 							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/heart-regular.svg">
 						</a> <strong style="margin: 0 10px;">좋아요&nbsp;${boardFreeDto.f_like}</strong>
@@ -98,7 +98,9 @@
 							style="margin-right: 5px;"
 							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/comment-dots-regular.svg">
 						</a> <strong style="margin-right: 10px;">댓글&nbsp;?</strong> <a
-							href="BoardFreeReRegisterPage.b?f_code=	${boardFreeDto.f_code}&f_title=${boardFreeDto.f_title}" class="btn btn-primary" style="margin: 0 5px;">답글</a> <a
+							href="BoardFreeReRegisterPage.b?f_code=	${boardFreeDto.f_code}&f_title=${boardFreeDto.f_title}" class="btn btn-primary" style="margin: 0 5px;">
+							답글</a> 
+							<a
 							href="BoardFreeUpdatePage.b?f_code=${f_code}"
 							class="btn btn-warning" style="margin: 0 5px;">수정</a> <a
 							href="BoardFreeDelete.b?f_code=${f_code}" class="btn btn-danger"

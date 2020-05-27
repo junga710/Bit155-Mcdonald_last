@@ -38,7 +38,7 @@ public class FrontMemberController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		
-		if (url_Command.equals("/Main.m")) { // admin 페이지 이동
+		if (url_Command.equals("/AdminPage.m")) { // admin 페이지 이동
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/admin/Main.jsp");
 
