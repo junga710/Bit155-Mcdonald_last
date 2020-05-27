@@ -110,14 +110,17 @@
 				style="border-left-color: rgb(241, 241, 241); text-align: end;">
 				<div class="d-flex justify-content-end">
 					<div class="col-sm-3">
-						<select id="selectBox" class="form-control">
-                           <option value="제목" selected>제목</option>
-                           <option value="작성자">작성자</option>
-                        </select>
+						<select id="searchOption" class="form-control">
+							<option selected>지점고르기</option>
+							<option>옵션1</option>
+							<option>옵션2</option>
+							<option>옵션3</option>
+						</select>
 					</div>
-					<label for=""> <input type="search" id="search"
-                        class="form-control" placeholder="Search">
-                     </label> 
+					<input style="width: 200px;" class="form-control" type="text"
+						placeholder="검색어를 입력하세요"> <img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKePPh8P7YzgL6x0nXcz0JDeLRIlwjdtjw3hpJihg8hAwrcujT&usqp=CAU"
+						width="30px" height="30px">
 				</div>
 			</div>
 		</div>
@@ -213,10 +216,9 @@
 
 			</div>
 		</div>
+
+
 	</div>
-
-
-
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 </body>
