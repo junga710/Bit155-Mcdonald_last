@@ -51,7 +51,8 @@
 					<br style="clear: both;"> <br style="clear: both;">${board.n_content}</p>
 
 				<br> <br> <br> <br> <br>
-			</div></div>
+			</div>
+			</div>
 			<div style="padding-top:3%; position: relative;">
 				<c:choose>
 					<c:when test="${id == 'admin'}">

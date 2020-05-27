@@ -21,7 +21,11 @@ public class OrderPageBurgerService implements Action {
 
 
 		UserDAO userDao = new UserDAO();
-		List<ProductDTO> productDto = userDao.getProductList("버거");
+		String product_category = request.getParameter("product_category");
+		
+		System.out.println("product_category우철 : " + product_category);
+		
+		List<ProductDTO> productDto = userDao.getProductList(product_category);
 		
 		/* JSONObject jsonObject = JSONObject.fromObject(productDto); */
 		
