@@ -16,6 +16,7 @@ import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.user.service.board.FreeDeleteService;
 import kr.or.mc.user.service.board.FreeDetailService;
 import kr.or.mc.user.service.board.FreeListService;
+import kr.or.mc.user.service.board.FreeReRegisterPage;
 import kr.or.mc.user.service.board.FreeRegisterService;
 import kr.or.mc.user.service.board.FreeUpdatePageService;
 import kr.or.mc.user.service.board.FreeUpdateService;
