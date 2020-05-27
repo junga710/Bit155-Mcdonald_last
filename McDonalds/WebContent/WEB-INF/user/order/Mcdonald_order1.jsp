@@ -139,10 +139,9 @@
 					<!-- 버튼으로 넘어가야대는거 넣어야댐 -->
 				</div>
 				<hr>
-				<div class="row">
-					&nbsp; &nbsp; 주문 세부사항 <br> ----------------------------------
-					<br> &nbsp; &nbsp; 동적으로 추가해야댐
-					<!-- 동적으로 추가해야댐 대애애앰~~~~!!! -->
+				<div id="_order_detail">
+					<p>주문 세부사항</p>
+			
 				</div>
 			</div>
 		</div>
@@ -740,6 +739,37 @@ $(document).ready(function() {
 		}
 		
 		$('#_sum').text('₩ ' + sum.toLocaleString());
+		
+		
+		
+		
+		//이부분은 연규가 ▼
+		if(oneAmount > 0 || setAmount > 0){
+			
+			var detailImg = $('#_thumbnail').attr('src');
+			
+			var detailName = $('#myModal .ko').text();
+			
+			
+			var viewDetail = "";
+				
+				viewDetail += "<div class=\"row\">";
+				viewDetail += "<div class=\"col-4\">";
+				viewDetail += "<img src="+detailImg+" style=\"width:100%\">";
+				viewDetail += "</div>";
+				viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
+				viewDetail += "<span style=\"font-size:x-small\">"+ detailName +"</span>";
+				viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
+				viewDetail += "<div>세트 : "+ setAmount +"개 </div>";
+				
+				viewDetail += "</div>";
+				viewDetail += "</div>";
+			
+		$('#_order_detail').append(viewDetail);
+		
+		}
+		
+		 //이부분은 연규가 ▲
 		
 		$(this).attr('data-dismiss', 'modal');
 	})
