@@ -907,45 +907,85 @@ public class UserDAO {
 		return list;
 	}
 
-	// 주문 페이지 리스트 띄우기(버거 & 세트)
-	public List<ProductDTO> getProductList(String product_category) {
-		// 리넡할 객체 선언
-		List<ProductDTO> productList = new ArrayList<ProductDTO>();
-		Connection conn = null;
+	// 주문 페이지 리스트 띄우기(버거 & 세트) : 우철이가 한게 잘 되면 지우기
+	/*
+	 * public List<ProductDTO> getProductList(String product_category) { // 리넡할 객체
+	 * 선언 List<ProductDTO> productList = new ArrayList<ProductDTO>(); Connection
+	 * conn = null;
+	 * 
+	 * try { conn = ds.getConnection(); String sql =
+	 * "select product_code, product_name, product_price, product_kind, product_image  from product where product_category = ?"
+	 * ; pstmt = conn.prepareStatement(sql); pstmt.setString(1, product_category);
+	 * rs = pstmt.executeQuery();
+	 * 
+	 * System.out.println(product_category);
+	 * 
+	 * while (rs.next()) { ProductDTO productDto = new ProductDTO();
+	 * productDto.setProduct_code(rs.getInt("product_code"));
+	 * productDto.setProduct_name(rs.getString("product_name"));
+	 * productDto.setProduct_price(rs.getInt("product_price"));
+	 * productDto.setProduct_kind(rs.getString("product_kind"));
+	 * productDto.setProduct_image(rs.getString("product_image"));
+	 * 
+	 * productList.add(productDto);
+	 * 
+	 * }
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); productList = null; } finally {
+	 * // 자원 반납 DB_Close.close(rs); DB_Close.close(pstmt); DB_Close.close(conn);
+	 * 
+	 * } return productList; }
+	 */
+	
+	// 주문 페이지 리스트 띄우기(버거 & 세트) : 우철이가 만지는거
+		public List<ProductDTO> getProductList(String product_category) {
+			// 리넡할 객체 선언
+			List<ProductDTO> productList = new ArrayList<ProductDTO>();
+			Connection conn = null;
 
-		try {
-			conn = ds.getConnection();
-			String sql = "select product_code, product_name, product_price, product_kind, product_image  from product where product_category = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, product_category);
-			rs = pstmt.executeQuery();
+			try {
+				conn = ds.getConnection();
+				String sql = "\r\n" + 
+						"select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n" + 
+						"from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n" + 
+						"where product_category = ?" + "";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, product_category);
+				rs = pstmt.executeQuery();
 
-			System.out.println(product_category);
+				System.out.println(product_category);
 
-			while (rs.next()) {
-				ProductDTO productDto = new ProductDTO();
-				productDto.setProduct_code(rs.getInt("product_code"));
-				productDto.setProduct_name(rs.getString("product_name"));
-				productDto.setProduct_price(rs.getInt("product_price"));
-				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_image(rs.getString("product_image"));
+				while (rs.next()) {
+					ProductDTO productDto = new ProductDTO();
+					productDto.setProduct_code(rs.getInt("product_code"));
+					productDto.setProduct_name(rs.getString("product_name"));
+					productDto.setProduct_price(rs.getInt("product_price"));
+					productDto.setProduct_kind(rs.getString("product_kind"));
+					productDto.setProduct_stock(rs.getInt("product_stock"));
+					productDto.setProduct_category(rs.getString("product_category"));
+					productDto.setProduct_image(rs.getString("product_image"));
+					productDto.setNutrition_code(rs.getInt("calorie"));
+					// 칼로리 담을 dto 다시만들기 싫어서 임시로 Nutrition_code에 담음
 
-				productList.add(productDto);
+					productList.add(productDto);
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				productList = null;
+			} finally {
+				// 자원 반납
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+				DB_Close.close(conn);
 
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			productList = null;
-		} finally {
-			// 자원 반납
-			DB_Close.close(rs);
-			DB_Close.close(pstmt);
-			DB_Close.close(conn);
-
+			return productList;
 		}
-		return productList;
-	}
+	
+	
+	
 	//공지게시판 조회수
 	public boolean getNoticeReadNum(int n_code) throws Exception {
 		Connection conn = null;

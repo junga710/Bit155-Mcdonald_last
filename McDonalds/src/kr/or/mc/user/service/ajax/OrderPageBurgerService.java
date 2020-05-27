@@ -27,7 +27,7 @@ public class OrderPageBurgerService implements Action {
 		
 		JSONArray jsonArr = JSONArray.fromObject(productDto); 
 		
-		System.out.println("jsonArr : " + jsonArr);
+		System.out.println("jsonArrsss : " + jsonArr);
 
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");
