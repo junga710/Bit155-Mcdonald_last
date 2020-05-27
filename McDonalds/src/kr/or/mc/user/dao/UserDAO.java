@@ -819,8 +819,8 @@ public class UserDAO {
 				
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-					
 					OrderDetailDTO orderDetailDto = new OrderDetailDTO();
+					orderDetailDto.setOrder_code(order_code);
 					orderDetailDto.setProduct_image(rs.getString("product_image"));
 					orderDetailDto.setProduct_name(rs.getString("product_name"));
 					orderDetailDto.setOrder_amount(rs.getInt("order_amount"));

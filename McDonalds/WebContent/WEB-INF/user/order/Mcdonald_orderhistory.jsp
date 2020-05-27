@@ -32,9 +32,13 @@
   }
 </style>
 
+
 <body>
+
+
 <!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
+
   <div class="hamburgermenu">
     <h1 class="titDep1">주문 내역</h1>
     <p class="subCopy">빅맥<sub class="reg">®</sub>에서 맥스파이시<sub class="reg">®</sub> 상하이버거까지, <br>주문 즉시 바로
@@ -45,9 +49,7 @@
     </ul>
   </div>
 
-  <p></p>
-
-
+  <p ></p>
 
   <div class="container show-grid">
     <div class="row">
@@ -57,50 +59,82 @@
 
       <div class="col-md-12">
 
+
+
+
         <div id="accordion" >
-          <h3>결제 일자 : ${ordersDTO.payment_date}</h3>
+
+   
+<c:forEach var="e" items="${listod}">
+              
+      
+ 
+		<h3>결제 일자 : ${e.payment_date}</h3>
           <div class="row" style="padding:0px;">
-            <div class="col-md-3" style="background-color: inherit">
+            <div class="col-md-2" style="background-color: inherit">
               주문 번호 : <br>
-              <p style="font-size: 17px; color:#406E96"> ${ordersDTO.order_code}</p> 
+              <p style="font-size: 17px; color:#406E96"> ${e.order_code}</p> 
             </div>
-            <div class="col-md-5">
+            <div class="col-md-1" >
+              지점명 : <br>
+              ${e.s_name}
+            </div>
+          
+             
+            <div class="col-md-5" id="herehere">
+            
+            <c:forEach var="i" items="${listdetail}" > 
+         		<c:choose>
+             
+              <c:when test = "${e.order_code == i.order_code}">
               <div class="row">
                 <div class="col-md-2">
-                  지점명 : ${ordersDTO.s_name}
+                  	${i.order_amount} 
                   <br>  
                 </div>
-                <div class="col-md-3" style="padding:0px;">
-                  <img src="../vendors/images/burger/burgerdetail/orderimg/ddd2.png" alt="" style="width:100%">
-                </div>
-                <div class="col-md-7" >
-                  아직 불러와야함
-                  <ul>
-                    <li>단품 - 빅맥</li>
-                    <li>코카-콜라 - 미디엄</li>
-                    <li>후렌치 후라이 - 미디엄</li>
-                  </ul>
-                  <div>
-                    수량 : 4
-                  </div>
-                </div>
-              </div>
+            <div class="col-md-3" style="padding:0px;">
+                 <img src="${pageContext.request.contextPath}/usercss/vendors/images/DB_images/${i.product_image}" alt="" style="width:100%">
             </div>
+			<div class="col-md-7" >
+				 ${i.product_name}  
+				<div>
+				
+				 </div>
+            </div>
+              </div>
+               </c:when>
+              
+           		</c:choose>
+            </c:forEach> 
+              
+              
+            </div>
+            
+            
+       
+           
+           
+            
             <div class="col-md-4" style="background-color: inherit">
-              배달 주소 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${ordersDTO.address} ${ordersDTO.address_detail}
+              배달 주소 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${e.address} ${e.address_detail}
                <p></p>
               <div class="row">
                 <div class="col-md-6" style="background-color: inherit">
                 총 주문합계 : 
                 </div>
                 <div class="col-md-6" style="background-color: inherit">
-                  <p style="color:green">₩ ${ordersDTO.payment_price}</p>
+                  <p style="color:green">₩ ${e.payment_price}</p>
                 </div>
               </div>
               <hr>
             </div>
           </div>
-          <h3>결제 일자 : 2020/05/21</h3>
+          
+          <%-- </c:forEach> --%>
+    </c:forEach>  
+          
+          
+          <!-- <h3>결제 일자 : 2020/05/21</h3>
           <div>
             <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at
               aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non
@@ -120,11 +154,14 @@
               <li>List item</li>
               <li>List item</li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
   </div>
+
+
+
 
 
 
@@ -134,6 +171,8 @@
 <jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 <jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
+
+
 
 <script
 	src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
