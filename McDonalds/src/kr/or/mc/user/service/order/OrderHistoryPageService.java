@@ -30,7 +30,8 @@ public class OrderHistoryPageService implements Action {
 		//뽑아온 리스트에서 코드분리해서 listint에 넣기 
 		
 		for(int i=0; i<listod.size(); i++) {
-			System.out.println("*****************");
+			
+		System.out.println("*****************");
 		System.out.println("이거나와?" + listod.get(i));
 		System.out.println("코드 뽑아냄  "+ listod.get(i).getOrder_code());
 		
@@ -49,7 +50,9 @@ public class OrderHistoryPageService implements Action {
 		for(int i=0; i<listint.size();i++) {
 			
 			//for문으로 돌려서 낭
-			List<OrderDetailDTO> listdetail =(userdao.OrderDetailProductView(listint.get(1)));
+			listdetail.addAll(userdao.OrderDetailProductView(listint.get(i)));
+			System.out.println("하나씩 뽑아보기" + listdetail.get(i));
+			
 		}
 		
 		//OrderDetailProductView() 코드 로 돌려보기 

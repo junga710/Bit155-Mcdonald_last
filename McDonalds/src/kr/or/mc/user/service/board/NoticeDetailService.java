@@ -14,16 +14,25 @@ public class NoticeDetailService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		ActionForward forward = new ActionForward();
+		UserDAO userDao = new UserDAO();
+		BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
 		System.out.println("상세페이지 서블릿 타나요");
 		String n_codestr = request.getParameter("n_code");
 		int n_code = Integer.parseInt(n_codestr.trim());
 		
-		UserDAO userDao = new UserDAO();
-		BoardNoticeDTO boardNoticeDTO = userDao.BoardNoticeDetail(n_code);
+	
+		try {
+			userDao.getNoticeReadNum(n_code);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		boardNoticeDTO = userDao.BoardNoticeDetail(n_code);
 		
 		request.setAttribute("boardNoticeDTO", boardNoticeDTO);
-		
-		ActionForward forward = new ActionForward();
+		request.setAttribute("n_code", n_code);
+	
 		forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice_detail.jsp");
 	
 

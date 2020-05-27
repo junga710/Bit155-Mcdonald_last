@@ -299,7 +299,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(board_notice_sq.nextval,?,?,'admin',sysdate,0)";
+			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(board_notice_sq.nextval,?,?,'admin',sysdate,?)";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, noticedto.getN_title());
@@ -880,5 +880,34 @@ public class UserDAO {
 			
 		}
 		return productList;
+	}
+	//공지게시판 조회수
+	public boolean getNoticeReadNum(int n_code) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean result = false;
+		try {
+			conn = ds.getConnection();
+			String sql = "update board_notice set n_read_num = n_read_num+1 where n_code=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, n_code);
+			int row = pstmt.executeUpdate();
+			if (row > 0) {
+				result = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e) {
+
+			}
+			
+		}return result;
+		
 	}
 }
