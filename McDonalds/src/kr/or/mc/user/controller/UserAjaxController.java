@@ -64,6 +64,7 @@ public class UserAjaxController extends HttpServlet {
 			forward = action.execute(request, response);
 		} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
 			action = new SelectBurgerModalService();
+			forward = action.execute(request, response);
 		}else if(url_Command.contentEquals("/search.ua")) {
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);

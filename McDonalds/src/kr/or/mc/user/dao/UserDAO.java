@@ -1041,8 +1041,9 @@ public class UserDAO {
 			DB_Close.close(pstmt);
 			DB_Close.close(conn);
 
+				return productList;
 		}
-<<<<<<< HEAD
+	}
 		
 		public List<ProductDTO> selectProductByName(String product_name) {
 			// 리넡할 객체 선언
