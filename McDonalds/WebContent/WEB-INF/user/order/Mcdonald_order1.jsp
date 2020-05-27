@@ -317,22 +317,18 @@ $(document).ready(function() {
 			},
 			success : function(response) {
 					$.each(response, function (index, item) {
-
 							if(response[index].product_kind === '단품'){
 								let start = $("#_menuList"); 
 								start = "";
-								if(index === 0){
-								 	start += "<div class=\"row\" id=\"row1\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
+								 	start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[0].nutrition_code + " Kcal</div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
 			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
@@ -343,134 +339,9 @@ $(document).ready(function() {
 			                       	start += "</div>"; //card-body
 								 	start += "</div>"; //card-body
 								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
 									$("#_menuList").append(start);	
-								} else if(index === 1){
-									let row1_col2 = '';
-									row1_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row1_col2 += "<div class=\"card-deck\">";
-									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
-									row1_col2 += " <div class=\"row\">";
-									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
-									row1_col2 += "<div class=\"_productCalorie\"> " + response[1].nutrition_code + " Kcal</div>"
-									row1_col2 += "</div>"
-									row1_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row1_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row1_col2 += "추가</button>";
-				                    
-									row1_col2 += "</div>"; //col-6 2번째
-									row1_col2 += "</div>"; //row
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-deck
-									row1_col2 += "</div>"; //col
-									$("#row1").append(row1_col2);	
-								} else if(index === 2){
-									start += "<div class=\"row\" id=\"row2\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[2].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 3){
-									let row2_col2 = '';
-									row2_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row2_col2 += "<div class=\"card-deck\">";
-									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
-									row2_col2 += " <div class=\"row\">";
-									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
-									row2_col2 += "<div class=\"_productCalorie\"> " + response[3].nutrition_code + " Kcal</div>"
-									row2_col2 += "</div>"
-									row2_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row2_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row2_col2 += "추가</button>";
-				                    
-									row2_col2 += "</div>"; //col-6 2번째
-									row2_col2 += "</div>"; //row
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-deck
-									row2_col2 += "</div>"; //col
-									$("#row2").append(row2_col2);	
-								} else if(index === 4){
-									start += "<div class=\"row\" id=\"row3\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[4].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 5){
-									let row3_col2 = '';
-									row3_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row3_col2 += "<div class=\"card-deck\">";
-									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
-									row3_col2 += " <div class=\"row\">";
-									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
-									row3_col2 += "<div class=\"_productCalorie\"> " + response[5].nutrition_code + " Kcal</div>"
-									row3_col2 += "</div>"
-									row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row3_col2 += "추가</button>";
-				                    
-									row3_col2 += "</div>"; //col-6 2번째
-									row3_col2 += "</div>"; //row
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-deck
-									row3_col2 += "</div>"; //col
-									$("#row3").append(row3_col2);	
-								} 
+								}
 								
-							} //단품 if문 마지막
 					})
 				
 			},
@@ -504,18 +375,15 @@ $(document).ready(function() {
 							if(response[index].product_kind === '단품'){
 								let start = $("#_menuList");
 								start = "";
-								if(index === 0){
-								 	start += "<div class=\"row\" id=\"row1\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
+									start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[0].nutrition_code + " Kcal</div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
 			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
@@ -526,133 +394,7 @@ $(document).ready(function() {
 			                       	start += "</div>"; //card-body
 								 	start += "</div>"; //card-body
 								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
 									$("#_menuList").append(start);	
-								} else if(index === 1){
-									let row1_col2 = '';
-									row1_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row1_col2 += "<div class=\"card-deck\">";
-									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
-									row1_col2 += " <div class=\"row\">";
-									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
-									row1_col2 += "<div class=\"_productCalorie\"> " + response[1].nutrition_code + " Kcal</div>"
-									row1_col2 += "</div>"
-									row1_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row1_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row1_col2 += "추가</button>";
-				                    
-									row1_col2 += "</div>"; //col-6 2번째
-									row1_col2 += "</div>"; //row
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-deck
-									row1_col2 += "</div>"; //col
-									$("#row1").append(row1_col2);	
-								} else if(index === 2){
-									start += "<div class=\"row\" id=\"row2\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[2].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 3){
-									let row2_col2 = '';
-									row2_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row2_col2 += "<div class=\"card-deck\">";
-									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
-									row2_col2 += " <div class=\"row\">";
-									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
-									row2_col2 += "<div class=\"_productCalorie\"> " + response[3].nutrition_code + " Kcal</div>"
-									row2_col2 += "</div>"
-									row2_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row2_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row2_col2 += "추가</button>";
-				                    
-									row2_col2 += "</div>"; //col-6 2번째
-									row2_col2 += "</div>"; //row
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-deck
-									row2_col2 += "</div>"; //col
-									$("#row2").append(row2_col2);	
-								} else if(index === 4){
-									start += "<div class=\"row\" id=\"row3\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[4].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 5){
-									let row3_col2 = '';
-									row3_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row3_col2 += "<div class=\"card-deck\">";
-									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
-									row3_col2 += " <div class=\"row\">";
-									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
-									row3_col2 += "<div class=\"_productCalorie\"> " + response[5].nutrition_code + " Kcal</div>"
-									row3_col2 += "</div>"
-									row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row3_col2 += "추가</button>";
-				                    
-									row3_col2 += "</div>"; //col-6 2번째
-									row3_col2 += "</div>"; //row
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-deck
-									row3_col2 += "</div>"; //col
-									$("#row3").append(row3_col2);	
-								} 
-								
 								
 								
 							} //단품 if문 마지막
@@ -686,22 +428,18 @@ $(document).ready(function() {
 			},
 			success : function(response) {
 					$.each(response, function (index, item) {
-						console.log("ss : " + response[0].product_image)
 							if(response[index].product_kind === '단품'){
 								let start = $("#_menuList");
 								start = "";
-								if(index === 0){
-								 	start += "<div class=\"row\" id=\"row1\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
+									start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[0].nutrition_code + " Kcal</div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
 			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
@@ -712,131 +450,7 @@ $(document).ready(function() {
 			                       	start += "</div>"; //card-body
 								 	start += "</div>"; //card-body
 								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
 									$("#_menuList").append(start);	
-								} else if(index === 1){
-									let row1_col2 = '';
-									row1_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row1_col2 += "<div class=\"card-deck\">";
-									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
-									row1_col2 += " <div class=\"row\">";
-									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
-									row1_col2 += "<div class=\"_productCalorie\"> " + response[1].nutrition_code + " Kcal</div>"
-									row1_col2 += "</div>"
-									row1_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row1_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row1_col2 += "추가</button>";
-				                    
-									row1_col2 += "</div>"; //col-6 2번째
-									row1_col2 += "</div>"; //row
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-deck
-									row1_col2 += "</div>"; //col
-									$("#row1").append(row1_col2);	
-								} else if(index === 2){
-									start += "<div class=\"row\" id=\"row2\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[2].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 3){
-									let row2_col2 = '';
-									row2_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row2_col2 += "<div class=\"card-deck\">";
-									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row2_col2 += " <div class=\"row\">";
-									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
-									row2_col2 += "<div class=\"_productCalorie\"> " + response[3].nutrition_code + " Kcal</div>"
-									row2_col2 += "</div>"
-									row2_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row2_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row2_col2 += "추가</button>";
-				                    
-									row2_col2 += "</div>"; //col-6 2번째
-									row2_col2 += "</div>"; //row
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-deck
-									row2_col2 += "</div>"; //col
-									$("#row2").append(row2_col2);	
-								} else if(index === 4){
-									start += "<div class=\"row\" id=\"row3\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[4].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 5){
-									let row3_col2 = '';
-									row3_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row3_col2 += "<div class=\"card-deck\">";
-									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
-									row3_col2 += " <div class=\"row\">";
-									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
-									row3_col2 += "<div class=\"_productCalorie\"> " + response[5].nutrition_code + " Kcal</div>"
-									row3_col2 += "</div>"
-									row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row3_col2 += "추가</button>";
-				                    
-									row3_col2 += "</div>"; //col-6 2번째
-									row3_col2 += "</div>"; //row
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-deck
-									row3_col2 += "</div>"; //col
-									$("#row3").append(row3_col2);	
-								} 
 								
 								
 								
@@ -872,22 +486,18 @@ $(document).ready(function() {
 			},
 			success : function(response) {
 					$.each(response, function (index, item) {
-						console.log("ss : " + response[0].product_image)
 							if(response[index].product_kind === '단품'){
 								let start = $("#_menuList");
 								start = "";
-								if(index === 0){
-								 	start += "<div class=\"row\" id=\"row1\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
+									start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[0].nutrition_code + " Kcal</div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
 			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
@@ -898,132 +508,7 @@ $(document).ready(function() {
 			                       	start += "</div>"; //card-body
 								 	start += "</div>"; //card-body
 								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
 									$("#_menuList").append(start);	
-								} else if(index === 1){
-									let row1_col2 = '';
-									row1_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row1_col2 += "<div class=\"card-deck\">";
-									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
-									row1_col2 += " <div class=\"row\">";
-									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
-									row1_col2 += "<div class=\"_productCalorie\"> " + response[1].nutrition_code + " Kcal</div>"
-									row1_col2 += "</div>"
-									row1_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row1_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row1_col2 += "추가</button>";
-				                    
-									row1_col2 += "</div>"; //col-6 2번째
-									row1_col2 += "</div>"; //row
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-deck
-									row1_col2 += "</div>"; //col
-									$("#row1").append(row1_col2);	
-								} else if(index === 2){
-									start += "<div class=\"row\" id=\"row2\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[2].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 3){
-									let row2_col2 = '';
-									row2_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row2_col2 += "<div class=\"card-deck\">";
-									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
-									row2_col2 += " <div class=\"row\">";
-									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
-									row2_col2 += "<div class=\"_productCalorie\"> " + response[3].nutrition_code + " Kcal</div>"
-									row2_col2 += "</div>"
-									row2_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row2_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row2_col2 += "추가</button>";
-				                    
-									row2_col2 += "</div>"; //col-6 2번째
-									row2_col2 += "</div>"; //row
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-deck
-									row2_col2 += "</div>"; //col
-									$("#row2").append(row2_col2);	
-								} else if(index === 4){
-									start += "<div class=\"row\" id=\"row3\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[4].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 5){
-									let row3_col2 = '';
-									row3_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row3_col2 += "<div class=\"card-deck\">";
-									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
-									row3_col2 += " <div class=\"row\">";
-									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
-									row3_col2 += "<div class=\"_productCalorie\"> " + response[5].nutrition_code + " Kcal</div>"
-									row3_col2 += "</div>"
-									row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row3_col2 += "추가</button>";
-				                    
-									row3_col2 += "</div>"; //col-6 2번째
-									row3_col2 += "</div>"; //row
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-deck
-									row3_col2 += "</div>"; //col
-									$("#row3").append(row3_col2);	
-								} 
 								
 								
 								
@@ -1058,22 +543,18 @@ $(document).ready(function() {
 			},
 			success : function(response) {
 					$.each(response, function (index, item) {
-						console.log("ss : " + response[0].product_image)
 							if(response[index].product_kind === '단품'){
 								let start = $("#_menuList");
 								start = "";
-								if(index === 0){
-								 	start += "<div class=\"row\" id=\"row1\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
+									start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[0].nutrition_code + " Kcal</div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
 			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
@@ -1084,134 +565,8 @@ $(document).ready(function() {
 			                       	start += "</div>"; //card-body
 								 	start += "</div>"; //card-body
 								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
 									$("#_menuList").append(start);	
-								} else if(index === 1){
-									let row1_col2 = '';
-									row1_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row1_col2 += "<div class=\"card-deck\">";
-									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
-									row1_col2 += " <div class=\"row\">";
-									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
-									row1_col2 += "<div class=\"_productCalorie\"> " + response[1].nutrition_code + " Kcal</div>"
-									row1_col2 += "</div>"
-									row1_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row1_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row1_col2 += "추가</button>";
-				                    
-									row1_col2 += "</div>"; //col-6 2번째
-									row1_col2 += "</div>"; //row
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-deck
-									row1_col2 += "</div>"; //col
-									$("#row1").append(row1_col2);	
-								} else if(index === 2){
-									start += "<div class=\"row\" id=\"row2\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[2].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 3){
-									let row2_col2 = '';
-									row2_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row2_col2 += "<div class=\"card-deck\">";
-									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
-									row2_col2 += " <div class=\"row\">";
-									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
-									row2_col2 += "<div class=\"_productCalorie\"> " + response[3].nutrition_code + " Kcal</div>"
-									row2_col2 += "</div>"
-									row2_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row2_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row2_col2 += "추가</button>";
-				                    
-									row2_col2 += "</div>"; //col-6 2번째
-									row2_col2 += "</div>"; //row
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-deck
-									row2_col2 += "</div>"; //col
-									$("#row2").append(row2_col2);	
-								} else if(index === 4){
-									start += "<div class=\"row\" id=\"row3\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[4].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 5){
-									let row3_col2 = '';
-									row3_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row3_col2 += "<div class=\"card-deck\">";
-									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
-									row3_col2 += " <div class=\"row\">";
-									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
-									row3_col2 += "<div class=\"_productCalorie\"> " + response[5].nutrition_code + " Kcal</div>"
-									row3_col2 += "</div>"
-									row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row3_col2 += "추가</button>";
-				                    
-									row3_col2 += "</div>"; //col-6 2번째
-									row3_col2 += "</div>"; //row
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-deck
-									row3_col2 += "</div>"; //col
-									$("#row3").append(row3_col2);	
-								} 
-								
-								
+
 								
 							} //단품 if문 마지막
 					})
@@ -1245,22 +600,18 @@ $(document).ready(function() {
 			},
 			success : function(response) {
 					$.each(response, function (index, item) {
-						console.log("ss : " + response[0].product_image)
 							if(response[index].product_kind === '단품'){
 								let start = $("#_menuList");
 								start = "";
-								if(index === 0){
-								 	start += "<div class=\"row\" id=\"row1\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
+									start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[0].nutrition_code + " Kcal</div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
 			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
@@ -1271,134 +622,7 @@ $(document).ready(function() {
 			                       	start += "</div>"; //card-body
 								 	start += "</div>"; //card-body
 								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
 									$("#_menuList").append(start);	
-								} else if(index === 1){
-									let row1_col2 = '';
-									row1_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row1_col2 += "<div class=\"card-deck\">";
-									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
-									row1_col2 += " <div class=\"row\">";
-									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
-									row1_col2 += "<div class=\"_productCalorie\"> " + response[1].nutrition_code + " Kcal</div>"
-									row1_col2 += "</div>"
-									row1_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row1_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row1_col2 += "추가</button>";
-				                    
-									row1_col2 += "</div>"; //col-6 2번째
-									row1_col2 += "</div>"; //row
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-deck
-									row1_col2 += "</div>"; //col
-									$("#row1").append(row1_col2);	
-								} else if(index === 2){
-									start += "<div class=\"row\" id=\"row2\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[2].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 3){
-									let row2_col2 = '';
-									row2_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row2_col2 += "<div class=\"card-deck\">";
-									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
-									row2_col2 += " <div class=\"row\">";
-									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
-									row2_col2 += "<div class=\"_productCalorie\"> " + response[3].nutrition_code + " Kcal</div>"
-									row2_col2 += "</div>"
-									row2_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row2_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row2_col2 += "추가</button>";
-				                    
-									row2_col2 += "</div>"; //col-6 2번째
-									row2_col2 += "</div>"; //row
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-deck
-									row2_col2 += "</div>"; //col
-									$("#row2").append(row2_col2);	
-								} else if(index === 4){
-									start += "<div class=\"row\" id=\"row3\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[4].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 5){
-									let row3_col2 = '';
-									row3_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row3_col2 += "<div class=\"card-deck\">";
-									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
-									row3_col2 += " <div class=\"row\">";
-									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
-									row3_col2 += "<div class=\"_productCalorie\"> " + response[5].nutrition_code + " Kcal</div>"
-									row3_col2 += "</div>"
-									row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row3_col2 += "추가</button>";
-				                    
-									row3_col2 += "</div>"; //col-6 2번째
-									row3_col2 += "</div>"; //row
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-deck
-									row3_col2 += "</div>"; //col
-									$("#row3").append(row3_col2);	
-								} 
-								
-								
 								
 							} //단품 if문 마지막
 					})
@@ -1416,11 +640,7 @@ $(document).ready(function() {
 	
 	//음료 클릭했을때
 	$('#BeverageButton').click(function(){
-		
-		
-		
-		
-		
+
 		//menulist empty
 		$('#_menuList').empty()
 		
@@ -1435,22 +655,18 @@ $(document).ready(function() {
 			},
 			success : function(response) {
 					$.each(response, function (index, item) {
-						console.log("ss : " + response[0].product_image)
 							if(response[index].product_kind === '단품'){
 								let start = $("#_menuList");
 								start = "";
-								if(index === 0){
-								 	start += "<div class=\"row\" id=\"row1\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
+									start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[0].nutrition_code + " Kcal</div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
 			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
@@ -1461,135 +677,8 @@ $(document).ready(function() {
 			                       	start += "</div>"; //card-body
 								 	start += "</div>"; //card-body
 								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
 									$("#_menuList").append(start);	
-								} else if(index === 1){
-									let row1_col2 = '';
-									row1_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row1_col2 += "<div class=\"card-deck\">";
-									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
-									row1_col2 += " <div class=\"row\">";
-									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
-									row1_col2 += "<div class=\"_productCalorie\"> " + response[1].nutrition_code + " Kcal</div>"
-									row1_col2 += "</div>"
-									row1_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row1_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row1_col2 += "추가</button>";
-				                    
-									row1_col2 += "</div>"; //col-6 2번째
-									row1_col2 += "</div>"; //row
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-body
-									row1_col2 += "</div>"; //card-deck
-									row1_col2 += "</div>"; //col
-									$("#row1").append(row1_col2);	
-								} else if(index === 2){
-									start += "<div class=\"row\" id=\"row2\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[2].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 3){
-									let row2_col2 = '';
-									row2_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row2_col2 += "<div class=\"card-deck\">";
-									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
-									row2_col2 += " <div class=\"row\">";
-									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
-									row2_col2 += "<div class=\"_productCalorie\"> " + response[3].nutrition_code + " Kcal</div>"
-									row2_col2 += "</div>"
-									row2_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row2_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row2_col2 += "추가</button>";
-				                    
-									row2_col2 += "</div>"; //col-6 2번째
-									row2_col2 += "</div>"; //row
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-body
-									row2_col2 += "</div>"; //card-deck
-									row2_col2 += "</div>"; //col
-									$("#row2").append(row2_col2);	
-								} else if(index === 4){
-									start += "<div class=\"row\" id=\"row3\" >"; 
-								 	start += "<div class=\"col\" style=\"height: 350px;\">";
-								 	start += "<div class=\"card-deck\">";
-								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
-								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
-								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
-				                    start += " <div class=\"row\">";
-				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
-			                        start += "<div class=\"_productCalorie\"> " + response[4].nutrition_code + " Kcal</div>"
-				                    start += "</div>"
-				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-			                      	start += "추가</button>";
-				                    
-			                        start += "</div>"; //col-6 2번째
-			                        start += "</div>"; //row
-			                       	start += "</div>"; //card-body
-								 	start += "</div>"; //card-body
-								 	start += "</div>"; //card-deck
-									start += "</div>"; //col
-									start += "</div>"; //row
-									$("#_menuList").append(start);	
-								}  else if(index === 5){
-									let row3_col2 = '';
-									row3_col2 += "<div class=\"col\" style=\"height: 350px;\">";
-									row3_col2 += "<div class=\"card-deck\">";
-									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
-									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
-									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
-									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
-									row3_col2 += " <div class=\"row\">";
-									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
-									row3_col2 += "<div class=\"_productCalorie\"> " + response[5].nutrition_code + " Kcal</div>"
-									row3_col2 += "</div>"
-									row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
-									row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-									row3_col2 += "추가</button>";
-				                    
-									row3_col2 += "</div>"; //col-6 2번째
-									row3_col2 += "</div>"; //row
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-body
-									row3_col2 += "</div>"; //card-deck
-									row3_col2 += "</div>"; //col
-									$("#row3").append(row3_col2);	
-								} 
-								
-								
-								
+		
 							} //단품 if문 마지막
 					})
 				
@@ -1710,8 +799,6 @@ $(document).ready(function() {
       
       
     </script>
-
-
 
 
 </html>
