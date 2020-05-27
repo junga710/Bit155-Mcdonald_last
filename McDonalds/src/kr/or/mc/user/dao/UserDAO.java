@@ -299,7 +299,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(board_notice_sq.nextval,?,?,'admin',sysdate,0)";
+			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(board_notice_sq.nextval,?,?,'admin',sysdate,?)";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, noticedto.getN_title());
@@ -855,17 +855,30 @@ public class UserDAO {
 	}
 
 	// 주문관리 - 상세보기(주문 상세 + 상품)
-	public List<OrderDetailDTO> OrderDetailProductView(int order_code) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
-		try {
-			conn = ds.getConnection();
-			String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
-					+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
-					+ "where order_code = ?\r\n" + "";
-			pstmt = conn.prepareStatement(sql);
+		public List<OrderDetailDTO> OrderDetailProductView(int order_code) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
+			try {
+				conn = ds.getConnection();
+				String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
+						+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
+						+ "where order_code = ?\r\n" + "";
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setInt(1, order_code);
+				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					OrderDetailDTO orderDetailDto = new OrderDetailDTO();
+					orderDetailDto.setOrder_code(order_code);
+					orderDetailDto.setProduct_image(rs.getString("product_image"));
+					orderDetailDto.setProduct_name(rs.getString("product_name"));
+					orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
+
+					list.add(orderDetailDto);
+				}
 
 			pstmt.setInt(1, order_code);
 
@@ -932,5 +945,34 @@ public class UserDAO {
 
 		}
 		return productList;
+	}
+	//공지게시판 조회수
+	public boolean getNoticeReadNum(int n_code) throws Exception {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean result = false;
+		try {
+			conn = ds.getConnection();
+			String sql = "update board_notice set n_read_num = n_read_num+1 where n_code=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, n_code);
+			int row = pstmt.executeUpdate();
+			if (row > 0) {
+				result = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e) {
+
+			}
+			
+		}return result;
+		
 	}
 }
