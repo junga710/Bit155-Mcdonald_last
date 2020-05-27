@@ -89,8 +89,8 @@
               
               
               $('.dataTables_filter input').unbind().bind('keyup', function () {
-//                  var colIndex = document.querySelector('#select').selectedIndex;
-                  table.column(colIndex+1).search(this.value).draw();
+                  var colIndex = document.querySelector('#select').selectedIndex;
+                  table.column(colIndex).search(this.value).draw();
               });
           
               /* 날짜검색 이벤트 리바인딩 */

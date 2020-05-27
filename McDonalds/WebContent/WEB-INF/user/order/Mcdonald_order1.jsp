@@ -511,6 +511,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
@@ -535,6 +536,7 @@ $(document).ready(function() {
 									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
 									row1_col2 += " <div class=\"row\">";
 									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
@@ -558,6 +560,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
@@ -582,6 +585,7 @@ $(document).ready(function() {
 									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
 									row2_col2 += " <div class=\"row\">";
 									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
@@ -605,6 +609,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
@@ -629,6 +634,7 @@ $(document).ready(function() {
 									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
 									row3_col2 += " <div class=\"row\">";
 									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
@@ -691,6 +697,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
@@ -715,6 +722,7 @@ $(document).ready(function() {
 									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
 									row1_col2 += " <div class=\"row\">";
 									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
@@ -738,6 +746,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
@@ -785,6 +794,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
@@ -809,6 +819,7 @@ $(document).ready(function() {
 									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
 									row3_col2 += " <div class=\"row\">";
 									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
@@ -872,6 +883,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
@@ -896,6 +908,7 @@ $(document).ready(function() {
 									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
 									row1_col2 += " <div class=\"row\">";
 									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
@@ -919,6 +932,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
@@ -943,6 +957,7 @@ $(document).ready(function() {
 									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
 									row2_col2 += " <div class=\"row\">";
 									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
@@ -966,6 +981,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
@@ -990,6 +1006,7 @@ $(document).ready(function() {
 									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
 									row3_col2 += " <div class=\"row\">";
 									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
@@ -1052,6 +1069,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
@@ -1076,6 +1094,7 @@ $(document).ready(function() {
 									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
 									row1_col2 += " <div class=\"row\">";
 									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
@@ -1099,6 +1118,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
@@ -1123,6 +1143,7 @@ $(document).ready(function() {
 									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
 									row2_col2 += " <div class=\"row\">";
 									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
@@ -1146,6 +1167,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
@@ -1170,6 +1192,7 @@ $(document).ready(function() {
 									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
 									row3_col2 += " <div class=\"row\">";
 									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
@@ -1233,6 +1256,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
@@ -1257,6 +1281,7 @@ $(document).ready(function() {
 									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
 									row1_col2 += " <div class=\"row\">";
 									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
@@ -1280,6 +1305,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
@@ -1304,6 +1330,7 @@ $(document).ready(function() {
 									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
 									row2_col2 += " <div class=\"row\">";
 									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
@@ -1327,6 +1354,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
@@ -1351,6 +1379,7 @@ $(document).ready(function() {
 									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
 									row3_col2 += " <div class=\"row\">";
 									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"
@@ -1417,6 +1446,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[0].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[0].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[0].product_price + " </div>"
@@ -1441,6 +1471,7 @@ $(document).ready(function() {
 									row1_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row1_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[1].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row1_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row1_col2 += " <strong class=\"ko _productName\"> " + response[1].product_name + " </strong>"
 									row1_col2 += " <div class=\"row\">";
 									row1_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row1_col2 += "<div class=\"_productPrice\">가격 ₩" + response[1].product_price + " </div>"
@@ -1464,6 +1495,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[2].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[2].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[2].product_price + " </div>"
@@ -1488,6 +1520,7 @@ $(document).ready(function() {
 									row2_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row2_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[3].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row2_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row2_col2 += " <strong class=\"ko _productName\"> " + response[3].product_name + " </strong>"
 									row2_col2 += " <div class=\"row\">";
 									row2_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row2_col2 += "<div class=\"_productPrice\">가격 ₩" + response[3].product_price + " </div>"
@@ -1511,6 +1544,7 @@ $(document).ready(function() {
 								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
 								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[4].product_image + " \" style=\"background-color: #f6f6f6;\">"
 								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[4].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 			                        start += "<div class=\"_productPrice\">가격 ₩" + response[4].product_price + " </div>"
@@ -1535,6 +1569,7 @@ $(document).ready(function() {
 									row3_col2 += "<div class=\"card-body\" style=\"width: 380px\">";
 									row3_col2 += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[5].product_image + " \" style=\"background-color: #f6f6f6;\">"
 									row3_col2 += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+									row3_col2 += " <strong class=\"ko _productName\"> " + response[5].product_name + " </strong>"
 									row3_col2 += " <div class=\"row\">";
 									row3_col2 += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
 									row3_col2 += "<div class=\"_productPrice\">가격 ₩" + response[5].product_price + " </div>"

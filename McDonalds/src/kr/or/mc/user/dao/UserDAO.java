@@ -301,7 +301,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 
-			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(board_notice_sq.nextval,?,?,'admin',sysdate,?)";
+			String sql = "insert into board_notice(n_code,n_title,n_content,n_writer,n_write_date,n_read_num) values(16,?,?,'admin',sysdate,0)";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, noticedto.getN_title());
@@ -882,19 +882,7 @@ public class UserDAO {
 					list.add(orderDetailDto);
 				}
 
-			pstmt.setInt(1, order_code);
-
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-
-				OrderDetailDTO orderDetailDto = new OrderDetailDTO();
-				orderDetailDto.setProduct_image(rs.getString("product_image"));
-				orderDetailDto.setProduct_name(rs.getString("product_name"));
-				orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
-
-				list.add(orderDetailDto);
-			}
-
+			
 		} catch (Exception e) {
 			System.out.println(" OrderDetailProduct : " + e.getMessage());
 		} finally {
