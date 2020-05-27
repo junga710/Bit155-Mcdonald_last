@@ -452,8 +452,8 @@
                                       start += "추가</button>";
                                     
                                      start += "</div>"; //col-6 2번째
-                                     start += "</div>"; //row
-                                       start += "</div>"; //card-body
+                                start += "</div>"; //row
+                                start += "</div>"; //card-body
                                 start += "</div>"; //card-body
                                 start += "</div>"; //card-deck
                                start += "</div>"; //col
@@ -473,8 +473,7 @@
                                row3_col2 += "</div>"
                                row3_col2 += "<div class=\"col-6\" style=\"border: aliceblue;\">"
                                row3_col2 += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
-                               row3_col2 += "추가</button>";
-                                    
+                               row3_col2 += "추가</button>";     
                                row3_col2 += "</div>"; //col-6 2번째
                                row3_col2 += "</div>"; //row
                                row3_col2 += "</div>"; //card-body

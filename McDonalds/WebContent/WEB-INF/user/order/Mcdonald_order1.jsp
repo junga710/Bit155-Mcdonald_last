@@ -100,190 +100,12 @@
 
 				</div>
 			</div>
-			<div class="col-md-7">
-				<div class="row">
-					<!-- 이건 col 이 7이라서 3.5씩 나눌려고 쓴것 -->
-					<div class="col" style="height: 350px;">
-						<div class="card-deck">
-							<div class="card-body" style="width: 380px">
-								<img class="card-img-top"
-									src=""
-									alt="" style="background-color: #f6f6f6;" class="_productImage">
-								<div class="card-body" id="card-inner"
-									style="background-color: #f6f6f6;">
-									<strong class="ko">허니 크림치즈 상하이 버거</strong>
-									<div class="row">
-										<div class="col-6" style="padding: 5px; border: aliceblue;">
-											가격 ₩ 5,100<br> 554Kcal<br>
 
-										</div>
-										<div class="col-6" style="border: aliceblue;">
-											<button type="button" class="btn btn-warning btn-lg"
-												data-toggle="modal" data-target="#myModal"
-												style="width: 100%; height: 50px; border: 2px solid red;">
-												추가</button>
-											<!-- 이건 모달 버튼 -->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col" style="height: 350px;">
-						<div class="card-deck">
-							<div class="card-body" style="width: 380px">
-								<img class="card-img-top"
-									src="${pageContext.request.contextPath}/usercss/vendors/images/drink/46.png"
-									alt="" style="background-color: #f6f6f6;"  >
-								<div class="card-body" id="card-inner"
-									style="background-color: #f6f6f6;">
-									<strong class="ko">허니 크림치즈 상하이 버거</strong>
-									<div class="row">
-										<div class="col-6" style="padding: 5px; border: aliceblue;">
-											가격 ₩ 5,200<br> 554Kcal<br>
-
-										</div>
-										<div class="col-6" style="border: aliceblue;">
-											<button type="button" class="btn btn-warning btn-lg"
-												data-toggle="modal" data-target="#myModal"
-												style="width: 100%; height: 50px; border: 2px solid red;">
-												추가</button>
-											<!-- 이건 모달 버튼 -->
-
-										</div>
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-					</div>
-					<div class="row">
-						<div class="col" style="height: 350px;">
-							<div class="card-deck">
-								<div class="card-body" style="width: 380px">
-									<img class="card-img-top"
-										src="${pageContext.request.contextPath}/usercss/vendors/images/drink/46.png"
-										alt="" style="background-color: #f6f6f6;"  >
-									<div class="card-body" id="card-inner"
-										style="background-color: #f6f6f6;">
-										<strong class="ko">허니 크림치즈 상하이 버거</strong>
-										<div class="row">
-											<div class="col-6" style="padding: 5px; border: aliceblue;">
-												가격 ₩ 5,300<br> 554Kcal<br>
-
-											</div>
-											<div class="col-6" style="border: aliceblue;">
-												<button type="button" class="btn btn-warning btn-lg"
-													data-toggle="modal" data-target="#myModal"
-													style="width: 100%; height: 50px; border: 2px solid red;">
-													추가</button>
-												<!-- 이건 모달 버튼 -->
-
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="col" style="height: 350px;">
-							<div class="card-deck">
-								<div class="card-body" style="width: 380px">
-									<img class="card-img-top"
-										src="${pageContext.request.contextPath}/usercss/vendors/images/drink/46.png"
-										alt="" style="background-color: #f6f6f6;" >
-									<div class="card-body" id="card-inner"
-										style="background-color: #f6f6f6;">
-										<strong class="ko">허니 크림치즈 상하이 버거</strong>
-										<div class="row">
-											<div class="col-6" style="padding: 5px; border: aliceblue;">
-												가격 ₩ 5,400<br> 554Kcal<br>
-
-											</div>
-											<div class="col-6" style="border: aliceblue;">
-												<button type="button" class="btn btn-warning btn-lg"
-													data-toggle="modal" data-target="#myModal"
-													style="width: 100%; height: 50px; border: 2px solid red;">
-													추가</button>
-												<!-- 이건 모달 버튼 -->
-
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<!-- 이건 col 이 7이라서 3.5씩 나눌려고 쓴것 -->
-						<div class="col" style="height: 350px;">
-							<div class="card-deck">
-								<div class="card-body" style="width: 380px">
-									<img class="card-img-top"
-										src="${pageContext.request.contextPath}/usercss/vendors/images/drink/46.png"
-										alt="" style="background-color: #f6f6f6;"  >
-									<div class="card-body" id="card-inner"
-										style="background-color: #f6f6f6;">
-										<strong class="ko">허니 크림치즈 상하이 버거</strong>
-										<div class="row">
-											<div class="col-6" style="padding: 5px; border: aliceblue;">
-												가격 ₩ 5,500<br> 554Kcal<br>
-
-											</div>
-											<div class="col-6" style="border: aliceblue;">
-												<button type="button" class="btn btn-warning btn-lg"
-													data-toggle="modal" data-target="#myModal"
-													style="width: 100%; height: 50px; border: 2px solid red;">
-													추가</button>
-												<!-- 이건 모달 버튼 -->
-
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="col" style="height: 350px;">
-							<div class="card-deck">
-								<div class="card-body" style="width: 380px">
-									<img class="card-img-top"
-										src="${pageContext.request.contextPath}/usercss/vendors/images/drink/46.png"
-										alt="" style="background-color: #f6f6f6;"  >
-									<div class="card-body" id="card-inner"
-										style="background-color: #f6f6f6;">
-										<strong class="ko">허니 크림치즈 상하이 버거</strong>
-										<div class="row">
-											<div class="col-6" style="padding: 5px; border: aliceblue;">
-												가격 ₩ 5,600<br> 554Kcal<br>
-
-											</div>
-											<div class="col-6" style="border: aliceblue;">
-												<button type="button" class="btn btn-warning btn-lg"
-													data-toggle="modal" data-target="#myModal"
-													style="width: 100%; height: 50px; border: 2px solid red;">
-													추가</button>
-												<!-- 이건 모달 버튼 -->
-
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-							</div>
-						</div>
-					</div>
+			<div class="col-md-7 _menuList">
 
 
-
-				</div>
+	
+			</div>
 
 
 				<div class="col-md-3" style="background-color: whitesmoke;">
@@ -331,12 +153,12 @@
 
 					<div class="card-deck">
 						<div class="card-body" style="width: 380px">
-							<img class="card-img-top"
-								src="${pageContext.request.contextPath}/usercss/vendors/images/drink/48.png"
+							<img class="card-img-top _productImage"
+								src=""
 								alt="" style="background-color: #ffffffab;">
 							<div class="card-body" id="card-inner"
 								style="background-color: #f6f6f6;">
-								<strong class="ko">허니 크림치즈 상하이 버거</strong>
+								<strong class="_productName">허니sssss</strong>
 								<div class="row">
 									<div class="col-6"
 										style="padding: 5px; border: aliceblue; align-self: center;">
@@ -364,14 +186,14 @@
 										style="border: aliceblue; align-self: center;">
 										<div class="row">
 											<div class="col-6">
-												<img class="card-img-top"
-													src="${pageContext.request.contextPath}/usercss/vendors/images/drink/48.png"
+												<img class="card-img-top _productImage"
+													src=""
 													alt="">
 											</div>
 											<div class="col-6" style="place-self: center; margin: 0">
 
-												<p style="margin: 0">단품</p>
-												(₩ 5,500)
+												<p style="margin: 0" class="_productKind">단품sss</p>
+													<div class="_productPrice2"></div>
 												<!-- 여기에 가격 동적으로 추가 -->
 											</div>
 										</div>
@@ -408,13 +230,13 @@
 										style="border: aliceblue; align-self: center;">
 										<div class="row">
 											<div class="col-6">
-												<img class="card-img-top"
-													src="${pageContext.request.contextPath}/usercss/vendors/images/drink/46.png"
+												<img class="card-img-top _productImage2"
+													src=""
 													alt="">
 											</div>
 											<div class="col-6" style="place-self: center;">
-												<p style="margin: 0">세트</p>
-												(₩ 8,200)
+												<p style="margin: 0" class="_productKind2">세트ssss</p>
+												<div class="_productPrice3"></div>
 											</div>
 										</div>
 									</div>
@@ -514,12 +336,125 @@
 			},
 			success : function(response) {
 
-				$('._productImage').attr(
-						'src',
-						"${pageContext.request.contextPath}/usercss/vendors/images/DB_detail_images/"
-								+ response[0].productDto.product_image);
 				
-				console.log("response : " + response);
+					$.each(response, function (index, item) {
+						if(response[index].product_kind === '단품'){
+							let start = $("._menuList");
+							//////////////////////////
+							let firstlist = <div class="row">
+							<div class="col" style="height: 350px;">
+							<div class="card-deck">
+								<div class="card-body" style="width: 380px">
+									<img class="card-img-top _productImage" src="" alt=""
+										style="background-color: #f6f6f6;">
+									<div class="card-body" id="card-inner"
+										style="background-color: #f6f6f6;">
+										<strong class="ko _productName">response[index].product_name</strong>
+										<!-- 동적 추가 -->
+										<div class="row">
+											<div class="col-6" style="padding: 5px; border: aliceblue;">
+												<div class="_productPrice">가격 ₩ 5,100</div>
+												<div class="_productCalorie">554Kcal</div>
+
+											</div>
+											<div class="col-6" style="border: aliceblue;">
+												<button type="button" class="btn btn-warning btn-lg"
+													data-toggle="modal" data-target="#myModal"
+													style="width: 100%; height: 50px; border: 2px solid red;">
+													추가</button>
+												<!-- 이건 모달 버튼 -->
+
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>;
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+							
+							if(index % 2 === 0){
+								start.append(`<div class="row">`);
+						
+								
+							} else if(index % 2 === 1){
+								start.append(`<div class="col" style="height: 350px;">`);
+								start.append(`<div class="card-deck">`);
+								start.append(`<div class="card-body" style="width: 380px">`);
+								start.append(`<img class="card-img-top _productImage" src="" alt=""style="background-color: #f6f6f6;">`);
+								start.append(`<div class="card-body" id="card-inner"style="background-color: #f6f6f6;">`);
+								start.append(`<strong class="ko _productName">response[index].product_name</strong>`);
+								start.append(`<div class="row">`);
+								start.append(`<div class="col-6" style="padding: 5px; border: aliceblue;">`);
+								start.append(`<div class="_productPrice">가격 ₩ 5,100</div>`);
+								start.append(`<div class="_productCalorie">554Kcal</div>`);
+								start.append(`</div>`);
+								start.append(`<div class="col-6" style="border: aliceblue;">`);
+								start.append(`<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal"style="width: 100%; height: 50px; border: 2px solid red;">추가</button>`);
+								start.append(`</div>`);
+								start.append(`</div>`);
+								start.append(`</div>`);
+								start.append(`</div>`);
+								start.append(`</div>`);
+								start.append(`</div>`);
+								start.append(`</div>`);
+							} 
+						
+							
+							
+						}
+					})
+					
+
+				
+				
+				  /* $('._productImage').attr(
+						'src',
+						"${pageContext.request.contextPath}/usercss/vendors/images/DB_images/"
+								+ response[0].product_image); 
+				  			
+
+				  $('._productName').text(response[0].product_name);
+				  $('._productPrice').text("가격 : ₩" + response[0].product_price);
+				  $('._productCalorie').text(response[0].nutrition_code + "Kcal");
+ */
+
+				  
+				  
+				  
+					//이건 모달창 안에 ▼▼▼▼////////////////////////////////
+				/*   $('._productImage2').attr(
+						'src',
+						"${pageContext.request.contextPath}/usercss/vendors/images/DB_images/"
+								+ response[6].product_image); 	
+
+				  $('._productKind').text(response[0].product_kind);	
+				  $('._productKind2').text(response[6].product_kind);		
+				  $('._productPrice2').text(" (₩ " + response[0].product_price+ ")");
+				  $('._productPrice3').text(" (₩ " + response[6].product_price + ")"); */
+
+
+					//이건 모달창 안에 ▲▲▲▲////////////////////////////////				
+				  
+				  
+				  
+				  
+				
+				/* console.log("response : " + response);
 				
 				console.log(response[0].product_image);
 				console.log(response[0].product_kind);
@@ -527,11 +462,7 @@
 				
 				console.log(response[1].product_kind);
 				
-				console.log(response[6].product_kind);
-				
-				
-				
-				
+				console.log(response[6].product_kind);  */
 				
 				
 				
@@ -561,11 +492,14 @@
       }
     
       // When the user clicks on the button, scroll to the top of the document
+     
       function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
       }
     
+      
+      //모달 창 띄웠을때 숫자 +- 버튼
       $('.btn-number').click(function (e) {
         e.preventDefault();
     
