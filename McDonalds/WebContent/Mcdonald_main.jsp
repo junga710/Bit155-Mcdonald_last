@@ -40,7 +40,7 @@
                </button>
                <div class="dropdown-content">
                   <a href="BoardNotice.b">공지사항</a>
-                  <a href="BoardReview.b">리뷰게시판</a>
+                <!--   <a href="BoardReview.b">리뷰게시판</a> -->
                   <a href="BoardFree.b">자유게시판</a>
                </div>
             </div>
@@ -56,7 +56,7 @@
                    <c:otherwise>
                    <a href="Mcdonald_joinform_edit.ump">계정 설정</a>
                   <a href="OrderHistory.uo">주문 조회</a>
-                  <a href="#">문의하기</a>
+                 <!--  <a href="#">문의하기</a> -->
                    </c:otherwise>
                </c:choose>
                </div>

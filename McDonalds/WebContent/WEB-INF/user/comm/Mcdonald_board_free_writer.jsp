@@ -13,8 +13,8 @@
 
 
 <!-- summer note-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css">
+<%-- <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css"> --%>
 
 
 <title>자유게시판</title>
@@ -41,28 +41,14 @@
 
 	<div class="container" style="padding-top: 2%; padding-right: 2%;">
 
-
-
-
-		<form name="form" id="form" role="form" method="post"
-			action="BoardFreeRegister.b" enctype="multipart/form-data">
+		<form method="post" action="BoardFreeRegister.b"
+			enctype="multipart/form-data">
 			<div class="row mb-4">
 				<div class="col-8">
-					<input type="file" class="custom-file-input" id="customFile"
-						name="customFile"> <label class="custom-file-label"
-						for="customFile">파일을 선택해주세요.</label>
-				</div>
 
-				<div class="col-4 d-flex align-items-center ">
-					<div class="mr-auto">
-						<a style="margin-right: 10px;" href="#"><img
-							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/heart-regular.svg"></a>
-						<strong>좋아요</strong>
-					</div>
-					<div class="ml-auto">
-						<strong>오늘날짜&nbsp;&nbsp;|
-							&nbsp;&nbsp;조회수&nbsp;&nbsp;&nbsp;</strong>
-					</div>
+					<input type="file" id="fileName" name="fileName"
+						class="custom-file-input" accept="image/*"> <label
+						class="custom-file-label" for="fileName"> 파일을 선택해주세요. </label>
 				</div>
 			</div>
 
@@ -75,7 +61,8 @@
 				</div>
 			</div>
 
-			<textarea name="summernote" id="summernote" name="editordata"></textarea>
+			<textarea rows="10" cols="50" id="content" name="content" class="form-control"></textarea>
+
 
 			<div class="row mb-4 d-flex justify-content-center">
 				<div style="margin-left: 100px; margin: 50px 50px">
@@ -86,72 +73,6 @@
 		</form>
 
 
-
-		<!-- <div class="row mt-3">
-			<div class="col-9"></div>
-			<div class="col">
-				<button type="button" class="btn btn-info" id="freebtnMC">
-					<strong>답글</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-warning" id="freebtnMC">
-					</strong>수정</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-danger" id="freebtnMC">
-					</strong>삭제</strong>
-				</button>
-			</div>
-		</div> -->
-
-
-
-
-		<!-- 	<div class="form-group">
-			<div class="row mt-2">
-				<div class="col-8"></div>
-				<div class="col-1" style="margin-right: 0;">
-					<a href="" type="button" class="btn btn-info" id="freebtnMC"
-						style="position: absolute; right: 20%"> <strong>등록</strong>
-					</a>
-				</div>
-				<div class="col-1">
-					<a href="" type="button" class="btn btn-info" id="freebtnMC"
-						style="position: absolute; right: 20%"> <strong>답글</strong>
-					</a>
-				</div>
-				<div class="col-1">
-					<a href="" type="button" class="btn btn-warning" id="freebtnMC"
-						style="position: absolute; right: 20%"> </strong>수정</strong>
-					</a>
-				</div>
-				<div class="col-1">
-					<a href="" type="button" class="btn btn-danger" id="freebtnMC"
-						style="position: absolute; right: 20%"> </strong>삭제</strong>
-					</a>
-				</div>
-			</div>
-		</div> -->
-
-		<!-- <div>
-			<table class="table table-hover">
-				<tbody>
-					<tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>댓글나올자리</td>
-					</tr>
-				</tbody>
-			</table>
-		</div> -->
-
-		<!-- //contArea -->
-		<!-- 	<form id="searchForm" method="post" wfd-id="31">
-		<input type="hidden" name="seq" id="seq" wfd-id="69"> <input
-			type="hidden" name="rnum" id="rnum" wfd-id="68">
-	</form> -->
 
 	</div>
 	<!-- //container  -->
@@ -168,6 +89,7 @@
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
+	<script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 	<script>
 		$(function() {
 			// Add the following code if you want the name of the file appear on select
@@ -205,44 +127,15 @@
 	</script>
 
 	<script>
-		$(document).ready(function() {
+	CKEDITOR.replace('content', {
+		
+		width:'100%',
+		height:'350'
+			
+	});
 
-			$('#summernote').summernote({
-				height : 300, // 에디터 높이
-				minHeight : null, // 최소 높이
-				maxHeight : null, // 최대 높이
-				focus : true, // 에디터 로딩후 포커스를 맞출지 여부
-				lang : "ko-KR", // 한글 설정
-				placeholder : '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
-			});
-		});
 	</script>
 
-
 </body>
-
-
-<!-- <div class="row mt-3">
-			<div class="col-10"></div>
-			<div class="col">
-				<button type="button" class="btn btn-info" id="freebtnMC"
-					style="position: absolute; right: 20%">
-					<strong>답글</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-warning" id="freebtnMC"
-					style="position: absolute; right: 20%">
-					</strong>수정</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-danger" id="freebtnMC"
-					style="position: absolute; right: 20%">
-					</strong>삭제</strong>
-				</button>
-			</div>
-		</div> -->
-
 
 </html>

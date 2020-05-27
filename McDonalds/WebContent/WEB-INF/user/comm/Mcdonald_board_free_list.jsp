@@ -196,7 +196,7 @@
 				</nav> -->
 			</div>
 			<div class="col-md-3">
-				<a href="BoardNoticeRegisterPage.b" type="button"
+				<a href="BoardFreeRegisterPage.b" type="button"
 					class="btn btn-warning" style="width: 100%; height: 60px">
 					<p style="padding: 0px; height: 100%; margin-top: 10px;">글쓰기</p>
 				</a>

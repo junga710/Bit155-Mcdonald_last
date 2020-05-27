@@ -460,7 +460,6 @@ public class UserDAO {
 		return list;
 	}
 
-
 	// 공지사항 삭제
 
 	public int ProductDelete(int n_code) {
@@ -520,7 +519,7 @@ public class UserDAO {
 		return result;
 	}
 
-//자유게시판 전체 게시글 개수
+	//자유게시판 전체 게시글 개수
 	public int totalBoardCount() {
 		Connection conn = null;
 		PreparedStatement pstmt = null; //
@@ -628,7 +627,7 @@ public class UserDAO {
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select f_code, f_title, f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date, f_readnum, f_like, f_file_upload\r\n"
+			String sql = "select f_code, f_title, f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date, f_readnum, f_like, f_file_upload, f_refer, f_depth, f_step\r\n"
 					+ "from board_free\r\n" + "where f_code = ?\r\n" + "";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, f_code);
@@ -643,18 +642,9 @@ public class UserDAO {
 				int f_like = rs.getInt("f_like");
 				String f_file_upload = rs.getString("f_file_upload");
 
-				System.out.println("f_code : " + f_code);
-				System.out.println("f_title : " + f_title);
-				System.out.println("f_content : " + f_content);
-				System.out.println("f_writer : " + f_writer);
-				System.out.println("f_date : " + f_date);
-				System.out.println("f_readnum : " + f_readnum);
-				System.out.println("f_like : " + f_like);
-				System.out.println("f_file_upload : " + f_file_upload);
-
 				int f_refer = rs.getInt("f_refer");
-				int f_step = rs.getInt("f_step");
-				int f_depth = rs.getInt("f_depth");
+				int f_step = rs.getInt("f_depth");
+				int f_depth = rs.getInt("f_step");
 
 				boardFreeDto = new BoardFreeDTO();
 				boardFreeDto.setF_code(f_code);
@@ -665,6 +655,9 @@ public class UserDAO {
 				boardFreeDto.setF_readnum(f_readnum);
 				boardFreeDto.setF_like(f_like);
 				boardFreeDto.setF_file_upload(f_file_upload);
+				boardFreeDto.setF_refer(f_refer);
+				boardFreeDto.setF_step(f_step);
+				boardFreeDto.setF_depth(f_depth);
 			}
 
 		} catch (Exception e) {
@@ -682,7 +675,7 @@ public class UserDAO {
 		return boardFreeDto;
 	}
 
-	// 조회수 증가
+	// 자유게시판 조회수 증가
 	public boolean getReadNum(int f_code) {
 		// update jspboard set readnum = readnum + 1 where idx=?
 		Connection conn = null;
@@ -710,6 +703,66 @@ public class UserDAO {
 			}
 		}
 		return result;
+	}
+	
+	//자유게시판 - 수정
+	public int FreeUpdate(BoardFreeDTO boardFreeDto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+
+			String sql = "update board_free set f_title  = ?, f_content =?, f_writer = ?, f_file_upload = ? WHERE f_code = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, boardFreeDto.getF_title());
+			pstmt.setString(2, boardFreeDto.getF_content());
+			pstmt.setString(3, boardFreeDto.getF_writer());
+			pstmt.setString(4, boardFreeDto.getF_file_upload());
+			pstmt.setInt(5, boardFreeDto.getF_code());			
+			
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("FreeUpdate : " + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close(); // 받환하기
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+		
+	}
+
+	// 자유게시판 - 삭제
+	public int FreeDelete(int f_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from board_free where f_code=?";
+		int row = 0;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, f_code);
+			row = pstmt.executeUpdate();
+			System.out.println("row : " + row);
+		} catch (Exception e) {
+			System.out.println("FreeDelete : " + e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return row;
 	}
 
 	// 아이디 중복 체크
@@ -749,30 +802,29 @@ public class UserDAO {
 		}
 		return -1;
 	}
-	
-	//orderHistroy  에서 주문조회하기위한 함수
+
+	// orderHistroy 에서 주문조회하기위한 함수
 	public List<OrdersDTO> OrderHistoryView(String id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		List<OrdersDTO> list = new ArrayList<OrdersDTO>();
 		try {
 			conn = ds.getConnection();
 			String sql = "select o.order_code, o.o_id, o.s_name, o.payment_method, o.payment_price, to_char(payment_date, 'YYYY-MM-DD HH24:MM:SS') as payment_date, m.address\r\n"
-					+ "from orders o join member m on o.o_id = m.m_id\r\n"
-					+ "where m.m_id = ?                \r\n" + "";
+					+ "from orders o join member m on o.o_id = m.m_id\r\n" + "where m.m_id = ?                \r\n"
+					+ "";
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1,id);
+			pstmt.setString(1, id);
 
-			
-			//set  할수있게 dto 를 만들어봅시다. 
+			// set 할수있게 dto 를 만들어봅시다.
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				
+
 				OrdersDTO ordersDTO = new OrdersDTO();
-				
+
 				ordersDTO.setOrder_code(rs.getInt("order_code"));
 				ordersDTO.setO_id(rs.getString("o_id"));
 				ordersDTO.setS_name(rs.getString("s_name"));
@@ -783,9 +835,9 @@ public class UserDAO {
 				String[] temp = rs.getString("address").split("/");
 				ordersDTO.setAddress(temp[0]);
 				ordersDTO.setAddress_detail(temp[1]);
-				
+
 				list.add(ordersDTO);
-				
+
 			}
 
 		} catch (Exception e) {
@@ -801,60 +853,60 @@ public class UserDAO {
 		}
 		return list;
 	}
-	
+
 	// 주문관리 - 상세보기(주문 상세 + 상품)
-		public List<OrderDetailDTO> OrderDetailProductView(int order_code) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
-			try {
-				conn = ds.getConnection();
-				String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
-						+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
-						+ "where order_code = ?\r\n" + "";
-				pstmt = conn.prepareStatement(sql);
+	public List<OrderDetailDTO> OrderDetailProductView(int order_code) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
+		try {
+			conn = ds.getConnection();
+			String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
+					+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
+					+ "where order_code = ?\r\n" + "";
+			pstmt = conn.prepareStatement(sql);
 
-				pstmt.setInt(1, order_code);
-				
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					
-					OrderDetailDTO orderDetailDto = new OrderDetailDTO();
-					orderDetailDto.setProduct_image(rs.getString("product_image"));
-					orderDetailDto.setProduct_name(rs.getString("product_name"));
-					orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
+			pstmt.setInt(1, order_code);
 
-					list.add(orderDetailDto);
-				}
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
 
-			} catch (Exception e) {
-				System.out.println(" OrderDetailProduct : " + e.getMessage());
-			} finally {
-				try {
-					DB_Close.close(pstmt);
-					DB_Close.close(rs);
-					DB_Close.close(conn); // 반환
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+				OrderDetailDTO orderDetailDto = new OrderDetailDTO();
+				orderDetailDto.setProduct_image(rs.getString("product_image"));
+				orderDetailDto.setProduct_name(rs.getString("product_name"));
+				orderDetailDto.setOrder_amount(rs.getInt("order_amount"));
+
+				list.add(orderDetailDto);
 			}
-			return list;
+
+		} catch (Exception e) {
+			System.out.println(" OrderDetailProduct : " + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(rs);
+				DB_Close.close(conn); // 반환
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
+		return list;
+	}
 
 	// 주문 페이지 리스트 띄우기(버거 & 세트)
 	public List<ProductDTO> getProductList(String product_category) {
 		// 리넡할 객체 선언
 		List<ProductDTO> productList = new ArrayList<ProductDTO>();
 		Connection conn = null;
-		
+
 		try {
 			conn = ds.getConnection();
 			String sql = "select product_code, product_name, product_price, product_kind, product_image  from product where product_category = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product_category);
 			rs = pstmt.executeQuery();
-			
+
 			System.out.println(product_category);
 
 			while (rs.next()) {
@@ -877,7 +929,7 @@ public class UserDAO {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
 			DB_Close.close(conn);
-			
+
 		}
 		return productList;
 	}

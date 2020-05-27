@@ -12,11 +12,6 @@
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 
-<!-- summer note-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css">
-
-
 <title>자유게시판</title>
 </head>
 
@@ -46,111 +41,95 @@
 		<form name="form" id="form" role="form" method="post"
 			action="BoardFreeRegister.b" enctype="multipart/form-data">
 			<div class="row mb-4">
-				<div class="col-8">
-					<input type="file" class="custom-file-input" id="customFile"
-						name="customFile"> <label class="custom-file-label"
-						for="customFile">파일을 선택해주세요.</label>
-				</div>
+				<div class="col-8"></div>
 
 				<div class="col-4 d-flex align-items-center ">
-					<div class="mr-auto">
-						<a style="margin-right: 10px;" href="#"><img
-							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/heart-regular.svg"></a>
-						<strong>좋아요</strong>
-					</div>
+					<div class="mr-auto"></div>
 					<div class="ml-auto">
-						<strong>오늘날짜&nbsp;&nbsp;|
-							&nbsp;&nbsp;조회수&nbsp;&nbsp;&nbsp;</strong>
+						<strong>${boardFreeDto.f_writer}&nbsp;&nbsp;|&nbsp;&nbsp;${boardFreeDto.f_date}&nbsp;&nbsp;|
+							&nbsp;&nbsp;조회수 : ${boardFreeDto.f_readnum}&nbsp;&nbsp;&nbsp;</strong>
 					</div>
 				</div>
 			</div>
 
-			<div class="row mb-4">
-				<div class="input-group ">
-					<input type="text" name="title" id="title"
-						class="form-control mb-4" placeholder="글제목"
-						aria-label="Recipient's username" aria-describedby="button-addon2">
-					<div class="input-group-append"></div>
-				</div>
+
+			<div class="input-group mb-4">
+				
+				
+				<input type="text" name="title" id="title" class="form-control mb-4"
+					placeholder="글제목" aria-label="Recipient's username"
+					aria-describedby="button-addon2" value="${boardFreeDto.f_title}"
+					readonly>
+				<div class="input-group-append"></div>
 			</div>
 
-			<textarea name="summernote" id="summernote" name="editordata"></textarea>
 
-			<div class="row mb-4 d-flex justify-content-center">
-				<div style="margin-left: 100px; margin: 50px 50px">
-					<button type="submit" class="btn btn-danger mr-3 btn-lg">글등록</button>
-				</div>
+
+			<div class="input-group mb-4">
+				<textarea name="content" class="form-control" rows="5" readonly>
+            			${boardFreeDto.f_content}
+            		</textarea>
 			</div>
 
+
+
+
+			<%-- <div class="input-group">
+				<textarea name="" id="" cols="30" rows="10">
+			${boardFreeDto.f_content}
+			</textarea>
+			</div> --%>
+
+
+
+			<div class="card mb-2">
+				<!-- Post Content Column -->
+				<div class="card-body main">
+
+					<div class="d-flex justify-content-end">
+						첨부파일 : <a href="#" class="mr-auto">&nbsp;${boardFreeDto.f_file_upload}</a>
+						<a href="#" style="margin-right: 5px;"> <img
+							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/heart-regular.svg">
+						</a> <strong style="margin: 0 10px;">좋아요&nbsp;${boardFreeDto.f_like}</strong>
+						<a href="#" style="margin-right: 5px;"> <img
+							style="margin-right: 5px;"
+							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/comment-dots-regular.svg">
+						</a> <strong style="margin-right: 10px;">댓글&nbsp;?</strong> <a
+							href="#" class="btn btn-primary" style="margin: 0 5px;">답글</a> <a
+							href="BoardFreeUpdatePage.b?f_code=${f_code}"
+							class="btn btn-warning" style="margin: 0 5px;">수정</a> <a
+							href="BoardFreeDelete.b?f_code=${f_code}" class="btn btn-danger"
+							style="margin: 0 5px;">삭제</a>
+					</div>
+					<hr>
+					<!-- Comments Form -->
+					<div class="card my-4">
+						<h5 class="card-header">Leave a Comment:</h5>
+						<div class="card-body">
+							<form>
+								<div class="form-group">
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</form>
+						</div>
+					</div>
+
+					<!-- Single Comment -->
+					<div class="media mb-4">
+						<img class="d-flex mr-3 rounded-circle"
+							src="http://placehold.it/50x50" alt="">
+						<div class="media-body">
+							<h5 class="mt-0">Commenter Name</h5>
+							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+							scelerisque ante sollicitudin. Cras purus odio, vestibulum in
+							vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+							nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
-
-
-
-		<!-- <div class="row mt-3">
-			<div class="col-9"></div>
-			<div class="col">
-				<button type="button" class="btn btn-info" id="freebtnMC">
-					<strong>답글</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-warning" id="freebtnMC">
-					</strong>수정</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-danger" id="freebtnMC">
-					</strong>삭제</strong>
-				</button>
-			</div>
-		</div> -->
-
-
-
-
-		<!-- 	<div class="form-group">
-			<div class="row mt-2">
-				<div class="col-8"></div>
-				<div class="col-1" style="margin-right: 0;">
-					<a href="" type="button" class="btn btn-info" id="freebtnMC"
-						style="position: absolute; right: 20%"> <strong>등록</strong>
-					</a>
-				</div>
-				<div class="col-1">
-					<a href="" type="button" class="btn btn-info" id="freebtnMC"
-						style="position: absolute; right: 20%"> <strong>답글</strong>
-					</a>
-				</div>
-				<div class="col-1">
-					<a href="" type="button" class="btn btn-warning" id="freebtnMC"
-						style="position: absolute; right: 20%"> </strong>수정</strong>
-					</a>
-				</div>
-				<div class="col-1">
-					<a href="" type="button" class="btn btn-danger" id="freebtnMC"
-						style="position: absolute; right: 20%"> </strong>삭제</strong>
-					</a>
-				</div>
-			</div>
-		</div> -->
-
-		<!-- <div>
-			<table class="table table-hover">
-				<tbody>
-					<tr>
-						<td>John</td>
-						<td>Doe</td>
-						<td>댓글나올자리</td>
-					</tr>
-				</tbody>
-			</table>
-		</div> -->
-
-		<!-- //contArea -->
-		<!-- 	<form id="searchForm" method="post" wfd-id="31">
-		<input type="hidden" name="seq" id="seq" wfd-id="69"> <input
-			type="hidden" name="rnum" id="rnum" wfd-id="68">
-	</form> -->
 
 	</div>
 	<!-- //container  -->
@@ -203,19 +182,7 @@
 		}
 	</script>
 
-	<script>
-		$(document).ready(function() {
 
-			$('#summernote').summernote({
-				height : 300, // 에디터 높이
-				minHeight : null, // 최소 높이
-				maxHeight : null, // 최대 높이
-				focus : true, // 에디터 로딩후 포커스를 맞출지 여부
-				lang : "ko-KR", // 한글 설정
-				placeholder : '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
-			});
-		});
-	</script>
 
 
 </body>

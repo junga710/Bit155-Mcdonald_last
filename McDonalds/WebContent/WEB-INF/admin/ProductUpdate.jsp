@@ -91,7 +91,7 @@
 								<div class="card-body card-block d-flex justify-content-center">
 
 
-									<form action="ProductUpdate.p" method="post"
+									<form action="ProductUpdate.p?product_code=${productDto.product_code}" method="post"
 										class="form-horizontal" enctype="multipart/form-data">
 										<div style="width: 500px;"text-center">
 

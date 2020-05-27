@@ -46,10 +46,7 @@ public class ProductUpdateService implements Action {
 			String product_kind = multi.getParameter("product_kind").trim();
 			int product_stock = Integer.parseInt(multi.getParameter("product_stock").trim());
 			
-			System.out.println("product_code11 : " + product_code);
-			System.out.println("nutrition_code11 : " + nutrition_code);
-			System.out.println("product_category 11: " + product_category);
-			
+
 			Enumeration filenames = multi.getFileNames();
 			
 			String file = (String)filenames.nextElement();

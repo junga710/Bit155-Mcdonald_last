@@ -7,22 +7,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
+import kr.or.mc.user.dao.UserDAO;
 
 public class FreeDeleteService implements Action {
-
 	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		//철이꺼
-		/*
-		 * UserDAO boarddao = new UserDAO(); System.out.println("DAO는 옵니까");
-		 * List<BoardNoticeDTO> blist = boarddao.NoticeList();
-		 * request.setAttribute("blist", blist); System.out.println("항아ㅗ아오 " + blist);
-		 * 
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/comm/Mcdonald_board_notice.jsp");
-		 * System.out.println("셋패스"); return forward;
-		 */
-	}
-}
+		ActionForward forward = new ActionForward();
+		int f_code = Integer.parseInt(request.getParameter("f_code"));
+		
+		UserDAO userDao = new UserDAO();
+		int result = userDao.FreeDelete(f_code);
+		
+		forward.setPath("BoardFree.b");
 
+		return forward;
+		}
+	}
+	

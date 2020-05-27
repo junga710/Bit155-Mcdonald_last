@@ -11,10 +11,6 @@
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-
 <title>맥모닝</title>
 </head>
 

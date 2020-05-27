@@ -36,6 +36,8 @@ public class FreeDetailService implements Action {
 		boardFreeDto = dao.FreeDetail(f_code);
 
 		/* List<Reply> replyList = dao.replylist(idx); */
+		
+		System.out.println(boardFreeDto);
 
 		request.setAttribute("boardFreeDto", boardFreeDto);
 		request.setAttribute("f_code", f_code);

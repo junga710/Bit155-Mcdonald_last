@@ -70,7 +70,7 @@
 									<strong>OO</strong> 정보
 								</div> -->
 								<div class="card-body card-block">
-									<form action="MemberUpdate.m?${memberDTO.m_id}" method="post"
+									<form action="MemberUpdate.m?m_id=${memberDTO.m_id}" method="post"
 										class="form-horizontal">
 										<div class="row form-group">
 											<div

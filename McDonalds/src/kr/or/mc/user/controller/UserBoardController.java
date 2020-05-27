@@ -82,7 +82,6 @@ public class UserBoardController extends HttpServlet {
 		} else if (url_Command.equals("/BoardReviewRegisterPage.b")) { // 리뷰게시판 등록페이지 이동
 			forward = new ActionForward();
 			forward.setPath("");
-		
 		} else if (url_Command.equals("/BoardReviewRegister.b")) { // 리뷰게시판 등록
 			action = new ReviewRegisterService();
 			forward = action.execute(request, response);
@@ -95,7 +94,7 @@ public class UserBoardController extends HttpServlet {
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardFreeRegisterPage.b")) { // 자유게시판 등록 페이지 이동
 			forward = new ActionForward();
-			forward.setPath("");
+			forward.setPath("/WEB-INF/user/comm/Mcdonald_board_free_writer.jsp");
 		} else if (url_Command.equals("/BoardFreeRegister.b")) { // 자유게시판 등록
 			action = new FreeRegisterService();
 			forward = action.execute(request, response);
