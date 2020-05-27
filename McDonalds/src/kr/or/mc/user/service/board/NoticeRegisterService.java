@@ -51,6 +51,8 @@ public class NoticeRegisterService implements Action {
 		
 		int result = UserDAO.BoardNoticeWriter(boardNoticeDTO);
 		
+		System.out.println("result공지사항 : " + result);
+		
 		request.setAttribute("result", result);
 		
 		System.out.println("result : " + result);
