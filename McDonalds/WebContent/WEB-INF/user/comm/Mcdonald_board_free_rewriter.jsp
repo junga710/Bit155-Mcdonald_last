@@ -12,11 +12,16 @@
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 
+<!-- summer note-->
+<%-- <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css"> --%>
+
+
 <title>자유게시판</title>
 </head>
 
 <body>
-
+	<c:set var="boardFreeDto" value="${requestScope.boardFreeDto}" />
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 <body>
@@ -33,10 +38,9 @@
 	</div>
 	<!-- //visualArea -->
 
-
 	<div class="container" style="padding-top: 2%; padding-right: 2%;">
 
-		<form method="post" action="BoardFreeRegister.b"
+		<form method="post" action="BoardFreeReRegister.b?f_code=${boardFreeDto.f_code}"
 			enctype="multipart/form-data">
 			<div class="row mb-4">
 				<div class="col-8">
@@ -49,7 +53,7 @@
 
 			<div class="row mb-4">
 				<div class="input-group ">
-					<input type="text" name="title" id="title"
+					<input type="text" name="title" id="title" value="[RE]${boardFreeDto.f_title}"
 						class="form-control mb-4" placeholder="글제목"
 						aria-label="Recipient's username" aria-describedby="button-addon2">
 					<div class="input-group-append"></div>
