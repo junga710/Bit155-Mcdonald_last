@@ -46,13 +46,13 @@ public class FreeUpdateService implements Action {
 			Enumeration fileNames = multi.getFileNames(); // 파일 이름 반환
 			String file = (String) fileNames.nextElement();
 			String board_image = multi.getFilesystemName(file);
-
+			System.out.println("수정 : " + board_image );
 
 			UserDAO dao = new UserDAO();
 			BoardFreeDTO boardFreeDtoFileName = dao.FreeDetail(f_code);
 
-			if (file == null) {
-				file = boardFreeDtoFileName.getF_file_upload();
+			if (board_image == null) {
+				board_image = boardFreeDtoFileName.getF_file_upload();
 			}
 
 			BoardFreeDTO boardFreeDto = new BoardFreeDTO();

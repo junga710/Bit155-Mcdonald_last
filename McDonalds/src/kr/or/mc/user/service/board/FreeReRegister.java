@@ -1,6 +1,5 @@
 package kr.or.mc.user.service.board;
 
-import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,7 @@ import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.common.dto.BoardFreeDTO;
 import kr.or.mc.user.dao.UserDAO;
 
-public class FreeRegisterService implements Action {
+public class FreeReRegister implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
@@ -38,25 +37,30 @@ public class FreeRegisterService implements Action {
 			if (f_writer == null) {
 				f_writer = "admin";
 			}
-
+			int f_code = Integer.parseInt(multi.getParameter("f_code"));
 			String title = multi.getParameter("title"); // 제목
 			String content = multi.getParameter("content"); // 내용
 
 			Enumeration filenames = multi.getFileNames();
-			String file = (String) filenames.nextElement(); // files 반환???
+			String file = (String) filenames.nextElement();
 			String board_image = multi.getFilesystemName(file);
+
+			System.out.println("f_writer : " + f_writer);
+			System.out.println("title : " + title);
+			System.out.println("content : " + content);
 
 			BoardFreeDTO boardFreeDto = new BoardFreeDTO();
 			UserDAO dao = new UserDAO();
 
+			boardFreeDto.setF_code(f_code);
 			boardFreeDto.setF_title(title);
 			boardFreeDto.setF_content(content);
 			boardFreeDto.setF_writer(f_writer); // 정적
 			boardFreeDto.setF_file_upload(board_image);
 
-			int result = dao.FreeRegister(boardFreeDto);
+			int result = dao.FreeReRegister(boardFreeDto);
 
-			System.out.println("자유게시판 등록 : " + result);
+			System.out.println("답변 : " + result);
 
 			forward.setPath("BoardFree.b");
 
