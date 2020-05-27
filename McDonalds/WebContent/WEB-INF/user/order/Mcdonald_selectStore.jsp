@@ -91,27 +91,27 @@
 					// 마커를 표시할 위치와 title 객체 배열입니다 
 					var positions = [
 							{
-								title : '선릉점',
+								title : '선릉',
 								latlng : new kakao.maps.LatLng(
 										37.5035470555751, 127.047033596011)
 							},
 							{
-								title : '강남삼성DT점',
+								title : '강남삼성DT',
 								latlng : new kakao.maps.LatLng(37.510942210119,
 										127.047318512892)
 							},
 							{
-								title : '강남구청점',
+								title : '강남구청',
 								latlng : new kakao.maps.LatLng(
 										37.5162728163012, 127.04132524415)
 							},
 							{
-								title : '코엑스점',
+								title : '코엑스',
 								latlng : new kakao.maps.LatLng(
 										37.5118239121138, 127.059159043842)
 							},
 							{
-								title : '삼성역점',
+								title : '삼성역',
 								latlng : new kakao.maps.LatLng(
 										37.5083178432764, 127.058778402547)
 							} ];
@@ -135,7 +135,7 @@
 						var marker = new kakao.maps.Marker({
 							map : map, // 마커를 표시할 지도
 							position : positions[i].latlng, // 마커를 표시할 위치
-							//title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+							title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 							image : markerImage
 						
 						});
