@@ -123,12 +123,9 @@
 												style="width: 100%; height: 50px; border: 2px solid red;">
 												추가</button>
 											<!-- 이건 모달 버튼 -->
-
 										</div>
 									</div>
-
 								</div>
-
 							</div>
 						</div>
 					</div>

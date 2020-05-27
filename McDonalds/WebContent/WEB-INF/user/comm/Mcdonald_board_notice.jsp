@@ -26,8 +26,7 @@
 
 
 <body>
-
-
+${sessionScope.s_name}
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 
