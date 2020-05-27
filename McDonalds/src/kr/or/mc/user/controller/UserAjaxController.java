@@ -61,7 +61,7 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
 			action = new SelectShopService();
 			forward = action.execute(request, response);
-		}else if(url_Command.contentEquals("search.ua")) {
+		}else if(url_Command.contentEquals("/search.ua")) {
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);
 		}

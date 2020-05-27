@@ -111,7 +111,7 @@
 				<div class="d-flex justify-content-end">
 					<div class="col-sm-3">
 						<select id="selectBox" class="form-control">
-							<option selected>조건선택</option>
+						<!-- 	<option selected>조건선택</option> -->
 							<option value="제목">제목</option>
 							<option value="작성자">작성자</option>
 						</select>
@@ -270,7 +270,7 @@
 	}
 	
 	//비동기 검색기능
-	  function($) {
+	  (function($) {
       "use strict";
       
       var keyword = $("#selectBox option:selected").val();
@@ -323,7 +323,7 @@
                      type : 'POST',
                      dataType : "json",
                      data : {
-                        ename : $("#search").val()
+                        fwriter : $("#search").val()
                      },
                      success : function(data) {
                         $('#tbody').empty();

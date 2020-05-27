@@ -29,7 +29,7 @@ public class FreeListSearchService implements Action {
 	System.out.println("fwriter" + fwriter);
 	System.out.println("keyword" + keyword);
 	
-	if(ftitle != null && fwriter == null) {
+	if( fwriter != null && ftitle  == null) {
 		list = userDao.SearchFtitle(ftitle); 
 	}else {
 		list = userDao.SearchFwriter(fwriter);
