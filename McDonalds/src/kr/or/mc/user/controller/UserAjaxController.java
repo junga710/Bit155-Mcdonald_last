@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
+import kr.or.mc.user.service.ajax.BasketAddService;
+import kr.or.mc.user.service.ajax.FreeListSearchService;
 import kr.or.mc.user.service.ajax.OrderPageBurgerService;
+import kr.or.mc.user.service.ajax.SelectBurgerModalService;
 import kr.or.mc.user.service.ajax.SelectShopService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
 import kr.or.mc.user.service.board.FreeDeleteService;
@@ -60,14 +63,24 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
 			action = new SelectShopService();
 			forward = action.execute(request, response);
+		} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
+			action = new SelectBurgerModalService();
+			forward = action.execute(request, response);
+		} else if (url_Command.contentEquals("/search.ua")) {
+			action = new FreeListSearchService();
+			forward = action.execute(request, response);
+		} else if(url_Command.contentEquals("/basketAdd.ua")) {
+			action = new BasketAddService();
+			forward = action.execute(request, response);
 		}
 		
-			if (forward != null) {
-				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
-				dis.forward(request, response);
-			}
-		}
+		
 
+		if (forward != null) {
+			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+			dis.forward(request, response);
+		}
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

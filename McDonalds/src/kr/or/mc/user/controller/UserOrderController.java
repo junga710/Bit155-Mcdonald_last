@@ -14,8 +14,10 @@ import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.user.service.menu.MenuDetailService;
 import kr.or.mc.user.service.mypage.JoinFormEditPageService;
 import kr.or.mc.user.service.mypage.RegisterService;
+import kr.or.mc.user.service.order.OrderCartAddService;
 import kr.or.mc.user.service.order.OrderCartService;
 import kr.or.mc.user.service.order.OrderHistoryPageService;
+import kr.or.mc.user.service.order.OrderMenuService;
 
 
  @WebServlet("*.uo")
@@ -39,21 +41,23 @@ public class UserOrderController extends HttpServlet {
 		System.out.println(" url_Command : " + url_Command);
 
 		if (url_Command.equals("/OrderHistory.uo")) { // 메뉴 - 주문조회 페이지로 이동
-			System.out.println("나지금 졸고있니");
 			action = new OrderHistoryPageService();
 			forward = action.execute(request, response);
-		
 		} else if (url_Command.equals("")) { // 
-			
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/user/order/Mcdonald_orderhistory.jsp");
 		} else if (url_Command.equals("/Order1.uo")) { // 메뉴 - 주문 첫페이지로 이동
-			forward = new ActionForward();
-			forward.setPath("/WEB-INF/user/order/Mcdonald_order1.jsp");
-		} else if (url_Command.equals("/Order2.uo")) { // 메뉴 - 주문 첫페이지로 이동
+			action = new OrderMenuService();
+			forward = action.execute(request, response);
+		} else if (url_Command.equals("/Order2.uo")) { // 메뉴 - 주문 두번째로 이동(선택 최종 확인)
 			action = new OrderCartService();
 			forward = action.execute(request, response);
 		} 
+		/*
+		 * else if (url_Command.equals("/Order3.uo")) { // 메뉴 - 주문 세번째로 이동(선택 최종 확인)
+		 * action = new OrderCartAddService(); forward = action.execute(request,
+		 * response); }
+		 */
 		
 
 		if (forward != null) {
