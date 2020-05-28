@@ -22,8 +22,7 @@ public class SelectBurgerModalService implements Action {
 		System.out.println(product_name);
 
 		List<ProductDTO> productDto = userDao.selectProductByName(product_name);
-		
-		System.out.println("ssssdwqqwd : " + productDto);
+
 		JSONArray jsonArr = JSONArray.fromObject(productDto);
 
 		try {

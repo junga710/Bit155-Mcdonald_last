@@ -110,17 +110,14 @@
 				style="border-left-color: rgb(241, 241, 241); text-align: end;">
 				<div class="d-flex justify-content-end">
 					<div class="col-sm-3">
-						<select id="searchOption" class="form-control">
-							<option selected>지점고르기</option>
-							<option>옵션1</option>
-							<option>옵션2</option>
-							<option>옵션3</option>
+						<select id="selectBox" class="form-control">
+						<!-- 	<option selected>조건선택</option> -->
+							<option value="제목">제목</option>
+							<option value="작성자">작성자</option>
 						</select>
 					</div>
 					<input style="width: 200px;" class="form-control" type="text"
-						placeholder="검색어를 입력하세요"> <img
-						src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKePPh8P7YzgL6x0nXcz0JDeLRIlwjdtjw3hpJihg8hAwrcujT&usqp=CAU"
-						width="30px" height="30px">
+						placeholder="검색어를 입력하세요">
 				</div>
 			</div>
 		</div>
@@ -175,25 +172,54 @@
 			</div>
 		</div>
 
+  <table id="order-listing" class="table text-center">
+
+         <tr class="text-center">
+         	<th style="width: 30px;">글번호</th>
+            <th class="text-center" style="width: 50px;">제목</th>
+            <th style="width: 30px;">작성자</th>
+            <th style="width: 30px;">작성일</th>
+            <th style="width: 30px;">조회수</th>
+            <th style="width: 50px;">좋아요</th>
+         </tr>
+         <tbody id="tbody">
+         </tbody>
+      </table>
+
+
+
 
 		<div class="row" style="border-color: #eee;">
 			<div class="col-md-4"></div>
 			<div class="col-md-5" style="text-align: center;">
-				<!-- <nav aria-label="Page navigation example">
-					<ul class="pagination">
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
-						</a></li>
-					</ul>
-				</nav> -->
+				  <ul class="pagination" style="margin: 0 auto">
+				  
+            <!-- justify-content-end -->
+            <c:if test="${cpage>1 }">
+               <li class="page-item"><a
+                  href="BoardFree.b?cp=${cpage-1}&ps=${pagesize}" class="page-link">
+                     <i class="fas fa-arrow-left"></i>
+               </a></li>
+            </c:if>
+            <c:forEach var="i" begin="1" end="${pagecount}" step="1">
+               <c:choose>
+                  <c:when test="${cpage == i }">
+                     <li class="page-item"><a href="" class="page-link" style="color:red">${i}</a></li>
+                  </c:when>
+                  <c:otherwise>
+                     <li class="page-item"><a
+                        href="BoardFree.b?cp=${i}&ps=${pagesize}" class="page-link">${i}</a></li>
+                  </c:otherwise>
+               </c:choose>
+            </c:forEach>
+            <c:if test="${cpage < pagecount}">
+               <li class="page-item"><a
+                  href="BoardFree.b?cp=${cpage+1}&ps=${pagesize}" class="page-link">
+                     <i class="fas fa-arrow-right"></i>
+               </a></li>
+            </c:if>
+         </ul>
+         
 			</div>
 			<div class="col-md-3">
 				<a href="BoardFreeRegisterPage.b" type="button"
@@ -242,12 +268,98 @@
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
+	
+	//비동기 검색기능
+	 (function($) {
+      "use strict";
+      
+      var keyword = $("#selectBox option:selected").val();
+      $('#selectBox').change(function() {
+         keyword = $("#selectBox option:selected").val();
+      })
+
+      $("#search").keyup(
+            function() {
+               if (keyword == "제목") {
+                  $.ajax({
+                     url : "search.ua",
+                     type : 'POST',
+                     dataType : "json",
+                     data : {
+                        ftitle : $("#search").val()
+                     },
+                     success : function(data) {
+                    	
+                        $('#tbody').empty();
+                        if($("#search").val() != ""){
+                           
+                        $.each(data, function(key, value) {
+                        
+                        /* 	<td id="e" align="center"><img
+							src="upload/${list2.filename}"
+							style="width: 30px; heigfht: 30px;"></td> */
+      
+							
+                           let startable = $("#tbody");
+                              startable += "<tr>";
+                                 startable += "<td>" + value.f_title + "</td>";
+                                 startable += "<td>" + value.f_content + "</td>";
+                                 startable += "<td>" + value.f_writer + "</td>";
+                                 startable += "<td>" + value.f_date + "</td>";
+                                 startable += "<td>" + value.f_readnum + "</td>";
+                                 startable += "<td>" + value.f_like + "</td>";
+                              startable += "</tr>";
+
+                           startable += "</table>";
+                            $('#tbody').append(startable);
+                        });
+                     }
+                        }
+
+                     });
+               } else {
+                  $.ajax({
+                     url : "search.ua",
+                     type : 'POST',
+                     dataType : "json",
+                     data : {
+                        fwriter : $("#search").val()
+                     },
+                     success : function(data) {
+                        $('#tbody').empty();
+                        if($("#search").val() != ""){
+                        
+                        $.each(data, function(key, value) {
+                           let startable = "#tbody";
+                              startable += "<tr>";
+                              startable += "<td>" + value.f_title + "</td>";
+                              startable += "<td>" + value.f_content + "</td>";
+                              startable += "<td>" + value.f_writer + "</td>";
+                              startable += "<td>" + value.f_date + "</td>";
+                              startable += "<td>" + value.f_readnum + "</td>";
+                              startable += "<td>" + value.f_like + "</td>";
+                           startable += "</tr>";
+
+                           startable += $("#tbody");
+                           $('#tbody').append(startable); 
+
+                        });
+                     }
+                        }
+
+                     });
+               }
+            }
+
+	
+	
 </script>
 <!-- JS -->
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </html>

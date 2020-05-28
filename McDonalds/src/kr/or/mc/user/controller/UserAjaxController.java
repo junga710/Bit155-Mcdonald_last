@@ -72,6 +72,7 @@ public class UserAjaxController extends HttpServlet {
 		} else if(url_Command.contentEquals("/basketAdd.ua")) {
 			action = new BasketAddService();
 			forward = action.execute(request, response);
+
 		}
 		
 		

@@ -172,7 +172,6 @@
 		</div>
 	</div>
 
-
 	<!-- 모달 버튼 누르면 해당 컨텐츠 나오게 해야댐 (6개 필요) -->
 	<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -185,8 +184,11 @@
             <img class="card-img-top" id="_thumbnail" src="" alt=""
               style="background-color: #ffffffab;">
             <div class="card-body" id="card-inner" style="background-color: #f6f6f6;">
+<<<<<<< HEAD
               <strong style="display:none" class="product_code_one"></strong>
               <strong style="display:none" class="product_code_set"></strong>
+=======
+>>>>>>> 14dbeebc80e2e3fbbcc0604e71c9f2fc5e45e13d
               <strong class="ko">허니 크림치즈 상하이 버거</strong>
               <div class="row">
                 <div class="col-6" style="padding: 5px; border: aliceblue; align-self: center;">
@@ -305,6 +307,7 @@ $(document).ready(function() {
 		evt.preventDefault();
 		if (evt.target.dataset.toggle === 'modal') {
 			var productName = $.trim($(evt.target).parent().parent().prev().text());
+
 			
 			$.ajax({
 				type: 'GET',
@@ -397,6 +400,7 @@ $(document).ready(function() {
 		 
 		 //ajax로 데이터 보내줘서 장바구니 DB에 인서트
 		$.ajax({
+<<<<<<< HEAD
 			type: 'GET',
 			url: 'basketAdd.ua',
 		 	data: {
@@ -407,11 +411,138 @@ $(document).ready(function() {
 			}, 
 			success: function(response) {
 				
+=======
+			type : "post",
+			url : "OrderPageBurger.ua",
+			data : {
+				/* product_category : decodeURIComponent(product_category) */
+				product_category : product_category
+			},
+			success : function(response) {
+					$.each(response, function (index, item) {
+							if(response[index].product_kind === '단품'){
+								let start = $("#_menuList");
+								start = "";
+									start += "<div class=\"card-deck\" style=\" padding-left:100px; padding-right:100px;\">";
+								 	start += "<div class=\"card-body\" style=\"width: 380px\">";
+								 	start += "<img class=\"card-img-top _productImage\" src=\"vendors/images/DB_images/" + response[index].product_image + " \" style=\"background-color: #f6f6f6;\">"
+								 	start += "  <div class=\"card-body\" id=\"card-inner\" style=\"background-color: #f6f6f6;\">";
+								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
+				                    start += " <div class=\"row\">";
+				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
+				                    start += "</div>"
+				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
+			                        start += "<button type=\"button\" class=\"btn btn-warning btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\" style=\"width: 100%; height: 50px; border: 2px solid red;\">"
+			                      	start += "추가</button>";
+				                    
+			                        start += "</div>"; //col-6 2번째
+			                        start += "</div>"; //row
+			                       	start += "</div>"; //card-body
+								 	start += "</div>"; //card-body
+								 	start += "</div>"; //card-deck
+									$("#_menuList").append(start);	
+							} //단품 if문 마지막
+					})
+>>>>>>> 14dbeebc80e2e3fbbcc0604e71c9f2fc5e45e13d
 				
 			}
 		});
 		
 		
+	})
+	
+	function getOnlyNumber(str) {
+		return str.replace(/[^0-9]/g,'');
+	}
+	
+	$("#_menuList").click(function (evt) {
+		
+		evt.preventDefault();
+		if (evt.target.dataset.toggle === 'modal') {
+			var productName = $.trim($(evt.target).parent().parent().prev().text());
+			
+			$.ajax({
+				type: 'GET',
+				url: '/McDonalds/SelectBurgerModal.ua',
+				data: {
+					product_name: decodeURIComponent(productName)
+				},
+				success: function(response) {
+					
+					$('#_one_input').val('0');
+					$('#_set_input').val('0');
+					var one = response[0];
+					var set = response[1];
+					console.log(response);
+					
+					var setPrice = response[1]?.product_price.toLocaleString() || 0;
+					$('#_onlyone_price').text('(₩ ' + response[0].product_price.toLocaleString() + ')' );
+					$('#_set_price').text('(₩ ' + setPrice + ')' );
+					
+					var oneImage = "vendors/images/DB_images/" + response[0].product_image;
+					var setImage = "vendors/images/DB_images/" + response[1]?.product_image;
+					
+					$('#_thumbnail').attr('src', oneImage);
+					$('#_one_image').attr('src', oneImage);
+					$('#_set_image').attr('src', setImage);
+					
+					$('#myModal .ko').text(productName);
+				}
+			});
+		}
+	});
+	
+	$('#_modal_plus').click(function(evt) {
+		
+		var sum = parseInt(getOnlyNumber($('#_sum').text()), 10);
+		var oneAmount = $('#_one_input').val();
+ 		var onePrice = getOnlyNumber($('#_onlyone_price').text());
+		
+		sum += (oneAmount * onePrice);
+		
+		if (getOnlyNumber($('#_set_price').text()) != 0) {
+			var setAmount = $('#_set_input').val();
+			var setPrice = getOnlyNumber($('#_set_price').text());
+			
+			sum += (setAmount * setPrice);
+		}
+		
+		$('#_sum').text('₩ ' + sum.toLocaleString());
+		
+		
+		
+		
+		//이부분은 연규가 ▼
+		if(oneAmount > 0 || setAmount > 0){
+			
+			var detailImg = $('#_thumbnail').attr('src');
+			
+			var detailName = $('#myModal .ko').text();
+			
+			
+			var viewDetail = "";
+				
+				viewDetail += "<div class=\"row\">";
+				viewDetail += "<div class=\"col-4\">";
+				viewDetail += "<img src="+detailImg+" style=\"width:100%\">";
+				viewDetail += "</div>";
+				viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
+				viewDetail += "<span style=\"font-size:x-small\">"+ detailName +"</span>";
+				viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
+				viewDetail += "<div>세트 : "+ setAmount +"개 </div>";
+				
+				viewDetail += "</div>";
+				viewDetail += "</div>";
+			
+		$('#_order_detail').append(viewDetail);
+		
+		}
+		
+		 //이부분은 연규가 ▲
+		
+		$(this).attr('data-dismiss', 'modal');
 	})
 	
 	function getOnlyNumber(str) {

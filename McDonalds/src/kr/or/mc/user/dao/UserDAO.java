@@ -1013,11 +1013,61 @@ public class UserDAO {
 			DB_Close.close(pstmt);
 			DB_Close.close(conn);
 
+				return productList;
 		}
-		return productList;
 	}
+		
+		public List<ProductDTO> selectProductByName(String product_name) {
+			// 리넡할 객체 선언
+			List<ProductDTO> productList = new ArrayList<ProductDTO>();
+			Connection conn = null;
+			product_name = product_name + "%";
 
-	// 공지게시판 조회수
+			try {
+				conn = ds.getConnection();
+				String sql = "\r\n" + 
+						"select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n" + 
+						"from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n" + 
+						"where product_name like ?" + "";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, product_name);
+				rs = pstmt.executeQuery();
+				
+				
+
+				while (rs.next()) {
+					ProductDTO productDto = new ProductDTO();
+					productDto.setProduct_code(rs.getInt("product_code"));
+					productDto.setProduct_name(rs.getString("product_name"));
+					productDto.setProduct_price(rs.getInt("product_price"));
+					productDto.setProduct_kind(rs.getString("product_kind"));
+					productDto.setProduct_stock(rs.getInt("product_stock"));
+					productDto.setProduct_category(rs.getString("product_category"));
+					productDto.setProduct_image(rs.getString("product_image"));
+					productDto.setNutrition_code(rs.getInt("calorie"));
+					// 칼로리 담을 dto 다시만들기 싫어서 임시로 Nutrition_code에 담음
+
+					productList.add(productDto);
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				productList = null;
+			} finally {
+				// 자원 반납
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+				DB_Close.close(conn);
+
+			}
+			return productList;
+		}
+	
+	
+	
+	
+	//공지게시판 조회수
 	public boolean getNoticeReadNum(int n_code) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -1334,4 +1384,86 @@ public class UserDAO {
 	
 	
 
+	//자유게시판 글 제목으로 찾기
+	public List<BoardFreeDTO> SearchFtitle(String ftitle) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_title like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("나오나요 타이틀!! " + ftitle);
+			pstmt.setString(1, "%" + ftitle + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardFreeDTO BoardFreeDto = new BoardFreeDTO();
+				BoardFreeDto.setF_code(rs.getInt(1));
+				BoardFreeDto.setF_title(rs.getString(2));
+				BoardFreeDto.setF_writer(rs.getString(3));
+				BoardFreeDto.setF_date(rs.getString(4));
+				BoardFreeDto.setF_readnum(rs.getInt(5));
+				BoardFreeDto.setF_like(rs.getInt(6));
+				list.add(BoardFreeDto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+
+	}
+	
+	//자유게시판 글쓴이로 찾기
+	public List<BoardFreeDTO> SearchFwriter(String fwriter) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_writer like ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + fwriter + "%");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardFreeDTO BoardFreeDto = new BoardFreeDTO();
+				BoardFreeDto.setF_code(rs.getInt(1));
+				BoardFreeDto.setF_title(rs.getString(2));
+				BoardFreeDto.setF_writer(rs.getString(3));
+				BoardFreeDto.setF_date(rs.getString(4));
+				BoardFreeDto.setF_readnum(rs.getInt(5));
+				BoardFreeDto.setF_like(rs.getInt(6));
+				list.add(BoardFreeDto);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+
+	}
 }

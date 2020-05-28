@@ -17,7 +17,7 @@ import kr.or.mc.user.service.board.FreeDeleteService;
 import kr.or.mc.user.service.board.FreeDetailService;
 import kr.or.mc.user.service.board.FreeFileDownload;
 import kr.or.mc.user.service.board.FreeListService;
-import kr.or.mc.user.service.board.FreeReRegister;
+
 import kr.or.mc.user.service.board.FreeReRegisterPage;
 import kr.or.mc.user.service.board.FreeRegisterService;
 import kr.or.mc.user.service.board.FreeUpdatePageService;
@@ -93,12 +93,13 @@ public class UserBoardController extends HttpServlet {
 			action = new FreeReRegisterPage();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/BoardFreeReRegister.b")) { // 자유게시판 답변 로직
-			action = new FreeReRegister();
+			action = new FreeReRegisterPage();
 			forward = action.execute(request, response);
-		} else if (url_Command.equals("/BoardFreeFileDownload.b")) { // 자유게시판 첨부파일 다우놀드
+		}else if (url_Command.equals("/BoardFreeFileDownload.b")) { // 자유게시판 첨부파일 다우놀드
 			action = new FreeFileDownload();
-			forward = action.execute(request, response);
-		}
+			  forward = action.execute(request, response);
+			  }
+			 
 
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
