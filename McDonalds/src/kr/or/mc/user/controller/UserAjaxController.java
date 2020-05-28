@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
-import kr.or.mc.common.action.ActionForward;
-import kr.or.mc.user.service.ajax.DeleteCommentService;
+import kr.or.mc.common.action.ActionForward;<<<<<<<HEAD
+import kr.or.mc.user.service.ajax.DeleteCommentService;=======
+import kr.or.mc.user.service.ajax.BasketAddService;>>>>>>>55e516 a2caddbc32ecc6ddbbc381ce9470bd3e5e
 import kr.or.mc.user.service.ajax.FreeListSearchService;
 import kr.or.mc.user.service.ajax.InsertCommentService;
-import kr.or.mc.user.service.ajax.OrderPageBurgerService;
-import kr.or.mc.user.service.ajax.SelectCommentService;
+import kr.or.mc.user.service.ajax.OrderPageBurgerService;<<<<<<<HEAD
+import kr.or.mc.user.service.ajax.SelectCommentService;=======
+import kr.or.mc.user.service.ajax.SelectBurgerModalService;>>>>>>>55e516 a2caddbc32ecc6ddbbc381ce9470bd3e5e
 import kr.or.mc.user.service.ajax.SelectShopService;
 import kr.or.mc.user.service.ajax.UpdateCommentService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
@@ -65,6 +67,7 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
 			action = new SelectShopService();
 			forward = action.execute(request, response);
+<<<<<<< HEAD
 		}else if(url_Command.contentEquals("/search.ua")) {
 			System.out.println("ajax타나");
 			action = new FreeListSearchService();
@@ -85,13 +88,24 @@ public class UserAjaxController extends HttpServlet {
 			System.out.println("ajax타나updatesscomaet");
 			action = new UpdateCommentService();
 			forward = action.execute(request, response);
-	}
-			if (forward != null) {
-				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
-				dis.forward(request, response);
-			}
-		}
+	} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
+		action = new SelectBurgerModalService();
+		forward = action.execute(request, response);
+	} else if (url_Command.contentEquals("/search.ua")) {
+		action = new FreeListSearchService();
+		forward = action.execute(request, response);
+	} else if(url_Command.contentEquals("/basketAdd.ua")) {
+		action = new BasketAddService();
+		forward = action.execute(request, response);
 
+	}
+
+
+		if (forward != null) {
+			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+			dis.forward(request, response);
+		}
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
