@@ -21,9 +21,9 @@ public class OrderCartService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String basketstr = request.getParameter("basket_code");
+		/* String basketstr = request.getParameter("basket_code"); */
 		UserDAO userdao = new UserDAO();
-		int basket_code = Integer.parseInt(basketstr);
+		/* int basket_code = Integer.parseInt(basketstr); */
 		
 		HttpSession session = request.getSession();
 		//session.removeAttribute("s_name");
