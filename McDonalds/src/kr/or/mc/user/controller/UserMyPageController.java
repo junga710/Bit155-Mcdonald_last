@@ -38,8 +38,8 @@ public class UserMyPageController extends HttpServlet {
 
 		System.out.println(" url_Command : " + url_Command);
 
-		if (url_Command.equals("/login.ump")) { // 공지사항 목록 뿌려주는 로직
-			System.out.println("여기는 타는거구나?");
+		if (url_Command.equals("/login.ump")) { // 로그인 
+			System.out.println("여기는 타는거구나? 나는 로그인 ");
 			action = new LoginService();
 			forward = action.execute(request, response);
 
@@ -49,7 +49,7 @@ public class UserMyPageController extends HttpServlet {
 			forward = action.execute(request, response);
 
 		} else if (url_Command.equals("/logout.ump")) { // 로그아웃
-			System.out.println("여기는 타는거구나?");
+			System.out.println("여기는 타는거구나? 나는 로그아웃");
 			action = new LogoutService();
 			forward = action.execute(request, response);
 

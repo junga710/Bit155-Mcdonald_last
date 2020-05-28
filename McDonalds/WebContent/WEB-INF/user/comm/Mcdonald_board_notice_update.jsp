@@ -38,10 +38,6 @@
 
 	<div class="review_detail">
 		<h1 class="titDep1" style="color: white;">공지게시판 글 수정하기</h1>
-		<ul style="margin-left: 100px;">
-			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
-		</ul>
 	</div>
 
 

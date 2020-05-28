@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
 <body>
 
 	<!-- header include-->
-	<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"></jsp:include>
 	<section id="container">
 
 
@@ -25,12 +25,6 @@
 			<h1 class="titDep1" style="padding-top: 5%;">
 				<strong>매장선택</strong>
 			</h1>
-			<ul style="padding-left: 10%; margin-top: 1%;">
-				<li id="topli"><a href="Macdonald_main.html"
-					style="color: white;">Home</a></li>
-				<li id="topli2"><a href="#" style="color: white;">Menu</a></li>
-
-			</ul>
 		</div>
 
 

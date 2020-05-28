@@ -24,12 +24,6 @@
 			<h1 class="titDep1" style="padding-top: 5%; color: white">
 				<strong>회원정보수정</strong>
 			</h1>
-			<ul style="padding-left: 10%; margin-top: 1%;">
-				<li id="topli"><a href="../Mcdonald_main.html"
-					style="color: white;">Home</a></li>
-				<li id="topli"><a href="#" style="color: white;">Menu</a></li>
-
-			</ul>
 		</div>
 
 

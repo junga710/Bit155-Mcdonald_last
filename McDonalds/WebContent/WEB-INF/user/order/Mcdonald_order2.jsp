@@ -133,6 +133,7 @@
 		</div>
 	</div>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
 </body>
 
 <jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>

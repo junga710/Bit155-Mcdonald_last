@@ -1,24 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- 영양정보적용 -->
+
 
 
 <title>메뉴 디테일</title>
+
 
 </head>
 
 <body>
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
+
 
 	<div class="hamburgermenu">
 		<h1 class="titDep1">
@@ -28,10 +32,7 @@
 			빅맥<sub class="reg">®</sub>에서 맥스파이시<sub class="reg">®</sub> 상하이버거까지, <br>주문
 			즉시 바로 조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.
 		</p>
-		<ul style="padding-left: 10%; padding-top: 1%">
-			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
-		</ul>
+
 	</div>
 	<div class="contArea" wfd-id="32">
 		<div class="inner" wfd-id="33">
@@ -126,7 +127,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col p-5 ml-5">
+			<div class="col p-5 ml-5" style="margin-left:100px !important">
 				<div class="" id="footer2">한국맥도날드(유)</div>
 				<div class="" id="footer2">대표이사: 앤토니 마티네즈</div>
 				<div class="" id="footer2">사업자등록번호: 101-81-26409</div>

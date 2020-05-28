@@ -33,10 +33,6 @@
 			<strong>맥카페 & 음료</strong>
 		</h1>
 		<p class="subCopy">언제나 즐겁게, 맥카페와 다양한 음료를 부담없이 즐기세요!</p>
-		<ul style="padding-left: 10%; padding-top: 3%">
-			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_mcCafe.html">Menu</a></li>
-		</ul>
 	</div>
 
 	<div class="row mt-5">
@@ -55,7 +51,7 @@
 
 	<div class="mcMenu" wfd-id="34">
 		<ul class="menuList" id="menuList" wfd-id="36">
-			<li class="count" id="count">17 Products</li>
+			<li class="count" id="count">6 Products</li>
 		</ul>
 	</div>
 

@@ -28,7 +28,7 @@ var temp = '버거'
 							 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 			                    start += " <div class=\"row\">";
 			                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-		                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+		                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price.toLocaleString() + " </div>"
 		                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 			                    start += "</div>"
 			                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
@@ -96,7 +96,7 @@ var temp = '버거'
 								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price.toLocaleString() + " </div>"
 			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
@@ -163,7 +163,7 @@ var temp = '버거'
 								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price.toLocaleString() + " </div>"
 			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
@@ -233,7 +233,7 @@ var temp = '버거'
 								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price.toLocaleString() + " </div>"
 			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
@@ -300,7 +300,7 @@ var temp = '버거'
 								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price.toLocaleString() + " </div>"
 			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
@@ -369,7 +369,7 @@ var temp = '버거'
 								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price.toLocaleString() + " </div>"
 			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"
@@ -436,7 +436,7 @@ var temp = '버거'
 								 	start += " <strong class=\"ko _productName\"> " + response[index].product_name + " </strong>"
 				                    start += " <div class=\"row\">";
 				                    start += "<div class=\"col-6\" style=\"padding: 5px; border: aliceblue;\">";
-			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price + " </div>"
+			                        start += "<div class=\"_productPrice\">가격 ₩" + response[index].product_price.toLocaleString() + " </div>"
 			                        start += "<div class=\"_productCalorie\"> " + response[index].nutrition_code + " Kcal</div>"
 				                    start += "</div>"
 				                    start += "<div class=\"col-6\" style=\"border: aliceblue;\">"

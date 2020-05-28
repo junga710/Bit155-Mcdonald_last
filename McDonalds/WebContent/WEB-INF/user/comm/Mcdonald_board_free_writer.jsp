@@ -15,7 +15,7 @@
 <title>자유게시판</title>
 </head>
 
-<body>
+
 
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -84,7 +84,10 @@
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
-	<script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<!-- 	<script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script> -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/usercss/vendors/vendors/ckeditor/ckeditor.js"></script>
+	
+	
 	<script>
 		$(function() {
 			// Add the following code if you want the name of the file appear on select
@@ -96,6 +99,27 @@
 								"selected").html(fileName);
 					});
 
+			
+			
+			//여기부터 연규가 ▼▼▼▼▼
+			
+			$('button[type=submit]').click(function(evt) {
+				
+				evt.preventDefault();
+				
+				if($('#title').val() === ""){
+					alert("제목을 입력해주세요");
+					$('#title').focus();
+					$('button[type=submit]').unbind();
+				}
+			
+			
+			});
+			
+			
+			
+			
+			//여기까지  연규가 ▲▲▲▲▲
 		});
 	</script>
 
@@ -130,6 +154,8 @@
 	});
 
 	</script>
+	
+
 
 </body>
 

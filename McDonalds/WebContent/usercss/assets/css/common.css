@@ -1,7 +1,11 @@
 
-
+@font-face{
+	font-family : youth;
+	src:local("Helvetica65Medium_22443") format('Helvetica'),
+	local("youth-webfont");
+}
 #body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: ''youth','Noto Sans KR', sans-serif;
 }
 
 #nav-top {
@@ -224,23 +228,7 @@ p {
  margin-left:50px;
 }
 
-#topli {
-    float: left;
-    font-weight: bold;
-    width:10%;
-}
 
-.topli a {
-    color: #808080;
-    font-weight: bold;
-}
-
-
-#topli a {
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-}
 
 #productli a{   
   color: #808080;

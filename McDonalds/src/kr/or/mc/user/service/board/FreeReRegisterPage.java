@@ -13,8 +13,8 @@ public class FreeReRegisterPage implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		int f_code = Integer.parseInt(request.getParameter("f_code"));
-		String f_title = request.getParameter("f_title");
+		int f_code = Integer.parseInt(request.getParameter("f_code")); //f code --> 글번호 
+		String f_title = request.getParameter("f_title"); 
 		
 		
 		BoardFreeDTO boardFreeDto = new BoardFreeDTO();

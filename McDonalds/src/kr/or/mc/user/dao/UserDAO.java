@@ -21,6 +21,7 @@ import kr.or.mc.common.dto.NutritionDTO;
 import kr.or.mc.common.dto.OrderDetailDTO;
 import kr.or.mc.common.dto.OrdersDTO;
 import kr.or.mc.common.dto.ProductDTO;
+import kr.or.mc.common.dto.ReplyDTO;
 import kr.or.mc.common.dto.StoreDTO;
 import kr.or.mc.common.utils.DB_Close;
 
@@ -145,13 +146,14 @@ public class UserDAO {
 			conn = ds.getConnection();
 			String sql = "";
 			System.out.println("아이디 : " + userId);
+			
 			if (!userId.equals("admin")) {
 				sql = "select password from member where m_id = ?";
 			} else {
-				System.out.println("여ㅑ기티라고우철");
 				sql = "select password from admin where a_id = ?";
 			}
 			// String sql = "select password from member where m_id = ?";
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
@@ -173,6 +175,7 @@ public class UserDAO {
 		} finally {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
+			DB_Close.close(conn); // 반환
 
 		}
 		return -1;
@@ -225,7 +228,7 @@ public class UserDAO {
 			conn = ds.getConnection();
 
 			System.out.println(memberdto.toString() + "투스트링1");
-			String sql = "update member set password = ?, name =?, email = ?, post_code = ?, address = ?, phone = ? WHERE m_id = ?";
+			String sql = " member set password = ?, name =?, email = ?, post_code = ?, address = ?, phone = ? WHERE m_id = ?";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, memberdto.getPassword());
@@ -767,28 +770,35 @@ public class UserDAO {
 
 	// 자유게시판 답변
 	public int FreeReRegister(BoardFreeDTO boardFreeDto) {
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
+		
 		try {
 			conn = ds.getConnection();
 
 			int f_code = boardFreeDto.getF_code();
 			
-
 			String f_title = boardFreeDto.getF_title();
 			String f_content = boardFreeDto.getF_content();
 			String f_writer = boardFreeDto.getF_writer();
 			String f_file_upload = boardFreeDto.getF_file_upload();
+			
 			int filesize = 0;
 
 			String refer_depth_step_sal = "select f_refer , f_depth , f_step from board_free where f_code=?";
 
-			String step_update_sql = "update board_free set f_step= f_step+1 where f_step  > ? and f_refer =? ";
+			/*
+			 * String step_update_sql =
+			 * "update board_free set f_step= f_step+1 where f_step  > ? and f_refer =? ";
+			 */
+			
+			String step_update_sql = "select nvl(min(f_step), 0) f_step from board_free where f_refer=? and f_step > ? and f_depth <= ?";
 
-			String rewrite_sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_like,f_file_upload,f_refer,f_depth,f_step)"
-					+ " values(board_free_sq.nextval,?,?,?,sysdate,0,0,?,?,?,?)";
+			String rewrite_sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_file_upload,f_refer,f_depth,f_step)"
+					+ " values(board_free_sq.nextval,?,?,?,sysdate,0,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(refer_depth_step_sal);
 			pstmt.setInt(1, f_code);
@@ -800,44 +810,68 @@ public class UserDAO {
 				int f_depth = rs.getInt("f_depth");
 
 				pstmt = conn.prepareStatement(step_update_sql);
-				pstmt.setInt(1, f_step);
-				pstmt.setInt(2, f_refer);
+				pstmt.setInt(1, f_refer);
+				pstmt.setInt(2, f_step);
+				pstmt.setInt(3, f_depth); 
 				pstmt.executeUpdate();
-
+				rs = pstmt.executeQuery();
 				// filename,filesize,refer,depth,step
-				pstmt = conn.prepareStatement(rewrite_sql); //
+				
+				if(rs.next()) {
+					f_step = rs.getInt("f_step");
+					if(f_step == 0) {
+						String maxStep = "select max(f_step)+1 maxStep from board_free where f_refer=?";
+						pstmt = conn.prepareStatement(maxStep);
+						pstmt.setInt(1, f_refer); //원본글 ref
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							f_step = rs.getInt("maxStep");
+						}
+					} else {
+						String update_step = "update board_free set f_step=f_step+1 where f_refer=? and f_step >= ? ";
+						pstmt = conn.prepareStatement(update_step);
+						pstmt.setInt(1, f_refer); //원본글 ref
+						pstmt.setInt(2, f_step);
+						pstmt.executeUpdate();
+					}
+				}
+					
+				//filename, filesize, refer, depth, step
+				pstmt = conn.prepareStatement(rewrite_sql); //컴파일
 				pstmt.setString(1, f_title);
 				pstmt.setString(2, f_content);
 				pstmt.setString(3, f_writer);
 				pstmt.setString(4, f_file_upload);
-
+				
+				//답변
 				pstmt.setInt(5, f_refer);
 				pstmt.setInt(6, f_depth + 1);
 				pstmt.setInt(7, f_step + 1);
-
+				
 				int row = pstmt.executeUpdate();
-				if (row > 0) {
+				if(row > 0) {
 					result = row;
-				} else {
+				}else {
 					result = -1;
 				}
 
 			}
-
+	
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();//
-			} catch (Exception e) {
-
+				conn.close();//반환
+			}catch (Exception e) {
+				
 			}
 		}
-
+		
 		return result;
 	}
+	
 
 	// 아이디 중복 체크
 	public int checkId(String id) {
@@ -1392,7 +1426,7 @@ public class UserDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
-
+		System.out.println();
 		try {
 			conn = ds.getConnection();
 			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_title like ?";
@@ -1412,7 +1446,7 @@ public class UserDAO {
 				BoardFreeDto.setF_like(rs.getInt(6));
 				list.add(BoardFreeDto);
 			}
-
+			System.out.println("--여긴 DAO" +list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -1428,7 +1462,149 @@ public class UserDAO {
 
 	}
 	
+	//댓글가져오기
+	public List<ReplyDTO> selectCommentList(int f_code) {
+		List<ReplyDTO> list = new ArrayList<ReplyDTO>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "select r_code, r_content, r_writer, r_write_date, f_code from reply where f_code=? order by r_code";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, f_code);
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<ReplyDTO>();
+			while(rs.next()) {
+				ReplyDTO ReplyDto = new ReplyDTO();
+				ReplyDto.setR_code(rs.getInt("r_code"));
+				ReplyDto.setR_content(rs.getString("r_content"));
+				ReplyDto.setR_writer(rs.getString("r_writer"));
+				ReplyDto.setR_write_date(rs.getString("r_write_date"));
+				ReplyDto.setF_code(rs.getInt("f_code"));
+				
+				list.add(ReplyDto);
+			}
+		} catch (Exception e) {
+			System.out.println("코멘트 리스트 에러 : " + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+				DB_Close.close(conn);
+
+			} catch (Exception e2) {
+				System.out.println("null 여기?" + e2.getMessage());
+			}
+		}
+		return list;
+	}
 	
+	//댓글쓰기 함수
+		public int insertComment(ReplyDTO Replydto) {
+			int row = 0;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = ds.getConnection();
+				
+				String sql = "insert into reply(r_code, r_writer, r_content, r_write_date, f_code)" +
+							 "values(reply_sq.nextval, ?, ?, sysdate, ?)";
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, Replydto.getR_writer());
+				pstmt.setString(2, Replydto.getR_content());
+				pstmt.setInt(3, Replydto.getF_code());
+				
+				
+				row = pstmt.executeUpdate();
+			} catch (Exception e1) {
+				e1.getStackTrace();
+				System.out.println("insert오류: " + e1.getMessage());
+			} finally {
+				try {
+					if(pstmt !=null)
+						try {
+						DB_Close.close(pstmt);
+					}catch(Exception e2) {}
+					if(conn != null) 
+						try{
+						DB_Close.close(conn);
+						}catch(Exception e3) {}}
+				catch(Exception e4) {
+					e4.getStackTrace();
+							DB_Close.close(rs);
+						
+					}
+			
+				}return row;	
+			}
+			
+
+		
+
+		
+		//댓글 삭제하기
+		public int deleteComment(ReplyDTO Replydto) {
+			int row = 0;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = ds.getConnection();
+				String sql = "delete from reply where f_code=? and r_code=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Replydto.getF_code());
+				pstmt.setInt(2, Replydto.getR_code());
+				
+				row = pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println("delete : " + e.getMessage());
+			} finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (Exception e2) {
+					System.out.println("delete : " + e2.getMessage());
+				}
+			}
+			return row;
+		}
+		//댓글 수정하기
+		public int updateComment(ReplyDTO Replydto) {
+			int row = 0;
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = ds.getConnection();
+				String sql = "update reply set r_content=? where f_code=? and r_code=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, Replydto.getR_content());
+				pstmt.setInt(2, Replydto.getF_code());
+				pstmt.setInt(3, Replydto.getR_code());
+				row = pstmt.executeUpdate();
+			
+			} catch (Exception e) {
+				System.out.println("수정dao 에러: " + e.getMessage());
+				e.getStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();//반환
+				} catch (Exception e2) {
+					System.out.println(e2.getMessage());
+				}
+			}
+			return row;
+		}
+
+
 	// 장바구니 - 상세보기(상품) : 상품번호를 이용해 가격 얻기
 		public ProductDTO PrductDetail(int product_code) {
 			Connection conn = null;

@@ -26,10 +26,6 @@
 <body>
   <div class="hamburgermenu">
     <h1 class="titDep1"><strong>주문 내역</strong></h1>
-    <ul style="padding-left: 10%; margin-top: 5%;">
-      <li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-      <li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
-    </ul>
   </div>
 
   <p></p>
