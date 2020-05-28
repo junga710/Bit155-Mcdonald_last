@@ -12,8 +12,7 @@
 <!--css-->
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 
 <title>자유게시판</title>
 </head>
@@ -43,9 +42,9 @@
 	width: 7%
 }
 
-.boardfreelist th:nth-child(6) {
+/* .boardfreelist th:nth-child(6) {
 	width: 7%
-}
+} */
 </style>
 
 <body>
@@ -110,18 +109,22 @@
 				style="border-left-color: rgb(241, 241, 241); text-align: end;">
 				<div class="d-flex justify-content-end">
 					<div class="col-sm-3">
+
 						<select id="selectBox" name = "selectBox" class="form-control">
 						<!-- 	<option selected>조건선택</option> -->
 							<option value="제목" selected>제목</option>
 							<option value="작성자">작성자</option>
 						</select>
 					</div>
-					<input style="width: 200px;" class="form-control" id = "search" name = "search" type="text"
-						placeholder="검색어를 입력하세요">
+
+					<input style="width: 200px;" class="form-control" type="text"
+						id="search" name="search" placeholder="검색어를 입력하세요">
+
 				</div>
 			</div>
 		</div>
 
+		<!-- 게시판 리스트  -->
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table table-hover text-center">
@@ -132,10 +135,10 @@
 							<th>작성자</th>
 							<th>작성일</th>
 							<th>조회수</th>
-							<th>좋아요</th>
+							<!-- <th>좋아요</th> -->
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="tbody">
 
 						<c:set var="list" value="${requestScope.list}"></c:set>
 						<c:forEach var="board" items="${list}">
@@ -163,7 +166,7 @@
 								<td>${board.f_writer}</td>
 								<td>${board.f_date}</td>
 								<td>${board.f_readnum}</td>
-								<td>${board.f_like}</td>
+								<%-- <td>${board.f_like}</td> --%>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -172,83 +175,79 @@
 			</div>
 		</div>
 
-  <table id="order-listing" class="table text-center">
-
-         <tr class="text-center">
-         	<th style="width: 30px;">글번호</th>
-            <th class="text-center" style="width: 50px;">제목</th>
-            <th style="width: 30px;">작성자</th>
-            <th style="width: 30px;">작성일</th>
-            <th style="width: 30px;">조회수</th>
-            <th style="width: 50px;">좋아요</th>
-         </tr>
-         <tbody id="tbody">
-         </tbody>
-      </table>
-
-
 
 
 		<div class="row" style="border-color: #eee;">
 			<div class="col-md-4"></div>
 			<div class="col-md-5" style="text-align: center;">
-				  <ul class="pagination" style="margin: 0 auto">
-				  
-            <!-- justify-content-end -->
-            <c:if test="${cpage>1 }">
-               <li class="page-item"><a
-                  href="BoardFree.b?cp=${cpage-1}&ps=${pagesize}" class="page-link">
-                     <i class="fas fa-arrow-left"></i>
-               </a></li>
-            </c:if>
-            <c:forEach var="i" begin="1" end="${pagecount}" step="1">
-               <c:choose>
-                  <c:when test="${cpage == i }">
-                     <li class="page-item"><a href="" class="page-link" style="color:red">${i}</a></li>
-                  </c:when>
-                  <c:otherwise>
-                     <li class="page-item"><a
-                        href="BoardFree.b?cp=${i}&ps=${pagesize}" class="page-link">${i}</a></li>
-                  </c:otherwise>
-               </c:choose>
-            </c:forEach>
-            <c:if test="${cpage < pagecount}">
-               <li class="page-item"><a
-                  href="BoardFree.b?cp=${cpage+1}&ps=${pagesize}" class="page-link">
-                     <i class="fas fa-arrow-right"></i>
-               </a></li>
-            </c:if>
-         </ul>
-         
-			</div>
-			<div class="col-md-3">
-				<a href="BoardFreeRegisterPage.b" type="button"
-					class="btn btn-warning" style="width: 100%; height: 60px">
-					<p style="padding: 0px; height: 100%; margin-top: 10px;">글쓰기</p>
-				</a>
+				<ul class="pagination" style="margin: 0 auto">
+
+					<!-- justify-content-end -->
+					<c:if test="${cpage>1 }">
+						<li class="page-item"><a
+							href="BoardFree.b?cp=${cpage-1}&ps=${pagesize}" class="page-link">
+								<i class="fas fa-arrow-left"></i>
+						</a></li>
+					</c:if>
+					<c:forEach var="i" begin="1" end="${pagecount}" step="1">
+						<c:choose>
+							<c:when test="${cpage == i }">
+								<li class="page-item"><a href="" class="page-link"
+									style="color: red">${i}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a
+									href="BoardFree.b?cp=${i}&ps=${pagesize}" class="page-link">${i}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${cpage < pagecount}">
+						<li class="page-item"><a
+							href="BoardFree.b?cp=${cpage+1}&ps=${pagesize}" class="page-link">
+								<i class="fas fa-arrow-right"></i>
+						</a></li>
+					</c:if>
+				</ul>
 
 			</div>
+
+			<div class="col-md-2"></div>
+
+			<c:choose>
+				<c:when test="${id != null}">
+					<div class="col-md-1" style="padding: 0px;">
+						<a href="BoardFreeRegisterPage.b" type="button"
+							class="btn btn-info" style="padding: 5px;"><b>글쓰기</b> </a>
+				</c:when>
+				<c:otherwise>
+
+				</c:otherwise>
+			</c:choose>
 		</div>
-
-
 	</div>
+
+
+
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
+	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 
-<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
+
+	<%-- <script
+	src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> --%>
 
 
-<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-
-  
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
- 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+	
 <script>
+
+$(function(){
+	
 	var mybutton = document.getElementById("myBtn");
 
 	// When the user scrolls down 20px from the top of the document, show the button
@@ -270,103 +269,102 @@
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
-
+})
 	</script>
 	<script>
 	//비동기 검색기능
-	 (function($) {
-		console.log("여긴 타는겨?");
-	
-		 var keyword = $("#selectBox option:selected").val();
-		console.log(keyword);
-		$('#selectBox').change(function() {
-			keyword = $("#selectBox option:selected").val();
-		})
 
-		$("#search").keyup(
-				function() {
-					if (keyword == "제목") {
-						$.ajax({
-							url : "search.ua",
-							type : 'POST',
-							dataType : "json",
-							data : {
-								ftitle : $("#search").val()
-							},
-							success : function(data) {
+      var keyword = $("#selectBox option:selected").val()
+      $('#selectBox').change(function() {
+         keyword = $("#selectBox option:selected").val()
+         console.log(keyword);
+         console.log("sss");
+      })
 
-								$('#tbody').empty();
-								if ($("#search").val() != "") {
+      $('#search').keyup(
+            function() {
+    		  console.log("keyup 했어요")
+               if (keyword == "제목") { console.log(keyword);
+                  $.ajax({
+                     url : "search.ua",
+                     type : 'POST',
+                     dataType : "json",
+                     data : {
+                        ftitle : $("#search").val()
+                     },
+                     success : function(data) {
+                    	
+                        $('#tbody').empty();
+//                         if($("#search").val() != ""){
+                           
+                        $.each(data, function(key, value) {
+                        
+                        /* 	<td id="e" align="center"><img
+							src="upload/${list2.filename}"
+							style="width: 30px; heigfht: 30px;"></td> */
+      
+							
+                           let startable = $("#tbody");
+                              startable += "<tr>";
+                                 startable += "<td>" + value.f_code + "</td>";
+                                 startable += "<td>" + value.f_title + "</td>";
+                                 startable += "<td>" + value.f_writer + "</td>";
+                                 startable += "<td>" + value.f_date + "</td>";
+                                 startable += "<td>" + value.f_readnum + "</td>";
+/*                               startable += "<td>" + value.f_like + "</td>"; */
+                              startable += "</tr>";
 
-									$.each(data, function(key, value) {
+                           startable += "</table>";
+                            $('#tbody').append(startable);
+                        });
+                     }
 
-										let startable = $("#tbody");
-										startable += "<tr>";
-										startable += "<td>" + value.f_title
-												+ "</td>";
-										startable += "<td>" + value.f_content
-												+ "</td>";
-										startable += "<td>" + value.f_writer
-												+ "</td>";
-										startable += "<td>" + value.f_date
-												+ "</td>";
-										startable += "<td>" + value.f_readnum
-												+ "</td>";
-										startable += "<td>" + value.f_like
-												+ "</td>";
-										startable += "</tr>";
+                     });
+               } else {
+                  $.ajax({
+                     url : "search.ua",
+                     type : 'POST',
+                     dataType : "json",
+                     data : {
+                        fwriter : $("#search").val()
+                     },
+                     success : function(data) {
+                        $('#tbody').empty();
+                        if($("#search").val() != ""){
+                        
+                        $.each(data, function(key, value) {
+                           let startable = "#tbody";
+                              startable += "<tr>";
+                              startable += "<td>" + value.f_code + "</td>";
+                              startable += "<td>" + value.f_title + "</td>";
+                              startable += "<td>" + value.f_writer + "</td>";
+                              startable += "<td>" + value.f_date + "</td>";
+                              startable += "<td>" + value.f_readnum + "</td>";
+/*                                  startable += "<td>" + value.f_like + "</td>"; */
+                           startable += "</tr>";
 
-										startable += "</table>";
-										$('#tbody').append(startable);
-									});
-								}
-							}
+                           startable += $("#tbody");
+                           $('#tbody').append(startable); 
 
-						});
-					} else {
-						$.ajax({
-							url : "search.ua",
-							type : 'POST',
-							dataType : "json",
-							data : {
-								fwriter : $("#search").val()
-							},
-							success : function(data) {
-								$('#tbody').empty();
-								if ($("#search").val() != "") {
+                        });
+                     }
+                        }
 
-									$.each(data, function(key, value) {
-										let startable = "#tbody";
-										startable += "<tr>";
-										startable += "<td>" + value.f_title
-												+ "</td>";
-										startable += "<td>" + value.f_content
-												+ "</td>";
-										startable += "<td>" + value.f_writer
-												+ "</td>";
-										startable += "<td>" + value.f_date
-												+ "</td>";
-										startable += "<td>" + value.f_readnum
-												+ "</td>";
-										startable += "<td>" + value.f_like
-												+ "</td>";
-										startable += "</tr>";
+                  })
 
-										startable += $("#tbody");
-										$('#tbody').append(startable);
+               };
+               });
 
-									});
-								}
-							}
-						});
-					}
-
-				});
-	});
 </script>
-<!-- JS -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+
 </body>
+<!-- JS -->
+<!-- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<<<<<<< HEAD
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 </html>
+
+
