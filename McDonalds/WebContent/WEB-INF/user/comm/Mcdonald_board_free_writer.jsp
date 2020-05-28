@@ -105,14 +105,14 @@
 			
 			$('button[type=submit]').click(function(evt) {
 				
-				evt.preventDefault();
-				
 				if($('#title').val() === ""){
+					evt.preventDefault();
 					alert("제목을 입력해주세요");
 					$('#title').focus();
 					$('button[type=submit]').unbind();
+				}else if($('#title').val() != ""){
+					$('button[type=submit]').unbind();
 				}
-			
 			
 			});
 			
