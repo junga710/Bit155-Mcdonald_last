@@ -110,20 +110,20 @@
 				style="border-left-color: rgb(241, 241, 241); text-align: end;">
 				<div class="d-flex justify-content-end">
 					<div class="col-sm-3">
-						<select id="selectBox" class="form-control">
+						<select id="selectBox" name = "selectBox" class="form-control">
 						<!-- 	<option selected>조건선택</option> -->
-							<option value="제목">제목</option>
+							<option value="제목" selected>제목</option>
 							<option value="작성자">작성자</option>
 						</select>
 					</div>
-					<input style="width: 200px;" class="form-control" type="text"
+					<input style="width: 200px;" class="form-control" id = "search" name = "search" type="text"
 						placeholder="검색어를 입력하세요">
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-12"->
+			<div class="col-md-12">
 				<table class="table table-hover text-center">
 					<thead>
 						<tr class="boardfreelist" style="text-align: center;">
@@ -234,7 +234,7 @@
 	</div>
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-</body>
+
 
 
 <jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
@@ -242,9 +242,11 @@
 
 <jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-<script
-	src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
+  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script>
 	var mybutton = document.getElementById("myBtn");
@@ -268,98 +270,103 @@
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
-	
+
+	</script>
+	<script>
 	//비동기 검색기능
 	 (function($) {
-      "use strict";
-      
-      var keyword = $("#selectBox option:selected").val();
-      $('#selectBox').change(function() {
-         keyword = $("#selectBox option:selected").val();
-      })
-
-      $("#search").keyup(
-            function() {
-               if (keyword == "제목") {
-                  $.ajax({
-                     url : "search.ua",
-                     type : 'POST',
-                     dataType : "json",
-                     data : {
-                        ftitle : $("#search").val()
-                     },
-                     success : function(data) {
-                    	
-                        $('#tbody').empty();
-                        if($("#search").val() != ""){
-                           
-                        $.each(data, function(key, value) {
-                        
-                        /* 	<td id="e" align="center"><img
-							src="upload/${list2.filename}"
-							style="width: 30px; heigfht: 30px;"></td> */
-      
-							
-                           let startable = $("#tbody");
-                              startable += "<tr>";
-                                 startable += "<td>" + value.f_title + "</td>";
-                                 startable += "<td>" + value.f_content + "</td>";
-                                 startable += "<td>" + value.f_writer + "</td>";
-                                 startable += "<td>" + value.f_date + "</td>";
-                                 startable += "<td>" + value.f_readnum + "</td>";
-                                 startable += "<td>" + value.f_like + "</td>";
-                              startable += "</tr>";
-
-                           startable += "</table>";
-                            $('#tbody').append(startable);
-                        });
-                     }
-                        }
-
-                     });
-               } else {
-                  $.ajax({
-                     url : "search.ua",
-                     type : 'POST',
-                     dataType : "json",
-                     data : {
-                        fwriter : $("#search").val()
-                     },
-                     success : function(data) {
-                        $('#tbody').empty();
-                        if($("#search").val() != ""){
-                        
-                        $.each(data, function(key, value) {
-                           let startable = "#tbody";
-                              startable += "<tr>";
-                              startable += "<td>" + value.f_title + "</td>";
-                              startable += "<td>" + value.f_content + "</td>";
-                              startable += "<td>" + value.f_writer + "</td>";
-                              startable += "<td>" + value.f_date + "</td>";
-                              startable += "<td>" + value.f_readnum + "</td>";
-                              startable += "<td>" + value.f_like + "</td>";
-                           startable += "</tr>";
-
-                           startable += $("#tbody");
-                           $('#tbody').append(startable); 
-
-                        });
-                     }
-                        }
-
-                     });
-               }
-            }
-
+		console.log("여긴 타는겨?");
 	
-	
+		 var keyword = $("#selectBox option:selected").val();
+		console.log(keyword);
+		$('#selectBox').change(function() {
+			keyword = $("#selectBox option:selected").val();
+		})
+
+		$("#search").keyup(
+				function() {
+					if (keyword == "제목") {
+						$.ajax({
+							url : "search.ua",
+							type : 'POST',
+							dataType : "json",
+							data : {
+								ftitle : $("#search").val()
+							},
+							success : function(data) {
+
+								$('#tbody').empty();
+								if ($("#search").val() != "") {
+
+									$.each(data, function(key, value) {
+
+										let startable = $("#tbody");
+										startable += "<tr>";
+										startable += "<td>" + value.f_title
+												+ "</td>";
+										startable += "<td>" + value.f_content
+												+ "</td>";
+										startable += "<td>" + value.f_writer
+												+ "</td>";
+										startable += "<td>" + value.f_date
+												+ "</td>";
+										startable += "<td>" + value.f_readnum
+												+ "</td>";
+										startable += "<td>" + value.f_like
+												+ "</td>";
+										startable += "</tr>";
+
+										startable += "</table>";
+										$('#tbody').append(startable);
+									});
+								}
+							}
+
+						});
+					} else {
+						$.ajax({
+							url : "search.ua",
+							type : 'POST',
+							dataType : "json",
+							data : {
+								fwriter : $("#search").val()
+							},
+							success : function(data) {
+								$('#tbody').empty();
+								if ($("#search").val() != "") {
+
+									$.each(data, function(key, value) {
+										let startable = "#tbody";
+										startable += "<tr>";
+										startable += "<td>" + value.f_title
+												+ "</td>";
+										startable += "<td>" + value.f_content
+												+ "</td>";
+										startable += "<td>" + value.f_writer
+												+ "</td>";
+										startable += "<td>" + value.f_date
+												+ "</td>";
+										startable += "<td>" + value.f_readnum
+												+ "</td>";
+										startable += "<td>" + value.f_like
+												+ "</td>";
+										startable += "</tr>";
+
+										startable += $("#tbody");
+										$('#tbody').append(startable);
+
+									});
+								}
+							}
+						});
+					}
+
+				});
+	});
 </script>
 <!-- JS -->
-<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+</body>
 </html>

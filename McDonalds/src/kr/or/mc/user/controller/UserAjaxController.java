@@ -11,9 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
+import kr.or.mc.user.service.ajax.DeleteCommentService;
 import kr.or.mc.user.service.ajax.FreeListSearchService;
+import kr.or.mc.user.service.ajax.InsertCommentService;
 import kr.or.mc.user.service.ajax.OrderPageBurgerService;
+import kr.or.mc.user.service.ajax.SelectCommentService;
 import kr.or.mc.user.service.ajax.SelectShopService;
+import kr.or.mc.user.service.ajax.UpdateCommentService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
 import kr.or.mc.user.service.board.FreeDeleteService;
 import kr.or.mc.user.service.board.FreeDetailService;
@@ -62,10 +66,26 @@ public class UserAjaxController extends HttpServlet {
 			action = new SelectShopService();
 			forward = action.execute(request, response);
 		}else if(url_Command.contentEquals("/search.ua")) {
+			System.out.println("ajax타나");
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);
-		}
-		
+		}else if(url_Command.contentEquals("/SelectCommentList.ua")) {
+			System.out.println("selectcomment ajax 시작 ok");
+			action = new SelectCommentService();
+			forward = action.execute(request, response);
+		}else if(url_Command.contentEquals("/InsertComment.ua")) {
+			System.out.println("insertcomment ajax 시작 ok");
+			action = new InsertCommentService();
+			forward = action.execute(request, response);
+		}else if(url_Command.contentEquals("/DeleteComment.ua")) {
+				System.out.println("ajax타나ssssscomaet");
+				action = new DeleteCommentService();
+				forward = action.execute(request, response);
+		}else if(url_Command.contentEquals("/UpdateComment.ua")) {
+			System.out.println("ajax타나updatesscomaet");
+			action = new UpdateCommentService();
+			forward = action.execute(request, response);
+	}
 			if (forward != null) {
 				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 				dis.forward(request, response);
