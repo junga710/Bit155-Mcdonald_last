@@ -14,11 +14,13 @@
 
 <title>메뉴 디테일</title>
 
+
 </head>
 
 <body>
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
+
 
 	<div class="hamburgermenu">
 		<h1 class="titDep1">
@@ -126,7 +128,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col p-5 ml-5">
+			<div class="col p-5 ml-5" style="margin-left:100px !important">
 				<div class="" id="footer2">한국맥도날드(유)</div>
 				<div class="" id="footer2">대표이사: 앤토니 마티네즈</div>
 				<div class="" id="footer2">사업자등록번호: 101-81-26409</div>

@@ -7,7 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css"
+	rel="stylesheet">
+<!-- 아이콘 -->
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 

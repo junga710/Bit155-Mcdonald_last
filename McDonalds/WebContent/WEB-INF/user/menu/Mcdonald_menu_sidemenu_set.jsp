@@ -54,7 +54,7 @@
 
 	<div class="mcMenu" wfd-id="34">
 		<ul class="menuList" id="menuList" wfd-id="36">
-			<li class="count" id="count">10 Products</li>
+			<li class="count" id="count">6 Products</li>
 		</ul>
 	</div>
 
