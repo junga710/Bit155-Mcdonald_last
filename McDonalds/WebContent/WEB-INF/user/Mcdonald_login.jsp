@@ -15,6 +15,23 @@
 
 <body>
 
+	<c:set var="loginResult" value="${requestScope.loginResult}" />
+
+	<c:choose>
+		<c:when test="${loginResult == 0}">
+			<script>
+				alert('비밀번호가 틀렸습니다');
+			</script>
+		</c:when>
+		<c:when test="${loginResult == -1}">
+			<script>
+				alert('아이디가 존재하지 않습니다');
+			</script>
+		</c:when>
+	</c:choose>
+
+
+
 	<!-- header include-->
 	<jsp:include page="./common/header.jsp"></jsp:include>
 
@@ -53,20 +70,57 @@
 				</div>
 			</form>
 			<div class="form-group " style="text-align: right">
-				<label> <a href="Mcdonald_joinform.ump" class="text-warning">회원가입하러
+				<label> <a href="Mcdonald_joinform.ump" id="btn_login" name="btn_login" class="text-warning">회원가입하러
 						가기</a>
 				</label>
 			</div>
 			<!-- form-group// -->
 		</article>
 
-
-
-
-
 	</div>
 	</section>
+	
+<!-- 	<script>
+	$('#btn_login').click(function() {
+		 
+        var id = $('#id').val();
 
+        var pwd = $('#pwd').val();
+
+        $.ajax({
+
+            type : "POST",
+
+            url : "/login.ump",
+
+            data : "id=" + id + "&pwd=" + pwd,
+
+            dataType : "text",
+
+            success : function(data, textStatus, xhr) {
+
+               if (data == 'loginFail') {
+
+                    alert('로그인에 실패하였습니다.')
+
+                } else {
+
+                    window.location.href = 'main.jsp';
+
+                }
+
+            },
+
+            error : function(request, status, error) {
+
+                alert("code:" + request.status + "\n" + "error:" + error);
+
+            }
+
+        })
+
+});
+	</script> -->
 
 	<!--footer include -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>

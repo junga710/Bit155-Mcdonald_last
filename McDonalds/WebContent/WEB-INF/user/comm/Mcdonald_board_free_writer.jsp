@@ -15,7 +15,7 @@
 <title>자유게시판</title>
 </head>
 
-<body>
+
 
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -99,6 +99,27 @@
 								"selected").html(fileName);
 					});
 
+			
+			
+			//여기부터 연규가 ▼▼▼▼▼
+			
+			$('button[type=submit]').click(function(evt) {
+				
+				evt.preventDefault();
+				
+				if($('#title').val() === ""){
+					alert("제목을 입력해주세요");
+					$('#title').focus();
+					$('button[type=submit]').unbind();
+				}
+			
+			
+			});
+			
+			
+			
+			
+			//여기까지  연규가 ▲▲▲▲▲
 		});
 	</script>
 
@@ -133,6 +154,8 @@
 	});
 
 	</script>
+	
+
 
 </body>
 
