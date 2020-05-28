@@ -12,7 +12,7 @@
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 
-<title>자유게시판</title>
+<title>자유게시판 상세보기</title>
 </head>
 
 <!-- header include-->
@@ -90,21 +90,39 @@
 				<div class="card-body main">
 
 					<div class="d-flex justify-content-end">
+				<c:choose>
+					<c:when test="${boardFreeDto.f_file_upload == null}">
+						첨부파일 : <a  class="mr-auto">&nbsp;첨부된 파일이 없습니다.</a>
+						<a href="#" style="margin-right: 5px;"> 
+					</c:when>
+					<c:otherwise>
 						첨부파일 : <a href="BoardFreeFileDownload.b?f_file_upload=${boardFreeDto.f_file_upload}" class="mr-auto">&nbsp;${boardFreeDto.f_file_upload}</a>
-						<a href="#" style="margin-right: 5px;"> <img
-							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/heart-regular.svg">
-						</a> <strong style="margin: 0 10px;">좋아요&nbsp;${boardFreeDto.f_like}</strong>
-						<a href="#" style="margin-right: 5px;"> <img
-							style="margin-right: 5px;"
-							src="${pageContext.request.contextPath}/usercss/vendors/images/svg/comment-dots-regular.svg">
-						</a> <strong style="margin-right: 10px;">댓글&nbsp;?</strong> <a
-							href="BoardFreeReRegisterPage.b?f_code=	${boardFreeDto.f_code}&f_title=${boardFreeDto.f_title}" class="btn btn-primary" style="margin: 0 5px;">
-							답글</a> 
-							<a
-							href="BoardFreeUpdatePage.b?f_code=${f_code}"
-							class="btn btn-warning" style="margin: 0 5px;">수정</a> <a
-							href="BoardFreeDelete.b?f_code=${f_code}" class="btn btn-danger"
-							style="margin: 0 5px;">삭제</a>
+						<a href="#" style="margin-right: 5px;"> 
+					</c:otherwise>
+				</c:choose>		
+						<%-- <img src="${pageContext.request.contextPath}/usercss/vendors/images/svg/heart-regular.svg">
+						</a> 
+						<strong style="margin: 0 10px;">좋아요&nbsp;${boardFreeDto.f_like}</strong> --%>
+						<a href="#" style="margin-right: 5px;"> 
+						<img style="margin-right: 5px;" src="${pageContext.request.contextPath}/usercss/vendors/images/svg/comment-dots-regular.svg">
+						</a> 
+						<strong style="margin-right: 10px;">댓글&nbsp;?</strong> 
+						
+				<c:choose>
+					<c:when test="${boardFreeDto.f_writer == id}">	
+						<a href="BoardFreeReRegisterPage.b?f_code=	${boardFreeDto.f_code}&f_title=${boardFreeDto.f_title}" 
+						class="btn btn-primary" style="margin: 0 5px;">답글
+						</a> 
+						<a href="BoardFreeUpdatePage.b?f_code=${f_code}" class="btn btn-warning" style="margin: 0 5px;">수정
+						</a> 
+						<a href="BoardFreeDelete.b?f_code=${f_code}" class="btn btn-danger" style="margin: 0 5px;">삭제</a>
+					</c:when>
+					<c:otherwise>
+						<a href="BoardFreeReRegisterPage.b?f_code=	${boardFreeDto.f_code}&f_title=${boardFreeDto.f_title}" 
+						class="btn btn-primary" style="margin: 0 5px;">답글
+						</a> 
+					</c:otherwise>
+				</c:choose>	
 					</div>
 					<hr>
 					<!-- Comments Form -->

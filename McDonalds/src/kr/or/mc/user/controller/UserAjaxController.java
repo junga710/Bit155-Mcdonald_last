@@ -46,7 +46,7 @@ public class UserAjaxController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		System.out.println(" url_Command : " + url_Command);
-
+		System.out.println("이건타는거냐고~~~~!!!!!!!!!");
 		if (url_Command.equals("/UserMenuDetail.ua")) { // 공지사항 목록 뿌려주는 로직
 			action = new UserMenuDetailService();
 			forward = action.execute(request, response);
@@ -61,7 +61,9 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
 			action = new SelectShopService();
 			forward = action.execute(request, response);
+		
 		}else if(url_Command.contentEquals("/search.ua")) {
+			System.out.println("--여긴 컨트롤러 ");
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);
 		}

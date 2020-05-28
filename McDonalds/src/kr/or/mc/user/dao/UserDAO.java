@@ -1203,7 +1203,7 @@ public class UserDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
-
+		System.out.println();
 		try {
 			conn = ds.getConnection();
 			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_writer like ?";
@@ -1222,7 +1222,7 @@ public class UserDAO {
 				BoardFreeDto.setF_like(rs.getInt(6));
 				list.add(BoardFreeDto);
 			}
-
+			System.out.println("--여긴 DAO" +list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

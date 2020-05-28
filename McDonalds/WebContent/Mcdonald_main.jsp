@@ -19,10 +19,10 @@
 <body>
 <nav class="navbar navbar-expand-sm d-flex flex-row pr-3 pt-0 pb-0 sticky-top" style="padding-left: 5%; justify-content: center">
     
-	<a href="#" class="logo" title="메인으로 이동"> <img
-			src="usercss/vendors/images/common/logo.png" alt="맥도날드"
-			style="padding: 20px;">
-	
+   <a href="#" class="logo" title="메인으로 이동"> <img
+         src="usercss/vendors/images/common/logo.png" alt="맥도날드"
+         style="padding: 20px;">
+   
          <div class="navbar mr-5" style= "padding-left: 120px;">
             <div class="dropdown p-2" style="margin-left: 100px;">
                <button class="dropbtn">Menu

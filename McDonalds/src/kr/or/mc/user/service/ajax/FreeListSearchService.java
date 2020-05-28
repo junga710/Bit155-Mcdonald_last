@@ -21,18 +21,20 @@ public class FreeListSearchService implements Action {
 
 	UserDAO userDao = new UserDAO();
 	List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
-	String ftitle = request.getParameter("f_title");
-	String fwriter = request.getParameter("f_writer");
-	String keyword = request.getParameter("keyword");
+	String ftitle = request.getParameter("ftitle");
+	String fwriter = request.getParameter("fwriter");
+	/* String keyword = request.getParameter("keyword"); */
 	
 	System.out.println("ftitle" + ftitle);
 	System.out.println("fwriter" + fwriter);
-	System.out.println("keyword" + keyword);
+	/* System.out.println("keyword" + keyword); */
 	
 	if( fwriter != null && ftitle  == null) {
-		list = userDao.SearchFwriter(ftitle); 
+		list = userDao.SearchFwriter(fwriter); 
+		System.out.println("1111 서비스  ftitle" +list);
 	}else {
-		list = userDao.SearchFtitle(fwriter);
+		list = userDao.SearchFtitle(ftitle);
+		System.out.println("22222 서비스 너가" +list);
 	}
 
 	/* JSONObject jsonObject = JSONObject.fromObject(productDto); */
@@ -45,6 +47,7 @@ public class FreeListSearchService implements Action {
 	try {
 		response.setContentType("application/x-json; charset=UTF-8");
 		response.getWriter().print(jsonArr);
+		System.out.println("3333 서비스  너가" +list);
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
