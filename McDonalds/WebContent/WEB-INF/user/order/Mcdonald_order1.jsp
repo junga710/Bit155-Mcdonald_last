@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
@@ -354,14 +355,20 @@ $(document).ready(function() {
 		var sum = parseInt(getOnlyNumber($('#_sum').text()), 10);
 		var oneAmount = $('#_one_input').val();
  		var onePrice = getOnlyNumber($('#_onlyone_price').text());
+ 		
+ 		let detailSum = 0;
 		
 		sum += (oneAmount * onePrice);
+		
+		detailSum +=(oneAmount * onePrice);
 		
 		if (getOnlyNumber($('#_set_price').text()) != 0) {
 			var setAmount = $('#_set_input').val();
 			var setPrice = getOnlyNumber($('#_set_price').text());
 			
+			
 			sum += (setAmount * setPrice);
+			detailSum += (setAmount * setPrice);
 		}
 		
 		$('#_sum').text('₩ ' + sum.toLocaleString());
@@ -371,22 +378,37 @@ $(document).ready(function() {
 		//이부분은 연규가 ▼
 		if(oneAmount > 0 || setAmount > 0){
 			
+			if(setAmount === undefined){
+				setAmount = 0;
+			}
+			
 			var detailImg = $('#_thumbnail').attr('src');
 			
 			var detailName = $('#myModal .ko').text();
 			
 			
+/* 			product_code_one : $('.product_code_one').text(), //단일 상품 번호
+			product_code_set : $('.product_code_set').text(), //세트 상품 번호 */
+			
+			
+			
 			var viewDetail = "";
-				
-				viewDetail += "<div class=\"row\">";
-				viewDetail += "<div class=\"col-4\">";
+				viewDetail += "<div class=\"row code"+ $('.product_code_one').text() + " \" id=\"_detail_row\">";
+				viewDetail += "<div class=\"col-4\" style=\"padding:0; align-self:center\">";
 				viewDetail += "<img src="+detailImg+" style=\"width:100%\">";
 				viewDetail += "</div>";
 				viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
-				viewDetail += "<span style=\"font-size:x-small\">"+ detailName +"</span>";
-				viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
-				viewDetail += "<div>세트 : "+ setAmount +"개 </div>";
+				viewDetail += "<span style=\"font-size:small\" class=\"_detail_name\">"+ detailName +"</span>";
 				
+				viewDetail += "<div style=\"font-size:small\">단품 : "+ oneAmount +"개";
+				
+				viewDetail += " <button class='deleteComment' id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += "</div>";
+				
+				viewDetail += "<div style=\"font-size:small\">세트 : "+ setAmount +"개";
+				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " +detailSum.toLocaleString() +"</span>";
+				
+				viewDetail += "</div>";
 				viewDetail += "</div>";
 				viewDetail += "</div>";
 			
@@ -394,8 +416,27 @@ $(document).ready(function() {
 		
 		}
 		
+		
+		//////////////////
+		
+	/* 	let detailOverlap = document.querySelectorAll('._detail_name');
+		
+		var nameSum = 1;
+		for(var i = 1; i < detailOverlap.length; i++){
+		if($('._detail_name').text().match(detailOverlap[nameSum].innerText)){
+				console.log("find");
+			}else{
+				console.log("not found");
+			} 
+		nameSum++;
+		}
+		console.log("nameSum = " + nameSum )
+		console.log($('._detail_name').text()); //이게 다 가져오는거
+		console.log(detailOverlap[0].innerText);
+		 */
+	/////////////////////
 		 //이부분은 연규가 ▲
-		 
+		
 		 //ajax로 데이터 보내줘서 장바구니 DB에 인서트
 		$.ajax({
 			type: 'GET',
@@ -419,6 +460,30 @@ $(document).ready(function() {
 		return str.replace(/[^0-9]/g,'');
 	}
 	
+ 	
+ 	
+ 	///▼▼▼▼ 휴지통 버튼 클릭시 삭제하는거 만들기
+	$(document).on("click", "#_delete_btn", function(){
+		
+		
+	
+		var detailRow = $(this).parent().parent().parent();
+		detailRow.remove();
+		
+		var detailPrice = parseInt(getOnlyNumber($(this).parent().next().children().text()), 10);
+		
+		console.log(detailPrice);
+		
+		
+		var totalPrice = parseInt(($('#_sum').text().replace(/[^0-9]/g,'')), 10);
+
+		
+		
+		$('#_sum').text('₩ ' +(totalPrice-detailPrice).toLocaleString());
+    });
+
+
+ 	
 });
     </script>
 
