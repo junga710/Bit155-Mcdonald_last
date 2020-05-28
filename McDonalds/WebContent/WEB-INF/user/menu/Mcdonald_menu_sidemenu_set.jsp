@@ -34,10 +34,7 @@
 		<p class="subCopy">
 			가볍게 즐겨도,버거와 함께 푸짐하게 즐겨도, <br> 언제나 맛있는 사이드와 디저트 메뉴!
 		</p>
-		<ul style="padding-left: 10%;">
-			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_sidemenu.html">Menu</a></li>
-		</ul>
+
 	</div>
 	<div class="row mt-5">
 		<div class="col-5"></div>

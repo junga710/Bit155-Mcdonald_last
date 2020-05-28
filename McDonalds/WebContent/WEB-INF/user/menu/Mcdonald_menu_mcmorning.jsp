@@ -35,10 +35,7 @@
 		<p class="subCopy">
 			새벽 4시부터 오전 10시 30분까지 <br> 갓 구워내 신선한 맥모닝으로 따뜻한 아침 식사를 챙겨 드세요!
 		</p>
-		<ul style="padding-left: 10%;">
-			<li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_mcmorning.html">Menu</a></li>
-		</ul>
+
 	</div>
 	<div class="row mt-5">
 		<div class="col-5"></div>

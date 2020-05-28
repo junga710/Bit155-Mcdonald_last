@@ -24,12 +24,6 @@
 		<h1 class="titDep1" style="padding-top: 3%; color: white;">
 			<strong>리뷰게시판</strong>
 		</h1>
-		<ul style="padding-left: 10%; margin-top: 5%;">
-			<li id="topli"><a href="../Mcdonald_main.html"
-				style="color: white;">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html"
-				style="color: white;">menu</a></li>
-		</ul>
 	</div>
 
 	<div class="container">

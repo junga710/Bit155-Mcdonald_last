@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/usercss/vendors/images/favicon.ico">
+
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/usercss/assets/css/main.css" /> --%>
 		
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
@@ -29,12 +29,6 @@
 		<h1 class="titDep1" style="padding-top: 3%; color: white;">
 			<strong>자유게시판 상세보기</strong>
 		</h1>
-		<ul style="padding-left: 10%; margin-top: 5%;">
-			<li id="topli"><a href="../Mcdonald_main.html"
-				style="color: white;">Home</a></li>
-			<li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html"
-				style="color: white;">menu</a></li>
-		</ul>
 	</div>
 	<!-- //visualArea -->
 

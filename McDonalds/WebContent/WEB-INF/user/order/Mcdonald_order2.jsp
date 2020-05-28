@@ -26,12 +26,6 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
   <div class="hamburgermenu">
     <h1 class="titDep1"><strong>결제하기</strong></h1>
-    <p class="subCopy">빅맥<sub class="reg">®</sub>에서 맥스파이시<sub class="reg">®</sub> 상하이버거까지, <br>주문 즉시 바로
-      조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.</p>
-    <ul style="padding-left: 10%; margin-top: 5%;">
-      <li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-      <li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
-    </ul>
   </div>
 
   <p></p>

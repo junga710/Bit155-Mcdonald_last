@@ -56,10 +56,6 @@
       <h1 class="titDep1" style="padding-bottom: 20px; padding-top: 20px;">
          <strong>자유게시판</strong>
       </h1>
-      <ul style="padding-left: 10%;">
-         <li id="topli"><a href="Macdonald_main.html">Home</a></li>
-         <li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
-      </ul>
    </div>
 
    <p></p>
