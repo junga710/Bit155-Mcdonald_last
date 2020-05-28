@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
 <body>
 
 	<!-- header include-->
-	<jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"></jsp:include>
 	<section id="container">
 
 

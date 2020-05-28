@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/usercss/vendors/images/favicon.ico">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/usercss/assets/css/main.css" /> --%>
 		
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
@@ -146,7 +147,6 @@
 							src="http://placehold.it/50x50" alt="">
 						<div class="media-body" id="com">
 							<h5 class="mt-0">${boardFreeDto.f_writer}</h5>
-							 댓글나오는 공간
 						</div>
 					</div>
 				</div>
