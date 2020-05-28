@@ -41,13 +41,14 @@
 		<div class="col-5"></div>
 		<div class="col-1">
 			<div id="productli">
-				<a href="#" role="button" style="color: #808080;">단품메뉴</a>
+				<a href="#" role="button" style="color: #FFBC0D;"><p style="font-size: large;text-decoration: underline;">단품메뉴</p></a>
 			</div>
 			<!-- 선택 된 태그에 aria-selected="true" 추가 -->
 		</div>
-		<div class="col-2" id="productli">
-			<a href="MenuMacMorningSet.um" role="button" style="color: #808080;">세트메뉴</a>
+		<div class="col-1" id="productli">
+			<a href="MenuMacMorningSet.um" role="button" style="color: #808080;"><p style="font-size: medium;">세트메뉴</p></a>
 		</div>
+		<div class="col-5"></div>
 	</div>
 
 	<div class="mcMenu" wfd-id="34">
