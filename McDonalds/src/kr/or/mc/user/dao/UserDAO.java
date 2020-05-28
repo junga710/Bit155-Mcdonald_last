@@ -769,28 +769,35 @@ public class UserDAO {
 
 	// 자유게시판 답변
 	public int FreeReRegister(BoardFreeDTO boardFreeDto) {
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
+		
 		try {
 			conn = ds.getConnection();
 
 			int f_code = boardFreeDto.getF_code();
 			
-
 			String f_title = boardFreeDto.getF_title();
 			String f_content = boardFreeDto.getF_content();
 			String f_writer = boardFreeDto.getF_writer();
 			String f_file_upload = boardFreeDto.getF_file_upload();
+			
 			int filesize = 0;
 
 			String refer_depth_step_sal = "select f_refer , f_depth , f_step from board_free where f_code=?";
 
-			String step_update_sql = "update board_free set f_step= f_step+1 where f_step  > ? and f_refer =? ";
+			/*
+			 * String step_update_sql =
+			 * "update board_free set f_step= f_step+1 where f_step  > ? and f_refer =? ";
+			 */
+			
+			String step_update_sql = "select nvl(min(f_step), 0) f_step from board_free where f_refer=? and f_step > ? and f_depth <= ?";
 
-			String rewrite_sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_like,f_file_upload,f_refer,f_depth,f_step)"
-					+ " values(board_free_sq.nextval,?,?,?,sysdate,0,0,?,?,?,?)";
+			String rewrite_sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_file_upload,f_refer,f_depth,f_step)"
+					+ " values(board_free_sq.nextval,?,?,?,sysdate,0,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(refer_depth_step_sal);
 			pstmt.setInt(1, f_code);
@@ -802,44 +809,68 @@ public class UserDAO {
 				int f_depth = rs.getInt("f_depth");
 
 				pstmt = conn.prepareStatement(step_update_sql);
-				pstmt.setInt(1, f_step);
-				pstmt.setInt(2, f_refer);
+				pstmt.setInt(1, f_refer);
+				pstmt.setInt(2, f_step);
+				pstmt.setInt(3, f_depth); 
 				pstmt.executeUpdate();
-
+				rs = pstmt.executeQuery();
 				// filename,filesize,refer,depth,step
-				pstmt = conn.prepareStatement(rewrite_sql); //
+				
+				if(rs.next()) {
+					f_step = rs.getInt("f_step");
+					if(f_step == 0) {
+						String maxStep = "select max(f_step)+1 maxStep from board_free where f_refer=?";
+						pstmt = conn.prepareStatement(maxStep);
+						pstmt.setInt(1, f_refer); //원본글 ref
+						rs = pstmt.executeQuery();
+						if(rs.next()) {
+							f_step = rs.getInt("maxStep");
+						}
+					} else {
+						String update_step = "update board_free set f_step=f_step+1 where f_refer=? and f_step >= ? ";
+						pstmt = conn.prepareStatement(update_step);
+						pstmt.setInt(1, f_refer); //원본글 ref
+						pstmt.setInt(2, f_step);
+						pstmt.executeUpdate();
+					}
+				}
+					
+				//filename, filesize, refer, depth, step
+				pstmt = conn.prepareStatement(rewrite_sql); //컴파일
 				pstmt.setString(1, f_title);
 				pstmt.setString(2, f_content);
 				pstmt.setString(3, f_writer);
 				pstmt.setString(4, f_file_upload);
-
+				
+				//답변
 				pstmt.setInt(5, f_refer);
 				pstmt.setInt(6, f_depth + 1);
 				pstmt.setInt(7, f_step + 1);
-
+				
 				int row = pstmt.executeUpdate();
-				if (row > 0) {
+				if(row > 0) {
 					result = row;
-				} else {
+				}else {
 					result = -1;
 				}
 
 			}
-
+	
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		}finally {
 			try {
 				pstmt.close();
 				rs.close();
-				conn.close();//
-			} catch (Exception e) {
-
+				conn.close();//반환
+			}catch (Exception e) {
+				
 			}
 		}
-
+		
 		return result;
 	}
+	
 
 	// 아이디 중복 체크
 	public int checkId(String id) {
