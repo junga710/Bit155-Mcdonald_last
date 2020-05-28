@@ -21,6 +21,7 @@ import kr.or.mc.common.dto.NutritionDTO;
 import kr.or.mc.common.dto.OrderDetailDTO;
 import kr.or.mc.common.dto.OrdersDTO;
 import kr.or.mc.common.dto.ProductDTO;
+import kr.or.mc.common.dto.ReplyDTO;
 import kr.or.mc.common.dto.StoreDTO;
 import kr.or.mc.common.utils.DB_Close;
 
@@ -225,7 +226,7 @@ public class UserDAO {
 			conn = ds.getConnection();
 
 			System.out.println(memberdto.toString() + "투스트링1");
-			String sql = "update member set password = ?, name =?, email = ?, post_code = ?, address = ?, phone = ? WHERE m_id = ?";
+			String sql = " member set password = ?, name =?, email = ?, post_code = ?, address = ?, phone = ? WHERE m_id = ?";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, memberdto.getPassword());
@@ -1256,7 +1257,7 @@ public class UserDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<BoardFreeDTO> list = new ArrayList<BoardFreeDTO>();
-
+		System.out.println();
 		try {
 			conn = ds.getConnection();
 			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_title like ?";
@@ -1276,7 +1277,7 @@ public class UserDAO {
 				BoardFreeDto.setF_like(rs.getInt(6));
 				list.add(BoardFreeDto);
 			}
-
+			System.out.println("--여긴 DAO" +list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -1292,7 +1293,149 @@ public class UserDAO {
 
 	}
 	
+	//댓글가져오기
+	public List<ReplyDTO> selectCommentList(int f_code) {
+		List<ReplyDTO> list = new ArrayList<ReplyDTO>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "select r_code, r_content, r_writer, r_write_date, f_code from reply where f_code=? order by r_code";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, f_code);
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<ReplyDTO>();
+			while(rs.next()) {
+				ReplyDTO ReplyDto = new ReplyDTO();
+				ReplyDto.setR_code(rs.getInt("r_code"));
+				ReplyDto.setR_content(rs.getString("r_content"));
+				ReplyDto.setR_writer(rs.getString("r_writer"));
+				ReplyDto.setR_write_date(rs.getString("r_write_date"));
+				ReplyDto.setF_code(rs.getInt("f_code"));
+				
+				list.add(ReplyDto);
+			}
+		} catch (Exception e) {
+			System.out.println("코멘트 리스트 에러 : " + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(rs);
+				DB_Close.close(pstmt);
+				DB_Close.close(conn);
+
+			} catch (Exception e2) {
+				System.out.println("null 여기?" + e2.getMessage());
+			}
+		}
+		return list;
+	}
 	
+	//댓글쓰기 함수
+		public int insertComment(ReplyDTO Replydto) {
+			int row = 0;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = ds.getConnection();
+				
+				String sql = "insert into reply(r_code, r_writer, r_content, r_write_date, f_code)" +
+							 "values(reply_sq.nextval, ?, ?, sysdate, ?)";
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, Replydto.getR_writer());
+				pstmt.setString(2, Replydto.getR_content());
+				pstmt.setInt(3, Replydto.getF_code());
+				
+				
+				row = pstmt.executeUpdate();
+			} catch (Exception e1) {
+				e1.getStackTrace();
+				System.out.println("insert오류: " + e1.getMessage());
+			} finally {
+				try {
+					if(pstmt !=null)
+						try {
+						DB_Close.close(pstmt);
+					}catch(Exception e2) {}
+					if(conn != null) 
+						try{
+						DB_Close.close(conn);
+						}catch(Exception e3) {}}
+				catch(Exception e4) {
+					e4.getStackTrace();
+							DB_Close.close(rs);
+						
+					}
+			
+				}return row;	
+			}
+			
+
+		
+
+		
+		//댓글 삭제하기
+		public int deleteComment(ReplyDTO Replydto) {
+			int row = 0;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = ds.getConnection();
+				String sql = "delete from reply where f_code=? and r_code=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Replydto.getF_code());
+				pstmt.setInt(2, Replydto.getR_code());
+				
+				row = pstmt.executeUpdate();
+			} catch (Exception e) {
+				System.out.println("delete : " + e.getMessage());
+			} finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (Exception e2) {
+					System.out.println("delete : " + e2.getMessage());
+				}
+			}
+			return row;
+		}
+		//댓글 수정하기
+		public int updateComment(ReplyDTO Replydto) {
+			int row = 0;
+			
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = ds.getConnection();
+				String sql = "update reply set r_content=? where f_code=? and r_code=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, Replydto.getR_content());
+				pstmt.setInt(2, Replydto.getF_code());
+				pstmt.setInt(3, Replydto.getR_code());
+				row = pstmt.executeUpdate();
+			
+			} catch (Exception e) {
+				System.out.println("수정dao 에러: " + e.getMessage());
+				e.getStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();//반환
+				} catch (Exception e2) {
+					System.out.println(e2.getMessage());
+				}
+			}
+			return row;
+		}
+
+
 	// 장바구니 - 상세보기(상품) : 상품번호를 이용해 가격 얻기
 		public ProductDTO PrductDetail(int product_code) {
 			Connection conn = null;

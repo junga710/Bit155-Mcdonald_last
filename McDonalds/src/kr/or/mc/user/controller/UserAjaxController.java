@@ -11,11 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
+import kr.or.mc.user.service.ajax.DeleteCommentService;
 import kr.or.mc.user.service.ajax.BasketAddService;
 import kr.or.mc.user.service.ajax.FreeListSearchService;
+import kr.or.mc.user.service.ajax.InsertCommentService;
 import kr.or.mc.user.service.ajax.OrderPageBurgerService;
+import kr.or.mc.user.service.ajax.SelectCommentService;
 import kr.or.mc.user.service.ajax.SelectBurgerModalService;
 import kr.or.mc.user.service.ajax.SelectShopService;
+import kr.or.mc.user.service.ajax.UpdateCommentService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
 import kr.or.mc.user.service.board.FreeDeleteService;
 import kr.or.mc.user.service.board.FreeDetailService;
@@ -48,7 +52,7 @@ public class UserAjaxController extends HttpServlet {
 		Action action = null;
 		ActionForward forward = null;
 		System.out.println(" url_Command : " + url_Command);
-
+		System.out.println("이건타는거냐고~~~~!!!!!!!!!");
 		if (url_Command.equals("/UserMenuDetail.ua")) { // 공지사항 목록 뿌려주는 로직
 			action = new UserMenuDetailService();
 			forward = action.execute(request, response);
@@ -63,19 +67,39 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
 			action = new SelectShopService();
 			forward = action.execute(request, response);
-		} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
-			action = new SelectBurgerModalService();
-			forward = action.execute(request, response);
-		} else if (url_Command.contentEquals("/search.ua")) {
+		
+		}else if(url_Command.contentEquals("/search.ua")) {
+
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);
-		} else if(url_Command.contentEquals("/basketAdd.ua")) {
-			action = new BasketAddService();
+		}else if(url_Command.contentEquals("/SelectCommentList.ua")) {
+			System.out.println("selectcomment ajax 시작 ok");
+			action = new SelectCommentService();
 			forward = action.execute(request, response);
+		}else if(url_Command.contentEquals("/InsertComment.ua")) {
+			System.out.println("insertcomment ajax 시작 ok");
+			action = new InsertCommentService();
+			forward = action.execute(request, response);
+		}else if(url_Command.contentEquals("/DeleteComment.ua")) {
+				System.out.println("ajax타나ssssscomaet");
+				action = new DeleteCommentService();
+				forward = action.execute(request, response);
+		}else if(url_Command.contentEquals("/UpdateComment.ua")) {
+			System.out.println("ajax타나updatesscomaet");
+			action = new UpdateCommentService();
+			forward = action.execute(request, response);
+	} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
+		action = new SelectBurgerModalService();
+		forward = action.execute(request, response);
+	} else if (url_Command.contentEquals("/search.ua")) {
+		action = new FreeListSearchService();
+		forward = action.execute(request, response);
+	} else if(url_Command.contentEquals("/basketAdd.ua")) {
+		action = new BasketAddService();
+		forward = action.execute(request, response);
 
-		}
-		
-		
+	}
+
 
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
