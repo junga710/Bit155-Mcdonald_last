@@ -12,8 +12,7 @@
 <!--css-->
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 
 <title>자유게시판</title>
 </head>
@@ -110,21 +109,24 @@
 				style="border-left-color: rgb(241, 241, 241); text-align: end;">
 				<div class="d-flex justify-content-end">
 					<div class="col-sm-3">
-						<select id="selectBox" name="selectBox" class="form-control">
-							<!-- 	<option selected>조건선택</option> -->
+
+						<select id="selectBox" name = "selectBox" class="form-control">
+						<!-- 	<option selected>조건선택</option> -->
 							<option value="제목" selected>제목</option>
 							<option value="작성자">작성자</option>
 						</select>
 					</div>
+
 					<input style="width: 200px;" class="form-control" type="text"
 						id="search" name="search" placeholder="검색어를 입력하세요">
+
 				</div>
 			</div>
 		</div>
 
 		<!-- 게시판 리스트  -->
 		<div class="row">
-			<div class="col-md-12"->
+			<div class="col-md-12">
 				<table class="table table-hover text-center">
 					<thead>
 						<tr class="boardfreelist" style="text-align: center;">
@@ -229,8 +231,6 @@
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
-
-
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 
@@ -239,11 +239,12 @@
 	<%-- <script
 	src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> --%>
 
-	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-	<script>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	
+<script>
 
 $(function(){
 	
@@ -268,10 +269,11 @@ $(function(){
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
 	}
-	
+})
+	</script>
+	<script>
 	//비동기 검색기능
 
-      
       var keyword = $("#selectBox option:selected").val()
       $('#selectBox').change(function() {
          keyword = $("#selectBox option:selected").val()
@@ -309,7 +311,7 @@ $(function(){
                                  startable += "<td>" + value.f_writer + "</td>";
                                  startable += "<td>" + value.f_date + "</td>";
                                  startable += "<td>" + value.f_readnum + "</td>";
-/*                                  startable += "<td>" + value.f_like + "</td>"; */
+/*                               startable += "<td>" + value.f_like + "</td>"; */
                               startable += "</tr>";
 
                            startable += "</table>";
@@ -348,20 +350,21 @@ $(function(){
                      }
                         }
 
-                     });
-               }
-            })
+                  })
 
-      });
-	
+               };
+               });
+
 </script>
 
 </body>
-
 <!-- JS -->
-<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<<<<<<< HEAD
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 </html>
+
+

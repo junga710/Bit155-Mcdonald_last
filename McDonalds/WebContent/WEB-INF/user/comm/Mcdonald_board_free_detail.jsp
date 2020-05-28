@@ -8,7 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/usercss/assets/css/main.css" /> --%>
+		
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 
@@ -38,8 +40,6 @@
 
 	<div class="container" style="padding-top: 2%; padding-right: 2%;">
 
-		<form name="form" id="form" role="form" method="post"
-			action="BoardFreeRegister.b" enctype="multipart/form-data">
 			<div class="row mb-3">
 				<div class="col-8">
 					<strong>${boardFreeDto.f_title}</strong>
@@ -97,6 +97,7 @@
 					</c:when>
 					<c:otherwise>
 						첨부파일 : <a href="BoardFreeFileDownload.b?f_file_upload=${boardFreeDto.f_file_upload}" class="mr-auto">&nbsp;${boardFreeDto.f_file_upload}</a>
+
 						<a href="#" style="margin-right: 5px;"> 
 					</c:otherwise>
 				</c:choose>		
@@ -123,18 +124,19 @@
 						</a> 
 					</c:otherwise>
 				</c:choose>	
+
 					</div>
 					<hr>
 					<!-- Comments Form -->
 					<div class="card my-4">
-						<h5 class="card-header">Leave a Comment:</h5>
+						<h5 class="card-header">댓글 쓰는 공간</h5>
 						<div class="card-body">
-							<form>
+							<!-- <form> -->
 								<div class="form-group">
-									<textarea class="form-control" rows="3"></textarea>
+									<textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
 								</div>
-								<button type="submit" class="btn btn-primary">Submit</button>
-							</form>
+								<button class="btn btn-primary" id="commentWrite" name="commentWrite">Submit</button>
+							<!-- </form> -->
 						</div>
 					</div>
 
@@ -142,17 +144,14 @@
 					<div class="media mb-4">
 						<img class="d-flex mr-3 rounded-circle"
 							src="http://placehold.it/50x50" alt="">
-						<div class="media-body">
-							<h5 class="mt-0">Commenter Name</h5>
-							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-							scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-							vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-							nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+						<div class="media-body" id="com">
+							<h5 class="mt-0">${boardFreeDto.f_writer}</h5>
+							 댓글나오는 공간
 						</div>
 					</div>
 				</div>
 			</div>
-		</form>
+		
 
 	</div>
 	<!-- //container  -->
@@ -203,6 +202,138 @@
 			document.body.scrollTop = 0;
 			document.documentElement.scrollTop = 0;
 		}
+		
+	//////비동기	
+		$.ajax({
+			url: "SelectCommentList.ua",
+			data: {
+				f_code:'${f_code}'},
+			dataType: "json",
+			success: function(resData) {
+				makeComment(resData);
+			}
+		});
+		
+		//댓글 등록
+		$('#commentWrite').click(function() {
+			if($('#comment').val() == "") {
+				alert('내용을 입력하세요');
+				return false;
+			}
+			
+			$.ajax({
+				url: "InsertComment.ua",
+				data: {
+					f_code:'${f_code}',
+					name:'${requestScope.f_writer}',
+					content:$('#comment').val()
+				},
+				dataType: "json",
+				success: function(resData) {
+					console.log(resData);
+					$('#com').empty();
+					makeComment(resData);
+					$('#comment').val("");
+				}
+			});
+		});
+		
+		//댓글 삭제
+		$('#com').on('click', '.deleteComment', function() {
+			$.ajax({
+				url: "DeleteComment.ua",
+				data: {
+					f_code: '${f_code}',
+					r_code: $(this).data("value")
+				},
+				dataType: "json",
+				success: function(resData) {
+					$('#com').empty();
+					makeComment(resData);
+				}
+			});
+		});
+		
+		//댓글 수정
+		var check = true;
+		$('#com').on('click', '.updateComment', function() {
+			if(check) {
+				check = false;
+				//클릭한 a태그의 class를 cancelUpdate로 바꾸고 아이콘 바꾸기
+				$(this).attr('class', 'cancelUpdate');
+				$(this).html("<i class='ri-close-line'></i>");
+				
+				//this(a태그)의 부모태그(blockquote태그)를 parentTag변수에 담기
+				var parentTag = $(this).parent();
+
+				//자식태그 중 code(댓글내용이 들어있는 태그)를 찾아서 변수에 담기
+				var code = parentTag.find('code');
+				//댓글내용 변수에 담기
+				var codeText = parentTag.find('code').text();
+				//댓글내용이 있는 code태그 삭제
+				$(code).remove();
+				//input태그 append하기(value에는 기존의 값 셋팅하고, 포커스주기)
+				var html = "";
+				html += '<div id="updateDiv">';
+				html += '<input type="text" value="'+codeText+'" name="content" id="updateContent">';
+				html += '<button class="button special small alt" id="commUpdateBtn">Edit</button>';
+				html += '</div>';
+				parentTag.append(html);
+				parentTag.find('input').focus();
+				
+				var commentNum = $(this).data("value");
+				$('#commUpdateBtn').click(function() {
+					if($('#updateContent').val() == "") {
+						alert('내용을 입력하세요');
+						return false;
+					}
+					
+					$.ajax({
+						url: "UpdateComment.ua",
+						data: {
+							f_code: '${f_code}',
+							r_code: commentNum,
+							r_content: $('#updateContent').val()
+						},
+						dataType: "json",
+						success: function(resData) {
+							$('#com').empty();
+							makeComment(resData);
+						}
+					});
+				});
+			}
+			
+			//수정 취소 눌렀을 경우 리스트 다시 불러오기
+			$('#com').on('click', '.cancelUpdate', function() {
+				$.ajax({
+					url: "SelectCommentList.ua",
+					data: {f_code:'${f_code}'},
+					dataType: "json",
+					success: function(resData) {
+						$('#com').empty();
+						makeComment(resData);
+					}
+				});
+				check = true;
+			});
+		});
+
+			//댓글 목록 그리는 함수
+			function makeComment(result) {
+				var html = "";
+				$.each(result, function(index, obj) {
+					html += "<blockquote>" + obj.r_code + " " + obj.r_write_date;
+					html += " <a href='javascript:void(0);' data-value='" + obj.r_code + "' class='updateComment' ><i class='ri-pencil-line'></i></a>";
+					html += " <a href='javascript:void(0);' data-value='" + obj.r_code + "' class='deleteComment'><i class='ri-delete-bin-line'></i></a><br>";
+					html += "<code>" + obj.r_content + "</code></blockquote>";
+				});
+				$('#com').append(html);
+			}
+		
+		
+		
+			
 	</script>
 
 
@@ -210,28 +341,6 @@
 
 </body>
 
-
-<!-- <div class="row mt-3">
-			<div class="col-10"></div>
-			<div class="col">
-				<button type="button" class="btn btn-info" id="freebtnMC"
-					style="position: absolute; right: 20%">
-					<strong>답글</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-warning" id="freebtnMC"
-					style="position: absolute; right: 20%">
-					</strong>수정</strong>
-				</button>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-danger" id="freebtnMC"
-					style="position: absolute; right: 20%">
-					</strong>삭제</strong>
-				</button>
-			</div>
-		</div> -->
 
 
 </html>
