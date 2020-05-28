@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.user.service.ajax.BasketAddService;
+import kr.or.mc.user.service.ajax.BasketDeleteService;
+import kr.or.mc.user.service.ajax.BasketLoadFullService;
+import kr.or.mc.user.service.ajax.BasketLoadService;
 import kr.or.mc.user.service.ajax.FreeListSearchService;
 import kr.or.mc.user.service.ajax.OrderPageBurgerService;
 import kr.or.mc.user.service.ajax.SelectBurgerModalService;
@@ -53,10 +56,9 @@ public class UserAjaxController extends HttpServlet {
 			action = new UserMenuDetailService();
 			forward = action.execute(request, response);
 
-		} else if (url_Command.equals("/OrderPageBurger.ua")) { // 공지사항 목록 뿌려주는 로직
+		} else if (url_Command.equals("/OrderPageBurger.ua")) { 
 			action = new OrderPageBurgerService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/SelectShop.ua")) { // 지도 화면 보여주는 로직
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/user/order/Mcdonald_selectStore.jsp");
@@ -69,11 +71,19 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/search.ua")) {
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);
-		} else if(url_Command.contentEquals("/basketAdd.ua")) {
+		} else if(url_Command.contentEquals("/basketAdd.ua")) { //장바구니 추가
 			action = new BasketAddService();
 			forward = action.execute(request, response);
-
-		}
+		} else if(url_Command.contentEquals("/basketLoad.ua")) { //장바구니 단품 or 세트 or 단품&&세트 로드
+			action = new BasketLoadService();
+			forward = action.execute(request, response);
+		} else if(url_Command.contentEquals("/basketLoadFull.ua")) { //장바구니에 담긴 모든것 로드
+			action = new BasketLoadFullService();
+			forward = action.execute(request, response);
+		} else if(url_Command.contentEquals("/basketDelete.ua")) { //장바구니 하나씩 삭제
+			action = new BasketDeleteService();
+			forward = action.execute(request, response);
+		} 
 		
 		
 

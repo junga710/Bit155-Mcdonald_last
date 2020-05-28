@@ -23,13 +23,16 @@ public class OrderMenuService implements Action {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
+		String s_name = request.getParameter("s_name");
+		
 		MemberDTO memberDto = userdao.MemDetail(id);
 		String address = memberDto.getAddress();
 		String address_detail = memberDto.getAddress_detail();
 		
 		request.setAttribute("address", address);
 		request.setAttribute("address_detail", address_detail);
-
+		request.setAttribute("s_name", s_name);
+		
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/user/order/Mcdonald_order1.jsp");
 

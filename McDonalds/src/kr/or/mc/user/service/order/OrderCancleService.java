@@ -12,36 +12,23 @@ import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.common.dto.BasketDTO;
 import kr.or.mc.user.dao.UserDAO;
 
-public class OrderCartAddService implements Action {
+public class OrderCancleService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		
-		
 
+		//세션갑 가져와서 장바구니에 담긴 거 비우고 메뉴선택 페이지로 이동
+		System.out.println("요긴오니??");
 		
-		String basketstr = request.getParameter("basket_code");
 		UserDAO userdao = new UserDAO();
-		
+
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
-		
-		//상품번호
-		String product_code = request.getParameter("");
-		
-		//String id = (String)session.getAttribute("id"); //지점명 받기..
-		
-		//수량
-		
-		//총상품금액?
+		String b_id = (String) session.getAttribute("id"); // b_id : 사용자 아이디
 
-		
-
-		
+		int result = userdao.OrderCartDelete(b_id);
 
 		ActionForward forward = new ActionForward();
-		forward.setPath("/WEB-INF/user/order/Mcdonald_order3.jsp");
+		forward.setPath("Order1.uo");
 
 		return forward;
 	}

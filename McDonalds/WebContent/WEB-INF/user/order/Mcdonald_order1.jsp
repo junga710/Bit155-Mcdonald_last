@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
@@ -19,16 +20,6 @@
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
 
-<!--font-->
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
-	rel="stylesheet">
 
 <title>주문하기</title>
 
@@ -138,11 +129,18 @@
 				<div class="row" style="place-content: center;">내 주문 정보</div>
 				<hr>
 				<div class="row">
+					&nbsp; &nbsp;선택 매장 : 강남&nbsp; <span class="select_store">${requestScope.s_name}</span>
+					점
+					<!-- 여기에 주소를 받아야댐 -->
+				</div>
+				<hr>
+				<div class="row">
 					&nbsp; &nbsp;배달 주소 : ${requestScope.address}
 					${requestScope.address_detail}
 					<!-- 여기에 주소를 받아야댐 -->
 				</div>
 				<hr>
+
 				<div class="row">
 					<div class="col-md-6" style="padding-left: 0px;">
 						&nbsp; &nbsp;총 주문합계 :
@@ -154,9 +152,12 @@
 				</div>
 				<p></p>
 				<div class="row" style="justify-content: center;">
-					<a href="Order2.uo" class="btn btn-danger"
+					<!-- <a id="go" href="Order2.uo" class="btn btn-danger"
 						style="width: 85%; background-color: #D1402D; height: 40px;">결제
-						진행하기</a>
+						진행하기</a> -->
+					<button id="go" class="btn btn-danger"
+						style="width: 85%; background-color: #D1402D; height: 40px;">결제
+						진행하기</button>
 
 					<!-- 버튼으로 넘어가야대는거 넣어야댐 -->
 				</div>
@@ -284,26 +285,79 @@
 	<!-- 여기 까지가 모달 끝 -->
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-</body>
 
-<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<!-- JS -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-<script
-	src="${pageContext.request.contextPath}/usercss/assets/js/orderlist.js"></script>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<!-- JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-<script>
+	<script
+		src="${pageContext.request.contextPath}/usercss/assets/js/orderlist.js"></script>
+
+	<script>
 
 $(document).ready(function() {
+	
+	var count = 0; //장바구니 담은 개수 count 값 
+	loadTotalBasket();
+	
+	//새로고침 시 기존 데이터 유지
+	function loadTotalBasket(){
+		var totalSum = 0;
+	$.ajax({
+		type: 'GET',
+		url: 'basketLoadFull.ua',
+		success: function(response) {
+			$.each(response, function(index, item){
+					var detailImg = $('#_thumbnail').attr('src');
+					
+					var detailName = $('#myModal .ko').text();
+			var viewDetail = "";
+			
+			viewDetail += "<div class=\"row code" + response[index].product_code + " \">";
+			viewDetail += "<div class=\"col-4\">";
+			viewDetail += "<img src=vendors/images/DB_images/"+response[index].product_image+" style=\"width:100%\">";
+			viewDetail += "</div>";
+			viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
+			viewDetail += "<span style=\"font-size:x-small\">"+ response[index].product_name +"</span>";
+			if(response[index].product_kind === '단품'){
+				viewDetail += " <button class='deleteComment' id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += "<div>단품 : "+ response[index].amount +"개 </div>";
+				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
+			}else{
+				viewDetail += " <button class=\" " + response[index].product_code + " \" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += "<div>세트 : "+ response[index].amount +"개 </div>";
+				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
+			}
+		/* 	viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
+			viewDetail += "<div>세트 : "+ setAmount +"개 </div>"; */
+			
+			viewDetail += "</div>";
+			viewDetail += "</div>";
+		
+	$('#_order_detail').append(viewDetail);
+	totalSum += response[index].total_product_price;		
+	
+	count++;
+			});
+			
+			$('#_sum').text('₩ ' + totalSum.toLocaleString());
+	},  error:function(request,status,error){
+        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    }
+	
+	
+	});
+	}
+	
 	
 	$("#_menuList").click(function (evt) {
 		
@@ -349,7 +403,8 @@ $(document).ready(function() {
  	//modal에서 추가하기 버튼
 	$('#_modal_plus').click(function(evt) {
 		
-		var count = 1;
+		count++;
+		console.log("count : " + count)
 		
 		var sum = parseInt(getOnlyNumber($('#_sum').text()), 10);
 		var oneAmount = $('#_one_input').val();
@@ -367,35 +422,7 @@ $(document).ready(function() {
 		$('#_sum').text('₩ ' + sum.toLocaleString());
 		
 		$(this).attr('data-dismiss', 'modal');
-		
-		//이부분은 연규가 ▼
-		if(oneAmount > 0 || setAmount > 0){
 			
-			var detailImg = $('#_thumbnail').attr('src');
-			
-			var detailName = $('#myModal .ko').text();
-			
-			
-			var viewDetail = "";
-				
-				viewDetail += "<div class=\"row\">";
-				viewDetail += "<div class=\"col-4\">";
-				viewDetail += "<img src="+detailImg+" style=\"width:100%\">";
-				viewDetail += "</div>";
-				viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
-				viewDetail += "<span style=\"font-size:x-small\">"+ detailName +"</span>";
-				viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
-				viewDetail += "<div>세트 : "+ setAmount +"개 </div>";
-				
-				viewDetail += "</div>";
-				viewDetail += "</div>";
-			
-		$('#_order_detail').append(viewDetail);
-		
-		}
-		
-		 //이부분은 연규가 ▲
-		 
 		 //ajax로 데이터 보내줘서 장바구니 DB에 인서트
 		$.ajax({
 			type: 'GET',
@@ -404,25 +431,175 @@ $(document).ready(function() {
 				product_code_one : $('.product_code_one').text(), //단일 상품 번호
 				product_code_set : $('.product_code_set').text(), //세트 상품 번호
 				amount_one: oneAmount,
-				amount_set: setAmount
+				amount_set: setAmount,
+				select_store : $('.select_store').text()
 			}, 
 			success: function(response) {
-
 				
 			}
+		}).done(function(){
+			loadBakset();
 		});
+		 
+	
 		
 		
 	}) 
 	
+	 //장바구니에 인서트한거 불러오기
+	 function loadBakset(){
+
+	$.ajax({
+		type: 'GET',
+		url: 'basketLoad.ua',
+		data: {
+			oneAmount : $('#_one_input').val(),
+			setAmount : $('#_set_input').val(),
+		},
+		success: function(response) {
+			console.log("여긴옴...");
+			$.each(response, function(index, item){
+				
+				console.log("성공은 하니??");
+				
+				var oneAmount = $('#_one_input').val();
+
+				var setAmount = $('#_set_input').val();
+			
+				console.log("oneAmount : " + oneAmount);
+				console.log("setAmount : " + setAmount);
+				
+				if(oneAmount > 0 || setAmount > 0){
+					console.log("오나...");
+					
+					var detailImg = $('#_thumbnail').attr('src');
+					
+					var detailName = $('#myModal .ko').text();
+			var viewDetail = "";
+			
+			viewDetail += "<div class=\"row code" + response[index].product_code + " \" >";
+			viewDetail += "<div class=\"col-4\">";
+			viewDetail += "<img src=vendors/images/DB_images/"+response[index].product_image+" style=\"width:100%\">";
+			viewDetail += "</div>";
+			viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
+			viewDetail += "<span style=\"font-size:x-small\">"+ response[index].product_name +"</span>";
+			if(response[index].product_kind === '단품'){
+				viewDetail += " <button class=\" " + response[index].product_code + " \" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += "<div>단품 : "+ response[index].amount +"개 </div>";
+				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
+			}else{
+				viewDetail += " <button class=\" " + response[index].product_code + " \" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += "<div>세트 : "+ response[index].amount +"개 </div>";
+				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
+			}
+		/* 	viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
+			viewDetail += "<div>세트 : "+ setAmount +"개 </div>"; */
+			
+			viewDetail += "</div>";
+			viewDetail += "</div>";
+		
+	$('#_order_detail').append(viewDetail);
+				}
+			
+
+			
+			});
+	},  error:function(request,status,error){
+        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    }
+	
+	
+	});
+ 	}
+
+	
 	function getOnlyNumber(str) {
 		return str.replace(/[^0-9]/g,'');
 	}
+ 	
+ 	
+	/* href="Order2.uo"  */
+    $('#go').click(function (e) {
+    	if(count === 0){
+    		alert('장바구니에 1개이상 담아주세요.')
+    	}else{
+    	e.preventDefault();
+    	location.href="Order2.uo"
+    	console.log("ss");
+    	}
+    });
+	
+	
+	///▼▼▼▼ 휴지통 버튼 클릭시 삭제하는거 만들기
+	$(document).on("click", "#_delete_btn", function(){
+		console.log("대박 : " + $(this).attr('id'));
+		console.log("대박 : " + $(this).attr('id'));
+		console.log("대박 : " + $(this).attr('id'));
+		console.log("대박 : " + $(this).attr('id'));
+		//ajajx
+		$.ajax({
+			type: 'GET',
+			url: 'basketDelete.ua',
+		 	/* data: {
+				product_code : 
+			},  */
+			success: function(response) {
+				
+			},
+			 error:function(request,status,error){
+			        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+		})
+		
+		
+		
+		
+		
+		var detailRow = $(this).parent().parent();
+		console.log("아나!! " + detailRow)
+		detailRow.remove();
+		
+		var detailPrice = parseInt(getOnlyNumber($(this).next().next().text()), 10);
+		
+		console.log("상품가격 " + detailPrice);
+		
+		var totalPrice = parseInt(($('#_sum').text().replace(/[^0-9]/g,'')), 10);
+		
+		$('#_sum').text('₩ ' +(totalPrice-detailPrice).toLocaleString());
+		
+    });
+	
 	
 });
     </script>
 
-<script>
+
+
+	<script>
+/* var checkUnload = true;
+$(window).on("beforeunload", function(){
+    if(checkUnload) return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
+}); */
+
+//새로고침 막기
+/* $(document).keydown(function (e) {
+    
+    if (e.which === 116) {
+        if (typeof event == "object") {
+            event.keyCode = 0;
+        }
+        alert('새로고침 막기')
+        return false;
+    } else if (e.which === 82 && e.ctrlKey) {
+    	alert('새로고침 막기')
+        return false;
+    }
+});  */
+
+</script>
+
+
+	<script>
       var mybutton = document.getElementById("myBtn");
     
       // When the user scrolls down 20px from the top of the document, show the button
@@ -526,7 +703,7 @@ $(document).ready(function() {
       
     </script>
 
-
+</body>
 
 
 </html>

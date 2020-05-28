@@ -463,7 +463,6 @@ public class UserDAO {
 	}
 
 	// 공지사항 삭제
-
 	public int ProductDelete(int n_code) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -1089,18 +1088,22 @@ public class UserDAO {
 		return InfoShop;
 	}
 
-	// 장바구니 출력
-	public List<BasketDTO> OrderCartList(int basket_code) {
+	// 장바구니 출력(모두)
+	public List<BasketDTO> OrderCartList(String b_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<BasketDTO> list = new ArrayList<BasketDTO>();
 		try {
 			conn = ds.getConnection();
-			String sql = "select * from basket where basket_code = ?";
+			String sql = "select b.basket_code, b.b_id, b.product_code, b.s_name, b.amount, b.total_product_price, m.address, p.product_image,\r\n" + 
+					"p.product_name, p.product_kind\r\n" + 
+					"from basket b join product p on b.product_code = p.product_code\r\n" + 
+					"              join member m on b_id = m_id \r\n" + 
+					"where b_id = ?" + "";
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, basket_code);
+			pstmt.setString(1, b_id);
 
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -1111,6 +1114,10 @@ public class UserDAO {
 				basketDto.setS_name(rs.getString("s_name"));
 				basketDto.setAmount(rs.getInt("amount"));
 				basketDto.setTotal_product_price(rs.getInt("total_product_price"));
+				basketDto.setAddress(rs.getString("address"));
+				basketDto.setProduct_image(rs.getString("product_image"));
+				basketDto.setProduct_name(rs.getString("product_name"));
+				basketDto.setProduct_kind(rs.getString("product_kind"));
 				list.add(basketDto);
 			}
 
@@ -1126,6 +1133,135 @@ public class UserDAO {
 			}
 		}
 		return list;
+	}
+	
+	
+	// 장바구니 출력(하나씩) : 단품 or 세트 하나만 선태했을때
+	public List<BasketDTO> OrderCartListOne(String b_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BasketDTO> list = new ArrayList<BasketDTO>();
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from\r\n" + 
+					"(\r\n" + 
+					"select b.basket_code, b.b_id, b.product_code, b.s_name, b.amount, b.total_product_price, m.address, p.product_image,\r\n" + 
+					"p.product_name, p.product_kind\r\n" + 
+					"from basket b join product p on b.product_code = p.product_code\r\n" + 
+					"              join member m on b_id = m_id \r\n" + 
+					"where b_id = ?\r\n" + 
+					"order by basket_code desc)\r\n" + 
+					"where rownum = 1\r\n" + "";
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, b_id);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BasketDTO basketDto = new BasketDTO();
+				basketDto.setBasket_code(rs.getInt("basket_code"));
+				basketDto.setB_id(rs.getString("b_id"));
+				basketDto.setProduct_code(rs.getInt("product_code"));
+				basketDto.setS_name(rs.getString("s_name"));
+				basketDto.setAmount(rs.getInt("amount"));
+				basketDto.setTotal_product_price(rs.getInt("total_product_price"));
+				basketDto.setAddress(rs.getString("address"));
+				basketDto.setProduct_image(rs.getString("product_image"));
+				basketDto.setProduct_name(rs.getString("product_name"));
+				basketDto.setProduct_kind(rs.getString("product_kind"));
+				list.add(basketDto);
+			}
+
+		} catch (Exception e) {
+			System.out.println("OrderCartList: " + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(rs);
+				DB_Close.close(conn); // 반환
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	// 장바구니 출력(하나씩) : 단품 or 세트 하나만 선태했을때
+		public List<BasketDTO> OrderCartListTwo(String b_id) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<BasketDTO> list = new ArrayList<BasketDTO>();
+			try {
+				conn = ds.getConnection();
+				String sql = "select * from\r\n" + 
+						"(\r\n" + 
+						"select b.basket_code, b.b_id, b.product_code, b.s_name, b.amount, b.total_product_price, m.address, p.product_image,\r\n" + 
+						"p.product_name, p.product_kind\r\n" + 
+						"from basket b join product p on b.product_code = p.product_code\r\n" + 
+						"              join member m on b_id = m_id \r\n" + 
+						"where b_id = ?\r\n" + 
+						"order by basket_code asc)\r\n" + 
+						"where rownum between 1 and 2\r\n" + "";
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, b_id);
+
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					BasketDTO basketDto = new BasketDTO();
+					basketDto.setBasket_code(rs.getInt("basket_code"));
+					basketDto.setB_id(rs.getString("b_id"));
+					basketDto.setProduct_code(rs.getInt("product_code"));
+					basketDto.setS_name(rs.getString("s_name"));
+					basketDto.setAmount(rs.getInt("amount"));
+					basketDto.setTotal_product_price(rs.getInt("total_product_price"));
+					basketDto.setAddress(rs.getString("address"));
+					basketDto.setProduct_image(rs.getString("product_image"));
+					basketDto.setProduct_name(rs.getString("product_name"));
+					basketDto.setProduct_kind(rs.getString("product_kind"));
+					list.add(basketDto);
+				}
+
+			} catch (Exception e) {
+				System.out.println("OrderCartList: " + e.getMessage());
+			} finally {
+				try {
+					DB_Close.close(pstmt);
+					DB_Close.close(rs);
+					DB_Close.close(conn); // 반환
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return list;
+		}
+	
+	
+	//장바구니 비우기
+	public int OrderCartDelete(String b_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			conn = ds.getConnection();
+			String sql = "delete from basket where b_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, b_id);
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("OrderCartDelete 오류 :" + e.getMessage());
+		} finally {
+			try {
+				DB_Close.close(pstmt);
+				DB_Close.close(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
 	}
 	
 	//주문관리에 사용

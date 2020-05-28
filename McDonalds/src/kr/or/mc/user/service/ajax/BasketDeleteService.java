@@ -10,12 +10,12 @@ import kr.or.mc.common.dto.BasketDTO;
 import kr.or.mc.common.dto.ProductDTO;
 import kr.or.mc.user.dao.UserDAO;
 
-public class BasketAddService implements Action {
+public class BasketDeleteService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 
-		// 장바구니에 추가
+		// 장바구니에서 제거
 
 		UserDAO userdao = new UserDAO();
 

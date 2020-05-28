@@ -63,8 +63,11 @@
 							<td id="s_address"></td>
 							<td id="s_phone"></td>
 							<td id="s_bhour"></td>
-							<td><a class="btn btn-primary" id="kwc" href="Order1.uo"
-								href="Order1.uo" role="button" onclick="javascript:btn()">다음</a>
+							<td>
+							<!-- <a class="btn btn-primary" id="kwc" href="Order1.uo"
+								href="Order1.uo" role="button" onclick="javascript:btn()">다음</a> -->
+								<button class="btn btn-primary" id="kwc"role="button" onclick="javascript:btn()">다음</button>
+								
 							</td>
 						</tr>
 					</tbody>
@@ -237,16 +240,19 @@
                        infowindow.close();
                    };
                }
-
-               
  
        
 		$('#kwc').click(function(e) {
 			if ($('#s_name').text() === '') {
 				alert('매장을 선택하시오');
 				e.preventDefault();
+			}else{
+				console.log("여긴타니 : " + $('#s_name').text());
+				location.href = "Order1.uo?s_name=" + $('#s_name').text() + " ";
 			}
 		});
+		
+		
 
 		/* 	function btn() {
 				if ($('#s_name').text() === '') {
