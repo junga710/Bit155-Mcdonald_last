@@ -84,7 +84,10 @@
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
-	<script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+<!-- 	<script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script> -->
+	<script type="text/javascript" src="${pageContext.request.contextPath}/usercss/vendors/vendors/ckeditor/ckeditor.js"></script>
+	
+	
 	<script>
 		$(function() {
 			// Add the following code if you want the name of the file appear on select
