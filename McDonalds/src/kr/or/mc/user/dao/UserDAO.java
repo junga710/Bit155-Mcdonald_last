@@ -146,13 +146,14 @@ public class UserDAO {
 			conn = ds.getConnection();
 			String sql = "";
 			System.out.println("아이디 : " + userId);
+			
 			if (!userId.equals("admin")) {
 				sql = "select password from member where m_id = ?";
 			} else {
-				System.out.println("여ㅑ기티라고우철");
 				sql = "select password from admin where a_id = ?";
 			}
 			// String sql = "select password from member where m_id = ?";
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
@@ -174,6 +175,7 @@ public class UserDAO {
 		} finally {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
+			DB_Close.close(conn); // 반환
 
 		}
 		return -1;

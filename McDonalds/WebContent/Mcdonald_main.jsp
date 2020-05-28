@@ -17,6 +17,8 @@
 
 </head>
 <body>
+
+
 <nav class="navbar navbar-expand-sm d-flex flex-row pr-3 pt-0 pb-0 sticky-top" style="padding-left: 5%; justify-content: center">
     
    <a href="#" class="logo" title="메인으로 이동"> <img
