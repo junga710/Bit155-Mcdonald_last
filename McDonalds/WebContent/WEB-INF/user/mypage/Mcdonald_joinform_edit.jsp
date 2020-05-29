@@ -39,15 +39,10 @@
 					
 					<div class="form-group">
 						<label>아이디</label>
-						<div class="row">
-							<div class="col-9">
+						
 								<input class="form-control" type="text" name="id" id="id"
 									value="${memberDTO.m_id}" readonly>
-							</div>
-							<!-- <div class="col-3" >
-						<button type="submit" class="btn btn-warning p-1" >중복확인</button>
-						</div> -->
-						</div>
+						
 					</div>
 
 					<div class="form-group">
@@ -387,6 +382,8 @@
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 	<script>
+	
+	
 		function sample6_execDaumPostcode() {
 			new daum.Postcode(
 					{
