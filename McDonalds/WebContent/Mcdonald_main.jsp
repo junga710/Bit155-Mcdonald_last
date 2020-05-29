@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MC도날드</title>
+
+  
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,11 +52,28 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="dropdown p-2" style="margin-left: 0px;">
-						<button class="dropbtn">MyPage</button>
-						<div class="dropdown-content">
-							<c:choose>
+				
+				<c:choose>
+				<c:when test="${id != null}">
+							<div class="col-md-4">
+							<div class="dropdown p-2" style="margin-left: 0px;">
+							<button class="dropbtn">MyPage</button>
+							<div class="dropdown-content">
+						<c:if test="${id == 'admin'}">
+							<a href="#">관리자 페이지</a>
+							
+						</c:if>
+							
+							<a href="Mcdonald_joinform_edit.ump">계정 설정</a>
+							<a href="OrderHistory.uo">주문 조회</a>
+							
+				</c:when>
+				<c:otherwise>
+						<!-- null 상태면 myPage 안보이게함  -->
+				</c:otherwise>
+				</c:choose>		
+							</div>
+							 <c:choose>
 								<c:when test="${id == 'admin'}">
 
 									<a href="AdminPage.m">관리자 페이지</a>
@@ -65,7 +84,7 @@
 									<!--  <a href="#">문의하기</a> -->
 								</c:otherwise>
 							</c:choose>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -80,10 +99,10 @@
 						role="button" style="float: right;">LOGOUT</a>
 				</div>
 				<div class="p-2">
-					<a href="SelectShop.ua" id="topbtnright" class="btn btn-info"
-						role="button" style="float: right;">ORDER</a>
+					<a href="SelectShop.ua" id="topbtnright" class="btn btn-danger _order_button"
+						role="button" style="float: right; background-color:crimson;">ORDER</a>
 				</div>
-				<div class="p-2">${id}님반갑습니다^^*</div>
+				<div class="p-2">${id}님 반갑습니다^^*</div>
 			</c:when>
 			<c:otherwise>
 				<div class="p-2">
@@ -273,6 +292,7 @@
 	<!--footer ▼▼▼  -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+	
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
 	<script type="text/javascript">
@@ -374,8 +394,7 @@
 		}
 	</script>
 
-
-
-
 </body>
+
+
 </html>

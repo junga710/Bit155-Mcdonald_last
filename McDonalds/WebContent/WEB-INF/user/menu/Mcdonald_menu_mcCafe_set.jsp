@@ -39,13 +39,14 @@
 		<div class="col-5"></div>
 		<div class="col-1">
 			<div id="productli">
-				<a href="MenuMacBeverage.um" role="button" style="color: #808080;">맥카페</a>
+				<a href="MenuMacBeverage.um" role="button" style="color: #808080;"><p style="font-size: medium;">맥카페</p></a>
 			</div>
 			<!-- 선택 된 태그에 aria-selected="true" 추가 -->
 		</div>
-		<div class="col-2" id="productli">
-			<a href="#" role="button" style="color: #808080;">음료</a>
+		<div class="col-1" id="productli">
+			<a href="#" role="button" style="color: #FFBC0D;"><p style="font-size: large;text-decoration: underline;">음료</p></a>
 		</div>
+		<div class="col-5"></div>
 	</div>
 
 
@@ -181,7 +182,7 @@
 
 	</div>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-</body>
+
 <jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 <jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
@@ -213,4 +214,6 @@
 		document.documentElement.scrollTop = 0;
 	}
 </script>
+
+</body>
 </html>

@@ -1497,6 +1497,7 @@ public class UserDAO {
 
 				list.add(ReplyDto);
 			}
+			
 		} catch (Exception e) {
 			System.out.println("코멘트 리스트 에러 : " + e.getMessage());
 		} finally {

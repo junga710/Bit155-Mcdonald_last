@@ -35,43 +35,46 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="dropdown p-2" style="margin-left: 0px;">
-						<button class="dropbtn">MyPage</button>
-						<div class="dropdown-content">
-							<c:choose>
-								<c:when test="${id == 'admin'}">
-
-									<a href="AdminMain.m">관리자 페이지</a>
-								</c:when>
-								<c:otherwise>
-									<a href="Mcdonald_joinform_edit.ump">계정 설정</a>
-									<a href="OrderHistory.uo">주문 조회</a>
-									<!--  <a href="#">문의하기</a> -->
-								</c:otherwise>
-							</c:choose>
+				<c:choose>
+				<c:when test="${id != null}">
+							<div class="col-md-4">
+							<div class="dropdown p-2" style="margin-left: 0px;">
+							<button class="dropbtn">MyPage</button>
+							<div class="dropdown-content">
+						<c:if test="${id == 'admin'}">
+							<a href="AdminMain.m">관리자 페이지</a>
+							
+						</c:if>
+							
+							<a href="Mcdonald_joinform_edit.ump">계정 설정</a>
+							<a href="OrderHistory.uo">주문 조회</a>
+							
+				</c:when>
+				<c:otherwise>
+						<!-- null 상태면 myPage 안보이게함  -->
+				</c:otherwise>
+				</c:choose>		
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div> <c:choose>
+		 <c:choose>
 			<c:when test="${id != null}">
 				<!-- 이거 불러와진다 -->
 
-				<a href="Order2.uo?basket_code=1" id="topbtnright"
-					class="btn btn-danger" role="button"
-					style="float: right; width: 120px;">주문확인</a>
-				</div>
+
+
 				<!-- <div class="p-2"><a href="Mcdonald_joinform.jsp" id="topbtnright" class="btn btn-danger" role="button" style="float: right;">JOIN</a></div> -->
 				<div class="p-2">
 					<a href="logout.ump" id="topbtnright" class="btn btn-warning"
 						role="button" style="float: right;">LOGOUT</a>
 				</div>
 				<div class="p-2">
-					<a href="SelectShop.ua" id="topbtnright" class="btn btn-info"
-						role="button" style="float: right;">ORDER</a>
+					<a href="SelectShop.ua" id="topbtnright" class="btn btn-danger"
+						role="button" style="float: right; background-color:crimson;">ORDER</a>
 				</div>
-				<div class="p-2">${id}님반갑습니다^^*</div>
+				<div class="p-2">${id}님 반갑습니다^^*</div>
 			</c:when>
 			<c:otherwise>
 				<div class="p-2">

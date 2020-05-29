@@ -22,7 +22,7 @@
 
 
 		<div class="selectstore">
-			<h1 class="titDep1" style="padding-top: 5%;">
+			<h1 class="titDep1"">
 				<strong>매장선택</strong>
 			</h1>
 		</div>
@@ -31,7 +31,7 @@
 
 		<div class="container">
 			<div class="row">
-				<h2 style="margin: 20px 20px">원하는 매장을 선택하세요</h2>
+				<h2 style="margin: 20px 20px"><b>주문을 원하는 매장을 선택하세요</b></h2>
 				<div id="map" style="width: 2000px; height: 500px;"></div>
 
 			</div>
@@ -53,14 +53,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td id="s_name"></td>
+							<b><td id="s_name"></td>
 							<td id="s_address"></td>
 							<td id="s_phone"></td>
 							<td id="s_bhour"></td>
 							<td>
 							<!-- <a class="btn btn-primary" id="kwc" href="Order1.uo"
 								href="Order1.uo" role="button" onclick="javascript:btn()">다음</a> -->
-								<button class="btn btn-primary" id="kwc"role="button" onclick="javascript:btn()">다음</button>
+								<button class="btn btn-warning" id="kwc"role="button" onclick="javascript:btn()"
+								style="border-radius: 70px;"><b>다음</b></button>
 								
 							</td>
 						</tr>
@@ -260,6 +261,7 @@
 				}
 			} */
 	</script>
+</body>
 
  <script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> 
@@ -294,6 +296,5 @@
 
 
 
-</body>
 
 </html>

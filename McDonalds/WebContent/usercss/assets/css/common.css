@@ -1,16 +1,21 @@
 
-@font-face{
-	font-family : youth;
-	src:local("Helvetica65Medium_22443") format('Helvetica'),
-	local("youth-webfont");
+
+@font-face { 
+font-family: 'Helvetica65';
+font-style: normal;
+src:url('/_font/Helvetica65Medium_22443.woff') format('woff'),  
+src:local(※), url(' /_font/Helvetica65Medium_22443.woff ') format('woff'); 
+font-weight: 400;
 }
+
+
 #body {
-  font-family: ''youth','Noto Sans KR', sans-serif;
+  font-family:'Helvetica65','Noto Sans KR', sans-serif;
 }
 
 #nav-top {
   font-weight: bold;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Helvetica65', 'Noto Sans KR', sans-serif;
   color: black;
   padding-top: 52px;
   padding-bottom: 52px;
@@ -33,7 +38,7 @@
 
 #footer1 {
   font-weight: bold;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Helvetica65','Noto Sans KR', sans-serif;
   color: white;
   text-decoration: none;
   font-size: 14px;
@@ -42,7 +47,7 @@
 #footer2 {
   color: #929292;
   margin-left: -100px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Helvetica65','Noto Sans KR', sans-serif;
 }
 
 
@@ -93,7 +98,7 @@
 }
 
 #myBtn {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Helvetica65','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   display: none;
   position: fixed;
   bottom: 20px;
@@ -174,6 +179,7 @@ body .selectstore {
   background-image: url('https://www.mcdonalds.co.kr/uploadFolder/images/store/bg_visual_store01.jpg');
   height: 250px;
   background-position: center;
+  color:white;
 }
 body .joinform,body .login {
   background-repeat: no-repeat;
@@ -192,7 +198,11 @@ body .review_detail, body .board_notice, body .order_success, body .board_notice
   color:white;
 }
 
-.titDep1{display:block;color:#292929;font-size: 55px;line-height:1;}
+.titDep1{display:block;color:#292929;font-size: 55px;line-height:1;padding-top: 5%; color: white;}
+
+.titDep1-2{
+	color:black;
+}
 
 h1 {
     padding-left: 10%;
@@ -308,12 +318,11 @@ ul li::before {
 
 
 .show-grid [class^=col-] {
-  padding-top: 10px;
-  padding-bottom: 10px;
   background-color: #eee;
   background-color: #F3F3F3;
   border: 1px solid #ddd;
   border: 1px solid #FFFFFF;
+  padding:0px;
 }
 
 a:link .burger{
@@ -338,5 +347,9 @@ text-decoration:none !important;
 a:hover .burger {
 	text-decoration: none !important;
 	border: 2px solid #F5BD43; border-radius: 10px;
+}
+
+#tabButton{
+	font-family: 'Helvetica65','sans-serif';
 }
 
