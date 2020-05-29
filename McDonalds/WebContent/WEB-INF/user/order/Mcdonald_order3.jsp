@@ -31,11 +31,7 @@
 	<c:set var="totalOrderSum" value="${requestScope.totalOrderSum}" />
 
   <div class="hamburgermenu">
-    <h1 class="titDep1"><strong>결제수단 선택</strong></h1>
-    <ul style="padding-left: 10%; margin-top: 5%;">
-      <li id="topli"><a href="../Mcdonald_main.html">Home</a></li>
-      <li id="topli"><a href="../menu/Mcdonald_menu_hamburger.html">Menu</a></li>
-    </ul>
+    <h1 class="titDep1-2"><strong>결제수단 선택</strong></h1>
   </div>
 
   <p></p>
@@ -43,31 +39,28 @@
 
   <div class="container show-grid">
     <div class="row">
-      <div class="col-md-12">결제수단 선택</div>
+      <div class="col-md-12"><b>결제수단을 선택해주세요.</b></div>
     </div>
-    <div class="row" style="min-height: 600px;">
+    <div class="row" style="min-height: 600px; background-color:white;">
 
       <div class="col-md-9">
-        결제
-        <hr>
 
         <div class="row" style="background-color: white; margin-left: 2px; margin-right:2px; min-height:50px">
           <div class="col-md-12" style="margin-top:10px; min-height:100px; background-color: linen;">
-            온라인 결제
-            <p></p>
+      
+            <h5 style="font-size:small;">온라인 결제</h5>
             <div class="custom-control custom-radio">
              <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="payment_type" value="신용카드">
               <label class="custom-control-label" for="defaultGroupExample1">신용카드</label>
             </div>
           </div>
-
         </div>
 
-        <hr>
+   <hr>
 
         <div class="row" style="background-color: white; margin-left: 2px; margin-right:2px; min-height:50px">
           <div class="col-md-12" style="margin-top:10px; min-height:100px; background-color: linen;">
-            현장 결제
+          <h5 style="font-size:small;">현장 결제</h5>
             <p></p>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="payment_type" value="현금">
@@ -80,23 +73,20 @@
       </div>
 
     			<div class="col-md-3" style="background-color: whitesmoke;">
-				<div class="row" style="place-content: center;">주문 요약</div>
+				<div class="row" style="place-content: center;"><b>주문 요약</b></div>
 				<hr>
-				<div class="row">
-					&nbsp; &nbsp;배달 주소 : ${basketlist[0].address}
+					<div class="row" style="padding-left:0px; padding-right:10px;">
+					&nbsp; &nbsp;<b>주소 :</b><h5 style="text-align:right; font-size: medium;"> ${basketlist[0].address}</h5>
 					<!-- 여기에 주소를 받아야댐 -->
 				</div>
 				<hr>
 				<div class="row">
-					<div class="col-md-6" style="padding-left: 0px;">
-						&nbsp; &nbsp;총 주문합계 :
+					<div class="col-md-12" style="padding-left: 0px;">
+						&nbsp; &nbsp;<b>총 주문합계 :</b><p style="color: green; text-align:right;">₩ ${totalOrderSum}</p>
 						<!-- 여기에 총 가격 받아야댐 -->
 					</div>
-					<div class="col-md-6">
-						<p style="color: green">₩ ${totalOrderSum}</p>
-					</div>
 				</div>
-				<p></p>
+				
 				<div class="row" style="justify-content: center;">
 				<!-- 	<a href="Order3.uo" class="btn btn-danger"
 						style="width: 85%; background-color: #D1402D; height: 40px;">결제

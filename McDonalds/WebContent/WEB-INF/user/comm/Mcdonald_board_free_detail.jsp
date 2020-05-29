@@ -124,23 +124,20 @@
 					<hr>
 					<!-- Comments Form -->
 					<div class="card my-4">
-						<h5 class="card-header">댓글 쓰는 공간</h5>
+						<h5 class="card-header">댓글</h5>
 						<div class="card-body">
 							<!-- <form> -->
 								<div class="form-group">
 									<textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
 								</div>
-								<button class="btn btn-primary" id="commentWrite" name="commentWrite">Submit</button>
+								<button class="btn btn-primary" id="commentWrite" name="commentWrite">작성하기</button>
 							<!-- </form> -->
 						</div>
 					</div>
-
 					<!-- Single Comment -->
 					<div class="media mb-4">
-						<img class="d-flex mr-3 rounded-circle"
-							src="http://placehold.it/50x50" alt="">
 						<div class="media-body" id="com">
-							<h5 class="mt-0">${boardFreeDto.f_writer}</h5>
+							<h5 class="mt-0"></h5>
 						</div>
 					</div>
 				</div>
@@ -151,7 +148,6 @@
 	<!-- //container  -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
-
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
 	<script
@@ -219,7 +215,7 @@
 				url: "InsertComment.ua",
 				data: {
 					f_code:'${f_code}',
-					name:'${requestScope.f_writer}',
+					r_writer:'${id}',
 					content:$('#comment').val()
 				},
 				dataType: "json",
@@ -314,16 +310,20 @@
 		});
 
 			//댓글 목록 그리는 함수
-			function makeComment(result) {
+	
+	function makeComment(result) {
 				var html = "";
 				$.each(result, function(index, obj) {
-					html += "<blockquote>" + obj.r_code + " " + obj.r_write_date;
+					html += "<blockquote><b>" + obj.r_writer + "</b>"  + " ";
 					html += " <a href='javascript:void(0);' data-value='" + obj.r_code + "' class='updateComment' ><i class='ri-pencil-line'></i></a>";
 					html += " <a href='javascript:void(0);' data-value='" + obj.r_code + "' class='deleteComment'><i class='ri-delete-bin-line'></i></a><br>";
-					html += "<code>" + obj.r_content + "</code></blockquote>";
+					html += "<code><div style='font-size:15px; color:black;'>" + obj.r_content + "</div></code>" + "<br><div style='font-size:14px'>" +  obj.r_write_date + "</div></blockquote>";
 				});
 				$('#com').append(html);
 			}
+
+
+
 		
 		
 		

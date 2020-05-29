@@ -42,7 +42,7 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 
 	<div class="hamburgermenu">
-		<h1 class="titDep1">
+		<h1 class="titDep1-2">
 			<strong>주문하기</strong>
 		</h1>
 	</div>
@@ -123,7 +123,7 @@
 
 
 			<div class="col-md-3" style="background-color: whitesmoke;">
-				<div class="row" style="place-content: center;">내 주문 정보</div>
+				<div class="row" style="place-content: center; padding-top:20px;"><h5><b>내 주문 정보</b></h5></div>
 				<hr>
 				<div class="row">
 					&nbsp; &nbsp;선택 매장 : 강남&nbsp; <span class="select_store">${requestScope.s_name}</span>
@@ -138,6 +138,7 @@
 				</div>
 				<hr>
 
+			
 				<div class="row">
 					<div class="col-md-6" style="padding-left: 0px;">
 						&nbsp; &nbsp;총 주문합계 :
@@ -161,7 +162,7 @@
 				<hr>
 
 				<div id="_order_detail">
-					<p>주문 세부사항</p>
+					<p>장바구니</p>
 
 				</div>
 
