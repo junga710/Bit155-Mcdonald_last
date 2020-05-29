@@ -127,37 +127,10 @@
           
           <%-- </c:forEach> --%>
     </c:forEach>  
-          
-          
-          <!-- <h3>결제 일자 : 2020/05/21</h3>
-          <div>
-            <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at
-              aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non
-              quam. In suscipit faucibus urna. </p>
-          </div>
-          <h3>결제 일자 : 2020/05/20</h3>
-          <div>
-            <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus
-              in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo,
-              magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
-            <ul>
-              <li>List item</li>
-              <li>List item</li>
-              <li>List item</li>
-              <li>List item</li>
-              <li>List item</li>
-              <li>List item</li>
-              <li>List item</li>
-            </ul>
-          </div> -->
         </div>
       </div>
     </div>
   </div>
-
-
-
-
 
 
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -172,11 +145,7 @@
 <script
 	src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
 
-
   	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
-  	
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
-  <!-- JS -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

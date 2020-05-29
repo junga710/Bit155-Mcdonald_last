@@ -15,9 +15,7 @@ public class ProductRegisterPageService implements Action {
 		AdminDAO adminDao = new AdminDAO();
 		
 		int product_code = adminDao.ProductCode();
-		
-		System.out.println("product_code : " + product_code);
-		
+				
 		request.setAttribute("product_code", product_code);
 		
 		ActionForward forward = new ActionForward();

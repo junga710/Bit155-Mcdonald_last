@@ -56,8 +56,6 @@ public class FreeRegisterService implements Action {
 
 			int result = dao.FreeRegister(boardFreeDto);
 
-			System.out.println("자유게시판 등록 : " + result);
-
 			forward.setPath("BoardFree.b");
 
 		} catch (Exception e) {

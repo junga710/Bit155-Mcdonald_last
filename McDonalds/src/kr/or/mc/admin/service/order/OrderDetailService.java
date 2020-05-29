@@ -23,8 +23,6 @@ public class OrderDetailService  implements Action {
 		OrdersDTO ordersDTO = adminDao.OrderDetailAddress(order_code);
 		List<OrderDetailDTO> odList = adminDao.OrderDetailProduct(order_code);
 		
-		System.out.println("odList : " + odList);
-		
 		request.setAttribute("ordersDTO", ordersDTO);
 		request.setAttribute("odList", odList);
 		

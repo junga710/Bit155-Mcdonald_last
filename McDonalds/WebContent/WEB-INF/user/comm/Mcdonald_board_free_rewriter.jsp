@@ -11,12 +11,6 @@
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
-
-<!-- summer note-->
-<%-- <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/usercss/vendors/vendors/summernote/summernote-lite.css"> --%>
-
-
 <title>자유게시판</title>
 </head>
 

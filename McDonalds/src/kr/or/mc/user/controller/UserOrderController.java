@@ -40,7 +40,6 @@ public class UserOrderController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		System.out.println(" url_Command : " + url_Command);
 
 		if (url_Command.equals("/OrderHistory.uo")) { // 메뉴 - 주문조회 페이지로 이동
 			action = new OrderHistoryPageService();

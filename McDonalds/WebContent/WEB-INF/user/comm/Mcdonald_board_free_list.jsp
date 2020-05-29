@@ -63,25 +63,10 @@
 
    <div class="container">
       <div class="row">
-         <!-- <div class="col-md-6" style="border-right-color: rgb(243, 242, 242);">
-            ??건의 데이터 가 있다고 동적으로 넣기
-            총 건의 게시글이 있습니다.
-         </div>
-         <div class="col-md-6"
-            style="border-left-color: rgb(241, 241, 241); text-align: end;">
-            <select class="form-group">
-               <option selected>지점고르기</option>
-               <option>옵션1</option>
-               <option>옵션2</option>
-               <option>옵션3</option>
-            </select> <input type="text" placeholder="검색어를 입력하세요"> <img
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTKePPh8P7YzgL6x0nXcz0JDeLRIlwjdtjw3hpJihg8hAwrcujT&usqp=CAU"
-               width="30px" height="30px">
-         </div> -->
          <div class="col-sm-12 col-md-6 ">
             <div class="form-group d-flex align-items-center">
                <div class="col-sm-2" style="padding-left: 0">
-                  <form name="list">
+                  <form action="BoardFree.b" name="list">
                      <select name="ps" class="form-control" onchange="submit()">
                         <c:set var="pagesize" value="${requestScope.pagesize}" />
                         <c:forEach var="i" begin="5" end="20" step="5">
@@ -352,11 +337,4 @@ $(function(){
 </script>
 
 </body>
-<!-- JS -->
-<!-- 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<<<<<<< HEAD
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 </html>

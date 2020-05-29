@@ -34,27 +34,20 @@ public class UserMyPageController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		System.out.println("여긴오는데 왜 다음으로 안가");
 
-		System.out.println(" url_Command : " + url_Command);
-
-		if (url_Command.equals("/login.ump")) { // 로그인 
-			System.out.println("여기는 타는거구나? 나는 로그인 ");
+		if (url_Command.equals("/login.ump")) { // 로그인
 			action = new LoginService();
 			forward = action.execute(request, response);
 
 		} else if (url_Command.equals("/joinformOk.ump")) { // 회원리스트 페이지 이동 + 회원 등록 로직
-			System.out.println("JOINOK여기는 타는거구나?");
 			action = new RegisterService();
 			forward = action.execute(request, response);
 
 		} else if (url_Command.equals("/logout.ump")) { // 로그아웃
-			System.out.println("여기는 타는거구나? 나는 로그아웃");
 			action = new LogoutService();
 			forward = action.execute(request, response);
 
 		} else if (url_Command.equals("/Mcdonald_joinform.ump")) { // 회원가입화면 이동
-			System.out.println("JoinJOIN");
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/user/Mcdonald_joinform.jsp");
 
@@ -63,22 +56,17 @@ public class UserMyPageController extends HttpServlet {
 			forward.setPath("/WEB-INF/user/Mcdonald_login.jsp");
 
 		} else if (url_Command.contentEquals("/Mcdonald_joinform_edit.ump")) { // 회원정보수정화면 에 정보 넣어주고 이동
-			System.out.println("나지금 졸고있니");
 			action = new JoinFormEditPageService();
 			forward = action.execute(request, response);
 
 		} else if (url_Command.equals("/Mcdonald_joinform_editOk.ump")) { // 회원정보수정 로직
-			System.out.println("회원정보 수정로직");
 			action = new JoinFormEditService();
 			forward = action.execute(request, response);
-
 		}
 
 		else if (url_Command.equals("/idcheck.ump")) { // 아이디 중복체크
-			System.out.println("이거타냥 머먹지");
 			action = new IdCheckService();
 			forward = action.execute(request, response);
-
 		}
 
 		if (forward != null) {

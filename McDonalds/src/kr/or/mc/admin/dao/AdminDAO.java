@@ -493,7 +493,7 @@ public class AdminDAO {
 
 	// 상품관리 - 등록하기
 	public int ProductRegister(int product_code, int nutrition_code, String product_name, int product_price,
-			String product_kind, int product_stock, String product_image, String product_category) {
+			String product_kind, String product_image, String product_category) {
 		Connection conn = null;// 추가
 
 		try {
@@ -506,9 +506,8 @@ public class AdminDAO {
 			pstmt.setString(3, product_name);
 			pstmt.setInt(4, product_price);
 			pstmt.setString(5, product_kind);
-			pstmt.setInt(6, product_stock);
-			pstmt.setString(7, product_image);
-			pstmt.setString(8, product_category);
+			pstmt.setString(6, product_image);
+			pstmt.setString(7, product_category);
 
 			result = pstmt.executeUpdate();
 
@@ -633,23 +632,22 @@ public class AdminDAO {
 	
 	//상품관리 - 상품 수정하기(상품)
 	public int ProductUpdate(int product_code, int nutrition_code, String product_name, int product_price,
-			String product_kind, int product_stock, String product_image, String product_category) {
+			String product_kind, String product_image, String product_category) {
 		Connection conn = null;// 추가
 		PreparedStatement pstmt = null;
 		try {
 			conn = ds.getConnection();
 
-			String sql = "update product set product_name = ?, product_price =?, product_kind = ?, product_stock = ?, product_image = ?, product_category = ? WHERE product_code = ?";
+			String sql = "update product set product_name = ?, product_price =?, product_kind = ?, product_image = ?, product_category = ? WHERE product_code = ?";
 
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, product_name);
 			pstmt.setInt(2, product_price);
 			pstmt.setString(3, product_kind);
-			pstmt.setInt(4, product_stock);
-			pstmt.setString(5, product_image);
-			pstmt.setString(6, product_category);
-			pstmt.setInt(7, product_code);
+			pstmt.setString(4, product_image);
+			pstmt.setString(5, product_category);
+			pstmt.setInt(6, product_code);
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {

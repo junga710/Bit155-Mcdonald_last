@@ -21,38 +21,21 @@ public class LoginService implements Action {
 
 		UserDAO boarddao = new UserDAO();
 		int loginResult = boarddao.login(id, password);
-		
+
 		System.out.println(loginResult);
 		ActionForward forward = new ActionForward();
-		
-		
-		/*
-		 * if(loginResult > 0){
-		 * 
-		 * boarddao.MemDetail(id); HttpSession session = request.getSession();
-		 * session.setAttribute("id", id); forward.setPath("/Mcdonald_main.jsp");
-		 * 
-		 * }else {
-		 * 
-		 * forward.setPath("/WEB-INF/user/Mcdonald_login.jsp"); }
-		 */
-		if(loginResult == 0 || loginResult == -1){
-            System.out.println("로그인안됨");
-            request.setAttribute("loginResult", loginResult);
-            forward.setPath("/WEB-INF/user/Mcdonald_login.jsp");
-			/*
-			 * try { response.setContentType("application/x-json; charset=UTF-8");
-			 * response.getWriter().write("loginFail"); } catch (IOException e) {
-			 * e.printStackTrace(); }
-			 */
-        }else {
-        	boarddao.MemDetail(id); 
-        	HttpSession session = request.getSession();
-   		    session.setAttribute("id", id);
-   		  request.setAttribute("loginResult", loginResult);
-   		    forward.setPath("/Mcdonald_main.jsp");
-        }
-//		forward.setPath("/WEB-INF/user/Mcdonald_login.jsp");
+
+		if (loginResult == 0 || loginResult == -1) {
+			System.out.println("로그인안됨");
+			request.setAttribute("loginResult", loginResult);
+			forward.setPath("/WEB-INF/user/Mcdonald_login.jsp");
+		} else {
+			boarddao.MemDetail(id);
+			HttpSession session = request.getSession();
+			session.setAttribute("id", id);
+			request.setAttribute("loginResult", loginResult);
+			forward.setPath("/Mcdonald_main.jsp");
+		}
 		return forward;
 	}
 

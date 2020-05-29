@@ -24,11 +24,6 @@ public class MainSingleFourService implements Action {
     	int dayAvg = ajaxDao.DayAvg(); //일 매출 평균
     	String merberTopOrder = ajaxDao.MerberTopOrder(); //최다주문 회원
     	int memberTotal = ajaxDao.MemberTotal(); //총 회원
-    	
-    	System.out.println("monthAvg : " + monthAvg);
-    	System.out.println("dayAvg : " + dayAvg);
-    	System.out.println("merberTopOrder : " + merberTopOrder);
-    	System.out.println("memberTotal : " + memberTotal);
 
     	JSONArray jsonArr = new JSONArray();
     	

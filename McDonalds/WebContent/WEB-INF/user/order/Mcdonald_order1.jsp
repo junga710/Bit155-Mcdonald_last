@@ -15,8 +15,6 @@
 <!--  popover -->
  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css"
 	rel="stylesheet" type="text/css">
-<!--   <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">   -->
 <link
 	href="${pageContext.request.contextPath}/usercss/vendors/vendors/popover/popModal.css"
 	rel="stylesheet"> 
@@ -78,8 +76,8 @@
 
 					<div style="width: 100%;">
 						<p style="padding-left: 0">
-							<button id="hint" class="btn btn-primary hintModal" style="margin-left:18px;">
-								하루 권장 섭취량
+							<button id="hint" class="btn btn-primary hintModal" style="margin-left:22px; padding:6px 0px;">
+								하루 칼로리 섭취량
 								<div class="hintModal_container">
 									<table class="table">
 										<thead>
@@ -126,48 +124,6 @@
 								</div>
 							</button>
 
-
-
-							<!-- 	<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample1" name="filter" value="total" checked>
-							<label class="custom-control-label" for="defaultGroupExample1">전체보기</label>
-						</div> -->
-
-							<!-- <hr> -->
-							<!--  -->
-							<!-- <div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample2" name="filter"> 
-								<label
-								class="custom-control-label" for="defaultGroupExample2">낮은
-								가격순</label>
-						</div>
-
-						<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample3" name="filter"> 
-								<label
-								class="custom-control-label" for="defaultGroupExample3">높은
-								가격순</label>
-						</div>
-
-						<hr>
-						<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample4" name="filter" value="low"> <label
-								class="custom-control-label" for="defaultGroupExample4"
-								>낮은
-								칼로리순</label>
-						</div>
-
-						<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample5" name="filter" value="high"> 
-								<label
-								class="custom-control-label" for="defaultGroupExample5">높은
-								칼로리순</label>
-						</div>  -->
 					</div>
 
 				</div>
@@ -239,9 +195,9 @@
 							style="background-color: #ffffffab;">
 						<div class="card-body" id="card-inner"
 							style="background-color: #f6f6f6;">
-							<strong class="product_code_one"></strong> <strong
-								class="product_code_set"></strong> <strong
-								class="product_category"></strong>
+							<strong style="display: none" class="product_code_one"></strong> <strong
+								style="display: none"  class="product_code_set"></strong> <strong
+								style="display: none"  class="product_category"></strong>
 							<!-- 	style="display: none"  -->
 							<strong class="ko">허니 크림치즈 상하이 버거</strong>
 							<div class="row">
@@ -274,7 +230,7 @@
 										<div class="col-6" style="place-self: center; margin: 0">
 
 											<p style="margin: 0">단품</p>
-											<p style="padding: 0" id="_onlyone_price">(₩ 5,500)</p>
+											<p style="padding: 0; width:90px;" id="_onlyone_price">(₩ 5,500)</p>
 											<!-- 여기에 가격 동적으로 추가 -->
 										</div>
 									</div>
@@ -313,7 +269,7 @@
 										</div>
 										<div class="col-6" style="place-self: center;">
 											<p style="margin: 0">세트</p>
-											<p style="padding: 0" id="_set_price">(₩ 8,200)</p>
+											<p style="padding: 0; width:90px;" style="width:90px;" id="_set_price">(₩ 8,200)</p>
 										</div>
 									</div>
 								</div>
@@ -341,25 +297,18 @@
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
-
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 
 
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-	<!-- <link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
-	<!-- JS -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<%-- 
-	<script
-		src="${pageContext.request.contextPath}/usercss/assets/js/orderlist.js"></script> --%>
 
 	<script>
 
@@ -375,9 +324,7 @@ $(document).ready(function() {
 		type: 'GET',
 		url: 'basketLoadFull.ua',
 		success: function(response) {
-			
-			console.log("기존 데이터야 떠라 얍얍얍ㅇ뱝ㅇ")
-			console.log("나는 마멉사 뿜무무 : " + response);
+
 			
 			$.each(response, function(index, item){
 					var detailImg = $('#_thumbnail').attr('src');
@@ -400,8 +347,6 @@ $(document).ready(function() {
 				viewDetail += "<div>세트 : "+ response[index].amount +"개 </div>";
 				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
 			}
-		/* 	viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
-			viewDetail += "<div>세트 : "+ setAmount +"개 </div>"; */
 			
 			viewDetail += "</div>";
 			viewDetail += "</div>";
@@ -436,10 +381,7 @@ $(document).ready(function() {
 				},
 				success: function(response) {
 					
-			
-				
-					console.log("사이드떠라제발 " + response[0].product_category)
-					console.log("크기 " + response.length)
+
 					
 					$('#_one_input').val('0');
 					$('#_set_input').val('0');
@@ -526,10 +468,10 @@ $(document).ready(function() {
 		 
 		 if($('#_set_input').val() > 0 && $('#_one_input').val() > 0){
 			 count += 2;
-			console.log("count 2개 늘어나라 : " + count)
+		
 		 } else if($('#_set_input').val() > 0 || $('#_one_input').val() > 0) {
 			 count += 1;
-			console.log("count 1개 늘어나라 : " + count)
+		
 		 } 
 	
 	
@@ -546,20 +488,19 @@ $(document).ready(function() {
 			setAmount : $('#_set_input').val(),
 		},
 		success: function(response) {
-			console.log("여긴옴...");
+		
 			$.each(response, function(index, item){
 				
-				console.log("성공은 하니??");
+			
 				
 				var oneAmount = $('#_one_input').val();
 
 				var setAmount = $('#_set_input').val();
 			
-				console.log("oneAmount : " + oneAmount);
-				console.log("setAmount : " + setAmount);
+		
 				
 				if(oneAmount > 0 || setAmount > 0){
-					console.log("오나...");
+					
 					
 					var detailImg = $('#_thumbnail').attr('src');
 					
@@ -614,14 +555,12 @@ $(document).ready(function() {
     	}else{
     	e.preventDefault();
     	location.href="Order2.uo"
-    	console.log("ss");
     	}
     });
 	
 	
 	///▼▼▼▼ 휴지통 버튼 클릭시 삭제하는거 만들기
 	$(document).on("click", "#_delete_btn", function(){
-		console.log("대박 : " + $(this).attr('class'));
 
 		//ajajx
 		$.ajax({
@@ -639,20 +578,15 @@ $(document).ready(function() {
 		})
 		
 		var detailRow = $(this).parent().parent();
-		console.log("아나!! " + detailRow)
 		detailRow.remove();
 		
 		var detailPrice = parseInt(getOnlyNumber($(this).next().next().text()), 10);
 		
-		console.log("상품가격??? " + detailPrice);
-		
 		var totalPrice = parseInt(($('#_sum').text().replace(/[^0-9]/g,'')), 10);
-		console.log("총 가격: " + totalPrice);
 		
 		$('#_sum').text('₩ ' +(totalPrice-detailPrice).toLocaleString());
 		
 		count--;
-		console.log("count 줄어들어라 : " + count);
     });
 
 
@@ -660,30 +594,6 @@ $(document).ready(function() {
 });
     </script>
 
-
-
-	<script>
-/* var checkUnload = true;
-$(window).on("beforeunload", function(){
-    if(checkUnload) return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
-}); */
-
-//새로고침 막기
-/* $(document).keydown(function (e) {
-    
-    if (e.which === 116) {
-        if (typeof event == "object") {
-            event.keyCode = 0;
-        }
-        alert('새로고침 막기')
-        return false;
-    } else if (e.which === 82 && e.ctrlKey) {
-    	alert('새로고침 막기')
-        return false;
-    }
-});  */
-
-</script>
 
 
 	<script>

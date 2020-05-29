@@ -22,7 +22,6 @@ public class OrderListService implements Action {
 		List<OrdersDTO> oList = adminDao.OrderList();
 
 		request.setAttribute("oList", oList);
-		System.out.println(oList);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/admin/Order.jsp");

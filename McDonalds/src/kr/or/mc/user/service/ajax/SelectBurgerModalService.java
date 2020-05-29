@@ -19,13 +19,10 @@ public class SelectBurgerModalService implements Action {
 
 		UserDAO userDao = new UserDAO();
 		String product_name = request.getParameter("product_name");
-		System.out.println(product_name);
 
 		List<ProductDTO> productDto = userDao.selectProductByName(product_name);
 
 		JSONArray jsonArr = JSONArray.fromObject(productDto);
-		
-		System.out.println("연규형님 : " + jsonArr);
 
 		try {
 			response.setContentType("application/json; charset=UTF-8");

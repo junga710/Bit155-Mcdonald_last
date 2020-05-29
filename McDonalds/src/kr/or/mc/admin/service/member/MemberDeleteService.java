@@ -25,7 +25,6 @@ public class MemberDeleteService implements Action {
 			result = 0;
 		}
 		
-		System.out.println("result : " + result);
 		ActionForward forward = new ActionForward();
 		forward.setPath("MemberList.m");
 

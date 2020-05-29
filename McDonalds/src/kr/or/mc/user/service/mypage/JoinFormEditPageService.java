@@ -16,7 +16,6 @@ public class JoinFormEditPageService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		System.out.println("지금 두시가 넘었어");
 		HttpSession session = request.getSession();
 		
 		//id 값이 없으니 요지경 이었군
