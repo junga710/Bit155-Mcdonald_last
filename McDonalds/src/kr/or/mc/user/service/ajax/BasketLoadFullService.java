@@ -29,11 +29,7 @@ public class BasketLoadFullService implements Action {
 		List<BasketDTO> productDto = userDao.OrderCartList(id);
 		//장바구니의 마지막 행에 있는거 하나씩 불러오기
 		
-		System.out.println("이게안나온다고?? " + productDto);
-		
 		JSONArray jsonArr = JSONArray.fromObject(productDto); 
-		
-		System.out.println("타라좀!!!!!" + jsonArr);
 		
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");
@@ -41,11 +37,6 @@ public class BasketLoadFullService implements Action {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		/*
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/menu/Mcdonald_order1.jsp");
-		 */
 
 		return null;
 	}

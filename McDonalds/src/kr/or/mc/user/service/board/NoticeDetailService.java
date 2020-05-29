@@ -17,7 +17,6 @@ public class NoticeDetailService implements Action {
 		ActionForward forward = new ActionForward();
 		UserDAO userDao = new UserDAO();
 		BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
-		System.out.println("상세페이지 서블릿 타나요");
 		String n_codestr = request.getParameter("n_code");
 		int n_code = Integer.parseInt(n_codestr.trim());
 		

@@ -20,35 +20,29 @@ public class SelectShopService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
+
 		String s_name = request.getParameter("s_name");
 		UserDAO userDao = new UserDAO();
 		HttpSession session = request.getSession();
 		session.removeAttribute("s_name");
 		session.setAttribute("s_name", s_name);
-		System.out.println("하이염1212 : " + s_name);
-		
-	
-		List<StoreDTO> InfoShop = userDao.getSelectShop(s_name);
-		System.out.println("InfoShop" + InfoShop);
-		
-		 JSONArray jsonArr = JSONArray.fromObject(InfoShop);
-	 
-		 System.out.println("jsonArr : " + jsonArr);
-		 
-			try {
-				response.setContentType("application/x-json; charset=UTF-8");
-				response.getWriter().print(jsonArr);
 
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		
-		  ActionForward forward = new ActionForward();
-		  forward.setPath("/WEB-INF/user/order/Mcdonald_selectStore.jsp");
-		 
+		List<StoreDTO> InfoShop = userDao.getSelectShop(s_name);
+
+		JSONArray jsonArr = JSONArray.fromObject(InfoShop);
+
+		try {
+			response.setContentType("application/x-json; charset=UTF-8");
+			response.getWriter().print(jsonArr);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		ActionForward forward = new ActionForward();
+		forward.setPath("/WEB-INF/user/order/Mcdonald_selectStore.jsp");
+
 		return null;
-		
+
 	}
 }
-

@@ -26,17 +26,6 @@
 <title>맥모닝</title>
 </head>
 
-
-<style>
-/* card-inner2:hover,
-#card-inner2:focus {
-        border-color: #ffbc0d;
-        border-radius: 10px;
-        border-style: solid;
-
-    } */
-</style>
-
 <body>
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>

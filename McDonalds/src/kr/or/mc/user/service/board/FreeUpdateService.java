@@ -65,8 +65,6 @@ public class FreeUpdateService implements Action {
 
 			int result = dao.FreeUpdate(boardFreeDto);
 
-			System.out.println("자유게시판 수정 : " + result);
-
 			forward.setPath("BoardFree.b");
 
 		} catch (Exception e) {

@@ -26,13 +26,6 @@ public class MenuDetailService implements Action {
 		UserDAO userDao = new UserDAO();
 		ProductDTO productDto = userDao.MenuDetail(product_code);
 		NutritionDTO nutritionDto = userDao.MenuDetailNut(product_code);
-		
-		/*
-		 * request.setAttribute("productDto", productDto);
-		 * request.setAttribute("nutritionDto", nutritionDto);
-		 */
-		
-		System.out.println("포워드 가즈아아");
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/user/menu/Mcdonald_menu_hamburger_detail.jsp");

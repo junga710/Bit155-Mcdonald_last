@@ -24,10 +24,6 @@ public class BasketDeleteService implements Action {
 		String id = (String) session.getAttribute("id");
 		
 		int result = userdao.OrderCartDelete(id, product_code);
-		
-		System.out.println("장바구니 삭제 : " + result);
-		 
-		 
 		 
 		return null;
 

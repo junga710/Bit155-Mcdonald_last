@@ -15,7 +15,7 @@ public class FreeListService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
+
 		UserDAO userDao = new UserDAO();
 		int totalboardcount = userDao.totalBoardCount();
 
@@ -23,40 +23,33 @@ public class FreeListService implements Action {
 		String cp = request.getParameter("cp"); // current page
 
 		if (ps == null || ps.trim().equals("")) {
-			ps = "10"; 
+			ps = "10";
 		}
 
 		if (cp == null || cp.trim().equals("")) {
-			cp = "1"; 
+			cp = "1";
 		}
-		
+
 		int pagesize = Integer.parseInt(ps);
-		int cpage = Integer.parseInt(cp); 
-		int pagecount = 0; 
+		int cpage = Integer.parseInt(cp);
+		int pagecount = 0;
 
 		if (totalboardcount % pagesize == 0) {
-			pagecount = totalboardcount / pagesize; 
+			pagecount = totalboardcount / pagesize;
 		} else {
-			pagecount = (totalboardcount / pagesize) + 1;  
+			pagecount = (totalboardcount / pagesize) + 1;
 		}
 
 		List<BoardFreeDTO> list = userDao.FreeList(cpage, pagesize);
 
-		System.out.println("list : " + list);
-		System.out.println("pagesize : " + pagesize);
-		System.out.println("cpage : " + cpage);
-		System.out.println("pagecount : " + pagecount);
-		
 		request.setAttribute("list", list);
 		request.setAttribute("pagesize", pagesize);
 		request.setAttribute("cpage", cpage);
 		request.setAttribute("pagecount", pagecount);
-		
-		  
-		  ActionForward forward = new ActionForward();
-		  forward.setPath("/WEB-INF/user/comm/Mcdonald_board_free_list.jsp");
-		  System.out.println("셋패스"); return forward;
-		 
+
+		ActionForward forward = new ActionForward();
+		forward.setPath("/WEB-INF/user/comm/Mcdonald_board_free_list.jsp");
+		return forward;
+
 	}
 }
-

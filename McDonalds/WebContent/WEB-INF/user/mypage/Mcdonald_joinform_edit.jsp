@@ -16,7 +16,6 @@
 <body>
 
 	<!-- header include-->
-	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<section id="container">
 
@@ -25,8 +24,6 @@
 				<strong>회원정보수정</strong>
 			</h1>
 		</div>
-
-
 
 
 		<div class="container" style="width: 500px">

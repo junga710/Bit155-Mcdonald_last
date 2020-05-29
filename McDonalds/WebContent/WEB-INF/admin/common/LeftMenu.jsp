@@ -20,15 +20,12 @@
 				<li class="active"><a href="AdminMain.m"> <i
 						class="menu-icon fa fa-home"></i>메인
 				</a></li>
-				<!-- <h3 class="menu-title">UI elements</h3>/.menu-title -->
 				<li class="menu-item"><a href="MemberList.m"><i
 						class="menu-icon fa fa-user"></i>회원관리</a></li>
 				<li class="menu-item"><a href="Product.p"><i
 						class="menu-icon fa fa-amazon"></i>상품관리</a></li>
 				<li class="menu-item"><a href="Order.o"><i
 						class="menu-icon fa fa-shopping-cart"></i>주문관리</a></li>
-				<!-- <li class="menu-item"><a href="Schedule.s"><i
-						class="menu-icon fa fa-calendar"></i>일정관리</a></li> -->
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

@@ -25,9 +25,7 @@ public class UserMenuDetailService implements Action {
 		UserDAO userDao = new UserDAO();
 		ProductDTO productDto = userDao.MenuDetail(product_code);
 		NutritionDTO nutritionDto = userDao.MenuDetailNut(product_code);
-		
-		/* JSONObject jsonObject = JSONObject.fromObject(productDto); */
-		
+
 		JSONArray jsonArr = new JSONArray();
 
 		JSONObject obj = new JSONObject();
@@ -35,10 +33,6 @@ public class UserMenuDetailService implements Action {
 		obj.put("nutritionDto", nutritionDto);
 
 		jsonArr.add(obj);
-		
-		System.out.println("jsonArr : " + jsonArr);
-		
-		System.out.println("ajax 포워드 가즈아아");
 
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");
@@ -46,12 +40,6 @@ public class UserMenuDetailService implements Action {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		/*
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/menu/Mcdonald_menu_hamburger_detail.jsp");
-		 */
-
 		return null;
 	}
 

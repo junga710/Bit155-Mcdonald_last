@@ -15,8 +15,6 @@
 <!--  popover -->
  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css"
 	rel="stylesheet" type="text/css">
-<!--   <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">   -->
 <link
 	href="${pageContext.request.contextPath}/usercss/vendors/vendors/popover/popModal.css"
 	rel="stylesheet"> 
@@ -341,25 +339,18 @@
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
-
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 
 
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-	<!-- <link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
-	<!-- JS -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<%-- 
-	<script
-		src="${pageContext.request.contextPath}/usercss/assets/js/orderlist.js"></script> --%>
 
 	<script>
 
@@ -375,9 +366,7 @@ $(document).ready(function() {
 		type: 'GET',
 		url: 'basketLoadFull.ua',
 		success: function(response) {
-			
-			console.log("기존 데이터야 떠라 얍얍얍ㅇ뱝ㅇ")
-			console.log("나는 마멉사 뿜무무 : " + response);
+
 			
 			$.each(response, function(index, item){
 					var detailImg = $('#_thumbnail').attr('src');
@@ -400,8 +389,6 @@ $(document).ready(function() {
 				viewDetail += "<div>세트 : "+ response[index].amount +"개 </div>";
 				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
 			}
-		/* 	viewDetail += "<div>단품 : "+ oneAmount +"개 </div>";
-			viewDetail += "<div>세트 : "+ setAmount +"개 </div>"; */
 			
 			viewDetail += "</div>";
 			viewDetail += "</div>";

@@ -38,8 +38,6 @@ public class BasketAddService implements Action {
 			amount_one = Integer.parseInt(request.getParameter("amount_one"));
 			amount_set = Integer.parseInt(request.getParameter("amount_set"));
 		} else {
-			System.out.println("으악 : " + request.getParameter("product_code_one"));
-			
 			product_code_one = Integer.parseInt(request.getParameter("product_code_one"));
 			amount_one = Integer.parseInt(request.getParameter("amount_one"));
 		}
@@ -56,7 +54,6 @@ public class BasketAddService implements Action {
 			basketDto.setTotal_product_price(price_one * amount_one);
 
 			int result = userdao.OrderCartRegistger(basketDto);
-			System.out.println(result);
 		}
 		if (amount_set > 0) {
 			ProductDTO productDto = userdao.PrductDetail(product_code_set);
@@ -70,17 +67,9 @@ public class BasketAddService implements Action {
 			basketDto.setTotal_product_price(price_set * amount_set);
 
 			int result = userdao.OrderCartRegistger(basketDto);
-			System.out.println(result);
 		}
 
 		return null;
-
-		/*
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/order/Mcdonald_order3.jsp");
-		 * 
-		 * return forward;
-		 */
 	}
 
 }

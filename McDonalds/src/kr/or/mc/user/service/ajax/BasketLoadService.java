@@ -31,8 +31,6 @@ public class BasketLoadService implements Action {
 			setAmount = Integer.parseInt(request.getParameter("setAmount"));
 		}
 
-		System.out.println("oneAmount : " + oneAmount);
-		System.out.println("setAmount : " + setAmount);
 		List<BasketDTO> productDto = null;
 
 		if (oneAmount > 0 && setAmount > 0) {
@@ -45,19 +43,12 @@ public class BasketLoadService implements Action {
 
 		JSONArray jsonArr = JSONArray.fromObject(productDto);
 
-		System.out.println("jsonArrwww!!!!베ㅓㅡㄺ뷀 : " + jsonArr);
-
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");
 			response.getWriter().print(jsonArr);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		/*
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/menu/Mcdonald_order1.jsp");
-		 */
 
 		return null;
 	}

@@ -38,9 +38,6 @@ public class OrderCartService implements Action {
 
 		request.setAttribute("basketlist", basketlist);
 		request.setAttribute("totalOrderSum", totalOrderSum);
-		
-		System.out.println(basketlist);
-		System.out.println(totalOrderSum);
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/user/order/Mcdonald_order2.jsp");

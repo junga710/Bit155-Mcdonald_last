@@ -23,15 +23,9 @@ public class OrderPageBurgerService implements Action {
 		UserDAO userDao = new UserDAO();
 		String product_category = request.getParameter("product_category");
 		
-		System.out.println("product_category : " + product_category);
 		List<ProductDTO> productDto = userDao.getProductList(product_category);
 		
-		/* JSONObject jsonObject = JSONObject.fromObject(productDto); */
-		
 		JSONArray jsonArr = JSONArray.fromObject(productDto); 
-		
-		
-		System.out.println("jsonArrsss : " + jsonArr);
 		
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");
@@ -39,11 +33,6 @@ public class OrderPageBurgerService implements Action {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		/*
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/menu/Mcdonald_order1.jsp");
-		 */
 
 		return null;
 	}
