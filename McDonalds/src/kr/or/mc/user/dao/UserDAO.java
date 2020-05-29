@@ -558,7 +558,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_file_upload,f_refer)"
-					+ "values(board_free_sq.nextval,?,?,?,sysdate,0,0,?,?)";
+					+ "values(board_free_sq.nextval,?,?,?,sysdate,0,?,?)";
 			// refer까지.. step, depth는 XX
 
 			pstmt = conn.prepareStatement(sql);
