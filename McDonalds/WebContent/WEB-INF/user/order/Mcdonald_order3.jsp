@@ -142,17 +142,12 @@
 				product_name: decodeURIComponent(productName)
 			}, */
 			success: function(response) {
-				
-				console.log(response);
-				console.log(response[response.length-1]);
-				
-		    	
+
+					    	
 		        var IMP = window.IMP; // 생략가능
 		        IMP.init('imp28448525'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 		        var msg;
 		        
-
-
 	    		var st = $(":input:radio[name=payment_type]:checked").val();
 	    		if(st === '신용카드'){
 	    		      IMP.request_pay({

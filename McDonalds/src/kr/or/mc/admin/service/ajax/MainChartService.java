@@ -22,7 +22,6 @@ public class MainChartService implements Action {
 		
 		List<ChartDTO> list = ajaxDao.MainChart(); //월 매출 평균
     	
-    	System.out.println("list : " + list);
 
     	JSONArray jsonArr = JSONArray.fromObject(list); 
     

@@ -21,7 +21,6 @@ public class ProductListService implements Action {
 
 		List<ProductDTO> pList = adminDao.ProductList();
 		
-		System.out.println(pList);
 		request.setAttribute("pList", pList);
 		
 		ActionForward forward = new ActionForward();

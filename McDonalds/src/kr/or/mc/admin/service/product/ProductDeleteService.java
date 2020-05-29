@@ -18,10 +18,7 @@ public class ProductDeleteService implements Action {
 		AdminDAO adminDao = new AdminDAO();
 		int result = adminDao.ProductDelete(product_code);
 		int result2 = adminDao.ProductDeleteNut(nutrition_code);
-		
-		
-		System.out.println("result : " + result);
-		System.out.println("result2 : " + result2);
+
 		ActionForward forward = new ActionForward();
 		forward.setPath("Product.p");
 
