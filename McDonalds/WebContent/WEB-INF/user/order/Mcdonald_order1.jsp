@@ -7,7 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css"
+	rel="stylesheet">
+<!-- 아이콘 -->
+
+<!--  popover -->
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css"
+	rel="stylesheet" type="text/css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
+<link
+	href="${pageContext.request.contextPath}/usercss/vendors/vendors/popover/popModal.css"
+	rel="stylesheet">
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
@@ -74,26 +86,80 @@
 					</button>
 
 					<br>
-					<div style="width: 100%; margin-left: 8px; padding-right: 10px;">
-						<!-- 전체보기 라디오버튼 -->
-						<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample1" name="groupOfDefaultRadios" checked>
-							<label class="custom-control-label" for="defaultGroupExample1">전체보기</label>
-						</div>
 
-						<hr>
-						<!--  -->
-						<div class="custom-control custom-radio">
+
+					<div style="width: 100%;">
+						<p style="padding-left: 0">
+							<button id="hint" class="btn btn-primary hintModal">
+								하루 권장 섭취량
+								<div class="hintModal_container">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">나이</th>
+												<th scope="col">남자</th>
+												<th scope="col">여자</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th scope="row">1</th>
+												<td>12-14</td>
+												<td>2,500</td>
+												<td>2,000</td>
+											</tr>
+											<tr>
+												<th scope="row">2</th>
+												<td>15-18</td>
+												<td>2,700</td>
+												<td>2,000</td>
+											</tr>
+											<tr>
+												<th scope="row">3</th>
+												<td>19-29</td>
+												<td>2,600</td>
+												<td>2,100</td>
+											</tr>
+											<tr>
+												<th scope="row">4</th>
+												<td>30-49</td>
+												<td>2,400</td>
+												<td>1,900</td>
+											</tr>
+											<tr>
+												<th scope="row">5</th>
+												<td>50-64</td>
+												<td>2,200</td>
+												<td>1,800</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</button>
+
+
+
+							<!-- 	<div class="custom-control custom-radio">
 							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample2" name="groupOfDefaultRadios"> <label
+								id="defaultGroupExample1" name="filter" value="total" checked>
+							<label class="custom-control-label" for="defaultGroupExample1">전체보기</label>
+						</div> -->
+
+							<!-- <hr> -->
+							<!--  -->
+							<!-- <div class="custom-control custom-radio">
+							<input type="radio" class="custom-control-input"
+								id="defaultGroupExample2" name="filter"> 
+								<label
 								class="custom-control-label" for="defaultGroupExample2">낮은
 								가격순</label>
 						</div>
 
 						<div class="custom-control custom-radio">
 							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample3" name="groupOfDefaultRadios"> <label
+								id="defaultGroupExample3" name="filter"> 
+								<label
 								class="custom-control-label" for="defaultGroupExample3">높은
 								가격순</label>
 						</div>
@@ -101,17 +167,19 @@
 						<hr>
 						<div class="custom-control custom-radio">
 							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample4" name="groupOfDefaultRadios"> <label
-								class="custom-control-label" for="defaultGroupExample4">낮은
+								id="defaultGroupExample4" name="filter" value="low"> <label
+								class="custom-control-label" for="defaultGroupExample4"
+								>낮은
 								칼로리순</label>
 						</div>
 
 						<div class="custom-control custom-radio">
 							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample5" name="groupOfDefaultRadios"> <label
+								id="defaultGroupExample5" name="filter" value="high"> 
+								<label
 								class="custom-control-label" for="defaultGroupExample5">높은
 								칼로리순</label>
-						</div>
+						</div>  -->
 					</div>
 
 				</div>
@@ -182,8 +250,10 @@
 							style="background-color: #ffffffab;">
 						<div class="card-body" id="card-inner"
 							style="background-color: #f6f6f6;">
-							<strong style="display: none" class="product_code_one"></strong>
-							<strong style="display: none" class="product_code_set"></strong>
+							<strong class="product_code_one"></strong> <strong
+								class="product_code_set"></strong> <strong
+								class="product_category"></strong>
+							<!-- 	style="display: none"  -->
 							<strong class="ko">허니 크림치즈 상하이 버거</strong>
 							<div class="row">
 								<div class="col-6"
@@ -221,7 +291,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row" id="set">
 								<div class="col-6"
 									style="padding: 5px; border: aliceblue; align-self: center;">
 
@@ -283,7 +353,7 @@
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 
-<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 
 
@@ -298,14 +368,14 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
+	<%-- 
 	<script
-		src="${pageContext.request.contextPath}/usercss/assets/js/orderlist.js"></script>
+		src="${pageContext.request.contextPath}/usercss/assets/js/orderlist.js"></script> --%>
 
 	<script>
 
 $(document).ready(function() {
-	
+
 	var count = 0; //장바구니 담은 개수 count 값 
 	loadTotalBasket();
 	
@@ -316,6 +386,10 @@ $(document).ready(function() {
 		type: 'GET',
 		url: 'basketLoadFull.ua',
 		success: function(response) {
+			
+			console.log("기존 데이터야 떠라 얍얍얍ㅇ뱝ㅇ")
+			console.log("나는 마멉사 뿜무무 : " + response);
+			
 			$.each(response, function(index, item){
 					var detailImg = $('#_thumbnail').attr('src');
 					
@@ -329,11 +403,11 @@ $(document).ready(function() {
 			viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
 			viewDetail += "<span style=\"font-size:x-small\">"+ response[index].product_name +"</span>";
 			if(response[index].product_kind === '단품'){
-				viewDetail += " <button class='deleteComment' id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += " <button class=\"" + response[index].product_code + "\" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
 				viewDetail += "<div>단품 : "+ response[index].amount +"개 </div>";
 				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
 			}else{
-				viewDetail += " <button class=\" " + response[index].product_code + " \" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += " <button class=\"" + response[index].product_code + "\" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
 				viewDetail += "<div>세트 : "+ response[index].amount +"개 </div>";
 				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
 			}
@@ -373,7 +447,10 @@ $(document).ready(function() {
 				},
 				success: function(response) {
 					
-					console.log("sss " + response)
+			
+				
+					console.log("사이드떠라제발 " + response[0].product_category)
+					console.log("크기 " + response.length)
 					
 					$('#_one_input').val('0');
 					$('#_set_input').val('0');
@@ -393,8 +470,20 @@ $(document).ready(function() {
 					$('#_set_image').attr('src', setImage);
 					
 					$('#myModal .ko').text(productName);
-					$('#myModal .product_code_one').text(response[0].product_code);
-					$('#myModal .product_code_set').text(response[1].product_code);
+					
+					if(response.length === 1){
+						$('#myModal .product_code_one').text(response[0].product_code);
+						$('#myModal .product_category').text(response[0].product_category); 
+						$('#set').hide(); //단품만 있는 메뉴 선택시 숨기기
+						
+					}else{
+						$('#myModal .product_code_one').text(response[0].product_code);
+						$('#myModal .product_code_set').text(response[1].product_code);
+						$('#myModal .product_category').text(response[0].product_category); 
+						$('#set').show(); //단품만 있는 메뉴 선택시 보이기
+					}
+					/* $('#myModal .product_category_set').text(response[0].product_category); 
+					$('#myModal .product_category_noset').text(response[1].product_category);  */
 				}
 			});
 		}
@@ -402,9 +491,9 @@ $(document).ready(function() {
 	
  	//modal에서 추가하기 버튼
 	$('#_modal_plus').click(function(evt) {
-		
-		count++;
-		console.log("count : " + count)
+		//location.reload(); //페이지 새로고침
+		/* count++;
+		console.log("count늘어나라 : " + count) */
 		
 		var sum = parseInt(getOnlyNumber($('#_sum').text()), 10);
 		var oneAmount = $('#_one_input').val();
@@ -437,7 +526,7 @@ $(document).ready(function() {
 				product_code_set : $('.product_code_set').text(), //세트 상품 번호
 				amount_one: oneAmount,
 				amount_set: setAmount,
-				select_store : $('.select_store').text()
+				product_category : $('.product_category').text(),
 			}, 
 			success: function(response) {
 				
@@ -446,9 +535,15 @@ $(document).ready(function() {
 			loadBakset();
 		});
 		 
+		 if($('#_set_input').val() > 0 && $('#_one_input').val() > 0){
+			 count += 2;
+			console.log("count 2개 늘어나라 : " + count)
+		 } else if($('#_set_input').val() > 0 || $('#_one_input').val() > 0) {
+			 count += 1;
+			console.log("count 1개 늘어나라 : " + count)
+		 } 
 	
-		
-		
+	
 	}) 
 	
 	 //장바구니에 인서트한거 불러오기
@@ -489,11 +584,11 @@ $(document).ready(function() {
 			viewDetail += "<div class=\"col-8\" style=\"padding-top:inherit\">";
 			viewDetail += "<span style=\"font-size:x-small\">"+ response[index].product_name +"</span>";
 			if(response[index].product_kind === '단품'){
-				viewDetail += " <button class=\" " + response[index].product_code + " \" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += " <button class=\"" + response[index].product_code + "\" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
 				viewDetail += "<div>단품 : "+ response[index].amount +"개 </div>";
 				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
 			}else{
-				viewDetail += " <button class=\" " + response[index].product_code + " \" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
+				viewDetail += " <button class=\"" + response[index].product_code + "\" id='_delete_btn' style=\"float: right;background-color: crimson;color: floralwhite;\"><i class='ri-delete-bin-line'></i></button>";
 				viewDetail += "<div>세트 : "+ response[index].amount +"개 </div>";
 				viewDetail += "<span style=\"font-size:small;float:right;color:forestgreen;\">  ₩ " + response[index].total_product_price +"</span>";
 			}
@@ -537,17 +632,15 @@ $(document).ready(function() {
 	
 	///▼▼▼▼ 휴지통 버튼 클릭시 삭제하는거 만들기
 	$(document).on("click", "#_delete_btn", function(){
-		console.log("대박 : " + $(this).attr('id'));
-		console.log("대박 : " + $(this).attr('id'));
-		console.log("대박 : " + $(this).attr('id'));
-		console.log("대박 : " + $(this).attr('id'));
+		console.log("대박 : " + $(this).attr('class'));
+
 		//ajajx
 		$.ajax({
 			type: 'GET',
 			url: 'basketDelete.ua',
-		 	/* data: {
-				product_code : 
-			},  */
+		 	 data: {
+				product_code : $(this).attr('class')
+			},  
 			success: function(response) {
 				
 			},
@@ -556,45 +649,21 @@ $(document).ready(function() {
 			    }
 		})
 		
-		
-		
-		
-		
 		var detailRow = $(this).parent().parent();
 		console.log("아나!! " + detailRow)
 		detailRow.remove();
 		
 		var detailPrice = parseInt(getOnlyNumber($(this).next().next().text()), 10);
 		
-		console.log("상품가격 " + detailPrice);
+		console.log("상품가격??? " + detailPrice);
 		
 		var totalPrice = parseInt(($('#_sum').text().replace(/[^0-9]/g,'')), 10);
+		console.log("총 가격: " + totalPrice);
 		
 		$('#_sum').text('₩ ' +(totalPrice-detailPrice).toLocaleString());
 		
-    });
-	
-	
- 	
- 	
- 	///▼▼▼▼ 휴지통 버튼 클릭시 삭제하는거 만들기
-	$(document).on("click", "#_delete_btn", function(){
-		
-		
-	
-		var detailRow = $(this).parent().parent().parent();
-		detailRow.remove();
-		
-		var detailPrice = parseInt(getOnlyNumber($(this).parent().next().children().text()), 10);
-		
-		console.log(detailPrice);
-		
-		
-		var totalPrice = parseInt(($('#_sum').text().replace(/[^0-9]/g,'')), 10);
-
-		
-		
-		$('#_sum').text('₩ ' +(totalPrice-detailPrice).toLocaleString());
+		count--;
+		console.log("count 줄어들어라 : " + count);
     });
 
 
@@ -730,6 +799,30 @@ $(window).on("beforeunload", function(){
       });
       
       
+    </script>
+
+
+
+	<script
+		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/usercss/assets/js/orderlist.js"></script>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+		integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+		crossorigin="anonymous"></script>
+	<script
+		src="${pageContext.request.contextPath}/usercss/vendors/vendors/popover/popModal.js"></script>
+
+
+<!--페이지 한번만 새로고침 -->
+	<script>
+    if (self.name != 'reload') {
+        self.name = 'reload';
+        self.location.reload(true);
+    }
+    else self.name = ''; 
     </script>
 
 </body>

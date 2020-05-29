@@ -24,6 +24,8 @@ public class SelectBurgerModalService implements Action {
 		List<ProductDTO> productDto = userDao.selectProductByName(product_name);
 
 		JSONArray jsonArr = JSONArray.fromObject(productDto);
+		
+		System.out.println("연규형님 : " + jsonArr);
 
 		try {
 			response.setContentType("application/json; charset=UTF-8");

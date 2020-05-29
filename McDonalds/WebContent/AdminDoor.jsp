@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="Main.m">admin대문</a>
+	<a href="AdminMain.m">admin대문</a>
 </body>
 </html>

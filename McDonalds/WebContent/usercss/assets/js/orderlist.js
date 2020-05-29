@@ -1,6 +1,10 @@
 
 $(document).ready(function() {	
 	
+	$("input[name=filter]").change(function() {
+		var st = $(":input:radio[name=filter]:checked").val();
+		console.log("필터 : " + st);
+	});
 	
 	
 var temp = '버거'

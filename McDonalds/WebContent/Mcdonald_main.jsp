@@ -57,7 +57,7 @@
 							<c:choose>
 								<c:when test="${id == 'admin'}">
 
-									<a href="#">관리자 페이지</a>
+									<a href="AdminPage.m">관리자 페이지</a>
 								</c:when>
 								<c:otherwise>
 									<a href="Mcdonald_joinform_edit.ump">계정 설정</a>
@@ -290,7 +290,7 @@
 							function(data, textStatus, xhr) {
 								$('#result').empty();
 								// console.log(data.weather);
-								// console.log(data.weather[0].description);
+								console.log(data.weather[0].description);
 								// console.log(data.weather[0]);
 
 								var table = "<table>";

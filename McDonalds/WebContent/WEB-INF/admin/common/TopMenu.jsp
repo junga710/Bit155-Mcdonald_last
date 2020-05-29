@@ -19,8 +19,10 @@
 				</a>
 
 				<div class="user-menu dropdown-menu">
-					<a class="nav-link" href="#"><i class="fa fa-power-off"></i>
+					<a class="nav-link" href="logout.ump"><i class="fa fa-power-off"></i>
 						Logout</a>
+					<a class="nav-link" href="outAdminPage.m"><i class="fa fa-power-off"></i>
+						벗어나기</a>
 				</div>
 			</div>
 

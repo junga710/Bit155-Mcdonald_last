@@ -10,44 +10,42 @@ import javax.servlet.http.HttpSession;
 import kr.or.mc.common.action.Action;
 import kr.or.mc.common.action.ActionForward;
 import kr.or.mc.common.dto.BasketDTO;
+import kr.or.mc.common.dto.ReplyDTO;
 import kr.or.mc.user.dao.UserDAO;
 import net.sf.json.JSONArray;
 
-public class BasketLoadFullService implements Action {
-
+public class PaymentInfoService implements Action {
+	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-
-		System.out.println("타긴탐??");
-
 		UserDAO userDao = new UserDAO();
-		String product_category = request.getParameter("product_category");
 		
 		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		String b_id = (String) session.getAttribute("id"); // b_id : 사용자 아이디
 		
-		List<BasketDTO> productDto = userDao.OrderCartList(id);
-		//장바구니의 마지막 행에 있는거 하나씩 불러오기
+		int totalOrderSum = 0; // 주문한 상품 총 가격
+
+		List<BasketDTO> basketlist = userDao.OrderCartList(b_id);
 		
-		System.out.println("이게안나온다고?? " + productDto);
+		for (BasketDTO basketDto : basketlist) {
+			totalOrderSum += basketDto.getTotal_product_price();
+		}
 		
-		JSONArray jsonArr = JSONArray.fromObject(productDto); 
-		
-		System.out.println("타라좀!!!!!" + jsonArr);
+		JSONArray obj = JSONArray.fromObject(basketlist);
+		obj.add(totalOrderSum);
 		
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");
-			response.getWriter().print(jsonArr);
+			response.getWriter().print(obj);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		/*
-		 * ActionForward forward = new ActionForward();
-		 * forward.setPath("/WEB-INF/user/menu/Mcdonald_order1.jsp");
-		 */
+		}		
 
 		return null;
+		
+    	
+    	
 	}
 
 }
+

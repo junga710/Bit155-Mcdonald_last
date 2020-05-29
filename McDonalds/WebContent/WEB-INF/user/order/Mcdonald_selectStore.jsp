@@ -109,6 +109,8 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e300e4bb56b1946cdad5103ee9d8b3e6"></script>
 	<script>
+	
+	
                var container = document.getElementById('map');
                var options = {
                   center : new kakao.maps.LatLng(37.5123701991336,
@@ -258,6 +260,38 @@
 				}
 			} */
 	</script>
+
+ <script
+		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> 
+
+
+	<script>
+	
+
+		//Get the button
+		var mybutton = document.getElementById("myBtn");
+
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function() {
+			scrollFunction()
+		};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20
+					|| document.documentElement.scrollTop > 20) {
+				mybutton.style.display = "block";
+			} else {
+				mybutton.style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+	</script>
+
 
 
 </body>

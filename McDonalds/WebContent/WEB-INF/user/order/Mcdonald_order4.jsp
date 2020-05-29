@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--css-->
-  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/admincss//assets/css/common.css">
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -50,9 +50,9 @@
             <br><br>
             주문 관련 문의 사항은 맥도날드 콜센터로 연락하시기 바랍니다. 1600-5252
             <br><br>
-            <a href="Mcdonald_orderhistory.html" class="btn btn-danger" style="background-color: #D1402D; height: 40px;">주문 조회</a>
+            <a href="OrderHistory.uo" class="btn btn-danger" style="background-color: #D1402D; height: 40px;">주문 조회</a>
             &nbsp; &nbsp;
-            <a href="Mcdonald_order1.html" class="btn btn-danger" style="background-color: #D1402D; height: 40px;">새로 주문하기</a>
+            <a href="SelectShop.ua" class="btn btn-danger" style="background-color: #D1402D; height: 40px;">새로 주문하기</a>
             
           </div>
 
@@ -88,6 +88,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+
+ <script
+		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> 
 
 <script>
 

@@ -25,7 +25,7 @@ public class OrderCancleService implements Action {
 		HttpSession session = request.getSession();
 		String b_id = (String) session.getAttribute("id"); // b_id : 사용자 아이디
 
-		int result = userdao.OrderCartDelete(b_id);
+		int result = userdao.OrderCartTotalDelete(b_id);
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("Order1.uo");

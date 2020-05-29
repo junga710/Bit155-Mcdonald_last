@@ -60,13 +60,14 @@
 					style="background-color: white; margin-left: 2px; margin-right: 2px; min-height: 50px">
 
 					<c:forEach var="list" items="${basketlist}" varStatus="status">
-						
+
 						<div class="col-md-10"
 							style="margin-top: 10px; min-height: 180px; background-color: linen;">
 							<div class="row" style="height: 100%;">
 								<!-- 글번호 오는 구간▼▼  -->
 								<div class="col-md-2">
-									<c:out value="${status.count}"/><br> 
+									<c:out value="${status.count}" />
+									<br>
 								</div>
 								<!-- 이미지파일 오는구간 ▼▼ -->
 								<div class="col-md-4">
@@ -128,8 +129,8 @@
 					<!-- 버튼으로 넘어가야대는거 넣어야댐 -->
 				</div>
 			</div>
-			
-			
+
+
 		</div>
 	</div>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -138,25 +139,48 @@
 
 <jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
+ <script
+		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> 
+
+
+
 <script>
 
-var mybutton = document.getElementById("myBtn");
+	//location.reload(); //페이지 새로고침
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () { scrollFunction() };
 
-function scrollFunction() {
-   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      mybutton.style.display = "block";
-   } else {
-      mybutton.style.display = "none";
-   }
-}
+	var mybutton = document.getElementById("myBtn");
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-   document.body.scrollTop = 0;
-   document.documentElement.scrollTop = 0;
-}
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {
+		scrollFunction()
+	};
+
+	function scrollFunction() {
+		if (document.body.scrollTop > 20
+				|| document.documentElement.scrollTop > 20) {
+			mybutton.style.display = "block";
+		} else {
+			mybutton.style.display = "none";
+		}
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
 </script>
+
+<!--페이지 한번만 새로고침 -->
+	<script>
+    if (self.name != 'reload') {
+        self.name = 'reload';
+        self.location.reload(true);
+    }
+    else self.name = ''; 
+    </script>
+
+
+
 </html>

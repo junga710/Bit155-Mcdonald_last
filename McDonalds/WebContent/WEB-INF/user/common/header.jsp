@@ -42,7 +42,7 @@
 							<c:choose>
 								<c:when test="${id == 'admin'}">
 
-									<a href="#">관리자 페이지</a>
+									<a href="AdminMain.m">관리자 페이지</a>
 								</c:when>
 								<c:otherwise>
 									<a href="Mcdonald_joinform_edit.ump">계정 설정</a>
@@ -86,7 +86,7 @@
 			</c:otherwise>
 		</c:choose>
 
-		<div class="row">
+			<div class="row">
 			<div class="col-md-6"
 				style="padding-right: 0px; text-align-last: right;">
 				<img class="imo" width="73%"> <input type="hidden"

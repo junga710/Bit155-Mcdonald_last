@@ -45,9 +45,6 @@ public class UserOrderController extends HttpServlet {
 		if (url_Command.equals("/OrderHistory.uo")) { // 메뉴 - 주문조회 페이지로 이동
 			action = new OrderHistoryPageService();
 			forward = action.execute(request, response);
-		} else if (url_Command.equals("")) { //
-			forward = new ActionForward();
-			forward.setPath("/WEB-INF/user/order/Mcdonald_orderhistory.jsp");
 		} else if (url_Command.equals("/Order1.uo")) { // 메뉴 - 주문 첫페이지로 이동
 			action = new OrderMenuService();
 			forward = action.execute(request, response);
@@ -60,7 +57,7 @@ public class UserOrderController extends HttpServlet {
 		} else if (url_Command.equals("/Order4.uo")) { // 메뉴 - 주문 끝
 			action = new OrderSuccessService();
 			forward = action.execute(request, response);
-		} else if (url_Command.equals("/PaymentCancel.uo")) { // 메뉴 - 주문 끝
+		} else if (url_Command.equals("/PaymentCancel.uo")) { // 결제취소
 			action = new OrderCancleService();
 			forward = action.execute(request, response);
 		}

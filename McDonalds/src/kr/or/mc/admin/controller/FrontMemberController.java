@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 
-
 import kr.or.mc.admin.service.member.MemberDeleteService;
 import kr.or.mc.admin.service.member.MemberDetailService;
 
@@ -22,13 +21,13 @@ import kr.or.mc.common.action.ActionForward;
 
 @WebServlet("*.m")
 public class FrontMemberController extends HttpServlet {
-       
-    public FrontMemberController() {
-        super();
-        
-    }
-    
-    private void doProcess(HttpServletRequest request, HttpServletResponse response)
+
+	public FrontMemberController() {
+		super();
+
+	}
+
+	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String requestURI = request.getRequestURI();
@@ -41,8 +40,14 @@ public class FrontMemberController extends HttpServlet {
 		if (url_Command.equals("/AdminPage.m")) { // admin 페이지 이동
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/admin/Main.jsp");
-
-		} else if (url_Command.equals("/MemberList.m")) { // 회원관리 페이지 이동 + 회원 리스트 출력 로직
+		} else if (url_Command.equals("/outAdminPage.m")) { // 회원관리 페이지 이동 + 회원 리스트 출력 로직
+			forward = new ActionForward();
+			forward.setPath("/Mcdonald_main.jsp");
+		} else if (url_Command.equals("/AdminMain.m")) {
+			forward = new ActionForward();
+			forward.setPath("/WEB-INF/admin/Main.jsp");
+		}
+		else if (url_Command.equals("/MemberList.m")) { // 회원관리 페이지 이동 + 회원 리스트 출력 로직
 			action = new MemberListService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/MemberDetail.m")) { // 회원상세 페이지 이동 + 회원 리스트 출력 로직
@@ -51,7 +56,7 @@ public class FrontMemberController extends HttpServlet {
 		} else if (url_Command.equals("/MemberRegisterPage.m")) { // 회원등록 페이지 이동
 			action = new MemberRegisterPageService();
 			forward = action.execute(request, response);
-		
+
 		} else if (url_Command.equals("/MemberRegister.m")) { // 회원리스트 페이지 이동 + 회원 등록 로직
 			action = new MemberRegisterService();
 			forward = action.execute(request, response);
@@ -67,8 +72,6 @@ public class FrontMemberController extends HttpServlet {
 			forward = action.execute(request, response);
 		}
 
-			
-		
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 			dis.forward(request, response);
@@ -76,12 +79,14 @@ public class FrontMemberController extends HttpServlet {
 
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doProcess(request, response);
-		
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
