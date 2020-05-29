@@ -301,7 +301,7 @@ $(function(){
                            let startable = $("#tbody");
                               startable += "<tr>";
                                  startable += "<td>" + value.f_code + "</td>";
-                                 startable += "<td>" + value.f_title + "</td>";
+                                 startable += "<td>"+"<a href='BoardFreeDetail.b?f_code="+ value.f_code +"&cp=${cpage}&ps=${pagesize}'>" + value.f_title + "</a>"+"</td>";
                                  startable += "<td>" + value.f_writer + "</td>";
                                  startable += "<td>" + value.f_date + "</td>";
                                  startable += "<td>" + value.f_readnum + "</td>";
@@ -330,7 +330,7 @@ $(function(){
                            let startable = "#tbody";
                               startable += "<tr>";
                               startable += "<td>" + value.f_code + "</td>";
-                              startable += "<td>" + value.f_title + "</td>";
+                              startable += "<td>"+"<a href='BoardFreeDetail.b?f_code="+ value.f_code +"&cp=${cpage}&ps=${pagesize}'>" + value.f_title + "</a>"+"</td>";
                               startable += "<td>" + value.f_writer + "</td>";
                               startable += "<td>" + value.f_date + "</td>";
                               startable += "<td>" + value.f_readnum + "</td>";
