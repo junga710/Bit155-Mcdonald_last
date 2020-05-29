@@ -919,9 +919,9 @@ public class UserDAO {
 		List<OrdersDTO> list = new ArrayList<OrdersDTO>();
 		try {
 			conn = ds.getConnection();
-			String sql = "select o.order_code, o.o_id, o.s_name, o.payment_method, o.payment_price, to_char(payment_date, 'YYYY-MM-DD HH24:MM:SS') as payment_date, m.address\r\n"
-					+ "from orders o join member m on o.o_id = m.m_id\r\n" + "where m.m_id = ?                \r\n"
-					+ "";
+			String sql = "select o.order_code, o.o_id, o.s_name, o.payment_method, o.payment_price, to_char(payment_date, 'YYYY-MM-DD HH24:MI:SS') as payment_date, m.address\r\n" + 
+					"from orders o join member m on o.o_id = m.m_id where m.m_id = ? \r\n" + 
+					"order by o.order_code asc" + "";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, id);

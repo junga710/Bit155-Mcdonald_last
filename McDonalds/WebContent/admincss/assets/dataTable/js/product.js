@@ -12,11 +12,12 @@
 
          $(document).ready(function () {
 
-            /*  $.fn.dataTable.ext.search.push(
+              $.fn.dataTable.ext.search.push(
                   function(settings, data, dataIndex){
-                      var min = Date.parse($('#fromDate').val());
-                      var max = Date.parse($('#toDate').val());
-                      var targetDate = Date.parse(data[3]);
+                      var min = $('#fromDate').val();
+                      var max = $('#toDate').val();
+                      var targetDate = data[3];
+                      console.log(targetDate);
           
                       if( (isNaN(min) && isNaN(max) ) || 
                           (isNaN(min) && targetDate <= max )|| 
@@ -26,7 +27,7 @@
                       }
                       return false;
                   }
-              )*/
+              )
           
               var table = $('#myTable').DataTable({
                   /*ajax: {
@@ -111,12 +112,16 @@
                   table.column(colIndex+1).search(this.value).draw();
               });
           
-              /* 날짜검색 이벤트 리바인딩 */
-              /*$('#myTable_filter').prepend('<input type="text" id="toDate" placeholder="yyyy-MM-dd"> ');
-              $('#myTable_filter').prepend('<input type="text" id="fromDate" placeholder="yyyy-MM-dd">&nbsp~');
-              $('#toDate, #fromDate').unbind().bind('keyup',function(){
-                  table.draw();
-              })*/
+              /* OOOO ~ OOOO 리바인딩 */
+              $('#myTable > thead > tr').children().each(function (indexInArray, valueOfElement) { 
+            	    if(valueOfElement.innerHTML == '상품가격'){
+		              $('#myTable_filter').prepend('<input type="text" id="toDate" placeholder="yyyy-MM-dd"> ');
+		              $('#myTable_filter').prepend('<input type="text" id="fromDate" placeholder="yyyy-MM-dd">&nbsp~');
+		              $('#toDate, #fromDate').unbind().bind('keyup',function(){
+		                  table.draw();
+		              })	
+            	   }
+              });
           
           
           });
