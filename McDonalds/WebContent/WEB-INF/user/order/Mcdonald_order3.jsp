@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +26,7 @@
 </style>
 
 <body>
+<jsp:include page="../common/header.jsp"></jsp:include>
 	<c:set var="basketlist" value="${requestScope.basketlist}" />
 	<c:set var="totalOrderSum" value="${requestScope.totalOrderSum}" />
 
@@ -121,7 +123,7 @@
     </div>
   </div>
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
+<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 <jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
@@ -250,6 +252,6 @@ $(document).ready(function(){
 });
 
 </script>
-
 </body>
+
 </html>

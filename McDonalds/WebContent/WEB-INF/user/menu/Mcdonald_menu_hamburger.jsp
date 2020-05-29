@@ -185,7 +185,7 @@
 	</div>
 
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-</body>
+
 
 <!-- <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -258,7 +258,6 @@
 		document.documentElement.scrollTop = 0;
 	}
 </script>
-
-
+</body>
 
 </html>

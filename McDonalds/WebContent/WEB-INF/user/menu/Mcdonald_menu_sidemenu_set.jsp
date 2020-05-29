@@ -176,7 +176,7 @@
 		</div>
 	</div>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-</body>
+
 
 <jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
@@ -208,4 +208,5 @@
 		document.documentElement.scrollTop = 0;
 	}
 </script>
+</body>
 </html>

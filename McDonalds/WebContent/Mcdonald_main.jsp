@@ -10,7 +10,7 @@
 
 <title>MC도날드</title>
 
-
+  
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -275,6 +275,7 @@
 	<!--footer ▼▼▼  -->
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+	
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
 	<script type="text/javascript">
@@ -376,8 +377,7 @@
 		}
 	</script>
 
-
-
-
 </body>
+
+
 </html>

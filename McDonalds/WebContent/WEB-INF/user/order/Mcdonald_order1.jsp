@@ -7,7 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css"
+	rel="stylesheet">
+<!-- 아이콘 -->
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
@@ -46,32 +49,30 @@
 
 	<div class="container show-grid">
 		<div class="row">
-			<div class="col-md-2">공간</div>
-			<div class="col-md-10">메뉴 || 버거 & 세트</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-10">주문하기</div>
 		</div>
 		<div class="row">
 			<div class="col-md-2">
 				<div class="btn-group-vertical" style="width: 99%">
-					<button type="button" class="btn btn-warning"
-						style="border-bottom: 1px solid darkblue;">일반메뉴</button>
+					<div class="well" style="border-bottom: 1px solid darkblue;width: 100%;background-color: #D63127;color: oldlace;text-align-last: center;border-style:double">일반메뉴</div>
 					<button id="burgerButton" type="button" class="btn btn-warning"
-						style="border-top: 1px solid darkblue;" value="버거">버거 &
+						style="border: outset;" value="버거">버거 &
 						세트</button>
 
-					<button id="MacMorningButton" type="button" class="btn btn-warning"
+					<button id="MacMorningButton" type="button" class="btn btn-warning" style="border: outset;"
 						value="맥모닝">맥모닝</button>
-					<button id="SideButton" type="button" class="btn btn-warning"
+					<button id="SideButton" type="button" class="btn btn-warning" style="border: outset;"
 						value="사이드">사이드</button>
-					<button id="DesertButton" type="button" class="btn btn-warning"
+					<button id="DesertButton" type="button" class="btn btn-warning" style="border: outset;"
 						value="디저트">디저트</button>
-					<button id="MacCafeButton" type="button" class="btn btn-warning"
-						value="맥카페" style="border-bottom: 1px solid darkblue;">맥카페</button>
-					<button id="BeverageButton" type="button" class="btn btn-warning"
+					<button id="MacCafeButton" type="button" class="btn btn-warning" style="border: outset;"
+						value="맥카페">맥카페</button>
+					<button id="BeverageButton" type="button" class="btn btn-warning" style="border: outset;"
 						value="음료" style="border-bottom: 1px solid darkblue;">음료</button>
-					<button type="button" class="btn btn-warning"
-						style="border-top: 1px solid darkblue;">
+					<div class="well" style="border: burlywood;width:100%;background-color: #FC7500;border-style: double;">
 						<br>
-					</button>
+					</div>
 
 					<br>
 					<div style="width: 100%; margin-left: 8px; padding-right: 10px;">
@@ -283,7 +284,7 @@
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 
-<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
 
 
@@ -731,8 +732,8 @@ $(window).on("beforeunload", function(){
       
       
     </script>
-
 </body>
+
 
 
 </html>

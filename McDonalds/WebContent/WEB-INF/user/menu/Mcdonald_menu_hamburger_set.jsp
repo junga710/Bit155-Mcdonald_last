@@ -185,7 +185,7 @@
 		</div>
 	</div>
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-</body>
+
 
 <jsp:include page="/WEB-INF/user/common/footer.jsp"></jsp:include>
 
@@ -219,5 +219,5 @@
 	}
 </script>
 
-
+</body>
 </html>
