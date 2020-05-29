@@ -97,6 +97,12 @@
                                             </tr>
                                          </c:forEach>
                                     </tbody>
+<tfoot>
+    <tr>
+        <th colspan="2" style="text-align:right;white-space:nowrap;">TOTAL : </th>
+        <th colspan="6" style="text-align:left;white-space:nowrap;"></th>
+    </tr>
+</tfoot>
 
                                 </table>
                             </div>

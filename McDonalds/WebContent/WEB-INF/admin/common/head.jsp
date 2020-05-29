@@ -19,3 +19,6 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
 	rel='stylesheet' type='text/css'>
+	
+<!-- favicon -->
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/usercss/vendors/images/favicon.ico">

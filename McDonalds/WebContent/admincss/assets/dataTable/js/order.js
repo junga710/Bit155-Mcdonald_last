@@ -73,6 +73,19 @@
                           "previous": "이전"
                       }
                   },
+                  /* Footer에 금액총합 구하기,
+                   * filtered data 총합만 계산하도록 함.*/
+              /* "footerCallback":function(){
+                   var api = this.api(), data;
+                   var result = 0;
+                   api.column(4, {search:'applied'}).data().each(function(data,index){
+                       result += parseFloat(data);
+                   });
+                   $(api.column(2).footer()).html(result.toLocaleString()+'원');
+               },*/
+
+                  
+                  
                   "pageLength": 10,
                   "lengthMenu": [[3, 5, 10, -1], [3, 5, 10, "All"]],
                   dom : 'Blfrtip',
@@ -115,6 +128,8 @@
               $('#toDate, #fromDate').unbind().bind('keyup',function(){
                   table.draw();
               })*/
+              
+              
           
           
           });

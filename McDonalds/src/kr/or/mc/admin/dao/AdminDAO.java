@@ -408,7 +408,6 @@ public class AdminDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_image(rs.getString("product_image"));
 			}
 

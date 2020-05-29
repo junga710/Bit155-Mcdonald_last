@@ -176,7 +176,7 @@
 												</div>
 											</div>
 
-											<div class="row form-group">
+											<%-- <div class="row form-group">
 												<div
 													class="col col-md-3 d-flex justify-content-center align-items-center ">
 													<label for="email" class=" form-control-label">상품재고</label>
@@ -186,7 +186,7 @@
 														name="email" class="form-control" disabled=""
 														value="${productDto.product_stock}">
 												</div>
-											</div>
+											</div> --%>
 										</div>
 
 

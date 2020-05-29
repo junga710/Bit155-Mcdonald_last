@@ -350,7 +350,6 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_image(rs.getString("product_image"));
 			}
 
@@ -420,7 +419,7 @@ public class UserDAO {
 			conn = ds.getConnection();
 
 			String sql = "select * from \r\n"
-					+ "(select rownum rn , f_code , f_title , f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date , f_readnum , f_like, f_file_upload,\r\n"
+					+ "(select rownum rn , f_code , f_title , f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date , f_readnum,  f_file_upload,\r\n"
 					+ "f_refer , f_depth , f_step\r\n"
 					+ "from ( SELECT * FROM board_free ORDER BY f_refer DESC , f_step ASC)\r\n"
 					+ "where rownum <= ?)\r\n" + "where rn >= ?\r\n" + "";
@@ -443,7 +442,6 @@ public class UserDAO {
 				BoardFree.setF_writer(rs.getString("f_writer"));
 				BoardFree.setF_date(rs.getString("f_date"));
 				BoardFree.setF_readnum(rs.getInt("f_readnum"));
-				BoardFree.setF_like(rs.getInt("f_like"));
 
 				BoardFree.setF_refer(rs.getInt("f_refer"));
 				BoardFree.setF_depth(rs.getInt("f_depth"));
@@ -559,7 +557,7 @@ public class UserDAO {
 		int row = 0;
 		try {
 			conn = ds.getConnection();
-			String sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_like,f_file_upload,f_refer)"
+			String sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_file_upload,f_refer)"
 					+ "values(board_free_sq.nextval,?,?,?,sysdate,0,0,?,?)";
 			// refer까지.. step, depth는 XX
 
@@ -630,7 +628,7 @@ public class UserDAO {
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select f_code, f_title, f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date, f_readnum, f_like, f_file_upload, f_refer, f_depth, f_step\r\n"
+			String sql = "select f_code, f_title, f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date, f_readnum, f_file_upload, f_refer, f_depth, f_step\r\n"
 					+ "from board_free\r\n" + "where f_code = ?\r\n" + "";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, f_code);
@@ -642,7 +640,6 @@ public class UserDAO {
 				String f_writer = rs.getString("f_writer");
 				String f_date = rs.getString("f_date");
 				int f_readnum = rs.getInt("f_readnum");
-				int f_like = rs.getInt("f_like");
 				String f_file_upload = rs.getString("f_file_upload");
 
 				int f_refer = rs.getInt("f_refer");
@@ -656,7 +653,6 @@ public class UserDAO {
 				boardFreeDto.setF_writer(f_writer);
 				boardFreeDto.setF_date(f_date);
 				boardFreeDto.setF_readnum(f_readnum);
-				boardFreeDto.setF_like(f_like);
 				boardFreeDto.setF_file_upload(f_file_upload);
 				boardFreeDto.setF_refer(f_refer);
 				boardFreeDto.setF_step(f_step);
@@ -1010,7 +1006,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "\r\n"
-					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n"
+					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_image, p.product_category, n.calorie\r\n"
 					+ "from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n"
 					+ "where product_category = ?" + "";
 			pstmt = conn.prepareStatement(sql);
@@ -1025,7 +1021,6 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_category(rs.getString("product_category"));
 				productDto.setProduct_image(rs.getString("product_image"));
 				productDto.setNutrition_code(rs.getInt("calorie"));
@@ -1323,7 +1318,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "\r\n"
-					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n"
+					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_image, p.product_category, n.calorie\r\n"
 					+ "from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n"
 					+ "where product_name like ?" + "";
 			pstmt = conn.prepareStatement(sql);
@@ -1336,7 +1331,6 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_category(rs.getString("product_category"));
 				productDto.setProduct_image(rs.getString("product_image"));
 				productDto.setNutrition_code(rs.getInt("calorie"));
@@ -1399,7 +1393,7 @@ public class UserDAO {
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_writer like ?";
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum from board_free where f_writer like ?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + fwriter + "%");
@@ -1412,7 +1406,6 @@ public class UserDAO {
 				BoardFreeDto.setF_writer(rs.getString(3));
 				BoardFreeDto.setF_date(rs.getString(4));
 				BoardFreeDto.setF_readnum(rs.getInt(5));
-				BoardFreeDto.setF_like(rs.getInt(6));
 				list.add(BoardFreeDto);
 			}
 
@@ -1440,7 +1433,7 @@ public class UserDAO {
 		System.out.println();
 		try {
 			conn = ds.getConnection();
-			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_title like ?";
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum from board_free where f_title like ?";
 
 			pstmt = conn.prepareStatement(sql);
 			System.out.println("나오나요 타이틀!! " + ftitle);
@@ -1454,7 +1447,6 @@ public class UserDAO {
 				BoardFreeDto.setF_writer(rs.getString(3));
 				BoardFreeDto.setF_date(rs.getString(4));
 				BoardFreeDto.setF_readnum(rs.getInt(5));
-				BoardFreeDto.setF_like(rs.getInt(6));
 				list.add(BoardFreeDto);
 			}
 			System.out.println("--여긴 DAO" + list);
@@ -1635,7 +1627,6 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_image(rs.getString("product_image"));
 			}
 

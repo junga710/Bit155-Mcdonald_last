@@ -12,21 +12,21 @@
 
          $(document).ready(function () {
 
-              $.fn.dataTable.ext.search.push(
-                  function(settings, data, dataIndex){
-                      var min = $('#fromDate').val();
-                      var max = $('#toDate').val();
-                      var targetDate = data[3];
-                      console.log(targetDate);
-          
-                      if( (isNaN(min) && isNaN(max) ) || 
-                          (isNaN(min) && targetDate <= max )|| 
-                          ( min <= targetDate && isNaN(max) ) ||
-                          ( targetDate >= min && targetDate <= max) ){ 
-                              return true;
-                      }
-                      return false;
-                  }
+        	 $.fn.dataTable.ext.search.push(
+        		        function(settings, data, dataIndex){
+        		            var min = Date.parse($('#fromDate').val());
+        		            var max = Date.parse($('#toDate').val());
+        		            var targetDate = Date.parse(data[3]);
+        		            console.log(targetDate)
+
+        		            if( (isNaN(min) && isNaN(max) ) || 
+        		                (isNaN(min) && targetDate <= max )|| 
+        		                ( min <= targetDate && isNaN(max) ) ||
+        		                ( targetDate >= min && targetDate <= max) ){ 
+        		                    return true;
+        		            }
+        		            return false;
+        		        }
               )
           
               var table = $('#myTable').DataTable({
@@ -105,23 +105,23 @@
                       $('#select').append('<option class=visibility:hidden;>'+valueOfElement.innerHTML+'</option>');
                   }
               });
-              
-              
+                            
               $('.dataTables_filter input').unbind().bind('keyup', function () {
+            	  console.log("하이욤");
                   var colIndex = document.querySelector('#select').selectedIndex;
                   table.column(colIndex+1).search(this.value).draw();
               });
           
-              /* OOOO ~ OOOO 리바인딩 */
-              $('#myTable > thead > tr').children().each(function (indexInArray, valueOfElement) { 
-            	    if(valueOfElement.innerHTML == '상품가격'){
-		              $('#myTable_filter').prepend('<input type="text" id="toDate" placeholder="yyyy-MM-dd"> ');
-		              $('#myTable_filter').prepend('<input type="text" id="fromDate" placeholder="yyyy-MM-dd">&nbsp~');
-		              $('#toDate, #fromDate').unbind().bind('keyup',function(){
-		                  table.draw();
-		              })	
-            	   }
-              });
+              /* 날짜검색 이벤트 리바인딩 */
+              $('#myTable_filter').prepend('<input type="text" id="toDate" placeholder="yyyy-MM-dd"> ');
+              $('#myTable_filter').prepend('<input type="text" id="fromDate" placeholder="yyyy-MM-dd">&nbsp~');
+              $('#toDate, #fromDate').unbind().bind('keyup',function(){
+                  table.draw();
+              })
+
+
+
+		            
           
           
           });
