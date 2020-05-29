@@ -63,18 +63,16 @@
 			<c:when test="${id != null}">
 				<!-- 이거 불러와진다 -->
 
-				<a href="Order2.uo?basket_code=1" id="topbtnright"
-					class="btn btn-danger" role="button"
-					style="float: right; width: 120px;">주문확인</a>
-				</div>
+
+
 				<!-- <div class="p-2"><a href="Mcdonald_joinform.jsp" id="topbtnright" class="btn btn-danger" role="button" style="float: right;">JOIN</a></div> -->
 				<div class="p-2">
 					<a href="logout.ump" id="topbtnright" class="btn btn-warning"
 						role="button" style="float: right;">LOGOUT</a>
 				</div>
 				<div class="p-2">
-					<a href="SelectShop.ua" id="topbtnright" class="btn btn-info"
-						role="button" style="float: right;">ORDER</a>
+					<a href="SelectShop.ua" id="topbtnright" class="btn btn-danger"
+						role="button" style="float: right; background-color:crimson;">ORDER</a>
 				</div>
 				<div class="p-2">${id}님 반갑습니다^^*</div>
 			</c:when>

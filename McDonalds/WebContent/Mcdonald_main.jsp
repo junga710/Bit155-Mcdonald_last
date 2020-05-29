@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MC도날드</title>
+
+
 <meta name="description" content="Sufee Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -98,8 +100,8 @@
 						role="button" style="float: right;">LOGOUT</a>
 				</div>
 				<div class="p-2">
-					<a href="SelectShop.ua" id="topbtnright" class="btn btn-info"
-						role="button" style="float: right;">ORDER</a>
+					<a href="SelectShop.ua" id="topbtnright" class="btn btn-danger _order_button"
+						role="button" style="float: right; background-color:crimson;">ORDER</a>
 				</div>
 				<div class="p-2">${id}님 반갑습니다^^*</div>
 			</c:when>
