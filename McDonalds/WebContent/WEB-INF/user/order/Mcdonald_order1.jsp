@@ -78,7 +78,7 @@
 
 					<div style="width: 100%;">
 						<p style="padding-left: 0">
-							<button id="hint" class="btn btn-primary hintModal">
+							<button id="hint" class="btn btn-primary hintModal" style="margin-left:18px;">
 								하루 권장 섭취량
 								<div class="hintModal_container">
 									<table class="table">

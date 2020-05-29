@@ -12,6 +12,17 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!-- 영양정보적용 -->
 
+<style>
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left:-15px;
+    margin-right:-15px;
+}
+</style>
 
 
 <title>메뉴 디테일</title>
