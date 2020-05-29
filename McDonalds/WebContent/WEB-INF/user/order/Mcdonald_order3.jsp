@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
 
 <title>결제수단 선택</title>
 </head>

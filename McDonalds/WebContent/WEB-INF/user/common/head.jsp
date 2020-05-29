@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--부트스트랩 css-->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/usercss/assets/css/common.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
+	
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/usercss/vendors/vendors/bootstrap/css/bootstrap.css"> 
+	
 <!--font-->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
