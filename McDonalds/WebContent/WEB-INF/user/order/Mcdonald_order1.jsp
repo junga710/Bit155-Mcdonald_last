@@ -39,39 +39,35 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 
 	<div class="hamburgermenu">
-		<h1 class="titDep1">
+		<h1 class="titDep1-2">
 			<strong>주문하기</strong>
 		</h1>
 	</div>
 
 	<div class="container show-grid">
-		<div class="row">
-			<div class="col-md-2">공간</div>
-			<div class="col-md-10">메뉴 || 버거 & 세트</div>
+		<div class="row" style="border-radius: 70px;">
+			<div class="col-md-2" style="background-color:white;"></div>
+			<div class="col-md-10"><h4><b>메뉴</b></h4></div>
 		</div>
 		<div class="row">
-			<div class="col-md-2">
-				<div class="btn-group-vertical" style="width: 99%">
+			<div class="col-md-2" style="background-color:white;">
+				<div class="btn-group-vertical" style="width: 99%;">
 					<button type="button" class="btn btn-warning"
-						style="border-bottom: 1px solid darkblue;">일반메뉴</button>
-					<button id="burgerButton" type="button" class="btn btn-warning"
-						style="border-top: 1px solid darkblue;" value="버거">버거 &
+						style="border-bottom: 1px solid darkblue;"><b>메뉴</b></button>
+					<button id="burgerButton"  type="button" class="btn btn-warning"
+						style="border-top: 2px solid black;" value="버거">버거 &
 						세트</button>
 
 					<button id="MacMorningButton" type="button" class="btn btn-warning"
 						value="맥모닝">맥모닝</button>
-					<button id="SideButton" type="button" class="btn btn-warning"
+					<button id="SideButton"  type="button" class="btn btn-warning"
 						value="사이드">사이드</button>
-					<button id="DesertButton" type="button" class="btn btn-warning"
+					<button  id="DesertButton" type="button" class="btn btn-warning"
 						value="디저트">디저트</button>
 					<button id="MacCafeButton" type="button" class="btn btn-warning"
 						value="맥카페" style="border-bottom: 1px solid darkblue;">맥카페</button>
 					<button id="BeverageButton" type="button" class="btn btn-warning"
-						value="음료" style="border-bottom: 1px solid darkblue;">음료</button>
-					<button type="button" class="btn btn-warning"
-						style="border-top: 1px solid darkblue;">
-						<br>
-					</button>
+						value="음료">음료</button>
 
 					<br>
 					<div style="width: 100%; margin-left: 8px; padding-right: 10px;">
@@ -122,7 +118,7 @@
 
 
 			<div class="col-md-3" style="background-color: whitesmoke;">
-				<div class="row" style="place-content: center;">내 주문 정보</div>
+				<div class="row" style="place-content: center; padding-top:20px;"><h5><b>내 주문 정보</b></h5></div>
 				<hr>
 				<div class="row">
 					&nbsp; &nbsp;선택 매장 : 강남&nbsp; <span class="select_store">${requestScope.s_name}</span>
@@ -137,6 +133,7 @@
 				</div>
 				<hr>
 
+			
 				<div class="row">
 					<div class="col-md-6" style="padding-left: 0px;">
 						&nbsp; &nbsp;총 주문합계 :
@@ -160,7 +157,7 @@
 				<hr>
 
 				<div id="_order_detail">
-					<p>주문 세부사항</p>
+					<p>장바구니</p>
 
 				</div>
 

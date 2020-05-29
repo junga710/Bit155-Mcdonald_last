@@ -26,14 +26,15 @@
 
 
 <body>
-${sessionScope.s_name}
 	<!-- header include-->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 
 	<div class="board_notice">
 		<h1 class="titDep1" style="padding-top: 3%; color: white;">
-			<strong>공지사항</strong>
-		</h1>
+		공지사항	</h1>
+		<br>
+		<h3>맥도날드에서 전해드리는 새로운 소식!</h3>
+	
 	</div>
 	<!-- //visualArea -->
 	<!-- dataTable -->

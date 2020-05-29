@@ -25,39 +25,27 @@
 
 <body>
   <div class="hamburgermenu">
-    <h1 class="titDep1"><strong>주문 내역</strong></h1>
+    <h1 class="titDep1-2"><strong>주문 완료</strong></h1>
   </div>
 
   <p></p>
 
 
   <div class="container show-grid">
-    <div class="row">
-      <div class="col-md-12" style="background-color: rgb(255, 253, 246);">
-        <div class="row">
-          <div class="col-md-12" style="background-color: hsl(0, 0%, 95%);">
-            주문이 접수되었습니다
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row" style="min-height: 600px;">
 
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-12" style="background-color: ghostwhite;">
-            <p style="padding-left: 2px; font-size: 30px;"> <br> 맥도날드를 이용해 주셔서 감사합니다.</p>
+          <div class="col-md-12">
+            <p style="padding-left: 2px; font-size: 30px;"> <br> 주문이 완료되었습니다. <br>맥도날드를 이용해 주셔서 감사합니다.</p>
             <br><br>
             주문 관련 문의 사항은 맥도날드 콜센터로 연락하시기 바랍니다. 1600-5252
             <br><br>
-            <a href="Mcdonald_orderhistory.html" class="btn btn-danger" style="background-color: #D1402D; height: 40px;">주문 조회</a>
+            <a href="Mcdonald_orderhistory.html" class="btn btn-danger" style="background-color: #D1402D; height: 40px;"><b>주문 조회</b></a>
             &nbsp; &nbsp;
-            <a href="Mcdonald_order1.html" class="btn btn-danger" style="background-color: #D1402D; height: 40px;">새로 주문하기</a>
+            <a href="Mcdonald_order1.html" class="btn btn-danger" style="background-color: #D1402D; height: 40px;"><b>새로 주문하기</b></a>
             
           </div>
-
-        
-
          
 
         </div>
