@@ -27,6 +27,12 @@
 	href="${pageContext.request.contextPath}/admincss/assets/dataTable/css/main.css">
 <!-- dataTable end  -->
 
+<style>
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+</style>
+
 </head>
 
 <body>
@@ -72,7 +78,7 @@
 					<div class="row ">
 						<div class="col-12">
 							<div class="wrap">
-								<table id="myTable" class="table text-center "
+								<table id="myTable" class="table text-center"
 									style="width: 100%;">
 									<thead>
 										<tr class="text-center">
@@ -83,11 +89,11 @@
 											<th style="width: 30px;">상품종류</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody class="text-center">
 										<c:forEach var="list" items="${pList}">
 											<tr onmouseover="this.style.backgroundColor='#cecece'"
 												onmouseout="this.style.backgroundColor='white'" 
-												style="vertical-align:center" >
+												style="vertical-align:center" class="text-center" >
 												<td align="center"><img
 													src="vendors/images/DB_images/${list.product_image}"
 													style="width: 100px; heigfht: 100px;"></td>

@@ -11,10 +11,6 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/admincss//assets/css/common.css">
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-
-
 
   <title>주문 완료</title>
 </head>

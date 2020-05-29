@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 
 <head>
@@ -13,25 +13,15 @@
 <!-- 아이콘 -->
 
 <!--  popover -->
-<link href="https://www.jqueryscript.net/css/jquerysctipttop.css"
+ <link href="https://www.jqueryscript.net/css/jquerysctipttop.css"
 	rel="stylesheet" type="text/css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
+<!--   <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">   -->
 <link
 	href="${pageContext.request.contextPath}/usercss/vendors/vendors/popover/popModal.css"
-	rel="stylesheet">
+	rel="stylesheet"> 
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
-
-<!--css-->
-<!--css-->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/usercss/assets/css/common.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
-
 
 <title>주문하기</title>
 
@@ -88,7 +78,7 @@
 
 					<div style="width: 100%;">
 						<p style="padding-left: 0">
-							<button id="hint" class="btn btn-primary hintModal">
+							<button id="hint" class="btn btn-primary hintModal" style="margin-left:18px;">
 								하루 권장 섭취량
 								<div class="hintModal_container">
 									<table class="table">
@@ -358,8 +348,8 @@
 
 	<jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
 	<!-- JS -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -799,8 +789,6 @@ $(window).on("beforeunload", function(){
       
       
     </script>
-
-
 
 	<script
 		src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script>

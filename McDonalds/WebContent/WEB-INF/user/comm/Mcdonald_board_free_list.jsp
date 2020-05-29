@@ -230,8 +230,8 @@
 
    <jsp:include page="/WEB-INF/user/common/script.jsp"></jsp:include>
 
-   <%-- <script
-   src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> --%>
+   <script
+   src="${pageContext.request.contextPath}/usercss/assets/js/weather.js"></script> 
 
 
    <script src='https://kit.fontawesome.com/a076d05399.js'></script>

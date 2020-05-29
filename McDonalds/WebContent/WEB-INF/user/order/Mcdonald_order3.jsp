@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
 
 <title>결제수단 선택</title>
 </head>
@@ -162,7 +161,7 @@
 	    		            merchant_uid : 'merchant_' + new Date().getTime(),
 	    		            name : '맥도날드 결제',
 	    		            amount : response[response.length-1],   
-	    		            /* buyer_email : 'iamport@siot.do', */
+	    		            buyer_email : '',
 	    		            buyer_name : response[0].b_id,
 	    		            //buyer_tel : '010-1234-5678',
 	    		            buyer_addr : response[0].address

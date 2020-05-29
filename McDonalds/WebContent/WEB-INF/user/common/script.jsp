@@ -9,7 +9,7 @@
 <script
 	src="${pageContext.request.contextPath}/usercss/vendors/vendors/popper.js/dist/umd/popper.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/usercss/vendors/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	src="${pageContext.request.contextPath}/usercss/vendors/vendors/bootstrap/js/bootstrap.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/usercss/assets/js/main.js"></script>
 

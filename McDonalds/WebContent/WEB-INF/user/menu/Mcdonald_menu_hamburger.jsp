@@ -10,6 +10,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
+<style>
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left:-15px;
+    margin-right:-15px;
+}
+</style>
+
 
 <title>버거</title>
 </head>

@@ -16,6 +16,18 @@
 
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
+<style>
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left:-15px;
+    margin-right:-15px;
+}
+</style>
+
 
 </head>
 <body>
@@ -60,7 +72,7 @@
                      <button class="dropbtn">MyPage</button>
                      <div class="dropdown-content">
                   <c:if test="${id == 'admin'}">
-                     <a href="#">관리자 페이지</a>
+                     <a href="AdminMain.m">관리자 페이지</a>
                      
                   </c:if>
                      
