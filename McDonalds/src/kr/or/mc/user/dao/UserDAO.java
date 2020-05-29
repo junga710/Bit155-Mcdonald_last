@@ -1100,7 +1100,6 @@ public class UserDAO {
 			pstmt.setString(1, b_id);
 
 			rs = pstmt.executeQuery();
-			System.out.println(" 진짜나도모르겠따  : " + rs);
 			while (rs.next()) {
 				BasketDTO basketDto = new BasketDTO();
 				basketDto.setBasket_code(rs.getInt("basket_code"));
@@ -1276,6 +1275,7 @@ public class UserDAO {
 		}
 		return result;
 	}
+	
 
 	// 주문관리에 사용
 	public List<ProductDTO> selectProductByName(String product_name) {

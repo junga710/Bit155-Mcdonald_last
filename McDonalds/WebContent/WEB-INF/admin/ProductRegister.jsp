@@ -60,7 +60,7 @@
 			<div class="col-sm-4">
 				<div class="page-header float-left">
 					<div class="page-title">
-						<h1>상품상세</h1>
+						<h1>상품등록</h1>
 					</div>
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 				<div class="page-header float-right">
 					<div class="page-title">
 						<ol class="breadcrumb text-right">
-							<li class="active">상품상세</li>
+							<li class="active">상품등록</li>
 						</ol>
 					</div>
 				</div>
@@ -89,11 +89,9 @@
 									<strong>OO</strong> 정보
 								</div> -->
 								<div class="card-body card-block d-flex justify-content-center">
-
-
 									<form action="ProductRegister.p" method="post"
 										class="form-horizontal" enctype="multipart/form-data">
-										<div style="width: 500px;"text-center">
+										<div class="text-center" style="width: 500px; margin:0 auto;" >
 
 											<div class="row form-group">
 												<div id="outer"
@@ -155,7 +153,7 @@
 													<label for="name" class=" form-control-label">카테고리</label>
 												</div>
 												<div class="col-12 col-md-9">
-													<select name="product_category" id="product_category"
+													<select name="product_category" style="width:300px;" id="product_category"
 														class="form-control">
 														<!-- <option value="dd">dd</option> -->
 													</select>
@@ -168,10 +166,10 @@
 											<div class="row form-group">
 												<div
 													class="col col-md-3 d-flex justify-content-center align-items-center ">
-													<label for="name" class=" form-control-label">상품종류</label>
+													<label for="name" class="form-control-label">상품종류</label>
 												</div>
 												<div class="col-12 col-md-9">
-													<select name="product_kind" id="product_kind"
+													<select name="product_kind" style="width:300px;" id="product_kind"
 														class="form-control">
 														<option value="단품">단품</option>
 														<option value="세트">세트</option>

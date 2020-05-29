@@ -76,8 +76,8 @@
 
 					<div style="width: 100%;">
 						<p style="padding-left: 0">
-							<button id="hint" class="btn btn-primary hintModal" style="margin-left:18px;">
-								하루 권장 섭취량
+							<button id="hint" class="btn btn-primary hintModal" style="margin-left:22px; padding:6px 0px;">
+								하루 칼로리 섭취량
 								<div class="hintModal_container">
 									<table class="table">
 										<thead>
@@ -124,48 +124,6 @@
 								</div>
 							</button>
 
-
-
-							<!-- 	<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample1" name="filter" value="total" checked>
-							<label class="custom-control-label" for="defaultGroupExample1">전체보기</label>
-						</div> -->
-
-							<!-- <hr> -->
-							<!--  -->
-							<!-- <div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample2" name="filter"> 
-								<label
-								class="custom-control-label" for="defaultGroupExample2">낮은
-								가격순</label>
-						</div>
-
-						<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample3" name="filter"> 
-								<label
-								class="custom-control-label" for="defaultGroupExample3">높은
-								가격순</label>
-						</div>
-
-						<hr>
-						<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample4" name="filter" value="low"> <label
-								class="custom-control-label" for="defaultGroupExample4"
-								>낮은
-								칼로리순</label>
-						</div>
-
-						<div class="custom-control custom-radio">
-							<input type="radio" class="custom-control-input"
-								id="defaultGroupExample5" name="filter" value="high"> 
-								<label
-								class="custom-control-label" for="defaultGroupExample5">높은
-								칼로리순</label>
-						</div>  -->
 					</div>
 
 				</div>
@@ -237,9 +195,9 @@
 							style="background-color: #ffffffab;">
 						<div class="card-body" id="card-inner"
 							style="background-color: #f6f6f6;">
-							<strong class="product_code_one"></strong> <strong
-								class="product_code_set"></strong> <strong
-								class="product_category"></strong>
+							<strong style="display: none" class="product_code_one"></strong> <strong
+								style="display: none"  class="product_code_set"></strong> <strong
+								style="display: none"  class="product_category"></strong>
 							<!-- 	style="display: none"  -->
 							<strong class="ko">허니 크림치즈 상하이 버거</strong>
 							<div class="row">
@@ -272,7 +230,7 @@
 										<div class="col-6" style="place-self: center; margin: 0">
 
 											<p style="margin: 0">단품</p>
-											<p style="padding: 0" id="_onlyone_price">(₩ 5,500)</p>
+											<p style="padding: 0; width:90px;" id="_onlyone_price">(₩ 5,500)</p>
 											<!-- 여기에 가격 동적으로 추가 -->
 										</div>
 									</div>
@@ -311,7 +269,7 @@
 										</div>
 										<div class="col-6" style="place-self: center;">
 											<p style="margin: 0">세트</p>
-											<p style="padding: 0" id="_set_price">(₩ 8,200)</p>
+											<p style="padding: 0; width:90px;" style="width:90px;" id="_set_price">(₩ 8,200)</p>
 										</div>
 									</div>
 								</div>

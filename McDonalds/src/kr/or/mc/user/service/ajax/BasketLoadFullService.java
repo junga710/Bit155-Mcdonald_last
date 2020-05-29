@@ -18,8 +18,6 @@ public class BasketLoadFullService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 
-		System.out.println("타긴탐??");
-
 		UserDAO userDao = new UserDAO();
 		String product_category = request.getParameter("product_category");
 		
@@ -27,7 +25,6 @@ public class BasketLoadFullService implements Action {
 		String id = (String) session.getAttribute("id");
 		
 		List<BasketDTO> productDto = userDao.OrderCartList(id);
-		//장바구니의 마지막 행에 있는거 하나씩 불러오기
 		
 		JSONArray jsonArr = JSONArray.fromObject(productDto); 
 		
