@@ -80,19 +80,18 @@
 			<div class="main-panel">
 				<div class="content-wrapper">
 					<!-- <div class="row d-flex justify-content-center"> -->
-					<div class="row">
+					<div class="row ">
 						<div class="col-2"></div>
 
 						<div class="col-8">
-							<div class="card">
+							<div class="card ">
 								<!-- <div class="card-header"> -->
 								<!-- 	<strong>OO</strong> 정보 -->
 								<!-- </div> -->
-								<div class="card-body card-block d-flex justify-content-center">
+								<div class="card-body card-block">
 
-
-									<form action="#" method="post" class="form-horizontal">
-										<div style="width: 500px;"text-center">
+									<form action="#" method="post" class="form-horizontal ">
+										<div class="text-center" style="width: 500px; margin:0 auto;">
 
 											<div class="row form-group">
 												<div id="outer"

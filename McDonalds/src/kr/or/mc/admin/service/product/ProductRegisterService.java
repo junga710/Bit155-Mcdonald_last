@@ -44,7 +44,6 @@ public class ProductRegisterService implements Action {
 			int product_price = Integer.parseInt(multi.getParameter("product_price").trim());
 			String product_category = multi.getParameter("product_category").trim();
 			String product_kind = multi.getParameter("product_kind").trim();
-			int product_stock = Integer.parseInt(multi.getParameter("product_stock").trim());
 			
 			System.out.println("product_code11 : " + product_code);
 			System.out.println("nutrition_code11 : " + nutrition_code);
@@ -78,7 +77,7 @@ public class ProductRegisterService implements Action {
 			
 			int result = 0;
 			result = adminDao.ProductRegister(product_code, nutrition_code, product_name, product_price, 
-					product_kind, product_stock, product_image, product_category);
+					product_kind, product_image, product_category);
 			System.out.println("result : " + result);
 			
 			

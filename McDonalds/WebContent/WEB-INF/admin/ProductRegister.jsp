@@ -179,7 +179,7 @@
 												</div>
 											</div>
 
-											<div class="row form-group">
+										<!-- 	<div class="row form-group">
 												<div
 													class="col col-md-3 d-flex justify-content-center align-items-center ">
 													<label for="text" class=" form-control-label">상품재고</label>
@@ -188,7 +188,7 @@
 													<input style="width: 300px;" type="text" id="product_stock"
 														name="product_stock" class="form-control">
 												</div>
-											</div>
+											</div> -->
 										</div>
 
 										<!-- 상품 영양정보 -->

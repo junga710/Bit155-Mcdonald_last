@@ -81,7 +81,7 @@
          <div class="col-sm-12 col-md-6 ">
             <div class="form-group d-flex align-items-center">
                <div class="col-sm-2" style="padding-left: 0">
-                  <form name="list">
+                  <form action="BoardFree.b" name="list">
                      <select name="ps" class="form-control" onchange="submit()">
                         <c:set var="pagesize" value="${requestScope.pagesize}" />
                         <c:forEach var="i" begin="5" end="20" step="5">

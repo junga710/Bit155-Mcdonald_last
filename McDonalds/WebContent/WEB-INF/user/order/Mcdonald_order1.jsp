@@ -436,10 +436,7 @@ $(document).ready(function() {
 				},
 				success: function(response) {
 					
-			
-				
-					console.log("사이드떠라제발 " + response[0].product_category)
-					console.log("크기 " + response.length)
+
 					
 					$('#_one_input').val('0');
 					$('#_set_input').val('0');
@@ -526,10 +523,10 @@ $(document).ready(function() {
 		 
 		 if($('#_set_input').val() > 0 && $('#_one_input').val() > 0){
 			 count += 2;
-			console.log("count 2개 늘어나라 : " + count)
+		
 		 } else if($('#_set_input').val() > 0 || $('#_one_input').val() > 0) {
 			 count += 1;
-			console.log("count 1개 늘어나라 : " + count)
+		
 		 } 
 	
 	
@@ -546,20 +543,19 @@ $(document).ready(function() {
 			setAmount : $('#_set_input').val(),
 		},
 		success: function(response) {
-			console.log("여긴옴...");
+		
 			$.each(response, function(index, item){
 				
-				console.log("성공은 하니??");
+			
 				
 				var oneAmount = $('#_one_input').val();
 
 				var setAmount = $('#_set_input').val();
 			
-				console.log("oneAmount : " + oneAmount);
-				console.log("setAmount : " + setAmount);
+		
 				
 				if(oneAmount > 0 || setAmount > 0){
-					console.log("오나...");
+					
 					
 					var detailImg = $('#_thumbnail').attr('src');
 					
@@ -614,14 +610,12 @@ $(document).ready(function() {
     	}else{
     	e.preventDefault();
     	location.href="Order2.uo"
-    	console.log("ss");
     	}
     });
 	
 	
 	///▼▼▼▼ 휴지통 버튼 클릭시 삭제하는거 만들기
 	$(document).on("click", "#_delete_btn", function(){
-		console.log("대박 : " + $(this).attr('class'));
 
 		//ajajx
 		$.ajax({
@@ -639,20 +633,15 @@ $(document).ready(function() {
 		})
 		
 		var detailRow = $(this).parent().parent();
-		console.log("아나!! " + detailRow)
 		detailRow.remove();
 		
 		var detailPrice = parseInt(getOnlyNumber($(this).next().next().text()), 10);
 		
-		console.log("상품가격??? " + detailPrice);
-		
 		var totalPrice = parseInt(($('#_sum').text().replace(/[^0-9]/g,'')), 10);
-		console.log("총 가격: " + totalPrice);
 		
 		$('#_sum').text('₩ ' +(totalPrice-detailPrice).toLocaleString());
 		
 		count--;
-		console.log("count 줄어들어라 : " + count);
     });
 
 
@@ -660,30 +649,6 @@ $(document).ready(function() {
 });
     </script>
 
-
-
-	<script>
-/* var checkUnload = true;
-$(window).on("beforeunload", function(){
-    if(checkUnload) return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
-}); */
-
-//새로고침 막기
-/* $(document).keydown(function (e) {
-    
-    if (e.which === 116) {
-        if (typeof event == "object") {
-            event.keyCode = 0;
-        }
-        alert('새로고침 막기')
-        return false;
-    } else if (e.which === 82 && e.ctrlKey) {
-    	alert('새로고침 막기')
-        return false;
-    }
-});  */
-
-</script>
 
 
 	<script>
