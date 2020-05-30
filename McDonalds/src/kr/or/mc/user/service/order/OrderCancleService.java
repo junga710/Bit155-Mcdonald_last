@@ -18,8 +18,6 @@ public class OrderCancleService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		//세션갑 가져와서 장바구니에 담긴 거 비우고 메뉴선택 페이지로 이동
-		System.out.println("요긴오니??");
-		
 		UserDAO userdao = new UserDAO();
 
 		HttpSession session = request.getSession();

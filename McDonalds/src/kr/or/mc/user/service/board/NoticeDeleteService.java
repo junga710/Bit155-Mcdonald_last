@@ -22,8 +22,6 @@ public class NoticeDeleteService implements Action {
 		UserDAO userDAO = new UserDAO();
 		int result = userDAO.ProductDelete(n_code);
 		
-		
-		System.out.println("result : " + result);
 		ActionForward forward = new ActionForward();
 		forward.setPath("BoardNotice.b");
 

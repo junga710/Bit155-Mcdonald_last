@@ -74,7 +74,6 @@ public class UserDAO {
 				BoardNotice.setN_writer(rs.getString("n_writer"));
 				BoardNotice.setN_write_date(rs.getString("n_write_date"));
 				BoardNotice.setN_read_num(rs.getInt("n_read_num"));
-				System.out.println("ㄴㄴㄴ" + BoardNotice);
 				list.add(BoardNotice);
 			}
 
@@ -124,7 +123,6 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Insert : " + e.getMessage());
-			System.out.println("오류나는거야 왜..오류나는 거양..");
 		} finally {
 			DB_Close.close(pstmt);
 			try {
@@ -145,7 +143,6 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "";
-			System.out.println("아이디 : " + userId);
 
 			if (!userId.equals("admin")) {
 				sql = "select password from member where m_id = ?";
@@ -157,21 +154,17 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
-			System.out.println("여기까지 오긴하냐고!!!");
 
 			if (rs.next()) {
 				if (rs.getString("password").equals(userPw)) {
-					System.out.println("1 반환");
 					return 1;
 				} else {
-					System.out.println("0 반환");
 					return 0;
 				}
 			}
 			conn.close(); //
 		} catch (Exception e) {
-			System.err.println(e);
-			System.err.println("login SQLException error");
+			System.err.println("login SQLException error : " + e.getMessage());
 		} finally {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
@@ -187,7 +180,6 @@ public class UserDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		BoardNoticeDTO boardNoticeDTO = new BoardNoticeDTO();
-		System.out.println("상세보기 탔나?");
 		try {
 			conn = ds.getConnection();
 			String sql = "select * from board_notice where n_code = ? ";
@@ -204,7 +196,6 @@ public class UserDAO {
 				boardNoticeDTO.setN_write_date(rs.getString("n_write_date"));
 				boardNoticeDTO.setN_read_num(rs.getInt("n_read_num"));
 				boardNoticeDTO.setN_content(rs.getString("n_content"));
-				System.out.println("상세보기 데이터 가져왔는지 보기:" + boardNoticeDTO);
 			}
 
 		} catch (Exception e) {
@@ -239,13 +230,11 @@ public class UserDAO {
 			pstmt.setString(6, memberdto.getPhone());
 			pstmt.setString(7, memberdto.getM_id());
 
-			System.out.println(memberdto.toString() + "투스트링2");
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Insert : " + e.getMessage());
-			System.out.println("오류나는거야 왜..오류나는 거양..");
+			System.out.println("MemEdit : " + e.getMessage());
 		} finally {
 			DB_Close.close(pstmt);
 			try {
@@ -284,7 +273,7 @@ public class UserDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println("오류 :" + e.getMessage());
+			System.out.println("MemDetail :" + e.getMessage());
 		} finally {
 			try {
 				DB_Close.close(pstmt);
@@ -309,16 +298,11 @@ public class UserDAO {
 
 			pstmt.setString(1, noticedto.getN_title());
 			pstmt.setString(2, noticedto.getN_content());
-			/*
-			 * pstmt.setString(3, noticedto.getN_writer()); pstmt.setString(4,
-			 * noticedto.getN_write_date()); pstmt.setInt(5, noticedto.getN_read_num());
-			 */
-
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Insert : " + e.getMessage());
+			System.out.println("BoardNoticeWriter : " + e.getMessage());
 		} finally {
 			DB_Close.close(pstmt);
 			try {
@@ -350,12 +334,11 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_image(rs.getString("product_image"));
 			}
 
 		} catch (Exception e) {
-			System.out.println(" PrductDetail : " + e.getMessage());
+			System.out.println(" MenuDetail : " + e.getMessage());
 		} finally {
 			try {
 				DB_Close.close(pstmt);
@@ -396,7 +379,7 @@ public class UserDAO {
 			}
 
 		} catch (Exception e) {
-			System.out.println(" PrductDetailNut : " + e.getMessage());
+			System.out.println(" MenuDetailNut : " + e.getMessage());
 		} finally {
 			try {
 				DB_Close.close(pstmt);
@@ -420,7 +403,7 @@ public class UserDAO {
 			conn = ds.getConnection();
 
 			String sql = "select * from \r\n"
-					+ "(select rownum rn , f_code , f_title , f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date , f_readnum , f_like, f_file_upload,\r\n"
+					+ "(select rownum rn , f_code , f_title , f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date , f_readnum,  f_file_upload,\r\n"
 					+ "f_refer , f_depth , f_step\r\n"
 					+ "from ( SELECT * FROM board_free ORDER BY f_refer DESC , f_step ASC)\r\n"
 					+ "where rownum <= ?)\r\n" + "where rn >= ?\r\n" + "";
@@ -443,7 +426,6 @@ public class UserDAO {
 				BoardFree.setF_writer(rs.getString("f_writer"));
 				BoardFree.setF_date(rs.getString("f_date"));
 				BoardFree.setF_readnum(rs.getInt("f_readnum"));
-				BoardFree.setF_like(rs.getInt("f_like"));
 
 				BoardFree.setF_refer(rs.getInt("f_refer"));
 				BoardFree.setF_depth(rs.getInt("f_depth"));
@@ -497,7 +479,6 @@ public class UserDAO {
 		ResultSet rs = null;
 		try {
 			conn = ds.getConnection();
-			System.out.println("아아아아아noticedto:" + noticedto);
 			String sql = "update board_notice set n_title = ?, n_content =? where n_code = ?";
 
 			pstmt = conn.prepareStatement(sql);
@@ -506,12 +487,9 @@ public class UserDAO {
 			pstmt.setString(2, noticedto.getN_content());
 			pstmt.setInt(3, noticedto.getN_code());
 
-			System.out.println("noticedto.getN_title()" + noticedto.getN_title());
-
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Update : " + e.getMessage());
 		} finally {
 			try {
 				DB_Close.close(pstmt);
@@ -559,8 +537,8 @@ public class UserDAO {
 		int row = 0;
 		try {
 			conn = ds.getConnection();
-			String sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_like,f_file_upload,f_refer)"
-					+ "values(board_free_sq.nextval,?,?,?,sysdate,0,0,?,?)";
+			String sql = "insert into board_free(f_code,f_title,f_content,f_writer,f_date,f_readnum,f_file_upload,f_refer)"
+					+ "values(board_free_sq.nextval,?,?,?,sysdate,0,?,?)";
 			// refer까지.. step, depth는 XX
 
 			pstmt = conn.prepareStatement(sql);
@@ -630,7 +608,7 @@ public class UserDAO {
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select f_code, f_title, f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date, f_readnum, f_like, f_file_upload, f_refer, f_depth, f_step\r\n"
+			String sql = "select f_code, f_title, f_content, f_writer, to_char(f_date, 'YYYY-MM-DD') as f_date, f_readnum, f_file_upload, f_refer, f_depth, f_step\r\n"
 					+ "from board_free\r\n" + "where f_code = ?\r\n" + "";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, f_code);
@@ -642,7 +620,6 @@ public class UserDAO {
 				String f_writer = rs.getString("f_writer");
 				String f_date = rs.getString("f_date");
 				int f_readnum = rs.getInt("f_readnum");
-				int f_like = rs.getInt("f_like");
 				String f_file_upload = rs.getString("f_file_upload");
 
 				int f_refer = rs.getInt("f_refer");
@@ -656,7 +633,6 @@ public class UserDAO {
 				boardFreeDto.setF_writer(f_writer);
 				boardFreeDto.setF_date(f_date);
 				boardFreeDto.setF_readnum(f_readnum);
-				boardFreeDto.setF_like(f_like);
 				boardFreeDto.setF_file_upload(f_file_upload);
 				boardFreeDto.setF_refer(f_refer);
 				boardFreeDto.setF_step(f_step);
@@ -754,7 +730,6 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, f_code);
 			row = pstmt.executeUpdate();
-			System.out.println("row : " + row);
 		} catch (Exception e) {
 			System.out.println("FreeDelete : " + e.getMessage());
 		} finally {
@@ -789,11 +764,6 @@ public class UserDAO {
 			int filesize = 0;
 
 			String refer_depth_step_sal = "select f_refer , f_depth , f_step from board_free where f_code=?";
-
-			/*
-			 * String step_update_sql =
-			 * "update board_free set f_step= f_step+1 where f_step  > ? and f_refer =? ";
-			 */
 
 			String step_update_sql = "select nvl(min(f_step), 0) f_step from board_free where f_refer=? and f_step > ? and f_depth <= ?";
 
@@ -881,27 +851,22 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 
-			System.out.println("아이디 : " + id);
 			String sql = "select m_id from member where m_id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			System.out.println("여기까지 오긴하냐고!!!");
 
 			if (rs.next()) {
 				if (rs.getString("m_id").equals(id)) {
-
-					System.out.println("아이디 있어");
 					return 1;
 				} else {
-					System.out.println("아이디 없어");
 					return 0;
 				}
 			}
 			conn.close(); //
 		} catch (Exception e) {
-			System.err.println(e);
-			System.err.println("idcheck SQLException error");
+			System.err.println("idcheck SQLException error : " + e.getMessage());
+			System.err.println("");
 		} finally {
 			DB_Close.close(rs);
 			DB_Close.close(pstmt);
@@ -919,9 +884,9 @@ public class UserDAO {
 		List<OrdersDTO> list = new ArrayList<OrdersDTO>();
 		try {
 			conn = ds.getConnection();
-			String sql = "select o.order_code, o.o_id, o.s_name, o.payment_method, o.payment_price, to_char(payment_date, 'YYYY-MM-DD HH24:MM:SS') as payment_date, m.address\r\n"
-					+ "from orders o join member m on o.o_id = m.m_id\r\n" + "where m.m_id = ?                \r\n"
-					+ "";
+			String sql = "select o.order_code, o.o_id, o.s_name, o.payment_method, o.payment_price, to_char(payment_date, 'YYYY-MM-DD HH24:MI:SS') as payment_date, m.address\r\n"
+					+ "from orders o join member m on o.o_id = m.m_id where m.m_id = ? \r\n"
+					+ "order by o.order_code asc" + "";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, id);
@@ -1010,7 +975,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "\r\n"
-					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n"
+					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_image, p.product_category, n.calorie\r\n"
 					+ "from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n"
 					+ "where product_category = ?" + "";
 			pstmt = conn.prepareStatement(sql);
@@ -1025,7 +990,6 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_category(rs.getString("product_category"));
 				productDto.setProduct_image(rs.getString("product_image"));
 				productDto.setNutrition_code(rs.getInt("calorie"));
@@ -1134,9 +1098,8 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, b_id);
-			
+
 			rs = pstmt.executeQuery();
-			System.out.println(" 진짜나도모르겠따  : " + rs);
 			while (rs.next()) {
 				BasketDTO basketDto = new BasketDTO();
 				basketDto.setBasket_code(rs.getInt("basket_code"));
@@ -1152,7 +1115,7 @@ public class UserDAO {
 				System.out.println(" 진짜화나나 야밤에 새벽1시에  : " + basketDto);
 				list.add(basketDto);
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println("OrderCartList: " + e.getMessage());
 		} finally {
@@ -1312,6 +1275,7 @@ public class UserDAO {
 		}
 		return result;
 	}
+	
 
 	// 주문관리에 사용
 	public List<ProductDTO> selectProductByName(String product_name) {
@@ -1323,7 +1287,7 @@ public class UserDAO {
 		try {
 			conn = ds.getConnection();
 			String sql = "\r\n"
-					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_stock, p.product_image, p.product_category, n.calorie\r\n"
+					+ "select p.product_code, p.product_name, p.product_price, p.product_kind, p.product_image, p.product_category, n.calorie\r\n"
 					+ "from product p join nutrition n on p.nutrition_code = n.nutrition_code\r\n"
 					+ "where product_name like ?" + "";
 			pstmt = conn.prepareStatement(sql);
@@ -1336,7 +1300,6 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_category(rs.getString("product_category"));
 				productDto.setProduct_image(rs.getString("product_image"));
 				productDto.setNutrition_code(rs.getInt("calorie"));
@@ -1399,7 +1362,7 @@ public class UserDAO {
 
 		try {
 			conn = ds.getConnection();
-			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_writer like ?";
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum from board_free where f_writer like ?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + fwriter + "%");
@@ -1412,7 +1375,6 @@ public class UserDAO {
 				BoardFreeDto.setF_writer(rs.getString(3));
 				BoardFreeDto.setF_date(rs.getString(4));
 				BoardFreeDto.setF_readnum(rs.getInt(5));
-				BoardFreeDto.setF_like(rs.getInt(6));
 				list.add(BoardFreeDto);
 			}
 
@@ -1440,7 +1402,7 @@ public class UserDAO {
 		System.out.println();
 		try {
 			conn = ds.getConnection();
-			String sql = "select f_code, f_title, f_writer, f_date, f_readnum, f_like from board_free where f_title like ?";
+			String sql = "select f_code, f_title, f_writer, f_date, f_readnum from board_free where f_title like ?";
 
 			pstmt = conn.prepareStatement(sql);
 			System.out.println("나오나요 타이틀!! " + ftitle);
@@ -1454,7 +1416,6 @@ public class UserDAO {
 				BoardFreeDto.setF_writer(rs.getString(3));
 				BoardFreeDto.setF_date(rs.getString(4));
 				BoardFreeDto.setF_readnum(rs.getInt(5));
-				BoardFreeDto.setF_like(rs.getInt(6));
 				list.add(BoardFreeDto);
 			}
 			System.out.println("--여긴 DAO" + list);
@@ -1497,7 +1458,7 @@ public class UserDAO {
 
 				list.add(ReplyDto);
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println("코멘트 리스트 에러 : " + e.getMessage());
 		} finally {
@@ -1635,7 +1596,6 @@ public class UserDAO {
 				productDto.setProduct_name(rs.getString("product_name"));
 				productDto.setProduct_price(rs.getInt("product_price"));
 				productDto.setProduct_kind(rs.getString("product_kind"));
-				productDto.setProduct_stock(rs.getInt("product_stock"));
 				productDto.setProduct_image(rs.getString("product_image"));
 			}
 

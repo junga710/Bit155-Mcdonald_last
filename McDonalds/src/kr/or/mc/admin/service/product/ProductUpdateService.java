@@ -44,8 +44,6 @@ public class ProductUpdateService implements Action {
 			int product_price = Integer.parseInt(multi.getParameter("product_price").trim());
 			String product_category = multi.getParameter("product_category").trim();
 			String product_kind = multi.getParameter("product_kind").trim();
-			int product_stock = Integer.parseInt(multi.getParameter("product_stock").trim());
-			
 
 			Enumeration filenames = multi.getFileNames();
 			
@@ -69,17 +67,10 @@ public class ProductUpdateService implements Action {
 			int result2 = 0;
 			result2 = adminDao.ProductUpdateNut(nutrition_code, weight, calorie, sugar, protein, 
 					fat, natrium, caffeine);
-			System.out.println("result2 : " + result2);
-			
-			System.out.println("product_code22 : " + product_code);
-			System.out.println("nutrition_code22 : " + nutrition_code);
-			System.out.println("product_category : " + product_category);
-			
+				
 			int result = 0;
 			result = adminDao.ProductUpdate(product_code, nutrition_code, product_name, product_price, 
-					product_kind, product_stock, product_image, product_category);
-			System.out.println("result : " + result);
-			
+					product_kind, product_image, product_category);
 			
 			forward.setPath("Product.p");
 

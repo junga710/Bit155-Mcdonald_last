@@ -7,7 +7,6 @@ public class BoardFreeDTO {
 	private String f_writer;
 	private String f_date;
 	private int f_readnum;
-	private int f_like;
 	private String f_file_upload;
 	private int f_refer;
 	private int f_depth;
@@ -48,12 +47,6 @@ public class BoardFreeDTO {
 	public void setF_readnum(int f_readnum) {
 		this.f_readnum = f_readnum;
 	}
-	public int getF_like() {
-		return f_like;
-	}
-	public void setF_like(int f_like) {
-		this.f_like = f_like;
-	}
 	public String getF_file_upload() {
 		return f_file_upload;
 	}
@@ -78,15 +71,14 @@ public class BoardFreeDTO {
 	public void setF_step(int f_step) {
 		this.f_step = f_step;
 	}
-	
 	@Override
 	public String toString() {
 		return "BoardFreeDTO [f_code=" + f_code + ", f_title=" + f_title + ", f_content=" + f_content + ", f_writer="
-				+ f_writer + ", f_date=" + f_date + ", f_readnum=" + f_readnum + ", f_like=" + f_like
-				+ ", f_file_upload=" + f_file_upload + ", f_refer=" + f_refer + ", f_depth=" + f_depth + ", f_step="
-				+ f_step + "]";
+				+ f_writer + ", f_date=" + f_date + ", f_readnum=" + f_readnum + ", f_file_upload=" + f_file_upload
+				+ ", f_refer=" + f_refer + ", f_depth=" + f_depth + ", f_step=" + f_step + "]";
 	}
-
+	
+	
 	
 }
 

@@ -17,11 +17,7 @@ public class OrderPaymentService implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		
-		
-		/* String basketstr = request.getParameter("basket_code"); */
 		UserDAO userdao = new UserDAO();
-		/* int basket_code = Integer.parseInt(basketstr); */
 
 		HttpSession session = request.getSession();
 		String b_id = (String) session.getAttribute("id"); // b_id : 사용자 아이디
@@ -36,9 +32,6 @@ public class OrderPaymentService implements Action {
 
 		request.setAttribute("basketlist", basketlist);
 		request.setAttribute("totalOrderSum", totalOrderSum);
-		
-		System.out.println(basketlist);
-		System.out.println(totalOrderSum);
 
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/user/order/Mcdonald_order3.jsp");

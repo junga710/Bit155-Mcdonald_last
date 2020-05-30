@@ -38,8 +38,6 @@ public class OrderSuccessService implements Action {
 
 		int result = userDao.OrdersTableInsert(ordersDto);
 
-		System.out.println("주문테이블 결과 : " + result);
-
 		// 주문상세 테이블
 		int order_code = userDao.getMaxOrderCode();
 
@@ -50,12 +48,10 @@ public class OrderSuccessService implements Action {
 			int order_amount = list.getAmount();
 
 			int result2 = userDao.OrdersDetailTableInsert(product_code, order_code, order_amount);
-			System.out.println("주문상세테이블 결과 : " + result2);
 		}
 
 		// 장바구니 초기화, 매장 세션 삭제
 		int result3 = userDao.OrderCartTotalDelete(o_id);
-		System.out.println("장바구니 삭제: " + result3);
 		session.removeAttribute("s_name");
 		
 		ActionForward forward = new ActionForward();

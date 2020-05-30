@@ -39,10 +39,10 @@
 					<div class="form-group">
 						<label><strong>아이디</strong></label>
 							<div class="row">
-								<div class="col-9"> 
+								<div class="col-9" style="padding-left:0px; padding-right:0px;"> 
 									<input class="form-control" placeholder="Id" type="text" name="id" id="id">
 								</div>
-								<div class="col-3"> 
+								<div class="col-3" style="padding-left:15px; padding-right:0px;"> 
 									<%-- <a class="btn btn-warning"  href="idcheck.ump?id=${id}">
 									중복체크</a> --%>
 									<button class="btn btn-warning" id="IdCheck">

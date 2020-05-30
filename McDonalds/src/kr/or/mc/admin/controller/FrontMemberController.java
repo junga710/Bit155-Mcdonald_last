@@ -36,18 +36,17 @@ public class FrontMemberController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		
+
 		if (url_Command.equals("/AdminPage.m")) { // admin 페이지 이동
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/admin/Main.jsp");
-		} else if (url_Command.equals("/outAdminPage.m")) { // 회원관리 페이지 이동 + 회원 리스트 출력 로직
+		} else if (url_Command.equals("/outAdminPage.m")) { // 관리자페이지 -> 사용자페이지
 			forward = new ActionForward();
 			forward.setPath("/Mcdonald_main.jsp");
-		} else if (url_Command.equals("/AdminMain.m")) {
+		} else if (url_Command.equals("/AdminMain.m")) { // 사용자페이지서 관리자페이지 이동
 			forward = new ActionForward();
 			forward.setPath("/WEB-INF/admin/Main.jsp");
-		}
-		else if (url_Command.equals("/MemberList.m")) { // 회원관리 페이지 이동 + 회원 리스트 출력 로직
+		} else if (url_Command.equals("/MemberList.m")) { // 회원관리 페이지 이동 + 회원 리스트 출력 로직
 			action = new MemberListService();
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/MemberDetail.m")) { // 회원상세 페이지 이동 + 회원 리스트 출력 로직
@@ -68,7 +67,6 @@ public class FrontMemberController extends HttpServlet {
 			forward = action.execute(request, response);
 		} else if (url_Command.equals("/MemberUpdate.m")) { // 회원리스트 페이지 이동 + 회원 수정 로직
 			action = new MemberUpdateService();
-
 			forward = action.execute(request, response);
 		}
 

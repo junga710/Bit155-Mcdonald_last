@@ -11,20 +11,21 @@
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
 
 
-<title>버거</title>
-</head>
-
-
 <style>
-/* card-inner2:hover,
-#card-inner2:focus {
-        border-color: #ffbc0d;
-        border-radius: 10px;
-        border-style: solid;
 
-    } */
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left:-15px;
+    margin-right:-15px;
+}
 </style>
 
+
+<title>버거</title>
+</head>
 
 <body>
 	<!-- header include-->

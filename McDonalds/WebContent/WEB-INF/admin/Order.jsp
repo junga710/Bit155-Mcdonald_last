@@ -111,16 +111,23 @@
     </div><!-- /#right-panel -->
 
 
-   <jsp:include page="./common/script.jsp"></jsp:include>
+ 	<jsp:include page="./common/script.jsp"></jsp:include>
 
-    <!-- dataTaBle start -->
-    <script src='${pageContext.request.contextPath}/admincss/assets/dataTable/js/jquery-3.3.1.min.js'></script>
-    <script src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/jquery.dataTables.js"></script>
-    <script src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/dataTables.responsive.min.js"></script>
-    <script src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/dataTables.buttons.min.js"></script>
-    <script src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/buttons.html5.min.js"></script>
-    <script src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/order.js"></script>
-    <!-- dataTaBle end -->
+	<!-- dataTaBle start -->
+	<script
+		src='${pageContext.request.contextPath}/admincss/assets/dataTable/js/jquery-3.3.1.min.js'></script>
+	<script
+		src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/jquery.dataTables.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/dataTables.responsive.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/dataTables.buttons.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/buttons.html5.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/admincss/assets/dataTable/js/product.js"></script>
+	<!-- dataTaBle end -->
+
 
     <script>
         $(function () {

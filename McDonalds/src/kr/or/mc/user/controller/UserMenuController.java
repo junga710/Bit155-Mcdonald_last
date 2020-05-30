@@ -32,7 +32,6 @@ public class UserMenuController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		System.out.println(" url_Command : " + url_Command);
 
 		if (url_Command.equals("/MenuBurger.um")) { // 메뉴 - 버거페이지 이동
 			forward = new ActionForward();

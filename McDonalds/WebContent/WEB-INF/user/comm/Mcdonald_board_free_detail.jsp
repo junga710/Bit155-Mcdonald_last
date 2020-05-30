@@ -9,11 +9,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet"> <!-- 아이콘 -->
-
-<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/usercss/assets/css/main.css" /> --%>
 		
 <jsp:include page="/WEB-INF/user/common/head.jsp"></jsp:include>
-
 
 <title>자유게시판 상세보기</title>
 </head>
@@ -66,8 +63,9 @@
 
 
 			<div class="mb-4">
-				<div name="content" readonly>
-            			${boardFreeDto.f_content}
+				<div name="content" readonly style="min-height:250px;">
+            			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${boardFreeDto.f_content}
+            			
             	</div>
 			</div>
 

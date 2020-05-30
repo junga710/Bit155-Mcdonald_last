@@ -30,7 +30,6 @@ public class MemberRegisterService implements Action {
 		int result = 0;
 		result = adminDao.MemberRegister(m_id, password, name, email, post_code, addressSum, phone);
 
-		System.out.println("result : " + result);
 		forward.setPath("MemberList.m");
 
 		return forward;

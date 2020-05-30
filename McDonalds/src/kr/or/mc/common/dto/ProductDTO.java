@@ -7,7 +7,6 @@ public class ProductDTO {
 	private String product_name;
 	private int product_price;
 	private String product_kind;
-	private int product_stock;
 	private String product_image;
 	public int getProduct_code() {
 		return product_code;
@@ -45,12 +44,6 @@ public class ProductDTO {
 	public void setProduct_kind(String product_kind) {
 		this.product_kind = product_kind;
 	}
-	public int getProduct_stock() {
-		return product_stock;
-	}
-	public void setProduct_stock(int product_stock) {
-		this.product_stock = product_stock;
-	}
 	public String getProduct_image() {
 		return product_image;
 	}
@@ -61,9 +54,9 @@ public class ProductDTO {
 	public String toString() {
 		return "ProductDTO [product_code=" + product_code + ", nutrition_code=" + nutrition_code + ", product_category="
 				+ product_category + ", product_name=" + product_name + ", product_price=" + product_price
-				+ ", product_kind=" + product_kind + ", product_stock=" + product_stock + ", product_image="
-				+ product_image + "]";
+				+ ", product_kind=" + product_kind + ", product_image=" + product_image + "]";
 	}
+	
 	
 	
 

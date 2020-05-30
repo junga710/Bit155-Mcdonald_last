@@ -45,10 +45,6 @@ public class FreeReRegister implements Action {
 			String file = (String) filenames.nextElement();
 			String board_image = multi.getFilesystemName(file);
 
-			System.out.println("f_writer : " + f_writer);
-			System.out.println("title : " + title);
-			System.out.println("content : " + content);
-
 			BoardFreeDTO boardFreeDto = new BoardFreeDTO();
 			UserDAO dao = new UserDAO();
 
@@ -59,8 +55,6 @@ public class FreeReRegister implements Action {
 			boardFreeDto.setF_file_upload(board_image);
 
 			int result = dao.FreeReRegister(boardFreeDto);
-
-			System.out.println("답변 : " + result);
 
 			forward.setPath("BoardFree.b");
 

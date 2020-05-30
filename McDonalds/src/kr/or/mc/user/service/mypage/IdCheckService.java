@@ -18,29 +18,12 @@ public class IdCheckService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("서비스 타러 왔어욜");
 		String id = request.getParameter("id");
-		
-		System.out.println("id : "  + id);
-		
+
 		UserDAO userdao = new UserDAO();
 		int checkResult = userdao.checkId(id);
-		
-		System.out.println("checkResult : " + checkResult);
-		
-		//JSONArray jsonArr = new JSONArray();
 
 		JSONObject obj = new JSONObject();
 		obj.put("checkResult", checkResult);
-		
-		System.out.println("obj : " + obj);
-
-		//jsonArr.add(obj);
-		
-		/*
-		 * String msg = ""; if(checkResult > 0){ msg = "성공"; }else { msg = "실패"; }
-		 */
-		//글자 반환해주까?
-		//request.setAttribute("msg", msg);
-		
 		try {
 			response.setContentType("application/x-json; charset=UTF-8");
 			response.getWriter().print(obj);

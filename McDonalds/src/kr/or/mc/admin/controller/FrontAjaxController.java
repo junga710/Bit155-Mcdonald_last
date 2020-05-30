@@ -41,8 +41,6 @@ public class FrontAjaxController extends HttpServlet {
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String url_Command = requestURI.substring(contextPath.length());
-
-		System.out.println("url_Command : " + url_Command);
 		
 		Action action = null;
 		ActionForward forward = null;
@@ -63,8 +61,6 @@ public class FrontAjaxController extends HttpServlet {
 			action = new MainWorstService();
 			forward = action.execute(request, response);
 		} 
-
-			
 		
 		if (forward != null) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());

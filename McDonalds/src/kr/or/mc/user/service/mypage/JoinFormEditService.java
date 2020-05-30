@@ -39,8 +39,7 @@ public class JoinFormEditService implements Action {
 			result = 0;
 		}
 
-		System.out.println("result : " + result);
-		forward.setPath("/Mcdonald_main.jsp"); // 성공하면 어디갈건지 정해.
+		forward.setPath("/Mcdonald_main.jsp"); 
 
 		return forward;
 	}

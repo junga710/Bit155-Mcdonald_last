@@ -24,8 +24,6 @@ public class NoticeUpdatePageService implements Action {
 		UserDAO userDAO = new UserDAO();
 		BoardNoticeDTO boardNoticeDTO = userDAO.BoardNoticeDetail(n_code);
 		
-		System.out.println("이게 출력이 되는지 궁금서블릿" + boardNoticeDTO);
-		
 		request.setAttribute("boardNoticeDTO", boardNoticeDTO);
 		
 		ActionForward forward = new ActionForward();

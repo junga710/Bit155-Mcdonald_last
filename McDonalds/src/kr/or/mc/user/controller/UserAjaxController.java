@@ -55,8 +55,6 @@ public class UserAjaxController extends HttpServlet {
 
 		Action action = null;
 		ActionForward forward = null;
-		System.out.println(" url_Command : " + url_Command);
-		System.out.println("이건타는거냐고~~~~!!!!!!!!!");
 		if (url_Command.equals("/UserMenuDetail.ua")) { // 공지사항 목록 뿌려주는 로직
 			action = new UserMenuDetailService();
 			forward = action.execute(request, response);
@@ -70,12 +68,9 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/SelectShopok.ua")) { // 매장마커 클릭 순간에 로직 컨트롤러
 			action = new SelectShopService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/search.ua")) {
-
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/basketAdd.ua")) { // 장바구니 추가
 			action = new BasketAddService();
 			forward = action.execute(request, response);
@@ -88,35 +83,28 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/basketDelete.ua")) { // 장바구니 하나씩 삭제
 			action = new BasketDeleteService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/SelectCommentList.ua")) {
 			System.out.println("selectcomment ajax 시작 ok");
 			action = new SelectCommentService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/InsertComment.ua")) {
 			System.out.println("insertcomment ajax 시작 ok");
 			action = new InsertCommentService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/DeleteComment.ua")) {
 			System.out.println("ajax타나ssssscomaet");
 			action = new DeleteCommentService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/UpdateComment.ua")) {
 			System.out.println("ajax타나updatesscomaet");
 			action = new UpdateCommentService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
 			action = new SelectBurgerModalService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/search.ua")) {
 			action = new FreeListSearchService();
 			forward = action.execute(request, response);
-
 		} else if (url_Command.contentEquals("/basketAdd.ua")) {
 			action = new BasketAddService();
 			forward = action.execute(request, response);

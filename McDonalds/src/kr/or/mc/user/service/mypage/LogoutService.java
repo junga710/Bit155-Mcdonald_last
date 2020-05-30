@@ -17,12 +17,8 @@ public class LogoutService implements Action {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		
-		System.out.println("로그아웃 메서드 탔어요");
-		
 		String msg = "로그아웃";
 		String url = "Main.do";
-		
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("/Mcdonald_main.jsp");

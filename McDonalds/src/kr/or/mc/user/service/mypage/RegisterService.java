@@ -18,7 +18,6 @@ public class RegisterService implements Action {
       ActionForward forward = new ActionForward();
       MemberDTO memberdto = new MemberDTO();
       UserDAO boarddao = new UserDAO();
-
      
       memberdto.setM_id(request.getParameter("id"));
       memberdto.setPassword(request.getParameter("pwd"));
@@ -34,7 +33,6 @@ public class RegisterService implements Action {
       int result = 0;
       
       result = boarddao.MemRegister(memberdto);
-      System.out.println("result : " + result);
       forward.setPath("/Mcdonald_main.jsp");
 
       return forward;

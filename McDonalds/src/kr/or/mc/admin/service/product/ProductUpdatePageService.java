@@ -21,8 +21,6 @@ public class ProductUpdatePageService implements Action {
 		ProductDTO productDto = adminDao.PrductDetail(product_code);
 		NutritionDTO nutritionDto = adminDao.PrductDetailNut(product_code);
 		
-		System.out.println(productDto);
-		
 		request.setAttribute("productDto", productDto);
 		request.setAttribute("nutritionDto", nutritionDto);
 		

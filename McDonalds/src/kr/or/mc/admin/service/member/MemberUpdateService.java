@@ -37,7 +37,6 @@ public class MemberUpdateService implements Action {
 			result = 0;
 		}
 
-		System.out.println("result : " + result);
 		forward.setPath("MemberList.m");
 
 		
