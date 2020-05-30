@@ -886,7 +886,7 @@ public class UserDAO {
 			conn = ds.getConnection();
 			String sql = "select o.order_code, o.o_id, o.s_name, o.payment_method, o.payment_price, to_char(payment_date, 'YYYY-MM-DD HH24:MI:SS') as payment_date, m.address\r\n"
 					+ "from orders o join member m on o.o_id = m.m_id where m.m_id = ? \r\n"
-					+ "order by o.order_code asc" + "";
+					+ "order by o.order_code desc" + "";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, id);
@@ -936,7 +936,7 @@ public class UserDAO {
 			conn = ds.getConnection();
 			String sql = "select p.product_image, p.product_name, od.order_amount \r\n"
 					+ "from order_detail od join product p on od.product_code = p.product_code\r\n"
-					+ "where order_code = ?\r\n" + "";
+					+ "where order_code = ? \r\n" + "";
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, order_code);

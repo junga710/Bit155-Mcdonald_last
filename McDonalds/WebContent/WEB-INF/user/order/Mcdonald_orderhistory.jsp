@@ -50,7 +50,7 @@
     <div class="row">
       <div class="col-md-12">나의 주문 내역</div>
     </div>
-    <div class="row" style="min-height: 600px;">
+    <div class="row" style="min-height: 600px; ">
 
       <div class="col-md-12">
 
@@ -64,7 +64,7 @@
               
       
  
-		<h3>결제 일자 : ${e.payment_date}</h3>
+		<h3 style="background-color:#ffc32d;">결제 일자 : ${e.payment_date}</h3>
           <div class="row" style="padding:0px;">
             <div class="col-md-2" style="background-color: inherit">
               주문 번호 : <br>

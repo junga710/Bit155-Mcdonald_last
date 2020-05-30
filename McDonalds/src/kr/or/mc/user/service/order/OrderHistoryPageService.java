@@ -33,14 +33,17 @@ public class OrderHistoryPageService implements Action {
 		}
 
 		List<OrderDetailDTO> listdetail = new ArrayList<OrderDetailDTO>();
-
+		
+		
+		
+		
 		for (int i = 0; i < listint.size(); i++) {
 			listdetail.addAll((userdao.OrderDetailProductView(listint.get(i))));
 		}
 
 		request.setAttribute("listod", listod); // ordersDTO list 넣음
 		request.setAttribute("listdetail", listdetail);// OrderDetailDTO list 넣음
-
+		System.out.println("dddddddd" +listdetail);
 		ActionForward forward = new ActionForward();
 		forward.setPath("/WEB-INF/user/order/Mcdonald_orderhistory.jsp");
 
