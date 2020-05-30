@@ -19,8 +19,10 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <body>
+
 	<c:set var="boardFreeDto" value="${requestScope.boardFreeDto}" />
 	<c:set var="f_code" value="${requestScope.f_code}" />
+	<c:set var="totalComment" value="${requestScope.totalComment}" />
 
 	<div class="board_notice_detail">
 		<h1 class="titDep1" style="padding-top: 3%; color: white;">
@@ -100,7 +102,7 @@
 						<a href="#" style="margin-right: 5px;"> 
 						<img style="margin-right: 5px;" src="${pageContext.request.contextPath}/usercss/vendors/images/svg/comment-dots-regular.svg">
 						</a> 
-						<strong style="margin-right: 10px;">댓글&nbsp;?</strong> 
+						<strong id="replyTotal" style="margin-right: 10px;">댓글&nbsp; ${totalComment}</strong> 
 						
 				<c:choose>
 					<c:when test="${boardFreeDto.f_writer == id}">	
@@ -223,7 +225,19 @@
 					makeComment(resData);
 					$('#comment').val("");
 				}
-			});
+			}).done(function(){ //댓글 작성 후 댓글 개수  count
+				$.ajax({
+					url: "CommentTotal.ua",
+					data: {
+						f_code:'${f_code}'
+					},
+					dataType: "json",
+					success: function(resData) {
+						$('#replyTotal').text("댓글 " + resData.totalComment);
+					}
+				})
+				
+			});;
 		});
 		
 		//댓글 삭제
@@ -239,7 +253,19 @@
 					$('#com').empty();
 					makeComment(resData);
 				}
-			});
+			}).done(function(){ //댓글 삭제 후 댓글 개수  count
+				$.ajax({
+					url: "CommentTotal.ua",
+					data: {
+						f_code:'${f_code}'
+					},
+					dataType: "json",
+					success: function(resData) {
+						$('#replyTotal').text("댓글 " + resData.totalComment);
+					}
+				})
+				
+			});;
 		});
 		
 		//댓글 수정

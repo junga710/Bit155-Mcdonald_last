@@ -135,6 +135,12 @@
 
     	
     $('#payment').click(function(e){
+    	
+    	if(!$('input:radio[name=payment_type]').is(':checked')){
+			alert('결제방식을 한개이상 선택해주세요.')
+			return false;
+    	}
+    	
     	$.ajax({
 			type: 'GET',
 			url: 'paymentInfo.ua',

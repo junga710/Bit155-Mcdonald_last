@@ -1575,6 +1575,36 @@ public class UserDAO {
 		}
 		return row;
 	}
+	
+	   //자유게시판 댓글 개수 가져오기
+	   public int totalReplyCount(int f_code) {
+	      Connection conn = null;
+	      PreparedStatement pstmt = null; //
+	      ResultSet rs = null;
+	      int totalreplycount = 0;
+	      try {
+	         conn = ds.getConnection();
+	         String sql = "select count(r_code) rcode from reply where f_code = ?"; //
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, f_code);
+	         rs = pstmt.executeQuery();
+	         if (rs.next()) {
+	            totalreplycount = rs.getInt(1); 
+	         }
+	      } catch (Exception e) {
+	         System.out.println(e.getMessage());
+	      } finally {
+	         try {
+	            pstmt.close();
+	            rs.close();
+	            conn.close(); 
+	         } catch (Exception e2) {
+	            System.out.println(e2.getMessage());
+	         }
+	      }
+	      return totalreplycount;
+	   }
+	   
 
 	// 장바구니 - 상세보기(상품) : 상품번호를 이용해 가격 얻기
 	public ProductDTO PrductDetail(int product_code) {
