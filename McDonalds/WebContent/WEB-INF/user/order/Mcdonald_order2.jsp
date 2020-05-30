@@ -19,6 +19,7 @@
 	background-color: #F3F3F3;
 	border: 1px solid #ddd;
 	border: 1px solid #FFFFFF;
+	margin:0;
 }
 </style>
 
