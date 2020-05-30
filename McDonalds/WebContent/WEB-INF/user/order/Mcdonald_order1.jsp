@@ -381,8 +381,6 @@ $(document).ready(function() {
 				},
 				success: function(response) {
 					
-
-					
 					$('#_one_input').val('0');
 					$('#_set_input').val('0');
 					var one = response[0];

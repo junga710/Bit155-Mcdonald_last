@@ -23,6 +23,7 @@ import kr.or.mc.user.service.ajax.PaymentInfoService;
 import kr.or.mc.user.service.ajax.SelectCommentService;
 import kr.or.mc.user.service.ajax.SelectBurgerModalService;
 import kr.or.mc.user.service.ajax.SelectShopService;
+import kr.or.mc.user.service.ajax.TotalCommentService;
 import kr.or.mc.user.service.ajax.UpdateCommentService;
 import kr.or.mc.user.service.ajax.UserMenuDetailService;
 import kr.or.mc.user.service.board.FreeDeleteService;
@@ -98,6 +99,10 @@ public class UserAjaxController extends HttpServlet {
 		} else if (url_Command.contentEquals("/UpdateComment.ua")) {
 			System.out.println("ajax타나updatesscomaet");
 			action = new UpdateCommentService();
+			forward = action.execute(request, response);
+		} else if (url_Command.contentEquals("/CommentTotal.ua")) {
+			System.out.println("ajax타나updatesscomaet");
+			action = new TotalCommentService();
 			forward = action.execute(request, response);
 		} else if (url_Command.contentEquals("/SelectBurgerModal.ua")) {
 			action = new SelectBurgerModalService();

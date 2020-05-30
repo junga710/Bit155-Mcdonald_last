@@ -34,9 +34,12 @@ public class FreeDetailService implements Action {
 
 		dao.getReadNum(f_code);
 		boardFreeDto = dao.FreeDetail(f_code);
+		
+		int totalComment = dao.totalReplyCount(f_code);
 
 		/* List<Reply> replyList = dao.replylist(idx); */
 
+		request.setAttribute("totalComment", totalComment);
 		request.setAttribute("boardFreeDto", boardFreeDto);
 		request.setAttribute("f_code", f_code);
 		/* request.setAttribute("replyList", replyList); */
