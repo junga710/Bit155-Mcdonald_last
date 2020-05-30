@@ -65,8 +65,9 @@
 
 
 			<div class="mb-4">
-				<div name="content" readonly>
-            			${boardFreeDto.f_content}
+				<div name="content" readonly style="min-height:250px;">
+            			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${boardFreeDto.f_content}
+            			
             	</div>
 			</div>
 
